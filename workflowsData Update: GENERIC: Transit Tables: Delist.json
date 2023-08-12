@@ -1,22 +1,16 @@
 {
   "active": false,
   "connections": {
-    "Execute Workflow Trigger": {
-      "main": [
-        [
-          {
-            "node": "Globals",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Remove Supplier Line": {
       "main": [
         [
           {
-            "node": "Odoo",
+            "node": "Odoo4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo5",
             "type": "main",
             "index": 0
           }
@@ -133,23 +127,84 @@
           }
         ]
       ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo5": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        []
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        []
+      ]
     }
   },
   "createdAt": "2023-08-12T10:02:58.021Z",
   "id": "2j04k1KgdEFjYUVy",
   "name": "Data Update: GENERIC: Transit Tables: Delist",
   "nodes": [
-    {
-      "parameters": {},
-      "id": "a511d2ed-09f7-4ca8-a525-3001d4fbf59f",
-      "name": "Execute Workflow Trigger",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1,
-      "position": [
-        920,
-        880
-      ]
-    },
     {
       "parameters": {},
       "id": "2475af47-9a72-4f42-9e12-1a9b333bb219",
@@ -173,9 +228,10 @@
       "type": "n8n-nodes-base.odoo",
       "typeVersion": 1,
       "position": [
-        1560,
-        340
+        2380,
+        120
       ],
+      "retryOnFail": true,
       "credentials": {
         "odooApi": {
           "id": "2ttPRWxNWqAWB6fY",
@@ -293,7 +349,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  const removal = $('Execute Workflow Trigger').first().json.globals.ProductTagId;\n  const newArray = item.json.product_tag_ids.filter(supplier => supplier != removal);\n  item.json.product_tag_ids = newArray;\n}\n\nreturn $input.all();"
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  const removal = $('Globals').first().json.globals.ProductTagId;\n  const newArray = item.json.product_tag_ids.filter(supplier => supplier != removal);\n  item.json.product_tag_ids = newArray;\n}\n\nreturn $input.all();"
       },
       "id": "7373f19f-5122-40ed-8016-2d7e31ac488e",
       "name": "Code",
@@ -335,7 +391,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT a.*\nFROM odoodata.map_supplierpricelist a\nWHERE  a.product_tmpl_id \nIN (\n    SELECT b.product_tmpl_id::CHAR\n      FROM datatransit.{{\"index_\"+$json.name.toLowerCase() }} b\n        INNER JOIN odoodata.{{\"prices_\"+ $json.name.toLowerCase() }} c\n          ON b.barcode::CHAR = c.barcode::CHAR) AND a.partner_id::NUMERIC = {{ $('Globals').first().json.globals[0].PartnerId }};",
+        "query": "SELECT a.*\nFROM {{ \"datatransit.index_\"+$('Globals').first().json.name.toLowerCase() }} a\nWHERE  a.barcode\nNOT IN (\n    SELECT b.ean\n      FROM {{\"odoodata.feed_\"+$json.name.toLowerCase() }} b\n        );",
         "options": {}
       },
       "id": "c3554034-cf96-48c5-b965-d4929f8f49af",
@@ -384,15 +440,16 @@
     },
     {
       "parameters": {
+        "keepOnlySet": true,
         "values": {
           "string": [
             {
               "name": "name",
-              "value": "={{ $json.name }}"
+              "value": "={{ $json.body.json.name }}"
             },
             {
               "name": "globals",
-              "value": "={{JSON.parse($json.globals)}}"
+              "value": "={{ $json.body.json.globals }}"
             }
           ]
         },
@@ -406,14 +463,208 @@
         1140,
         880
       ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT a.*\nFROM odoodata.map_supplierpricelist a\nWHERE  a.product_tmpl_id \nNOT IN (\n    SELECT b.product_tmpl_id::CHAR\n      FROM datatransit.{{\"index_\"+$json.name.toLowerCase() }} b\n        INNER JOIN odoodata.{{\"prices_\"+ $json.name.toLowerCase() }} c\n          ON b.barcode::CHAR = c.barcode::CHAR) AND a.partner_id::NUMERIC = {{ $('Globals').first().json.globals[0].PartnerId }};",
+        "options": {}
+      },
+      "id": "9666f5c2-c256-4b47-a3ef-9bbc31700551",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        800,
+        220
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "transit-tables-delist",
+        "options": {}
+      },
+      "id": "9003de34-6e73-4d0f-9345-1fd1a4b753a2",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        920,
+        880
+      ],
+      "webhookId": "5c654cb3-db1b-4e9d-b169-625c5d46af46"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.supplierinfo",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "product_id",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "id": "f2b360b3-28a7-4f2f-8aca-e6423f4f8883",
+      "name": "Odoo4",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1800,
+        100
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.supplierinfo",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "product_tmpl_id",
+              "value": "={{ $json.product_tmpl_id }}"
+            }
+          ]
+        }
+      },
+      "id": "b6995ab3-1f7c-4ef0-b587-52e57416e60e",
+      "name": "Odoo5",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1800,
+        280
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {},
+      "id": "7c7a20d8-3025-4f44-9f8b-604d264fcef8",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        2000,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.id}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "f012a7ae-1596-40f6-a01e-e32c690c007f",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "fbaf9568-b584-4ae2-b7c6-b33774192188",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2380,
+        300
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {},
+      "id": "7483945f-1d49-402e-8a81-570ab73f061b",
+      "name": "No Operation, do nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2660,
+        520
+      ]
     }
   ],
   "pinData": {
-    "Execute Workflow Trigger": [
+    "Webhook": [
       {
         "json": {
-          "name": "Madison",
-          "globals": "[{\"SupplierName\": \"Madison\",\"PartnerId\": 47,\"ProductTagId\": 8,\"LeadTimeAddition\":3,\"Webhook\":\"https://node4.biketrax.co.uk/webhook/8e681709-59dd-45f0-9403-d2e72945ebd0\"}]"
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "227",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "baggage": "sentry-environment=production,sentry-release=1.1.1,sentry-public_key=1f954e089a054b8e943ae4f4042b2bff,sentry-trace_id=82f45211d6fb4b11974b13de0b955215",
+            "content-type": "application/json",
+            "sentry-trace": "82f45211d6fb4b11974b13de0b955215-802a5afcdebde1d4-0",
+            "x-forwarded-for": "172.19.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "json": {
+              "name": "Madison",
+              "globals": {
+                "SupplierName": "Madison",
+                "PartnerId": 47,
+                "ProductTagId": 8,
+                "LeadTimeAddition": 3,
+                "Webhook": "https://node4.biketrax.co.uk/webhook/8e681709-59dd-45f0-9403-d2e72945ebd0"
+              }
+            },
+            "pairedItem": {
+              "item": 0
+            }
+          }
         }
       }
     ]
@@ -422,8 +673,45 @@
     "executionOrder": "v1"
   },
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "id": "4S5wvtegUIvgvqYs",
+      "createdAt": "2023-08-08T15:46:20.698Z",
+      "updatedAt": "2023-08-08T15:46:20.698Z",
+      "name": "PostgreSQL"
+    },
+    {
+      "id": "9sOXgdnAKkDHmBZQ",
+      "createdAt": "2023-08-10T13:01:44.729Z",
+      "updatedAt": "2023-08-10T13:01:44.729Z",
+      "name": "if"
+    },
+    {
+      "id": "Vuerdt8JErJ7XwoD",
+      "createdAt": "2023-08-08T15:51:26.157Z",
+      "updatedAt": "2023-08-08T15:51:26.157Z",
+      "name": "code"
+    },
+    {
+      "id": "cEh6fwE32oIO00B5",
+      "createdAt": "2023-08-10T13:01:36.942Z",
+      "updatedAt": "2023-08-10T13:01:36.942Z",
+      "name": "split in batches"
+    },
+    {
+      "id": "ojpualuYNuuEDwh1",
+      "createdAt": "2023-08-08T15:53:13.355Z",
+      "updatedAt": "2023-08-08T15:53:13.355Z",
+      "name": "odoo"
+    },
+    {
+      "id": "veItN06CNprBqx4u",
+      "createdAt": "2023-08-12T15:12:53.694Z",
+      "updatedAt": "2023-08-12T15:12:53.694Z",
+      "name": "webhook"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2023-08-12T12:47:32.000Z",
-  "versionId": "df08fda2-2ae0-4d8b-89ae-02e5904eacfe"
+  "updatedAt": "2023-08-12T17:10:34.000Z",
+  "versionId": "0e3a8302-16da-4754-861a-f63f2b64ec3d"
 }
