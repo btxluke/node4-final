@@ -10,7 +10,7 @@
             "index": 0
           },
           {
-            "node": "DataUpdate: Supplier Index Sync",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -376,18 +376,7 @@
       "main": [
         [
           {
-            "node": "Code11",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code11": {
-      "main": [
-        [
-          {
-            "node": "Remove delisted items",
+            "node": "Data Update: GENERIC: Transit Tables: Delist",
             "type": "main",
             "index": 0
           }
@@ -503,10 +492,6 @@
             {
               "fieldName": "allow_out_of_stock_order",
               "fieldValue": "={{ $json.StockCount > 0}}"
-            },
-            {
-              "fieldName": "default_code",
-              "fieldValue": "={{ $json.default_code }}"
             },
             {
               "fieldName": "out_of_stock_message",
@@ -1145,35 +1130,6 @@
     },
     {
       "parameters": {
-        "jsCode": "return $('Globals').first()"
-      },
-      "id": "b915085a-abb9-4016-b4bf-d38011315867",
-      "name": "Code11",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 1,
-      "position": [
-        1980,
-        480
-      ],
-      "executeOnce": true
-    },
-    {
-      "parameters": {
-        "workflowId": "2j04k1KgdEFjYUVy"
-      },
-      "id": "c45494a1-7da5-4030-93c8-278da2b612e3",
-      "name": "Remove delisted items",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        2140,
-        480
-      ],
-      "executeOnce": true,
-      "disabled": true
-    },
-    {
-      "parameters": {
         "conditions": {
           "boolean": [
             {
@@ -1214,15 +1170,36 @@
     },
     {
       "parameters": {
-        "workflowId": "bnPQxg9HQ0hjn4VZ"
+        "url": "https://node4.biketrax.co.uk/webhook/supplier-index-sync",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
       },
-      "id": "f5c47de8-d8f3-409c-8b1d-48536cb87b4f",
-      "name": "DataUpdate: Supplier Index Sync",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
+      "id": "d90c777e-1d91-45ef-ac25-0527c11838da",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
       "position": [
         -1820,
         300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/transit-tables-delist",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Globals').first() }}",
+        "options": {}
+      },
+      "id": "32548180-64e8-47d4-848c-02e0a4e87c0b",
+      "name": "Data Update: GENERIC: Transit Tables: Delist",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2080,
+        480
       ]
     }
   ],
@@ -1245,6 +1222,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-08-12T11:33:03.000Z",
-  "versionId": "78daae4b-87a4-4c17-a813-933415ae4a2c"
+  "updatedAt": "2023-08-12T17:29:24.000Z",
+  "versionId": "c5ac6272-8f0a-423b-8347-e3537d290adc"
 }
