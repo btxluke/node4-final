@@ -1,0 +1,1305 @@
+{
+  "active": false,
+  "connections": {
+    "When Called By Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Get Globals",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "MySQL1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets": {
+      "main": [
+        [
+          {
+            "node": "Create",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL1": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Transit Table": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SplitInBatches": {
+      "main": [
+        [
+          {
+            "node": "retrieve globals 99",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Product Import",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create": {
+      "main": [
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brand Sync": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brand Write": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Colour Sync": {
+      "main": [
+        [
+          {
+            "node": "Code6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Template Creation": {
+      "main": [
+        [
+          {
+            "node": "Code10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Template Creation1": {
+      "main": [
+        [
+          {
+            "node": "Variant Sync / Tidy Up",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Variant Write": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Globals": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Product Import": {
+      "main": [
+        [
+          {
+            "node": "Category Tidy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Colour Write": {
+      "main": [
+        [
+          {
+            "node": "Code7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Attribute Write": {
+      "main": [
+        [
+          {
+            "node": "Code8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "retrieve globals 99": {
+      "main": [
+        [
+          {
+            "node": "Write Transit Table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Category Tidy": {
+      "main": [
+        [
+          {
+            "node": "MySQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Category Sync": {
+      "main": [
+        [
+          {
+            "node": "CHICKEN Size Transpose",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CHICKEN Size Transpose": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Category Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Size Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Variant Write",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Size Sync": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Brand Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Brand Write",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "Colour Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code6": {
+      "main": [
+        [
+          {
+            "node": "Colour Write",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code7": {
+      "main": [
+        [
+          {
+            "node": "Attribute Write",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code8": {
+      "main": [
+        [
+          {
+            "node": "Size2 Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Size2 Sync": {
+      "main": [
+        [
+          {
+            "node": "Code9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code9": {
+      "main": [
+        [
+          {
+            "node": "Version2 Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Version2 Sync": {
+      "main": [
+        [
+          {
+            "node": "Template Creation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code10": {
+      "main": [
+        [
+          {
+            "node": "Template Creation1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL2": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-08-08T15:52:45.554Z",
+  "id": "1NMFhyVVYAUAZAe3",
+  "name": "Data Update: Chicken",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "5d937a2c-a03a-43e8-a04c-fd8baedb8db9",
+      "name": "When Called By Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        980,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "=TRUNCATE `Transit-{{ $node[\"Globals\"].json[\"Name\"] }}`"
+      },
+      "id": "ffa7a039-72f3-4ce1-8a0e-be651ac50382",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        980
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6",
+          "name": "node3: dataTransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.product",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "name",
+            "product_tag_ids",
+            "default_code",
+            "list_price",
+            "product_tmpl_id",
+            "barcode",
+            "qty_available",
+            "standard_price"
+          ]
+        }
+      },
+      "id": "850b9373-8fe1-4b75-bd9c-2253b5cb375a",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        1200
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "5",
+          "name": "Odoo: BTX"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "ProductCode",
+              "field2": "ProductCode"
+            }
+          ]
+        },
+        "resolve": "mix",
+        "preferWhenMix": "input2",
+        "exceptWhenMix": "YourPrice,Rrp",
+        "options": {
+          "skipFields": "id,name,product_tag_ids,default_code,product_tmpl_id,qty_available,Ean"
+        }
+      },
+      "id": "b7759b0c-16fd-4bcf-8094-2f5bab0c24a4",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT `ProductCode`,`Ean`,`Rrp`,`YourPrice` FROM `Feed-Chicken`;"
+      },
+      "id": "730d22e8-b06a-4558-8c98-db3244aa4c38",
+      "name": "MySQL1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        860
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": "75"
+      },
+      "id": "b3e9f16e-5f5e-479b-ac63-a09b9ef5e187",
+      "name": "Write Transit Table",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        3020,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 2000,
+        "options": {}
+      },
+      "id": "a99d9450-6021-41e4-9343-b9d82b8116ae",
+      "name": "SplitInBatches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 1,
+      "position": [
+        2720,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$node[\"SplitInBatches\"].context[\"noItemsLeft\"]}}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "9ec56f27-2eeb-415d-8734-b9aadf67f444",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        3160,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "77"
+      },
+      "id": "9e3414cc-8147-4880-9ecb-4e20c6528816",
+      "name": "Category Sync",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        4280,
+        680
+      ],
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {},
+      "id": "a19c175b-b0d2-46a7-8ec5-2c2725d3b654",
+      "name": "Create",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "62"
+      },
+      "id": "1a80ddad-9958-453b-bce7-24a35bafe94f",
+      "name": "Size Sync",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        4420,
+        880
+      ],
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "64"
+      },
+      "id": "efa6596f-d06c-4d88-bae2-899679edd320",
+      "name": "Brand Sync",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        4760,
+        880
+      ],
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "65"
+      },
+      "id": "b597352a-438a-4dc2-99c5-80e6cc90187b",
+      "name": "Brand Write",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        4940,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "66"
+      },
+      "id": "f11af9c9-5188-46ce-9c03-17509475bbae",
+      "name": "Colour Sync",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        5080,
+        880
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "parameters": {},
+      "id": "e9e58da7-fefd-4ba5-a44b-2199bc2d639b",
+      "name": "Template Creation",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        5980,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "69"
+      },
+      "id": "8035ea91-11e2-4a77-8cc9-8c45ea5d80d6",
+      "name": "Template Creation1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        6260,
+        780
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "workflowId": "63"
+      },
+      "id": "686c0b13-48c3-4005-9b09-e4f0208dda55",
+      "name": "Variant Write",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        4620,
+        680
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "Barcode",
+              "value": "={{  $json.Ean.toString()  }}"
+            }
+          ],
+          "number": [
+            {
+              "name": "YourPrice",
+              "value": "={{ $json[\"YourPrice\"] }}"
+            },
+            {
+              "name": "Rrp",
+              "value": "={{ $json[\"Rrp\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e379ccf0-d0df-4887-a6f8-7d2cfe9284a0",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        2080,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Ean",
+              "value": "={{   $json[\"barcode\"].toString()   }}"
+            },
+            {
+              "name": "ProductCode",
+              "value": "={{ $json[\"default_code\"] }}"
+            }
+          ],
+          "number": [
+            {
+              "name": "Rrp",
+              "value": "={{ Math.round($json[\"list_price\"]*100)/100 }}"
+            },
+            {
+              "name": "YourPrice",
+              "value": "={{ Math.round($json[\"standard_price\"]*100)/100 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "555d4e83-72d4-4484-823e-5d9901a71564",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        2080,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "51"
+      },
+      "id": "e93940df-9ade-4f84-a28c-40ced97eb10a",
+      "name": "Variant Sync / Tidy Up",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        6420,
+        780
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.tag",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "id",
+            "name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "name",
+              "value": "Sportline"
+            }
+          ]
+        }
+      },
+      "id": "583b0785-59a7-496d-ad0e-ccaa729c76a0",
+      "name": "Odoo3",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        980,
+        1680
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "5",
+          "name": "Odoo: BTX"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch",
+        "output": "input2"
+      },
+      "id": "5bfb1e0e-7218-4949-8e53-595c8cd934a2",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1500,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM `Map-SupplierInfo` WHERE Name = \"Chicken\";"
+      },
+      "id": "547ec5f4-2098-43c4-b723-29a11a63d69c",
+      "name": "Get Globals",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        780
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "Globals",
+              "value": "={{  JSON.parse($json[\"Globals\"])[0]  }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fd710ea8-9030-484e-a98b-4db23a55a9a7",
+      "name": "Globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Progress\n",
+        "height": 1459.622641509435,
+        "width": 1499.6442850874446
+      },
+      "id": "a6af94b6-f049-4985-a826-a75744c23059",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        840,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "content": "##Chicken Only Nonsense",
+        "height": 213.38479784366598,
+        "width": 328.12100485175233
+      },
+      "id": "bcb89d67-5931-4cd0-bd83-2b1f15ad563d",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        5211.205140700809,
+        603.0727762803235
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "15c0c6c3-f8d1-418a-831e-96c65836b857",
+      "name": "Product Import",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3380,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "67"
+      },
+      "id": "4af8178d-4f89-4abb-850a-767213b76a71",
+      "name": "Colour Write",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        5260,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "68"
+      },
+      "id": "15c151b3-1fdd-4a59-bfab-f0955ebaa990",
+      "name": "Attribute Write",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        5420,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "Supplier",
+              "value": "={{ $(\"Globals\").first().json[\"Name\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2ddaf5c7-267f-4a5a-ba5f-5ab4d1777166",
+      "name": "retrieve globals 99",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        2860,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "76"
+      },
+      "id": "4b82a8ed-4793-40f5-b3c5-3edb65eb6d52",
+      "name": "Category Tidy",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        3540,
+        760
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `Transit-Chicken` SET Size = Size1;"
+      },
+      "id": "da2a7723-2952-4d59-9c73-e5e6a05ed939",
+      "name": "CHICKEN Size Transpose",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        4140,
+        880
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6",
+          "name": "node3: dataTransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": "78"
+      },
+      "id": "34efa797-93fb-4fe2-85e2-ab7b2a2923e0",
+      "name": "Size2 Sync",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        5620,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "366b0342-76bb-4e80-bd84-153a3345d3f0",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        4140,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "9769f6d3-916f-4aec-a283-6e5c4222b73a",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        4280,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Chicken Specific \n",
+        "height": 250.30727441860475,
+        "width": 277.9083557951483
+      },
+      "id": "5462c5bf-2ee3-4812-95f1-6e60018dca06",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3520,
+        629.6927255813952
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "4eaa8b0d-d2c8-44ad-bebc-bf3d13f0bb12",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        4480,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "6acc0192-2d8c-413e-86da-8e1c27bd1434",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        4620,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "056644c0-137b-4f6b-98dc-a0f7189d7ec9",
+      "name": "Code4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        4800,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "a3ab72e3-bb0c-4a0a-a1ed-60d5561250bc",
+      "name": "Code5",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        4940,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "770e3dc1-0096-4873-bb56-516dedbdba50",
+      "name": "Code6",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        5120,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "1eda3850-b313-415a-9193-56c24dfafd48",
+      "name": "Code7",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        5280,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "59fb4b38-561e-4d05-b492-970399e6214d",
+      "name": "Code8",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        5480,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "0ce602c9-f9dc-4508-a731-9e8223a9439f",
+      "name": "Code9",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        5660,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "79"
+      },
+      "id": "62cbe87a-a7c0-4033-9a97-2d125548366e",
+      "name": "Version2 Sync",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        5800,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "3ee6026f-15c3-4f29-b87f-59e4de06b7b7",
+      "name": "Code10",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        6120,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `Transit-Chicken` SET VariantGrouping = REPLACE(VariantGrouping,\"\\\"\",\"Inch\");"
+      },
+      "id": "57db0741-a5b6-40be-ba29-4b10000556a0",
+      "name": "MySQL2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        3680,
+        760
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "6",
+          "name": "node3: dataTransit"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "id": "NcuD1mGXd6tJAK4Q",
+      "createdAt": "2023-08-08T15:52:23.401Z",
+      "updatedAt": "2023-08-08T15:52:23.401Z",
+      "name": "mysql (to deprecate)"
+    },
+    {
+      "id": "bbI8zuoQ3XV0LUP0",
+      "createdAt": "2023-08-08T15:13:33.587Z",
+      "updatedAt": "2023-08-08T15:13:33.587Z",
+      "name": "set"
+    },
+    {
+      "id": "evqsbisrBK9HqVQU",
+      "createdAt": "2023-08-08T15:51:11.963Z",
+      "updatedAt": "2023-08-08T15:51:11.963Z",
+      "name": "Merge"
+    },
+    {
+      "id": "ojpualuYNuuEDwh1",
+      "createdAt": "2023-08-08T15:53:13.355Z",
+      "updatedAt": "2023-08-08T15:53:13.355Z",
+      "name": "odoo"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2023-08-08T15:53:22.000Z",
+  "versionId": "74cf2c12-1174-4af5-82a8-93bea57dd74b"
+}
