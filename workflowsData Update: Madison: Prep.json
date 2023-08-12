@@ -1,0 +1,1117 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH": {
+      "main": [
+        [
+          {
+            "node": "firstFail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH2": {
+      "main": [
+        [
+          {
+            "node": "SSH",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "SSH2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "SSH1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH1": {
+      "main": [
+        [
+          {
+            "node": "SSH3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH3": {
+      "main": [
+        [
+          {
+            "node": "SSH4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH4": {
+      "main": [
+        [
+          {
+            "node": "IF3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SSH1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet File": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "firstFail": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Postgres3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres3": {
+      "main": [
+        [
+          {
+            "node": "Postgres5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres5": {
+      "main": [
+        [
+          {
+            "node": "Postgres6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres6": {
+      "main": [
+        [
+          {
+            "node": "Postgres4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres4": {
+      "main": [
+        [
+          {
+            "node": "Postgres7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres7": {
+      "main": [
+        [
+          {
+            "node": "Postgres8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres8": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres9": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Postgres9",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Data Update: Process Alter Statements",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres10": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF3": {
+      "main": [
+        [
+          {
+            "node": "SSH5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH5": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres11": {
+      "main": [
+        []
+      ]
+    },
+    "Data Update: Process Alter Statements": {
+      "main": [
+        [
+          {
+            "node": "Postgres11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-08-10T09:19:59.298Z",
+  "id": "pUmiiXlXRzZsrfdD",
+  "name": "Data Update: Madison: Prep",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "8e2fd575-2e33-4f83-ab8c-6fe74a29ba3f",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1740,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE `Upload-Madison` CHANGE `Product Code` `ProductCode` VARCHAR(40),CHANGE `Description (80 Chars)` `ProductName` VARCHAR(100),CHANGE `Short Description (40 Chars)` `ShortDescription` VARCHAR(40),CHANGE `Long Web Text` `LongDescription` LONGTEXT,CHANGE `Barcode` `Ean` VARCHAR(29),CHANGE `Vat Rate` `Vat` INT(2),CHANGE `Unit of Measure` `PackQty` VARCHAR(11),CHANGE `RRP` `Rrp` DECIMAL(7,2),CHANGE `Lead Time` `LeadTime` INT(3),CHANGE `Image Name` `ImageUrl` VARCHAR(100),CHANGE `Alternative Image 1` `AlternativeImage1Url` VARCHAR(100),CHANGE `Alternative Image 2` `AlternativeImage2Url` VARCHAR(100),CHANGE `Alternative Image 3` `AlternativeImage3Url` VARCHAR(100),CHANGE `Supplier Code` `SupplierCode` VARCHAR(30),CHANGE `Brand Colour` `Colour` VARCHAR(100),CHANGE `Variant Grouping` `VariantGrouping` VARCHAR(30),CHANGE `Outer Quantity` `OuterQuantity` INT(3),CHANGE `Your Price` `YourPrice` DECIMAL(7,2),CHANGE `Sub Category` `SubCategory` VARCHAR(100),CHANGE `Product Extra Info (eg Crank Length / Lens Colour)` `TechnicalSpec` LONGTEXT,CHANGE `Product Extra Information Label` `TechnicalSpecLabel` LONGTEXT;"
+      },
+      "id": "f02134b7-bfb8-44ec-8384-377c6a7fed0f",
+      "name": "Rename Columns",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        -920,
+        1740
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_madison FROM /home/luke/feeds/Upload-Madison.csv DELIMITER ',' CSV HEADER;\"",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "fe4d2b1b-35ce-4032-8da5-d10e56911914",
+      "name": "SSH",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        -940,
+        680
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=LANG=C sed -i 's/[\\d128-\\d255]//g' /home/luke/feeds/Upload-Madison.csv",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "1c1a1cec-c388-4063-a0e0-2676c41ffc16",
+      "name": "SSH2",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        -1120,
+        680
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DROP TABLE odoodata.upload_madison; ",
+        "options": {}
+      },
+      "id": "0f4d3b19-c599-4912-9de8-0fb96e97c88d",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1560,
+        680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE TABLE odoodata.upload_madison AS\n  SELECT *\nFROM odoodata.template_madison;",
+        "options": {}
+      },
+      "id": "f66a1d5a-9f5b-4860-b9f4-6e9fb1b106b4",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1280,
+        680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.stderr }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "f8af1e96-e2c0-4770-8b8c-843d129e9b4a",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "info@biketrax.co.uk",
+        "toEmail": "ithelpdesk@madison.co.uk",
+        "subject": "Madison Feed Error",
+        "text": "=Line(s) from the latest Madison data feed have failed to parse. This is usually because of a break in CSV specifications or incorrect placement of standard delimiters (,) / enclosing marks (\")  in your feed CSV.\n\nHere is an example product code with faulty data, and the error it caused:\n\nProduct Code: {{ $('Code').first().json.failed_code }}\n{{ $('Code').first().json.stderr }}\n\nA full list of errors is attached as a XLS file. If you could correct the errors for future exports, then then the item(s) can be added to our database on the next run. Our data routines run daily, but this email will be sent a maximum of once a week, if you would prefer to recieve it more frequently (or as soon as errors emerge), please email luke@biketrax.co.uk.\n\nMany thanks,\n\nBiketraxBot (Product Information Database)",
+        "options": {
+          "attachments": "data",
+          "ccEmail": "luke@biketrax.co.uk",
+          "replyTo": "luke@biketrax.co.uk"
+        }
+      },
+      "id": "20f470ee-da93-45d6-b9df-690c194d669c",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        1720,
+        760
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "smtp": {
+          "id": "H2cITTqls0BiVgFE",
+          "name": "info@biketrax.co.uk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=grep -n {{ \"\\\"\"+$json.stderr.split(\"\\\"\")[2]+\"\\\"\" }}  /home/luke/feeds/Upload-Madison{{ $runIndex == 0 ? \"\" : $runIndex }}.csv | cut -f1 -d:"
+      },
+      "id": "1c341c93-c9bc-463e-a366-f90c3e5989b2",
+      "name": "SSH1",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        560
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "AGAk5dnezH3Jdg8v",
+          "name": "Node3 (postgres)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "={{\"sed '\"+$json.stdout+\"d'\"}} /home/luke/feeds/Upload-Madison{{ $runIndex == 0 ? \"\" : $runIndex }}.csv > /home/luke/feeds/Upload-Madison{{ $runIndex+1 }}.csv"
+      },
+      "id": "59a303ef-afdb-40c6-96ee-a796f3812118",
+      "name": "SSH3",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        60,
+        560
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_madison FROM /home/luke/feeds/Upload-Madison{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "ab3b9f54-5a65-4b3e-adf0-ab916c25dccc",
+      "name": "SSH4",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        260,
+        560
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "AGAk5dnezH3Jdg8v",
+          "name": "Node3 (postgres)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.stderr }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "0901a1ad-86f7-4130-9588-c77149452074",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        640,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "failed_code",
+              "value": "={{$('SSH4').item.json.stderr.split(\"\\\"\")[2]}}"
+            },
+            {
+              "name": "stderr",
+              "value": "={{ $('SSH4').item.json.stderr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b4ab342b-3108-4a43-935f-22d143cc09db",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        460,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "let results = [],\n  i = 0;\n\ndo {\n  try {\n    results = results.concat($(\"Set\").all(0, i));\n  } catch (error) {\n        results = results.concat($(\"firstFail\").all()); \n    return results;\n  }\n  i++;\n} while (true);\n"
+      },
+      "id": "5034b68c-5718-4bd9-926b-8ccf893e0bd9",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        760
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "options": {
+          "fileName": "parsing_errors.xls",
+          "headerRow": true
+        }
+      },
+      "id": "f8932b2d-3c4b-43a7-bae8-61dfabae61a1",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        760
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $today.weekday }}",
+              "operation": "equal",
+              "value2": 1
+            }
+          ]
+        }
+      },
+      "id": "812c3f95-ce02-4aa8-8091-32794fa7d2a3",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "failed_code",
+              "value": "={{$json.stderr.split(\"\\\"\")[2]}}"
+            },
+            {
+              "name": "stderr",
+              "value": "={{ $json.stderr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f82349c0-8253-4da1-b72d-57d1f452ff27",
+      "name": "firstFail",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -580,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE odoodata.upload_madison SET rrp = rrp::NUMERIC / (1+(\"Vat Rate\"::INTEGER/100));",
+        "options": {}
+      },
+      "id": "2b818f93-e66a-4bb0-a76d-ffc52283e46d",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1560,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE odoodata.upload_madison \nADD COLUMN IF NOT EXISTS stockcount INT NULL DEFAULT NULL;",
+        "options": {}
+      },
+      "id": "c52e8117-d177-4cb3-bd96-e18dcfca080b",
+      "name": "Postgres3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1400,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_madison a\n  SET stockcount = b.\"In Stock\"::NUMERIC\nFROM stock_madison b\nWHERE a.\"Product Code\" = b.\"Product Code\";",
+        "options": {}
+      },
+      "id": "629343f5-4ed8-4d21-b944-56bc09a22862",
+      "name": "Postgres4",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -920,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE stock_madison SET\n  \"In Stock\" = '1'\nWHERE \"In Stock\" = 'Y';",
+        "options": {}
+      },
+      "id": "55aab58d-6cda-4d58-b598-c94e90b79394",
+      "name": "Postgres5",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1240,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE stock_madison SET\n  \"In Stock\" = '0'\nWHERE \"In Stock\" = 'N';",
+        "options": {}
+      },
+      "id": "50061a1d-cae9-4b53-a214-1ddf040c5963",
+      "name": "Postgres6",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1080,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_madison \nSET \"Sub Category\" = \"Sub Sub Category\" \nWHERE \"Sub Category\" = 'Transmissions'\nOR \"Sub Category\" = 'Finishing Kit'\nOR \"Sub Category\" = 'Tyres & Tubes'\nOR (\"Sub Category\" = 'Accessories' AND category = 'Clothing');",
+        "options": {}
+      },
+      "id": "69c6da1d-5df4-4fc9-a981-185a449164a3",
+      "name": "Postgres7",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -760,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM upload_madison WHERE category = 'POS';",
+        "options": {}
+      },
+      "id": "431008b7-e444-45c1-975c-ad241f6da8ce",
+      "name": "Postgres8",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -600,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_madison\nSET {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} = CONCAT('https://www.madisonb2b.co.uk/netalogue/zoom/',{{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }},'.jpg')\nWHERE {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} != ''\nOR {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} != NULL;",
+        "options": {
+          "queryBatching": "independently"
+        }
+      },
+      "id": "cfa540e7-7a8c-4a57-8b78-5ac589a3c4f1",
+      "name": "Postgres9",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1400,
+        1340
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_madison\nSET {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} = NULL\nWHERE {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} = '';",
+        "options": {
+          "queryBatching": "independently"
+        }
+      },
+      "id": "1a9082c5-7e0a-47d7-b5d1-dc77875e61f1",
+      "name": "Postgres10",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1400,
+        1520
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    \"field\": \"Image Name\"\n  },\n  {\n    \"field\": \"Alternative Image 1\"\n  },\n  {\n    \"field\": \"Alternative Image 2\"\n  },\n  {\n    \"field\": \"Alternative Image 3\"\n  }\n];"
+      },
+      "id": "9c3736ef-504f-4d61-8cdb-f555baaf61a8",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1560,
+        1340
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "c6077527-9609-4ce6-ab1f-968e9e47ac02",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -1080,
+        1420
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "workflowId": "Vc6ZgR8vArPNZu09"
+      },
+      "id": "f6769b6b-6d57-4603-9948-65728c4e5b1c",
+      "name": "Data Update: Process Alter Statements",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "alterStatements",
+              "value": "RENAME COLUMN \"Product Code\" TO \"productcode\", ALTER COLUMN \"productcode\" TYPE CHAR(40), RENAME COLUMN \"Description (80 Chars)\" TO \"productname\", ALTER COLUMN \"productname\" TYPE CHAR(100), RENAME COLUMN \"Short Description (40 Chars)\" TO \"shortdescription\", ALTER COLUMN \"shortdescription\" TYPE CHAR(40), RENAME COLUMN \"Long Web Text\" TO \"longdescription\", ALTER COLUMN \"longdescription\" TYPE TEXT, RENAME COLUMN \"barcode\" TO \"ean\", ALTER COLUMN \"ean\" TYPE CHAR(29), RENAME COLUMN \"Vat Rate\" TO \"vat\", ALTER COLUMN \"vat\" TYPE INT USING \"vat\"::NUMERIC, RENAME COLUMN \"Unit of Measure\" TO \"packqty\", ALTER COLUMN \"packqty\" TYPE CHAR(11), ALTER COLUMN \"rrp\" TYPE NUMERIC USING \"rrp\"::NUMERIC, RENAME COLUMN \"Lead Time\" TO \"leadtime\", ALTER COLUMN \"leadtime\" TYPE INT USING \"leadtime\"::NUMERIC, RENAME COLUMN \"Image Name\" TO \"imageurl\", ALTER COLUMN \"imageurl\" TYPE TEXT, RENAME COLUMN \"Alternative Image 1\" TO \"alternativeimage1url\", ALTER COLUMN \"alternativeimage1url\" TYPE TEXT, RENAME COLUMN \"Alternative Image 2\" TO \"alternativeimage2url\", ALTER COLUMN \"alternativeimage2url\" TYPE TEXT, RENAME COLUMN \"Alternative Image 3\" TO \"alternativeimage3url\", ALTER COLUMN \"alternativeimage3url\" TYPE TEXT, RENAME COLUMN \"Supplier Code\" TO \"suppliercode\", ALTER COLUMN \"suppliercode\" TYPE CHAR(30), RENAME COLUMN \"Brand Colour\" TO \"colour\", ALTER COLUMN \"colour\" TYPE CHAR(100), RENAME COLUMN \"Variant Grouping\" TO \"variantgrouping\", ALTER COLUMN \"variantgrouping\" TYPE CHAR(30), RENAME COLUMN \"Outer Quantity\" TO \"outerquantity\", ALTER COLUMN \"outerquantity\" TYPE INT USING \"outerquantity\"::NUMERIC, RENAME COLUMN \"Your Price\" TO \"yourprice\", ALTER COLUMN \"yourprice\" TYPE NUMERIC USING \"yourprice\"::NUMERIC, RENAME COLUMN \"Sub Category\" TO \"subcategory\", ALTER COLUMN \"subcategory\" TYPE CHAR(100), RENAME COLUMN \"Product Extra Info (eg Crank Length / Lens Colour)\" TO \"technicalspec\", ALTER COLUMN \"technicalspec\" TYPE TEXT, RENAME COLUMN \"Product Extra Information Label\" TO \"technicalspeclabel\", ALTER COLUMN \"technicalspeclabel\" TYPE TEXT"
+            },
+            {
+              "name": "supplier",
+              "value": "Madison"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "afe56d69-4939-4e29-9c58-e6dcca99e8d4",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -760,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "id": "668277fe-6b9f-42ef-b18d-b1f086830210",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        -1220,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $runIndex }}",
+              "operation": "larger"
+            }
+          ]
+        }
+      },
+      "id": "e0b2dfc6-111b-420e-9a86-b2fc05e932af",
+      "name": "IF3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        60,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "command": "=rm /home/luke/feeds/Upload-Madison{{ $runIndex }}.csv",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "da6f7140-87d4-42a5-81ef-a700890f0e13",
+      "name": "SSH5",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        260,
+        780
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE odoodata.upload_madison SET rrp = ROUND(rrp::NUMERIC / (1+(vat::NUMERIC/100)),2);",
+        "options": {}
+      },
+      "id": "f017e669-ed87-40cf-b44c-515953f4643b",
+      "name": "Postgres11",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -360,
+        1420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "id": "4S5wvtegUIvgvqYs",
+      "createdAt": "2023-08-08T15:46:20.698Z",
+      "updatedAt": "2023-08-08T15:46:20.698Z",
+      "name": "PostgreSQL"
+    },
+    {
+      "id": "HV0Z3uOvnzoAoe20",
+      "createdAt": "2023-08-10T09:20:24.007Z",
+      "updatedAt": "2023-08-10T09:20:24.007Z",
+      "name": "Spreadsheet"
+    },
+    {
+      "id": "bbI8zuoQ3XV0LUP0",
+      "createdAt": "2023-08-08T15:13:33.587Z",
+      "updatedAt": "2023-08-08T15:13:33.587Z",
+      "name": "set"
+    },
+    {
+      "id": "cDsMu9S1EDCMPUY2",
+      "createdAt": "2023-08-10T09:20:30.275Z",
+      "updatedAt": "2023-08-10T09:20:30.275Z",
+      "name": "email"
+    },
+    {
+      "id": "gpFnWqOy05McH1n2",
+      "createdAt": "2023-08-10T09:20:13.241Z",
+      "updatedAt": "2023-08-10T09:20:13.241Z",
+      "name": "SSH"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2023-08-12T09:47:22.000Z",
+  "versionId": "07888412-118e-43b5-beba-db9de97cec42"
+}
