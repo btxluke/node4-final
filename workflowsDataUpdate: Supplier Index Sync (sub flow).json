@@ -1,7 +1,29 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "Execute Workflow Trigger": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
       "main": [
         [
           {
@@ -18,18 +40,8 @@
   "name": "DataUpdate: Supplier Index Sync (sub flow)",
   "nodes": [
     {
-      "parameters": {},
-      "id": "ac920767-fc83-4601-ac7b-925228c22310",
-      "name": "Execute Workflow Trigger",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1,
-      "position": [
-        820,
-        360
-      ]
-    },
-    {
       "parameters": {
+        "operation": "upsert",
         "schema": {
           "__rl": true,
           "value": "datatransit",
@@ -47,11 +59,11 @@
             "id": "={{ $json.id }}",
             "default_code": "={{ $json.default_code }}",
             "barcode": "={{ $json.barcode }}",
-            "product_tag_ids": "={{ $json.product_tag_ids.join() }}",
-            "product_tmpl_id": "={{ $json.product_tmpl_id[0] }}"
+            "product_tag_ids": "={{ $json.product_tag_ids }}",
+            "product_tmpl_id": "={{ $json.product_tmpl_id}}"
           },
           "matchingColumns": [
-            "id"
+            "barcode"
           ],
           "schema": [
             {
@@ -80,7 +92,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "product_tag_ids",
@@ -109,7 +122,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.2,
       "position": [
-        1040,
+        1460,
         360
       ],
       "credentials": {
@@ -118,162 +131,83 @@
           "name": "datatransit"
         }
       }
+    },
+    {
+      "parameters": {
+        "path": "supplier-index-sync-sub-flow",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "f654d704-1cb5-489c-8c5c-420c70521d06",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        820,
+        360
+      ],
+      "webhookId": "4a7ada52-ba42-4eb3-946f-7192f25bc3ec"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "body",
+        "options": {}
+      },
+      "id": "dfdcbc16-0b69-4dce-bed0-216e99b17f83",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1040,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "default_code",
+              "value": "={{ $json.json.default_code }}"
+            },
+            {
+              "name": "barcode",
+              "value": "={{ $json.json.barcode.trim() }}"
+            },
+            {
+              "name": "product_tag_ids",
+              "value": "={{ $json.json.product_tag_ids.join() }}"
+            },
+            {
+              "name": "supplier",
+              "value": "={{ $json.json.supplier }}"
+            }
+          ],
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ $json.json.id }}"
+            },
+            {
+              "name": "product_tmpl_id",
+              "value": "={{ $json.json.product_tmpl_id[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fad31211-5f81-43bd-94ac-7c03126cd147",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1260,
+        360
+      ]
     }
   ],
-  "pinData": {
-    "Execute Workflow Trigger": [
-      {
-        "json": {
-          "id": 10044,
-          "default_code": "000 9121",
-          "barcode": "4524667127482 ",
-          "product_tag_ids": [
-            8
-          ],
-          "product_tmpl_id": [
-            6075,
-            "[000 9121] 3/16 inch Ball Bearings"
-          ],
-          "supplier": "madison"
-        }
-      },
-      {
-        "json": {
-          "id": 10045,
-          "default_code": "000 9127",
-          "barcode": "4524667145325 ",
-          "product_tag_ids": [
-            8
-          ],
-          "product_tmpl_id": [
-            6076,
-            "[000 9127] 3/16 inch Stainless Steel Ball Bearings"
-          ],
-          "supplier": "madison"
-        }
-      },
-      {
-        "json": {
-          "id": 10046,
-          "default_code": "000 9131",
-          "barcode": "4524667145332 ",
-          "product_tag_ids": [
-            8
-          ],
-          "product_tmpl_id": [
-            6077,
-            "[000 9131] 1/4 inch Ball Bearings"
-          ],
-          "supplier": "madison"
-        }
-      },
-      {
-        "json": {
-          "id": 10047,
-          "default_code": "000 9137",
-          "barcode": "4524667145349 ",
-          "product_tag_ids": [
-            8
-          ],
-          "product_tmpl_id": [
-            6078,
-            "[000 9137] 1/4 inch stainless steel ball bearings"
-          ],
-          "supplier": "madison"
-        }
-      },
-      {
-        "json": {
-          "id": 10048,
-          "default_code": "012 3478-5",
-          "barcode": "4524667145400 ",
-          "product_tag_ids": [
-            8
-          ],
-          "product_tmpl_id": [
-            6079,
-            "[012 3478-5] WH-R500-A-F spoke 278 mm"
-          ],
-          "supplier": "madison"
-        }
-      },
-      {
-        "json": {
-          "id": 10049,
-          "default_code": "012 3486-5",
-          "barcode": "4524667145417 ",
-          "product_tag_ids": [
-            8
-          ],
-          "product_tmpl_id": [
-            6080,
-            "[012 3486-5] WH-R500-A-R bladed spoke - 286 mm"
-          ],
-          "supplier": "madison"
-        }
-      },
-      {
-        "json": {
-          "id": 10050,
-          "default_code": "012 3Z78-5",
-          "barcode": "4524667145462 ",
-          "product_tag_ids": [
-            8
-          ],
-          "product_tmpl_id": [
-            6081,
-            "[012 3Z78-5] WH-R500 front spoke 278 mm"
-          ],
-          "supplier": "madison"
-        }
-      },
-      {
-        "json": {
-          "id": 10051,
-          "default_code": "012 3Z86-5",
-          "barcode": "4524667145486 ",
-          "product_tag_ids": [
-            8
-          ],
-          "product_tmpl_id": [
-            6082,
-            "[012 3Z86-5] WH-R500 rear spoke 286 mm drive side"
-          ],
-          "supplier": "madison"
-        }
-      },
-      {
-        "json": {
-          "id": 10052,
-          "default_code": "012 A604-7",
-          "barcode": "4524667944164 ",
-          "product_tag_ids": [
-            8
-          ],
-          "product_tmpl_id": [
-            6083,
-            "[012 A604-7] WH-RS10 spoke 304 mm black"
-          ],
-          "supplier": "madison"
-        }
-      },
-      {
-        "json": {
-          "id": 10053,
-          "default_code": "012 AB84-5",
-          "barcode": "4524667229544 ",
-          "product_tag_ids": [
-            8
-          ],
-          "product_tmpl_id": [
-            6084,
-            "[012 AB84-5] WH-RS20 spoke black 284 mm"
-          ],
-          "supplier": "madison"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -281,8 +215,33 @@
     "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
-  "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2023-08-12T11:22:47.000Z",
-  "versionId": "07819395-0b3d-41a6-8efe-3a12aae1b3ec"
+  "tags": [
+    {
+      "id": "4S5wvtegUIvgvqYs",
+      "createdAt": "2023-08-08T15:46:20.698Z",
+      "updatedAt": "2023-08-08T15:46:20.698Z",
+      "name": "PostgreSQL"
+    },
+    {
+      "id": "bbI8zuoQ3XV0LUP0",
+      "createdAt": "2023-08-08T15:13:33.587Z",
+      "updatedAt": "2023-08-08T15:13:33.587Z",
+      "name": "set"
+    },
+    {
+      "id": "veItN06CNprBqx4u",
+      "createdAt": "2023-08-12T15:12:53.694Z",
+      "updatedAt": "2023-08-12T15:12:53.694Z",
+      "name": "webhook"
+    },
+    {
+      "id": "zZDHTHLWDuph4zmi",
+      "createdAt": "2023-08-10T13:01:31.941Z",
+      "updatedAt": "2023-08-10T13:01:31.941Z",
+      "name": "item lists"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-08-12T15:26:29.000Z",
+  "versionId": "55ad86b1-6e57-43ea-be80-01d2816ab283"
 }
