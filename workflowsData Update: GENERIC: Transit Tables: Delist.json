@@ -1,0 +1,429 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Supplier Line": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Product Tag": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Product Templates": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo2": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Remove Supplier Line",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Remove Product Tag",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "Product Templates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-08-12T10:02:58.021Z",
+  "id": "2j04k1KgdEFjYUVy",
+  "name": "Data Update: GENERIC: Transit Tables: Delist",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a511d2ed-09f7-4ca8-a525-3001d4fbf59f",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        920,
+        880
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "2475af47-9a72-4f42-9e12-1a9b333bb219",
+      "name": "Remove Supplier Line",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.supplierinfo",
+        "operation": "delete",
+        "customResourceId": "={{ $json.id }}"
+      },
+      "id": "ece58b6b-3219-4e06-b24c-13f7b5c0c11e",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        340
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {},
+      "id": "690a53fc-2159-418a-959c-7c137ba7a395",
+      "name": "Remove Product Tag",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "get",
+        "customResourceId": "={{ $json.product_tmpl_id }}",
+        "options": {
+          "fieldsList": [
+            "barcode",
+            "display_name",
+            "product_tag_ids",
+            "allow_out_of_stock_order",
+            "out_of_stock_message"
+          ]
+        }
+      },
+      "id": "51d5ac49-0983-4ce1-926a-0813cf885d30",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        680
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "5eb83ef5-5adc-4e94-ae5c-d05314296a9d",
+      "name": "Product Templates",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        700,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "a30bba8c-eb2d-45eb-9617-fb47acf99a7b",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "update",
+        "customResourceId": "={{ $json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "product_tag_ids",
+              "fieldValue": "={{ $json.product_tag_ids.length == 0 ? false : $json.product_tag_ids }}"
+            },
+            {
+              "fieldName": "allow_out_of_stock_order",
+              "fieldValue": "={{$json.product_tag_ids.length == 0 ? false : $json.allow_out_of_stock_order == true ? true : false}}"
+            },
+            {
+              "fieldName": "out_of_stock_message",
+              "fieldValue": "={{$json.product_tag_ids.length == 0 ? \"<p>Currently Unavailable</p>\" : $json.allow_out_of_stock_order == true ? $json.out_of_stock_message : \"<p>Currently Unavailable</p>\"}}"
+            }
+          ]
+        }
+      },
+      "id": "35b6e92c-d041-4cf1-b2e6-8c60288659ec",
+      "name": "Odoo2",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        680
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  const removal = $('Execute Workflow Trigger').first().json.globals.ProductTagId;\n  const newArray = item.json.product_tag_ids.filter(supplier => supplier != removal);\n  item.json.product_tag_ids = newArray;\n}\n\nreturn $input.all();"
+      },
+      "id": "7373f19f-5122-40ed-8016-2d7e31ac488e",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.tag",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "display_name",
+            "id"
+          ]
+        }
+      },
+      "id": "b88b6385-9819-421f-b372-4e56e3f15da9",
+      "name": "Odoo3",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        800,
+        380
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT a.*\nFROM odoodata.map_supplierpricelist a\nWHERE  a.product_tmpl_id \nIN (\n    SELECT b.product_tmpl_id::CHAR\n      FROM datatransit.{{\"index_\"+$json.name.toLowerCase() }} b\n        INNER JOIN odoodata.{{\"prices_\"+ $json.name.toLowerCase() }} c\n          ON b.barcode::CHAR = c.barcode::CHAR) AND a.partner_id::NUMERIC = {{ $('Globals').first().json.globals[0].PartnerId }};",
+        "options": {}
+      },
+      "id": "c3554034-cf96-48c5-b965-d4929f8f49af",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        920,
+        680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ 20 in $json.product_tag_ids  }}",
+              "value2": true
+            },
+            {
+              "value1": "={{ 19 in $json.product_tag_ids  }}",
+              "value2": true
+            },
+            {
+              "value1": "={{ 7 in $json.product_tag_ids  }}",
+              "value2": true
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "fdaa7ff1-0acf-40e8-90d1-0964f3bc3dbd",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "name",
+              "value": "={{ $json.name }}"
+            },
+            {
+              "name": "globals",
+              "value": "={{JSON.parse($json.globals)}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6a3552ea-bf1b-46ba-a2f7-9d239e0a1fea",
+      "name": "Globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        880
+      ]
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "name": "Madison",
+          "globals": "[{\"SupplierName\": \"Madison\",\"PartnerId\": 47,\"ProductTagId\": 8,\"LeadTimeAddition\":3,\"Webhook\":\"https://node4.biketrax.co.uk/webhook/8e681709-59dd-45f0-9403-d2e72945ebd0\"}]"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-08-12T12:47:32.000Z",
+  "versionId": "df08fda2-2ae0-4d8b-89ae-02e5904eacfe"
+}
