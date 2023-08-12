@@ -1,17 +1,6 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "Execute Workflow Trigger": {
-      "main": [
-        [
-          {
-            "node": "Globals",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Globals": {
       "main": [
         [
@@ -52,17 +41,6 @@
         ]
       ]
     },
-    "Execute Workflow": {
-      "main": [
-        [
-          {
-            "node": "Split In Batches",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Postgres": {
       "main": [
         [
@@ -89,7 +67,7 @@
       "main": [
         [
           {
-            "node": "Execute Workflow",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -102,23 +80,34 @@
           }
         ]
       ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-08-12T10:16:36.959Z",
   "id": "bnPQxg9HQ0hjn4VZ",
   "name": "DataUpdate: Supplier Index Sync",
   "nodes": [
-    {
-      "parameters": {},
-      "id": "88fd37e0-5db2-47e3-91df-372629997bf5",
-      "name": "Execute Workflow Trigger",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1,
-      "position": [
-        660,
-        740
-      ]
-    },
     {
       "parameters": {
         "resource": "custom",
@@ -139,7 +128,7 @@
             {
               "fieldName": "product_tag_ids",
               "operator": "in",
-              "value": "={{ Number($('Globals').first().json.globals[0].ProductTagId) }}"
+              "value": "={{ Number($('Globals').first().json.globals.ProductTagId) }}"
             },
             {
               "fieldName": "barcode",
@@ -157,6 +146,7 @@
         1380,
         740
       ],
+      "retryOnFail": true,
       "credentials": {
         "odooApi": {
           "id": "2ttPRWxNWqAWB6fY",
@@ -171,11 +161,11 @@
           "string": [
             {
               "name": "name",
-              "value": "={{ $json.name }}"
+              "value": "={{ $json.body.name }}"
             },
             {
               "name": "globals",
-              "value": "={{ JSON.parse($json.globals) }}"
+              "value": "={{ JSON.parse($json.body.globals)[0] }}"
             }
           ]
         },
@@ -192,20 +182,7 @@
     },
     {
       "parameters": {
-        "workflowId": "A3plXyotqr0Mfb30"
-      },
-      "id": "62ab30fb-2c4a-42ff-948a-1db468021812",
-      "name": "Execute Workflow",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        2580,
-        740
-      ]
-    },
-    {
-      "parameters": {
-        "batchSize": 3000,
+        "batchSize": 1000,
         "options": {}
       },
       "id": "04d19a01-eaaf-4f9f-bbe4-335d6f633558",
@@ -220,7 +197,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "TRUNCATE {{ \"datatransit.index_\"+$('Globals').first().json.globals[0].SupplierName.toLowerCase() }};",
+        "query": "TRUNCATE {{ \"datatransit.index_\"+$('Globals').first().json.globals.SupplierName.toLowerCase() }};",
         "options": {}
       },
       "id": "20e6cc99-2185-4ec5-8a4c-480241795cd9",
@@ -312,14 +289,68 @@
         1000
       ],
       "executeOnce": true
+    },
+    {
+      "parameters": {
+        "path": "supplier-index-sync",
+        "responseMode": "lastNode",
+        "responseData": "noData",
+        "options": {
+          "rawBody": false
+        }
+      },
+      "id": "8fc2a1d4-9d7c-4d63-8fd0-6e5c466bd101",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        660,
+        740
+      ],
+      "webhookId": "b6fbf7df-f0d8-45d8-b9d7-a0b64fd317e0"
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/supplier-index-sync-sub-flow",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{$('IF').all()}}",
+        "options": {}
+      },
+      "id": "22d64220-5d86-43b5-8f37-f008e5edd619",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2760,
+        740
+      ],
+      "executeOnce": true
     }
   ],
   "pinData": {
-    "Execute Workflow Trigger": [
+    "Webhook": [
       {
         "json": {
-          "name": "Madison",
-          "globals": "[{\"SupplierName\": \"Madison\",\"PartnerId\": 47,\"ProductTagId\": 8,\"LeadTimeAddition\":3,\"Webhook\":\"https://node4.biketrax.co.uk/webhook/8e681709-59dd-45f0-9403-d2e72945ebd0\"}]"
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "215",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "baggage": "sentry-environment=production,sentry-release=1.1.1,sentry-public_key=1f954e089a054b8e943ae4f4042b2bff,sentry-trace_id=82f45211d6fb4b11974b13de0b955215",
+            "content-type": "application/json",
+            "sentry-trace": "82f45211d6fb4b11974b13de0b955215-970981c073897322-0",
+            "x-forwarded-for": "172.19.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "name": "Madison",
+            "globals": "[{\"SupplierName\": \"Madison\",\"PartnerId\": 47,\"ProductTagId\": 8,\"LeadTimeAddition\":3,\"Webhook\":\"https://node4.biketrax.co.uk/webhook/8e681709-59dd-45f0-9403-d2e72945ebd0\"}]"
+          }
         }
       }
     ]
@@ -332,7 +363,7 @@
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2023-08-12T12:40:39.000Z",
-  "versionId": "4318711e-4d78-4997-9a2f-8ebb5ea8bf72"
+  "triggerCount": 1,
+  "updatedAt": "2023-08-12T15:21:42.000Z",
+  "versionId": "51dc7233-84af-4688-880e-d8c96fa2fa20"
 }
