@@ -1,17 +1,6 @@
 {
   "active": false,
   "connections": {
-    "Execute Workflow Trigger": {
-      "main": [
-        [
-          {
-            "node": "Postgres1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "SSH": {
       "main": [
         [
@@ -390,6 +379,110 @@
       "main": [
         [
           {
+            "node": "Postgres15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Amend Expected Lines": {
+      "main": [
+        [
+          {
+            "node": "Postgres13",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres13": {
+      "main": [
+        [
+          {
+            "node": "Set2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres12": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Set3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set3": {
+      "main": [
+        [
+          {
+            "node": "Postgres14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres11": {
+      "main": [
+        [
+          {
+            "node": "Amend Expected Lines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres15": {
+      "main": [
+        [
+          {
+            "node": "globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "globals": {
+      "main": [
+        [
+          {
             "node": "Postgres1",
             "type": "main",
             "index": 0
@@ -402,17 +495,6 @@
   "id": "pUmiiXlXRzZsrfdD",
   "name": "Data Update: Madison: Prep",
   "nodes": [
-    {
-      "parameters": {},
-      "id": "8e2fd575-2e33-4f83-ab8c-6fe74a29ba3f",
-      "name": "Execute Workflow Trigger",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1,
-      "position": [
-        -1800,
-        500
-      ]
-    },
     {
       "parameters": {
         "operation": "executeQuery",
@@ -562,7 +644,8 @@
           "id": "H2cITTqls0BiVgFE",
           "name": "info@biketrax.co.uk"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -630,8 +713,16 @@
               "value1": "={{ $json.stderr }}",
               "operation": "isEmpty"
             }
+          ],
+          "number": [
+            {
+              "value1": "={{ $runIndex }}",
+              "operation": "largerEqual",
+              "value2": "={{ Number($('globals').first().json.globals.LastCount)*0.05 }}"
+            }
           ]
-        }
+        },
+        "combineOperation": "any"
       },
       "id": "0901a1ad-86f7-4130-9588-c77149452074",
       "name": "IF1",
@@ -1069,7 +1160,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.2,
       "position": [
-        -360,
+        -420,
         1420
       ],
       "credentials": {
@@ -1090,13 +1181,195 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        -1800,
+        -1820,
         680
       ],
       "webhookId": "7db6b96c-52cf-45de-8967-e7dbe741afa0"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COUNT (productcode) FROM upload_madison;",
+        "options": {}
+      },
+      "id": "668eec57-db22-4d53-84d6-a504202d278d",
+      "name": "Postgres12",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        1520
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "19b4d693-f6e3-4982-8999-ae6424a21919",
+      "name": "Amend Expected Lines",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE Name = 'Madison';",
+        "options": {}
+      },
+      "id": "d7565788-b3bd-459e-b56e-598b619eafd2",
+      "name": "Postgres13",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -60,
+        1300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ JSON.parse($json.globals)[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2e153bc2-e24a-4af3-a58e-29877c547370",
+      "name": "Set2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        160,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "decebe10-dc6e-4dc9-aca1-294e7487073f",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        380,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals.LastCount",
+              "value": "={{ $json.count }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1072390-2e73-4241-b535-c10ddc35f23f",
+      "name": "Set3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        600,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = {{ \"'\"+$json.name+\"'\" }}; ",
+        "options": {}
+      },
+      "id": "302b2518-5a22-4902-a4b2-98fcd04b8ad1",
+      "name": "Postgres14",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        820,
+        1420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE Name = 'Madison';",
+        "options": {}
+      },
+      "id": "2833b60c-f509-4bd8-87e7-0413b2ade589",
+      "name": "Postgres15",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1840,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ JSON.parse($json.globals)[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8beb9692-61e4-47c6-9d78-36fd246d910f",
+      "name": "globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -1680,
+        420
+      ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Amend Expected Lines": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -1134,6 +1407,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2023-08-14T14:56:46.000Z",
-  "versionId": "ec334a21-a496-4872-a78d-6edaf29e8f76"
+  "updatedAt": "2023-08-21T10:17:30.000Z",
+  "versionId": "dbc82d1b-708e-4502-8f5e-a82e6f85c3fe"
 }
