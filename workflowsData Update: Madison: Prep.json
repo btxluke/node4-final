@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "SSH": {
       "main": [
@@ -622,8 +622,8 @@
       "parameters": {
         "fromEmail": "info@biketrax.co.uk",
         "toEmail": "ithelpdesk@madison.co.uk",
-        "subject": "Madison Feed Error",
-        "text": "=Line(s) from the latest Madison data feed have failed to parse. This is usually because of a break in CSV specifications or incorrect placement of standard delimiters (,) / enclosing marks (\")  in your feed CSV.\n\nHere is an example product code with faulty data, and the error it caused:\n\nProduct Code: {{ $('Code').first().json.failed_code }}\n{{ $('Code').first().json.stderr }}\n\nA full list of errors is attached as a XLS file. If you could correct the errors for future exports, then then the item(s) can be added to our database on the next run. Our data routines run daily, but this email will be sent a maximum of once a week, if you would prefer to recieve it more frequently (or as soon as errors emerge), please email luke@biketrax.co.uk.\n\nMany thanks,\n\nBiketraxBot (Product Information Database)",
+        "subject": "=Madison Feed Error - {{ ($('Code').all().length / $('globals').first().json.globals.LastCount) < 0.05 ? 100-((Math.round(($('Code').all().length / $('globals').first().json.globals.LastCount)*10000))/100) + \"% Parsed\" : \"Feed Rejected\" }}",
+        "text": "=Line(s) from the latest Madison data feed have failed to parse. This is usually because of a break in CSV specifications or incorrect placement of standard delimiters (,) / enclosing marks (\")  in your feed CSV.\n\nHere is an example product code with faulty data, and the error it caused:\n\nProduct Code: {{ $('Code').first().json.failed_code }}\n{{ $('Code').first().json.stderr }}\n\nA list of errors is attached as a XLS file - this represents {{ ($('Code').all().length / $('globals').first().json.globals.LastCount) < 0.05 ? Math.round(($('Code').all().length / $('globals').first().json.globals.LastCount)*10000)/100 + \"% of your feed, so the remainder has been parsed\" : \"more than 5% of your feed, so the entire feed has been rejected\" }}. If you could correct the errors for future exports, then then the item(s) can be added to our database on the next run. Our data routines run daily, but this email will be sent a maximum of once a week, if you would prefer to recieve it more frequently (or as soon as errors emerge), please email luke@biketrax.co.uk.\n\nMany thanks,\n\nBiketraxBot (Product Information Database)",
         "options": {
           "attachments": "data",
           "ccEmail": "luke@biketrax.co.uk",
@@ -644,8 +644,7 @@
           "id": "H2cITTqls0BiVgFE",
           "name": "info@biketrax.co.uk"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
@@ -1406,7 +1405,7 @@
       "name": "SSH"
     }
   ],
-  "triggerCount": 0,
-  "updatedAt": "2023-08-21T10:17:30.000Z",
-  "versionId": "dbc82d1b-708e-4502-8f5e-a82e6f85c3fe"
+  "triggerCount": 1,
+  "updatedAt": "2023-08-21T15:15:00.000Z",
+  "versionId": "e2661d0e-06c3-42eb-beb4-5ed9da11c1b0"
 }
