@@ -1,22 +1,6 @@
 {
   "active": false,
   "connections": {
-    "When Called By Another Workflow": {
-      "main": [
-        [
-          {
-            "node": "Merge2",
-            "type": "main",
-            "index": 1
-          },
-          {
-            "node": "Postgres",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Extra Info Label Sync": {
       "main": [
         [
@@ -65,7 +49,7 @@
       "main": [
         [
           {
-            "node": "Data Update: Madison: Prep",
+            "node": "Madison Prep",
             "type": "main",
             "index": 0
           }
@@ -93,17 +77,6 @@
           },
           {
             "node": "Postgres",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code9": {
-      "main": [
-        [
-          {
-            "node": "Data Update: GENERIC: Make Transit Tables",
             "type": "main",
             "index": 0
           }
@@ -352,22 +325,78 @@
         ]
       ]
     },
-    "Data Update: Madison: Prep": {
+    "Madison Prep": {
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Postgres12",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "HTTP Request": {
+    "When clicking \"Execute Workflow\"": {
       "main": [
         [
           {
-            "node": "Code9",
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Postgres12": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Transit Tables",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Set",
             "type": "main",
             "index": 0
           }
@@ -379,17 +408,6 @@
   "id": "9GCkbS6dkAE9cgU8",
   "name": "Data Update: Madison",
   "nodes": [
-    {
-      "parameters": {},
-      "id": "d7c0be2b-2632-4e56-b6f6-cbf979b8fab2",
-      "name": "When Called By Another Workflow",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1,
-      "position": [
-        840,
-        760
-      ]
-    },
     {
       "parameters": {
         "workflowId": "40"
@@ -496,21 +514,22 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 2,
       "position": [
-        1360,
+        1480,
         760
       ]
     },
     {
       "parameters": {
+        "keepOnlySet": true,
         "values": {
           "string": [
             {
-              "name": "Globals",
-              "value": "={{  JSON.parse($json[\"Globals\"])[0]  }}"
+              "name": "globals",
+              "value": "={{  JSON.parse($json.globals)[0]  }}"
             },
             {
-              "name": "Name",
-              "value": "={{$json.Name}}"
+              "name": "name",
+              "value": "={{$json.name}}"
             }
           ]
         },
@@ -555,19 +574,6 @@
       "position": [
         600,
         300
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "return $('Globals').first()"
-      },
-      "id": "86d7c4f6-8496-4e1e-9af2-0a359ba5ca8c",
-      "name": "Code9",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 1,
-      "position": [
-        1820,
-        1000
       ]
     },
     {
@@ -616,8 +622,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        2305,
-        794
+        2725,
+        394
       ]
     },
     {
@@ -758,8 +764,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2260,
-        720
+        2680,
+        320
       ]
     },
     {
@@ -902,45 +908,167 @@
     },
     {
       "parameters": {
-        "workflowId": "w7Iviilx7BBDzFFQ"
+        "url": "https://node4.biketrax.co.uk/webhook/madison-prep",
+        "options": {}
       },
-      "id": "0c8e65bc-e11b-4e3b-8dec-381c38ad604d",
-      "name": "Data Update: GENERIC: Make Transit Tables",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
+      "id": "cfa0a94e-024b-4d58-811c-e6946a01817e",
+      "name": "Madison Prep",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
       "position": [
-        1980,
-        1000
-      ],
-      "alwaysOutputData": true,
-      "executeOnce": true
-    },
-    {
-      "parameters": {
-        "workflowId": "pUmiiXlXRzZsrfdD"
-      },
-      "id": "f3fe6048-b4fa-42d1-8718-570f17603b86",
-      "name": "Data Update: Madison: Prep",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        1600,
+        1660,
         760
       ],
       "disabled": true
     },
     {
       "parameters": {
-        "url": "https://node4.biketrax.co.uk/webhook/madison-prep",
+        "url": "https://node4.biketrax.co.uk/webhook-test/transit-tables",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Globals').first().json }}",
         "options": {}
       },
-      "id": "cfa0a94e-024b-4d58-811c-e6946a01817e",
-      "name": "HTTP Request",
+      "id": "ffc85a2e-b59b-45cb-b4db-9d7d7c151e62",
+      "name": "Transit Tables",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1820,
+        2280,
         760
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "27277ca9-f7e6-41ef-a607-32859e814ad8",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        840,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COUNT (productcode) FROM upload_madison;",
+        "options": {}
+      },
+      "id": "a75bf0bd-0cb1-40ad-9d3d-462ce891f454",
+      "name": "Postgres12",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1840,
+        760
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.count }}",
+              "operation": "largerEqual",
+              "value2": "={{ $('Globals').first().json.globals.LastCount * 0.75 }}"
+            },
+            {
+              "value1": "={{ $json.count }}",
+              "value2": "={{ $('Globals').first().json.globals.LastCount * 1.25 }}"
+            }
+          ],
+          "string": [
+            {
+              "value1": "={{ $('Globals').first().json.globals.errorState }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "d2017826-d40f-4326-8754-826990f5c0b1",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "productfeeds@biketrax.co.uk",
+        "toEmail": "luke@biketrax.co.uk",
+        "subject": "Madison Feed Rejected!",
+        "text": "=Madison feed rejected:\n\nExpected Lines: {{$('Globals').first().json.globals.LastCount}} (Range - 75% - 125%)\nRecieved Lines: {{ $json.count }}\n",
+        "options": {}
+      },
+      "id": "45bffb83-ecad-48fe-8ef6-f0b02b54dc0a",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        1000
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "xOWEzMfuqVVoWrw0",
+          "name": "productfeeds@biketrax.co.uk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = 'Madison';",
+        "options": {}
+      },
+      "id": "fd74ec6a-06c0-44ca-acdd-fa6dd94d6918",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        2260,
+        1220
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ $('Globals').first().json.globals }}"
+            },
+            {
+              "name": "globals.errorState",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "83475bea-55db-42aa-8057-1fe4518b5b59",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        2000,
+        1220
       ]
     }
   ],
@@ -984,6 +1112,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2023-08-21T10:14:14.000Z",
-  "versionId": "0b05d80b-8075-49cc-b471-98656fc1b79b"
+  "updatedAt": "2023-08-21T15:15:09.000Z",
+  "versionId": "696b6c14-cc34-42bd-ae91-061e26a4d8c2"
 }
