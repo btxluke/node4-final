@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Update Transit Tables": {
       "main": [
@@ -412,6 +412,17 @@
           }
         ]
       ]
+    },
+    "End": {
+      "main": [
+        [
+          {
+            "node": "Data Update: GENERIC: Transit Tables: Delist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-08-12T09:05:32.080Z",
@@ -492,7 +503,8 @@
           "id": "2ttPRWxNWqAWB6fY",
           "name": "Odoo account"
         }
-      }
+      },
+      "continueOnFail": true
     },
     {
       "parameters": {
@@ -527,12 +539,14 @@
         1100
       ],
       "alwaysOutputData": true,
+      "retryOnFail": true,
       "credentials": {
         "odooApi": {
           "id": "2ttPRWxNWqAWB6fY",
           "name": "Odoo account"
         }
-      }
+      },
+      "continueOnFail": true
     },
     {
       "parameters": {
@@ -561,12 +575,14 @@
         1600,
         960
       ],
+      "retryOnFail": true,
       "credentials": {
         "odooApi": {
           "id": "2ttPRWxNWqAWB6fY",
           "name": "Odoo account"
         }
-      }
+      },
+      "continueOnFail": true
     },
     {
       "parameters": {
@@ -638,12 +654,14 @@
         1060,
         1200
       ],
+      "retryOnFail": true,
       "credentials": {
         "odooApi": {
           "id": "2ttPRWxNWqAWB6fY",
           "name": "Odoo account"
         }
-      }
+      },
+      "continueOnFail": true
     },
     {
       "parameters": {
@@ -665,12 +683,14 @@
         1240,
         1200
       ],
+      "retryOnFail": true,
       "credentials": {
         "odooApi": {
           "id": "2ttPRWxNWqAWB6fY",
           "name": "Odoo account"
         }
-      }
+      },
+      "continueOnFail": true
     },
     {
       "parameters": {
@@ -695,6 +715,7 @@
         1600,
         1200
       ],
+      "retryOnFail": true,
       "credentials": {
         "odooApi": {
           "id": "2ttPRWxNWqAWB6fY",
@@ -1163,8 +1184,7 @@
       "position": [
         -1820,
         300
-      ],
-      "disabled": true
+      ]
     },
     {
       "parameters": {
@@ -1235,6 +1255,16 @@
           "item": 0
         }
       }
+    ],
+    "End": [
+      {
+        "json": {
+          "success": true
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
     ]
   },
   "settings": {
@@ -1245,7 +1275,7 @@
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2023-08-23T10:59:42.000Z",
-  "versionId": "efa065c4-7b45-4cab-965c-ee500a6b3bed"
+  "triggerCount": 1,
+  "updatedAt": "2023-08-23T14:12:06.000Z",
+  "versionId": "b3cf8eea-43bb-410f-af92-f28c7b0bf5d6"
 }
