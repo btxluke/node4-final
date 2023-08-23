@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Extra Info Label Sync": {
       "main": [
@@ -558,8 +558,7 @@
         840,
         560
       ],
-      "webhookId": "8e681709-59dd-45f0-9403-d2e72945ebd0",
-      "disabled": true
+      "webhookId": "8e681709-59dd-45f0-9403-d2e72945ebd0"
     },
     {
       "parameters": {
@@ -1110,7 +1109,7 @@
       "name": "Merge"
     }
   ],
-  "triggerCount": 0,
-  "updatedAt": "2023-08-23T10:34:38.000Z",
-  "versionId": "4f41c72a-ead5-415e-aab5-2c204c80d32d"
+  "triggerCount": 1,
+  "updatedAt": "2023-08-23T14:48:11.000Z",
+  "versionId": "9f4bf097-54e4-43ff-b80f-86c4857e5321"
 }
