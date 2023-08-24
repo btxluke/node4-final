@@ -87,12 +87,7 @@
       "main": [
         [
           {
-            "node": "Remove Supplier Line",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Remove Product Tag",
+            "node": "IF2",
             "type": "main",
             "index": 0
           }
@@ -184,6 +179,29 @@
         [
           {
             "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Remove Supplier Line",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Remove Product Tag",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing2",
             "type": "main",
             "index": 0
           }
@@ -619,6 +637,37 @@
         2660,
         520
       ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.success }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "4279c290-ce52-41bb-8b04-27626abfab1f",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        680
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "8debbc15-b368-457b-a664-fb0f5b4c459f",
+      "name": "No Operation, do nothing2",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        880
+      ]
     }
   ],
   "pinData": {
@@ -706,6 +755,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-08-23T14:11:54.000Z",
-  "versionId": "6b4ca758-a59f-42e9-9aa2-7de3564cd38e"
+  "updatedAt": "2023-08-24T07:54:11.000Z",
+  "versionId": "a927430b-316f-4e75-904a-069ed9c70e93"
 }
