@@ -197,11 +197,78 @@
             "node": "Remove Product Tag",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Email Max",
+            "type": "main",
+            "index": 0
           }
         ],
         [
           {
             "node": "No Operation, do nothing2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Max": {
+      "main": [
+        [
+          {
+            "node": "Odoo6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo6": {
+      "main": [
+        [
+          {
+            "node": "IF3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF3": {
+      "main": [
+        [
+          {
+            "node": "Data Lookback",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Lookback": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet File": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
             "type": "main",
             "index": 0
           }
@@ -634,8 +701,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2660,
-        520
+        2040,
+        1140
       ]
     },
     {
@@ -666,8 +733,121 @@
       "typeVersion": 1,
       "position": [
         1380,
-        880
+        1160
       ]
+    },
+    {
+      "parameters": {},
+      "id": "b7f87509-c170-476b-b664-bd92d7746684",
+      "name": "Email Max",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.product",
+        "operation": "get",
+        "customResourceId": "={{ $json.id }}",
+        "options": {
+          "fieldsList": [
+            "display_name",
+            "list_price",
+            "default_code",
+            "qty_available",
+            "standard_price"
+          ]
+        }
+      },
+      "id": "7d4729d2-7695-45ff-ac03-6f851a5241b6",
+      "name": "Odoo6",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        940
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.qty_available }}",
+              "operation": "largerEqual",
+              "value2": 1
+            }
+          ]
+        }
+      },
+      "id": "62f1810d-b204-4290-85bd-06ccac34f020",
+      "name": "IF3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1820,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "options": {}
+      },
+      "id": "494661b7-64fd-481d-82de-c6cc197e7713",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        940
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "bd9461e5-bafe-4b59-8457-6162cdf0133b",
+      "name": "Data Lookback",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2040,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "info@biketrax.co.uk",
+        "toEmail": "max@biketrax.co.uk",
+        "subject": "=EBAY Listing: New Discontinued {{ $('Globals').first().json.globals.SupplierName }} Products",
+        "text": "=Hey Max!\n\nAttached is a spreadsheet of discontinued items that are in stock. Can you list them on Ebay?\n\nHere's an example item:\n\nSupplier: {{ $('Globals').first().json.globals.SupplierName }}\nName: {{ $('Data Lookback').first().json.display_name }}\nNumber in Stock: {{ $('Data Lookback').first().json.qty_available }}\nRRP (ex VAT): £{{ $('Data Lookback').first().json.list_price }}\nLast Trade Price: £{{ $('Data Lookback').first().json.standard_price }}",
+        "options": {
+          "attachments": "data"
+        }
+      },
+      "id": "bdc2f2e2-806d-46b8-babe-c8f24ef8d8de",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        2460,
+        940
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "H2cITTqls0BiVgFE",
+          "name": "info@biketrax.co.uk"
+        }
+      }
     }
   ],
   "pinData": {
@@ -713,7 +893,10 @@
     ]
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
   "tags": [
@@ -755,6 +938,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-08-24T07:54:11.000Z",
-  "versionId": "a927430b-316f-4e75-904a-069ed9c70e93"
+  "updatedAt": "2023-08-25T09:59:31.000Z",
+  "versionId": "3a4ebe15-b28e-4873-9720-0de27b0b5b79"
 }
