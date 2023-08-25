@@ -1,0 +1,1118 @@
+{
+  "active": false,
+  "connections": {
+    "Add Lead Time": {
+      "main": [
+        [
+          {
+            "node": "Conform Stock Count",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conform Stock Count": {
+      "main": [
+        [
+          {
+            "node": "Calculate Net RRP1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculate Net RRP1": {
+      "main": [
+        [
+          {
+            "node": "Rename Columns",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rename Columns": {
+      "main": [
+        [
+          {
+            "node": "Add Columns",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Synchronise CSP / Stock": {
+      "main": [
+        []
+      ]
+    },
+    "Synchronise CSP / Stock1": {
+      "main": [
+        [
+          {
+            "node": "Add Lead Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fill non CSP Prices": {
+      "main": [
+        [
+          {
+            "node": "Synchronise CSP / Stock1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Postgres15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres15": {
+      "main": [
+        [
+          {
+            "node": "globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "globals": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH": {
+      "main": [
+        [
+          {
+            "node": "firstFail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH2": {
+      "main": [
+        [
+          {
+            "node": "SSH",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "SSH2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "SSH1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH1": {
+      "main": [
+        [
+          {
+            "node": "SSH3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH3": {
+      "main": [
+        [
+          {
+            "node": "SSH4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH4": {
+      "main": [
+        [
+          {
+            "node": "IF3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SSH1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet File": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "firstFail": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF3": {
+      "main": [
+        [
+          {
+            "node": "SSH5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH5": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Postgres3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres3": {
+      "main": [
+        [
+          {
+            "node": "Postgres4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres4": {
+      "main": [
+        [
+          {
+            "node": "Postgres6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres6": {
+      "main": [
+        [
+          {
+            "node": "Postgres7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-08-25T11:25:27.380Z",
+  "id": "dBH5XzEWae6xMCMQ",
+  "name": "Data Update: Zyro: Prep",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE `Upload-Zyro` \nRENAME COLUMN `SKU` TO `ProductCode`,\nRENAME COLUMN `Name` TO `ProductName`,\nRENAME COLUMN `UPC` TO `Ean`,\nRENAME COLUMN `SRP` TO `Rrp`,\nRENAME COLUMN `BoxQuantity` TO `PackQty`,\nRENAME COLUMN `StyleCode` TO `VariantGrouping`,\nRENAME COLUMN `BriefDescription` TO `ShortDescription`,\nRENAME COLUMN `ProductCategory` TO `SubCategory`;"
+      },
+      "id": "d15d10a4-7dba-4132-8d37-c1f8001d9f7e",
+      "name": "Rename Columns",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        0,
+        1460
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE `Upload-Zyro` ADD LeadTime INT(3) AS (DATEDIFF(STR_TO_DATE(StockDueIn, '%e/%m/%Y'),CURDATE()));"
+      },
+      "id": "4f11c432-00b1-431d-8044-18b6d0a62fcc",
+      "name": "Add Lead Time",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        0,
+        1260
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "=ALTER TABLE `Upload-Zyro` ADD StockCount INT(1) AS (IF(StockIndicator=\"IS\",1,0));"
+      },
+      "id": "860890f8-9c43-4e7a-aa9e-a32816607cb5",
+      "name": "Conform Stock Count",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        200,
+        1260
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `Upload-Zyro` SET Name = CAP_FIRST(Name),BriefDescription = CAP_FIRST(BriefDescription)"
+      },
+      "id": "d9f4f5d9-4a8c-493d-bc87-9095809e45fa",
+      "name": "Calculate Net RRP1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        360,
+        1260
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE `Upload-Zyro` \nADD `AlternativeImage1Url` VARCHAR(80) NULL DEFAULT NULL AFTER `StockCount`, \nADD `AlternativeImage2Url` VARCHAR(80) NULL DEFAULT NULL AFTER `AlternativeImage1Url`, \nADD `AlternativeImage3Url` VARCHAR(80) NULL DEFAULT NULL AFTER `AlternativeImage2Url`,\nADD `Weight` VARCHAR(20) NOT NULL AFTER `AlternativeImage3Url`,\nADD `Keywords` VARCHAR(1000) NULL DEFAULT NULL AFTER `Weight`,\nADD `TechnicalSpec` LONGTEXT DEFAULT NULL,\nADD `TechnicalSpecLabel` LONGTEXT DEFAULT NULL;"
+      },
+      "id": "3f20218a-33c9-4c47-bc9c-4194da10d31f",
+      "name": "Add Columns",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        200,
+        1460
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `Upload-Zyro` AS a\nINNER JOIN `Csp-Zyro` AS b ON a.SKU = b.ProductCode\nSET \na.YourPrice = b.Price1"
+      },
+      "id": "d1250a5d-c23c-4fd0-a262-74c519770412",
+      "name": "Synchronise CSP / Stock",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        680,
+        1000
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `Upload-Zyro` AS a\nINNER JOIN `Stock-Zyro` AS c ON a.SKU = c.SKU\nSET\na.StockIndicator = c.StockIndicator,\na.StockDueIn = c.StockDueIn;"
+      },
+      "id": "0794e77d-5b96-4276-ab9a-4626c192774d",
+      "name": "Synchronise CSP / Stock1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        1040
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `Upload-Zyro` \nSET \nYourPrice = OrangePrice\nWHERE YourPrice IS NULL"
+      },
+      "id": "0f91b8b0-03bc-4991-9247-4a1b8b2270d8",
+      "name": "Fill non CSP Prices",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        1040
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DROP TABLE IF EXISTS odoodata.upload_zyro; ",
+        "options": {}
+      },
+      "id": "7db77692-e228-4511-9319-f2573d4a0794",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -620,
+        380
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "zyro-prep",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "4f21bd70-151a-454a-99e7-d7f05ffa2a3d",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -900,
+        380
+      ],
+      "webhookId": "7db6b96c-52cf-45de-8967-e7dbe741afa0"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE Name = 'Zyro';",
+        "options": {}
+      },
+      "id": "83540616-c533-4214-9e86-8f7e5b99a8f9",
+      "name": "Postgres15",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -900,
+        120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ JSON.parse($json.globals)[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ae0e7095-2708-4ce5-932d-d5345a2e0e6e",
+      "name": "globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -740,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_zyro FROM /home/luke/feeds/Upload-Zyro.csv DELIMITER ',' CSV HEADER;\"",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "814cd808-9f2b-49f0-8f15-e06e08250b52",
+      "name": "SSH",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        380
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=LANG=C sed -i 's/[\\d128-\\d255]//g' /home/luke/feeds/Upload-Zyro.csv",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "74ff7de9-0388-4297-9308-6787c5908b93",
+      "name": "SSH2",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        380
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE TABLE odoodata.upload_zyro AS\n  SELECT *\nFROM odoodata.template_zyro;",
+        "options": {}
+      },
+      "id": "1b3308b9-25f4-42fa-8739-91dbde936da4",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -400,
+        380
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.stderr }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "98f85bb8-f2c0-4d33-868c-062c77341bbf",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        520,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "info@biketrax.co.uk",
+        "toEmail": "ithelpdesk@madison.co.uk",
+        "subject": "=Madison Feed Error - {{ ($('Code').all().length / $('globals').first().json.globals.LastCount) < 0.05 ? 100-((Math.round(($('Code').all().length / $('globals').first().json.globals.LastCount)*10000))/100) + \"% Parsed\" : \"Feed Rejected\" }}",
+        "text": "=Line(s) from the latest Madison data feed have failed to parse. This is usually because of a break in CSV specifications or incorrect placement of standard delimiters (,) / enclosing marks (\")  in your feed CSV.\n\nHere is an example product code with faulty data, and the error it caused:\n\nProduct Code: {{ $('Code').first().json.failed_code }}\n{{ $('Code').first().json.stderr }}\n\nA list of errors is attached as a XLS file - this represents {{ ($('Code').all().length / $('globals').first().json.globals.LastCount) < 0.05 ? Math.round(($('Code').all().length / $('globals').first().json.globals.LastCount)*10000)/100 + \"% of your feed, so the remainder has been parsed\" : \"more than 5% of your feed, so the entire feed has been rejected\" }}. If you could correct the errors for future exports, then then the item(s) can be added to our database on the next run. Our data routines run daily, but this email will be sent a maximum of once a week, if you would prefer to recieve it more frequently (or as soon as errors emerge), please email luke@biketrax.co.uk.\n\nMany thanks,\n\nBiketraxBot (Product Information Database)",
+        "options": {
+          "attachments": "data",
+          "ccEmail": "luke@biketrax.co.uk",
+          "replyTo": "luke@biketrax.co.uk"
+        }
+      },
+      "id": "836d8e81-a843-45ae-b272-88834806249f",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        2600,
+        460
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "smtp": {
+          "id": "H2cITTqls0BiVgFE",
+          "name": "info@biketrax.co.uk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=grep -n {{ \"\\\"\"+$json.stderr.split(\"\\\"\")[2]+\"\\\"\" }}  /home/luke/feeds/Upload-Madison{{ $runIndex == 0 ? \"\" : $runIndex }}.csv | cut -f1 -d:"
+      },
+      "id": "be073a59-9211-4821-84c8-16c4f6b2955c",
+      "name": "SSH1",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        720,
+        260
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "AGAk5dnezH3Jdg8v",
+          "name": "Node3 (postgres)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "={{\"sed '\"+$json.stdout+\"d'\"}} /home/luke/feeds/Upload-Madison{{ $runIndex == 0 ? \"\" : $runIndex }}.csv > /home/luke/feeds/Upload-Madison{{ $runIndex+1 }}.csv"
+      },
+      "id": "0677dd03-e93b-4e0a-98c2-bbf0206fbb48",
+      "name": "SSH3",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        940,
+        260
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_madison FROM /home/luke/feeds/Upload-Madison{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "495f2a12-d092-49ce-b885-b50a04d2fabf",
+      "name": "SSH4",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        260
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "AGAk5dnezH3Jdg8v",
+          "name": "Node3 (postgres)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.stderr }}",
+              "operation": "isEmpty"
+            }
+          ],
+          "number": [
+            {
+              "value1": "={{ $runIndex }}",
+              "operation": "largerEqual",
+              "value2": "={{ Number($('globals').first().json.globals.LastCount)*0.05 }}"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "bb954ef7-fed8-4584-8563-9519ea03e3e6",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "failed_code",
+              "value": "={{$('SSH4').item.json.stderr.split(\"\\\"\")[2]}}"
+            },
+            {
+              "name": "stderr",
+              "value": "={{ $('SSH4').item.json.stderr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d6ddb36a-ad02-4dd7-9879-8f413b1464d2",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "let results = [],\n  i = 0;\n\ndo {\n  try {\n    results = results.concat($(\"Set\").all(0, i));\n  } catch (error) {\n        results = results.concat($(\"firstFail\").all()); \n    return results;\n  }\n  i++;\n} while (true);\n"
+      },
+      "id": "3974eaf0-66ad-46a9-84e2-5febf3c602b9",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        460
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "options": {
+          "fileName": "parsing_errors.xls",
+          "headerRow": true
+        }
+      },
+      "id": "57775cb8-0edc-4a5d-9f9d-44906396ba6d",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 1,
+      "position": [
+        2420,
+        460
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $today.weekday }}",
+              "operation": "equal",
+              "value2": 1
+            }
+          ]
+        }
+      },
+      "id": "844123f8-9fd5-4cf2-b29d-bdedde35ba22",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "failed_code",
+              "value": "={{$json.stderr.split(\"\\\"\")[2]}}"
+            },
+            {
+              "name": "stderr",
+              "value": "={{ $json.stderr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b2b035db-80d8-4d5c-bb05-1d05fdbd9fae",
+      "name": "firstFail",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        300,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $runIndex }}",
+              "operation": "larger"
+            }
+          ]
+        }
+      },
+      "id": "7e14c95d-7d48-4ee2-9db6-80ffb0fc05c9",
+      "name": "IF3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        940,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "command": "=rm /home/luke/feeds/Upload-Madison{{ $runIndex }}.csv",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "af213493-95ac-4d70-b764-f16a026019d1",
+      "name": "SSH5",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        480
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE odoodata.upload_zyro \nADD COLUMN IF NOT EXISTS vat INT NOT NULL DEFAULT 0;",
+        "options": {}
+      },
+      "id": "0dbda3a4-a40b-4188-a043-99fb0af921cc",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -60,
+        860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE odoodata.upload_zyro \nSET vat = 20 WHERE vatcode = 'N';",
+        "options": {}
+      },
+      "id": "bba7171f-c027-4f24-a2fe-d7a83c8adf63",
+      "name": "Postgres3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        120,
+        860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_zyro SET srp = srp / (1+(vat/100));",
+        "options": {}
+      },
+      "id": "0b9c6f17-1cfb-418f-a325-a4a72e7109b5",
+      "name": "Postgres4",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        300,
+        860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_zyro SET srp = srp / (1+(vat::NUMERIC/100));",
+        "options": {}
+      },
+      "id": "9eea92bc-7671-4606-91aa-27473473841a",
+      "name": "Postgres5",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -880,
+        920
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE upload_zyro \nADD COLUMN yourprice DECIMAL(7,2) NULL",
+        "options": {}
+      },
+      "id": "039e07ac-48bc-4bbc-97e0-6ccc1fe56334",
+      "name": "Postgres6",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        480,
+        860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE odoodata.upload_zyro a\nSET a.yourprice = b.price1\nFROM odoodata.csp_zyro b\nWHERE a.sku = b.productcode;",
+        "options": {}
+      },
+      "id": "16367a7a-c02c-4eca-8362-63d65e5f0f0a",
+      "name": "Postgres7",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "cache-control": "max-age=0",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2Bg%2FR%2BDoyn7CGTlRw1Z6%2Fb%2B2XCNN67Jh2o%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX18uU5MJnfgfy%2FRUMU1I8pymRwiN6gsci6M%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU1NGU2NmU4LTA0YzYtNGZhZi1iZTdjLWMyNDIwYzY2NGU3NCIsImVtYWlsIjoibHVrZUBiaWtldHJheC5jby51ayIsInBhc3N3b3JkIjoiOTRkYjE5YmM3MjMxNDgxODQ3MDRjMmYxZGZkYjlmYjAzNDQxMjM0MjcwMThhODllNGQ5ODQ4NWM2MzUyOGQ0ZSIsImlhdCI6MTY5Mjk0OTA2NSwiZXhwIjoxNjkzNTUzODY1fQ.WiT6X1yWXVb-R2XiHg1f5Fe2g98j-Y0JAVhR15hUcB4; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2BW3%2BcbxehhYrfHyvfQCUX3CDsBshGz2fld0f88QUgWeEK70Do83sVxBEXShGlP8%2FuzAKXw9vsCFA%3D%3D; rl_group_id=RudderEncrypt%3AU2FsdGVkX19sETf2WXTyAHC54lBwjTPY1JRyJ%2FpiIh4%3D; rl_group_trait=RudderEncrypt%3AU2FsdGVkX1%2B%2BmOfYbm3JkRG9bnPJ7sbE%2FXxijKrf9Ns%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2FK%2FI80mcfq52HpRSuiXE7v11aMQV0yr%2FNatV0NgPtLlg3ocOL7YH6qm9BZS1MOtW3ncBrfqTuMaNn6uYSwWeiXzzeVOyMOcptqhHTNV7gP69tEda2niyriLU42m2xYh8ekbM8S4hsPSKDAOIhd3lqlUDzbjGkXorA%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX19d8HuRS%2BMrddiC89wqxT2EJtYO0hQnqtw84%2B%2FiqPylfA4w%2Fi27qBdTfkcQR4%2BvXflvotuUowmg6Zgv1kQHs6cgxutYaImgzOZGM5zIc8M3UFsGjXaiTr2fq7WYxQ2tjibZ1J9EStkcrXoRbA9ov%2BD5X9rg2Q6Ix74%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22%24active_feature_flags%22%3A%5B%22013_distribution_test%22%2C%22011_ask_AI%22%2C%22012_signup_cta_wording%22%2C%22009_choosing_trial_plan%22%2C%22006_cloud_opt_in%22%2C%22010_relevant_usecase%22%2C%22schema-view%22%5D%2C%22%24enabled_feature_flags%22%3A%7B%22013_distribution_test%22%3A%22variant%22%2C%22011_ask_AI%22%3A%22gpt3%22%2C%22012_signup_cta_wording%22%3A%22variant%22%2C%22009_choosing_trial_plan%22%3A%22variant%22%2C%22004_checklist%22%3Afalse%2C%22008_template_variants%22%3Afalse%2C%22006_cloud_opt_in%22%3A%22control%22%2C%22010_relevant_usecase%22%3A%22control%22%2C%22schema-view%22%3Atrue%7D%2C%22%24feature_flag_payloads%22%3A%7B%7D%2C%22distinct_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24device_id%22%3A%22018a2b9e-7557-79eb-bfa1-dace9620ffc5%22%2C%22%24user_state%22%3A%22identified%22%2C%22%24user_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24stored_person_properties%22%3A%7B%22instance_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%22%2C%22created_at_timestamp%22%3A1691497889718%7D%2C%22%24sesid%22%3A%5B1692971529883%2C%22018a2cf3-a84e-7001-bc90-ee04d48ef5c3%22%2C1692971280462%5D%2C%22%24session_recording_enabled_server_side%22%3Afalse%2C%22%24autocapture_disabled_server_side%22%3Afalse%7D; rl_session=RudderEncrypt%3AU2FsdGVkX19cw0AMqtgM78vmhckwXiCdm9w4viI%2FrdeTSPhWieN6jm%2BCdRWAFzOC9kiwcodjrQeEFVQSQdO%2F%2Fmauwgtm%2F2MxputHo4qJEp2cEenkZ5kZTanvy8UPHpqzN1Nt36qy4vxVrUAfePx0QQ%3D%3D",
+            "if-none-match": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\"",
+            "sec-ch-ua": "\"Chromium\";v=\"116\", \"Not)A;Brand\";v=\"24\", \"Google Chrome\";v=\"116\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1",
+            "upgrade-insecure-requests": "1",
+            "x-forwarded-for": "195.224.58.58",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https"
+          },
+          "params": {},
+          "query": {},
+          "body": {}
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-08-25T14:44:21.000Z",
+  "versionId": "9d348e47-9457-420a-951c-c9a2695faf08"
+}
