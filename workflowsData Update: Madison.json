@@ -1086,7 +1086,10 @@
     ]
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
   "tags": [
@@ -1110,6 +1113,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-08-23T14:48:11.000Z",
-  "versionId": "9f4bf097-54e4-43ff-b80f-86c4857e5321"
+  "updatedAt": "2023-08-25T07:38:22.000Z",
+  "versionId": "b49caae1-e556-42a4-8878-1bb6597694f4"
 }
