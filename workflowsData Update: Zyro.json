@@ -540,11 +540,16 @@
     },
     {
       "parameters": {
+        "keepOnlySet": true,
         "values": {
           "string": [
             {
-              "name": "Globals",
-              "value": "={{  JSON.parse($json[\"Globals\"])[0]  }}"
+              "name": "globals",
+              "value": "={{  JSON.parse($json[\"globals\"])[0]  }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $json.name }}"
             }
           ]
         },
@@ -865,7 +870,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT COUNT (productcode) FROM upload_madison;",
+        "query": "SELECT COUNT (productcode) FROM upload_zyro;",
         "options": {}
       },
       "id": "9a020149-aa91-45f7-831e-332cd8a3e1e8",
@@ -986,7 +991,7 @@
     },
     {
       "parameters": {
-        "url": "https://node4.biketrax.co.uk/webhook-test/zyro-prep",
+        "url": "https://node4.biketrax.co.uk/webhook/zyro-prep",
         "options": {}
       },
       "id": "3f11fa9f-7666-401a-b01b-d7499b3a6519",
@@ -1043,6 +1048,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2023-08-25T11:28:11.000Z",
-  "versionId": "1a789855-6a5a-4ba3-982c-35453be23f59"
+  "updatedAt": "2023-08-26T14:38:14.000Z",
+  "versionId": "06e2f43d-0d40-43bd-8748-780260f13392"
 }
