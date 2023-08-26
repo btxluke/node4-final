@@ -1,77 +1,6 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "Add Lead Time": {
-      "main": [
-        [
-          {
-            "node": "Conform Stock Count",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Conform Stock Count": {
-      "main": [
-        [
-          {
-            "node": "Calculate Net RRP1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Calculate Net RRP1": {
-      "main": [
-        [
-          {
-            "node": "Rename Columns",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Rename Columns": {
-      "main": [
-        [
-          {
-            "node": "Add Columns",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Synchronise CSP / Stock": {
-      "main": [
-        []
-      ]
-    },
-    "Synchronise CSP / Stock1": {
-      "main": [
-        [
-          {
-            "node": "Add Lead Time",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Fill non CSP Prices": {
-      "main": [
-        [
-          {
-            "node": "Synchronise CSP / Stock1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Postgres1": {
       "main": [
         [
@@ -363,172 +292,193 @@
           }
         ]
       ]
+    },
+    "Postgres7": {
+      "main": [
+        [
+          {
+            "node": "Postgres9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres9": {
+      "main": [
+        [
+          {
+            "node": "Postgres10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres10": {
+      "main": [
+        [
+          {
+            "node": "Postgres11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres11": {
+      "main": [
+        [
+          {
+            "node": "Postgres12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres12": {
+      "main": [
+        [
+          {
+            "node": "Postgres13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres13": {
+      "main": [
+        [
+          {
+            "node": "Postgres14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres14": {
+      "main": [
+        [
+          {
+            "node": "Postgres16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Data Update: Process Alter Statements",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres16": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Amend Expected Lines": {
+      "main": [
+        [
+          {
+            "node": "Postgres18",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Set3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set3": {
+      "main": [
+        [
+          {
+            "node": "Postgres19",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres17": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Postgres18": {
+      "main": [
+        [
+          {
+            "node": "Set2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Update: Process Alter Statements": {
+      "main": [
+        [
+          {
+            "node": "Amend Expected Lines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-08-25T11:25:27.380Z",
   "id": "dBH5XzEWae6xMCMQ",
   "name": "Data Update: Zyro: Prep",
   "nodes": [
-    {
-      "parameters": {
-        "operation": "executeQuery",
-        "query": "ALTER TABLE `Upload-Zyro` \nRENAME COLUMN `SKU` TO `ProductCode`,\nRENAME COLUMN `Name` TO `ProductName`,\nRENAME COLUMN `UPC` TO `Ean`,\nRENAME COLUMN `SRP` TO `Rrp`,\nRENAME COLUMN `BoxQuantity` TO `PackQty`,\nRENAME COLUMN `StyleCode` TO `VariantGrouping`,\nRENAME COLUMN `BriefDescription` TO `ShortDescription`,\nRENAME COLUMN `ProductCategory` TO `SubCategory`;"
-      },
-      "id": "d15d10a4-7dba-4132-8d37-c1f8001d9f7e",
-      "name": "Rename Columns",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 1,
-      "position": [
-        0,
-        1460
-      ],
-      "credentials": {
-        "mySql": {
-          "id": "2",
-          "name": "node3.biketrax.co.uk: odooData"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "executeQuery",
-        "query": "ALTER TABLE `Upload-Zyro` ADD LeadTime INT(3) AS (DATEDIFF(STR_TO_DATE(StockDueIn, '%e/%m/%Y'),CURDATE()));"
-      },
-      "id": "4f11c432-00b1-431d-8044-18b6d0a62fcc",
-      "name": "Add Lead Time",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 1,
-      "position": [
-        0,
-        1260
-      ],
-      "credentials": {
-        "mySql": {
-          "id": "2",
-          "name": "node3.biketrax.co.uk: odooData"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "executeQuery",
-        "query": "=ALTER TABLE `Upload-Zyro` ADD StockCount INT(1) AS (IF(StockIndicator=\"IS\",1,0));"
-      },
-      "id": "860890f8-9c43-4e7a-aa9e-a32816607cb5",
-      "name": "Conform Stock Count",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 1,
-      "position": [
-        200,
-        1260
-      ],
-      "credentials": {
-        "mySql": {
-          "id": "2",
-          "name": "node3.biketrax.co.uk: odooData"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "executeQuery",
-        "query": "UPDATE `Upload-Zyro` SET Name = CAP_FIRST(Name),BriefDescription = CAP_FIRST(BriefDescription)"
-      },
-      "id": "d9f4f5d9-4a8c-493d-bc87-9095809e45fa",
-      "name": "Calculate Net RRP1",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 1,
-      "position": [
-        360,
-        1260
-      ],
-      "credentials": {
-        "mySql": {
-          "id": "2",
-          "name": "node3.biketrax.co.uk: odooData"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "executeQuery",
-        "query": "ALTER TABLE `Upload-Zyro` \nADD `AlternativeImage1Url` VARCHAR(80) NULL DEFAULT NULL AFTER `StockCount`, \nADD `AlternativeImage2Url` VARCHAR(80) NULL DEFAULT NULL AFTER `AlternativeImage1Url`, \nADD `AlternativeImage3Url` VARCHAR(80) NULL DEFAULT NULL AFTER `AlternativeImage2Url`,\nADD `Weight` VARCHAR(20) NOT NULL AFTER `AlternativeImage3Url`,\nADD `Keywords` VARCHAR(1000) NULL DEFAULT NULL AFTER `Weight`,\nADD `TechnicalSpec` LONGTEXT DEFAULT NULL,\nADD `TechnicalSpecLabel` LONGTEXT DEFAULT NULL;"
-      },
-      "id": "3f20218a-33c9-4c47-bc9c-4194da10d31f",
-      "name": "Add Columns",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 1,
-      "position": [
-        200,
-        1460
-      ],
-      "credentials": {
-        "mySql": {
-          "id": "2",
-          "name": "node3.biketrax.co.uk: odooData"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "executeQuery",
-        "query": "UPDATE `Upload-Zyro` AS a\nINNER JOIN `Csp-Zyro` AS b ON a.SKU = b.ProductCode\nSET \na.YourPrice = b.Price1"
-      },
-      "id": "d1250a5d-c23c-4fd0-a262-74c519770412",
-      "name": "Synchronise CSP / Stock",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 1,
-      "position": [
-        680,
-        1000
-      ],
-      "credentials": {
-        "mySql": {
-          "id": "2",
-          "name": "node3.biketrax.co.uk: odooData"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "executeQuery",
-        "query": "UPDATE `Upload-Zyro` AS a\nINNER JOIN `Stock-Zyro` AS c ON a.SKU = c.SKU\nSET\na.StockIndicator = c.StockIndicator,\na.StockDueIn = c.StockDueIn;"
-      },
-      "id": "0794e77d-5b96-4276-ab9a-4626c192774d",
-      "name": "Synchronise CSP / Stock1",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 1,
-      "position": [
-        1540,
-        1040
-      ],
-      "credentials": {
-        "mySql": {
-          "id": "2",
-          "name": "node3.biketrax.co.uk: odooData"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "executeQuery",
-        "query": "UPDATE `Upload-Zyro` \nSET \nYourPrice = OrangePrice\nWHERE YourPrice IS NULL"
-      },
-      "id": "0f91b8b0-03bc-4991-9247-4a1b8b2270d8",
-      "name": "Fill non CSP Prices",
-      "type": "n8n-nodes-base.mySql",
-      "typeVersion": 1,
-      "position": [
-        1380,
-        1040
-      ],
-      "credentials": {
-        "mySql": {
-          "id": "2",
-          "name": "node3.biketrax.co.uk: odooData"
-        }
-      }
-    },
     {
       "parameters": {
         "operation": "executeQuery",
@@ -993,7 +943,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_zyro SET srp = srp / (1+(vat/100));",
+        "query": "UPDATE upload_zyro SET srp = srp::NUMERIC / (1+(vat::numeric/100));",
         "options": {}
       },
       "id": "0b9c6f17-1cfb-418f-a325-a4a72e7109b5",
@@ -1003,27 +953,6 @@
       "position": [
         300,
         860
-      ],
-      "credentials": {
-        "postgres": {
-          "id": "dqel3RyoT6NsGiSw",
-          "name": "odooData"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "executeQuery",
-        "query": "UPDATE upload_zyro SET srp = srp / (1+(vat::NUMERIC/100));",
-        "options": {}
-      },
-      "id": "9eea92bc-7671-4606-91aa-27473473841a",
-      "name": "Postgres5",
-      "type": "n8n-nodes-base.postgres",
-      "typeVersion": 2.2,
-      "position": [
-        -880,
-        920
       ],
       "credentials": {
         "postgres": {
@@ -1056,7 +985,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE odoodata.upload_zyro a\nSET a.yourprice = b.price1\nFROM odoodata.csp_zyro b\nWHERE a.sku = b.productcode;",
+        "query": "UPDATE odoodata.upload_zyro a\nSET yourprice = b.price1\nFROM odoodata.csp_zyro b\nWHERE a.sku = b.productcode;",
         "options": {}
       },
       "id": "16367a7a-c02c-4eca-8362-63d65e5f0f0a",
@@ -1066,6 +995,323 @@
       "position": [
         680,
         860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_zyro\nSET \nyourprice = orangeprice\nWHERE yourprice IS NULL",
+        "options": {}
+      },
+      "id": "0d5fbfa0-315e-4c7b-ac08-49a8bbee4d45",
+      "name": "Postgres9",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        860,
+        860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_zyro b\nSET\nstockindicator = c.stockindicator,\nstockduein = c.stockduein\nFROM stock_zyro c \nWHERE b.sku = c.sku;\n",
+        "options": {}
+      },
+      "id": "72d431ba-0e77-4460-876b-ed5d434a11d6",
+      "name": "Postgres10",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1040,
+        860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE upload_zyro ADD COLUMN leadtime INT DEFAULT 0;",
+        "options": {}
+      },
+      "id": "6bed2f25-631a-4d9e-ba8a-c7bc6b67e24c",
+      "name": "Postgres11",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1220,
+        860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_zyro \nSET\nleadtime = TO_DATE(stockduein,'DD/MM/YYYY')-CURRENT_DATE\nWHERE stockindicator = 'OOS'\n",
+        "options": {}
+      },
+      "id": "30af2d0f-0bd5-4376-802a-eb22aeed3b8a",
+      "name": "Postgres12",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1400,
+        860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE upload_zyro ADD COLUMN stockcount INT DEFAULT 0;",
+        "options": {}
+      },
+      "id": "07602f34-fb50-4dfb-9b37-dc39f224e5ec",
+      "name": "Postgres13",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1560,
+        860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_zyro \nSET\nstockcount = 1\nWHERE stockindicator = 'IS'\n",
+        "options": {}
+      },
+      "id": "d49519eb-182c-4f7e-b013-c8b622e0f08c",
+      "name": "Postgres14",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1720,
+        860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_zyro \nSET \n\"name\" = INITCAP(\"name\"),\nbriefdescription = INITCAP(briefdescription)\n",
+        "options": {}
+      },
+      "id": "e64abc98-5012-4be9-9ce8-a4df1903a33a",
+      "name": "Postgres16",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1880,
+        860
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": "Vc6ZgR8vArPNZu09"
+      },
+      "id": "da60ee47-5874-4923-8054-04e2bd4bc027",
+      "name": "Data Update: Process Alter Statements",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        100,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "alterStatements",
+              "value": "RENAME COLUMN \"sku\" TO \"productcode\", RENAME COLUMN \"name\" TO \"productname\", RENAME COLUMN \"upc\" TO \"ean\", RENAME COLUMN \"srp\" TO \"rrp\", RENAME COLUMN \"boxquantity\" TO \"packqty\", RENAME COLUMN \"stylecode\" TO \"variantgrouping\",  RENAME COLUMN \"briefdescription\" TO \"shortdescription\", RENAME COLUMN \"productcategory\" TO \"subcategory\", ADD COLUMN \"AlternativeImage1Url\" VARCHAR(80) NULL DEFAULT NULL, ADD COLUMN \"AlternativeImage2Url\" TEXT NULL DEFAULT NULL , ADD COLUMN \"AlternativeImage3Url\" TEXT NULL DEFAULT NULL , ADD COLUMN \"Weight\" VARCHAR(20) DEFAULT 0.5 NOT NULL, ADD COLUMN \"Keywords\" VARCHAR(1000) NULL DEFAULT NULL, ADD COLUMN \"TechnicalSpec\" TEXT DEFAULT NULL, ADD COLUMN \"TechnicalSpecLabel\" TEXT DEFAULT NULL"
+            },
+            {
+              "name": "supplier",
+              "value": "Zyro"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8cabeab0-9c12-48c7-b158-2af0b549bbc1",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        1180
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "8b527ff5-9105-4090-9330-97a9a553a4d6",
+      "name": "Amend Expected Lines",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        300,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ JSON.parse($json.globals)[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cb4306b9-7f8b-4dba-907b-aaaea14555bc",
+      "name": "Set2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        700,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "3de94439-6cfc-4ffa-8afb-a2c12c56a022",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        920,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals.LastCount",
+              "value": "={{ $json.count }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ebab4d0d-9189-40e4-93d2-924e788e73a9",
+      "name": "Set3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COUNT (productcode) FROM upload_zyro;",
+        "options": {}
+      },
+      "id": "ccef873e-c324-4369-b30b-dac6c2654618",
+      "name": "Postgres17",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        700,
+        1280
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE Name = 'Zyro';",
+        "options": {}
+      },
+      "id": "10b106a8-af7e-4fc1-8f2d-21e81be961f1",
+      "name": "Postgres18",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        480,
+        1060
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = {{ \"'\"+$json.name+\"'\" }}; ",
+        "options": {}
+      },
+      "id": "4db08260-a8ce-4f03-bae7-f766d09ab426",
+      "name": "Postgres19",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1360,
+        1180
       ],
       "credentials": {
         "postgres": {
@@ -1112,7 +1358,7 @@
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2023-08-25T14:44:21.000Z",
-  "versionId": "9d348e47-9457-420a-951c-c9a2695faf08"
+  "triggerCount": 1,
+  "updatedAt": "2023-08-26T14:12:52.000Z",
+  "versionId": "e6f68577-4d17-4750-9f5a-30955282813c"
 }
