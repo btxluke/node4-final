@@ -92,7 +92,7 @@
       "main": [
         [
           {
-            "node": "Code",
+            "node": "IF4",
             "type": "main",
             "index": 0
           }
@@ -423,6 +423,24 @@
           }
         ]
       ]
+    },
+    "IF4": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-08-12T09:05:32.080Z",
@@ -572,7 +590,7 @@
       "type": "n8n-nodes-base.odoo",
       "typeVersion": 1,
       "position": [
-        1600,
+        1820,
         960
       ],
       "retryOnFail": true,
@@ -594,7 +612,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 2,
       "position": [
-        2080,
+        2300,
         740
       ]
     },
@@ -651,7 +669,7 @@
       "type": "n8n-nodes-base.odoo",
       "typeVersion": 1,
       "position": [
-        1060,
+        1040,
         1200
       ],
       "retryOnFail": true,
@@ -680,10 +698,11 @@
       "type": "n8n-nodes-base.odoo",
       "typeVersion": 1,
       "position": [
-        1240,
+        1180,
         1200
       ],
       "retryOnFail": true,
+      "maxTries": 5,
       "credentials": {
         "odooApi": {
           "id": "2ttPRWxNWqAWB6fY",
@@ -712,8 +731,8 @@
       "type": "n8n-nodes-base.odoo",
       "typeVersion": 1,
       "position": [
-        1600,
-        1200
+        1780,
+        1180
       ],
       "retryOnFail": true,
       "credentials": {
@@ -733,8 +752,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        1400,
-        1200
+        1600,
+        1180
       ]
     },
     {
@@ -779,7 +798,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        1300,
+        1520,
         480
       ]
     },
@@ -844,7 +863,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        1880,
+        2100,
         1240
       ]
     },
@@ -1061,7 +1080,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.2,
       "position": [
-        1480,
+        1700,
         480
       ],
       "credentials": {
@@ -1082,7 +1101,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.2,
       "position": [
-        1660,
+        1880,
         480
       ],
       "credentials": {
@@ -1125,7 +1144,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        1800,
+        2020,
         480
       ]
     },
@@ -1199,7 +1218,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2080,
+        2300,
         480
       ]
     },
@@ -1218,41 +1237,29 @@
         500
       ],
       "webhookId": "69822ecf-9111-4262-b8f7-4ccdaefbbef8"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.error }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "0341cb54-3a46-4e4d-9914-2fe77ad46406",
+      "name": "IF4",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        1300
+      ]
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "node4.biketrax.co.uk",
-            "user-agent": "axios/0.21.4",
-            "content-length": "129",
-            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-            "baggage": "sentry-environment=production,sentry-release=1.1.1,sentry-public_key=1f954e089a054b8e943ae4f4042b2bff,sentry-trace_id=82f45211d6fb4b11974b13de0b955215",
-            "content-type": "application/json",
-            "sentry-trace": "82f45211d6fb4b11974b13de0b955215-8afe7852ef9d85f8-0",
-            "x-forwarded-for": "172.19.0.1",
-            "x-forwarded-host": "node4.biketrax.co.uk",
-            "x-forwarded-proto": "https",
-            "accept-encoding": "gzip"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "globals": {
-              "SupplierName": "ZyroFisher",
-              "PartnerId": 69,
-              "ProductTagId": 13,
-              "LeadTimeAddition": 3,
-              "LastCount": "23550"
-            },
-            "name": "Zyro"
-          }
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner",
@@ -1261,6 +1268,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-03T09:35:27.000Z",
-  "versionId": "471d01b1-2090-419d-b0ac-3317cf4ad524"
+  "updatedAt": "2023-09-03T14:02:42.000Z",
+  "versionId": "6d6d0d96-2b5b-4934-9e7a-aa3abd266dfb"
 }
