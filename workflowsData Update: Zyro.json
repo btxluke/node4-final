@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "When Called By Another Workflow": {
       "main": [
@@ -826,8 +826,7 @@
         980,
         1000
       ],
-      "webhookId": "7770801b-b434-4e65-b171-59dad557aa29",
-      "disabled": true
+      "webhookId": "7770801b-b434-4e65-b171-59dad557aa29"
     },
     {
       "parameters": {
@@ -1047,7 +1046,7 @@
       "name": "Merge"
     }
   ],
-  "triggerCount": 0,
-  "updatedAt": "2023-09-03T10:00:43.000Z",
-  "versionId": "91010c99-c75f-41e0-b1bc-c246fe2dc2ac"
+  "triggerCount": 1,
+  "updatedAt": "2023-09-03T16:49:28.000Z",
+  "versionId": "ed9840eb-a3f6-41b5-b5e7-594287168df4"
 }
