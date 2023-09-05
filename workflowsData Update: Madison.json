@@ -336,22 +336,6 @@
         ]
       ]
     },
-    "When clicking \"Execute Workflow\"": {
-      "main": [
-        [
-          {
-            "node": "Postgres",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Merge2",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
     "Postgres12": {
       "main": [
         [
@@ -397,6 +381,72 @@
         [
           {
             "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Create Sequence",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Sequence": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transit Tables": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
             "type": "main",
             "index": 0
           }
@@ -540,8 +590,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
       "position": [
-        1300,
-        560
+        1260,
+        580
       ]
     },
     {
@@ -556,7 +606,7 @@
       "typeVersion": 1,
       "position": [
         840,
-        560
+        780
       ],
       "webhookId": "8e681709-59dd-45f0-9403-d2e72945ebd0"
     },
@@ -582,8 +632,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2585,
-        794
+        2600,
+        720
       ]
     },
     {
@@ -621,8 +671,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        2725,
-        394
+        2580,
+        380
       ]
     },
     {
@@ -755,16 +805,16 @@
     {
       "parameters": {
         "content": "##Progress: Create",
-        "height": 320.17725067385476,
-        "width": 269.92986899015517
+        "height": 364.6423669529246,
+        "width": 1182.1239390710184
       },
       "id": "3c664f3b-13f8-4e04-aec1-4e71edc87fa5",
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2680,
-        320
+        2460,
+        696.174418604651
       ]
     },
     {
@@ -895,8 +945,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.2,
       "position": [
-        1100,
-        340
+        1040,
+        580
       ],
       "credentials": {
         "postgres": {
@@ -932,18 +982,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2280,
-        760
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "27277ca9-f7e6-41ef-a607-32859e814ad8",
-      "name": "When clicking \"Execute Workflow\"",
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        840,
+        2220,
         760
       ]
     },
@@ -1033,7 +1072,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.2,
       "position": [
-        2260,
+        2160,
         1220
       ],
       "credentials": {
@@ -1068,19 +1107,116 @@
         2000,
         1220
       ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "2a3cd800-92fe-48d3-942c-2b3264a97b27",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        2600,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "create-sequence",
+              "value": "={{ $json.globals.CreateSequence.split(\",\") }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5a6e8cf0-02a8-4b59-8363-ee654d1e0cba",
+      "name": "Create Sequence",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        2760,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "create-sequence",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "4d18188c-6bbb-4e00-bff1-9bc092090bbe",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        2920,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://node4.biketrax.co.uk/webhook/{{ $json['create-sequence'] }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{$json}}",
+        "options": {}
+      },
+      "id": "ca88ad26-07a0-4e00-9f07-1f3b608f41d9",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3460,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "0412e4b3-cd40-4490-a397-aa2b13083c57",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        3140,
+        1400
+      ]
     }
   ],
   "pinData": {
     "Code11": [
       {
         "json": {
-          "Name": "Madison",
-          "Globals": {
+          "globals": {
             "SupplierName": "Madison",
             "PartnerId": 47,
             "ProductTagId": 8,
-            "LeadTimeAddition": 3
-          }
+            "LeadTimeAddition": 3,
+            "Webhook": "update-madison",
+            "LastCount": "20052"
+          },
+          "name": "Madison"
+        }
+      }
+    ],
+    "Code19": [
+      {
+        "json": {
+          "globals": {
+            "SupplierName": "Madison",
+            "PartnerId": 47,
+            "ProductTagId": 8,
+            "LeadTimeAddition": 3,
+            "Webhook": "update-madison",
+            "LastCount": "20052"
+          },
+          "name": "Madison"
         }
       }
     ]
@@ -1113,6 +1249,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-08-25T07:38:22.000Z",
-  "versionId": "b49caae1-e556-42a4-8878-1bb6597694f4"
+  "updatedAt": "2023-09-05T17:24:12.000Z",
+  "versionId": "8e529031-5852-4580-9b99-b1b51324f998"
 }
