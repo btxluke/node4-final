@@ -257,7 +257,7 @@
       "main": [
         [
           {
-            "node": "Code2",
+            "node": "Postgres16",
             "type": "main",
             "index": 0
           }
@@ -484,6 +484,17 @@
         [
           {
             "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres16": {
+      "main": [
+        [
+          {
+            "node": "Code2",
             "type": "main",
             "index": 0
           }
@@ -1357,6 +1368,27 @@
         -1680,
         420
       ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_madison SET brand = 'Shimano' WHERE brand LIKE 'Shimano%';",
+        "options": {}
+      },
+      "id": "d7b584de-461e-4456-af6d-dc724efa61e3",
+      "name": "Postgres16",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -440,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1409,6 +1441,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-08-25T07:39:00.000Z",
-  "versionId": "9d99b8ae-12a8-4006-b318-2d65ad3d25cb"
+  "updatedAt": "2023-09-05T15:02:19.000Z",
+  "versionId": "1ec047b0-6edc-4bcc-8e7e-677d6f8d23e8"
 }
