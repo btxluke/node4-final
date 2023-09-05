@@ -1,0 +1,332 @@
+{
+  "active": true,
+  "connections": {
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets": {
+      "main": [
+        [],
+        [],
+        [],
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-05T14:27:30.855Z",
+  "id": "hf7GnnXH8oQIJoIg",
+  "name": "Data Update: GENERIC: Create: create-brand-sync",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.attribute.value",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": []
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "attribute_id",
+              "value": "={{1}}"
+            }
+          ]
+        }
+      },
+      "id": "693cf5fa-a7b1-4778-b59d-9491426c276c",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        560
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "name",
+              "field2": "brand"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "91961c92-70b9-4e97-987e-8ad66880a29a",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.attribute.value",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json[\"brand\"] }}"
+            },
+            {
+              "fieldName": "attribute_id",
+              "fieldValue": "={{1}}"
+            }
+          ]
+        }
+      },
+      "id": "5b943497-774e-4740-ac5a-3bea9c49c66c",
+      "name": "Odoo2",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        780
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json[\"brand\"] }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "772c7769-38f4-42ef-a61a-69d026a435ca",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "path": "create-brand-sync",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "26aae178-96ce-40ea-868a-479eb97bedcc",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        520,
+        660
+      ],
+      "webhookId": "add16103-7cb1-4cfd-b054-a0034f25b898"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ $json.body.globals }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $json.body.name }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4b43c599-9043-46d2-b773-cb7679783dd3",
+      "name": "Globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        700,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT DISTINCT(brand) FROM transit_{{ $(\"Globals\").first().json[\"name\"]}};",
+        "options": {}
+      },
+      "id": "c857df10-5484-4da2-856e-6f5a3fd5052c",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1020,
+        780
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "230",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.21.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "globals": {
+              "SupplierName": "Madison",
+              "PartnerId": 47,
+              "ProductTagId": 8,
+              "LeadTimeAddition": 3,
+              "Webhook": "update-madison",
+              "LastCount": "20052",
+              "CreateSequence": "create-categ-sync"
+            },
+            "name": "Madison",
+            "create-sequence": "create-categ-sync"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-08-08T15:46:20.698Z",
+      "updatedAt": "2023-08-08T15:46:20.698Z",
+      "id": "4S5wvtegUIvgvqYs",
+      "name": "PostgreSQL"
+    },
+    {
+      "createdAt": "2023-08-10T13:01:44.729Z",
+      "updatedAt": "2023-08-10T13:01:44.729Z",
+      "id": "9sOXgdnAKkDHmBZQ",
+      "name": "if"
+    },
+    {
+      "createdAt": "2023-08-08T15:13:33.587Z",
+      "updatedAt": "2023-08-08T15:13:33.587Z",
+      "id": "bbI8zuoQ3XV0LUP0",
+      "name": "set"
+    },
+    {
+      "createdAt": "2023-08-08T15:53:13.355Z",
+      "updatedAt": "2023-08-08T15:53:13.355Z",
+      "id": "ojpualuYNuuEDwh1",
+      "name": "odoo"
+    },
+    {
+      "createdAt": "2023-08-08T15:13:29.759Z",
+      "updatedAt": "2023-08-08T15:13:29.759Z",
+      "id": "tBmb6plfpQ8YfeIK",
+      "name": "compare"
+    },
+    {
+      "createdAt": "2023-08-12T15:12:53.694Z",
+      "updatedAt": "2023-08-12T15:12:53.694Z",
+      "id": "veItN06CNprBqx4u",
+      "name": "webhook"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-05T16:01:02.000Z",
+  "versionId": "ad222f23-5626-4d43-9e0b-4fb68a146a2e"
+}
