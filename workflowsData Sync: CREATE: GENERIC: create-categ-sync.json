@@ -1,0 +1,441 @@
+{
+  "active": true,
+  "connections": {
+    "Retrieve Category Ids": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Rename Keys",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rename Keys": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify Unlinked categories": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NoOp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Notify Unlinked categories",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "Retrieve Category Ids",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-08-08T15:44:05.051Z",
+  "id": "De0sYMCGwgIhgv8I",
+  "name": "Data Sync: CREATE: GENERIC: create-categ-sync",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "72524de3-c847-4c9a-b5e9-d91ebdb3f410",
+      "name": "Retrieve Category Ids",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        780,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "alias",
+              "value": "={{ $json[\"alias\"].split(\"|\") }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "21d45012-f5bf-4110-8906-5a2fa6ee887b",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "subcategory",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "a1c167a0-67ea-4b8e-b2d7-9d68a38e8a28",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "keys": {
+          "key": [
+            {
+              "currentKey": "prodid",
+              "newKey": "categ_id"
+            },
+            {
+              "currentKey": "ecomid",
+              "newKey": "public_categ_ids"
+            },
+            {
+              "currentKey": "posid",
+              "newKey": "pos_categ_id"
+            },
+            {
+              "currentKey": "=alias",
+              "newKey": "subcategory"
+            }
+          ]
+        },
+        "additionalOptions": {}
+      },
+      "id": "de10a4ec-692f-465f-b8ac-26d174adc477",
+      "name": "Rename Keys",
+      "type": "n8n-nodes-base.renameKeys",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        320
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "8a4458be-6a6d-404d-aeb1-1840883014f5",
+      "name": "Notify Unlinked categories",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        740,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "productfeeds@biketrax.co.uk",
+        "toEmail": "luke@biketrax.co.uk",
+        "subject": "={{$('Globals').first().json.name}}: New (Unresolved) Categories Detected",
+        "text": "=Affected Product Codes:\n\n{{JSON.stringify($json.stringify, null, 2)}}",
+        "options": {}
+      },
+      "id": "a9015888-fa2b-4e98-9233-d90c69e47ae7",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        1940,
+        720
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "smtp": {
+          "id": "xOWEzMfuqVVoWrw0",
+          "name": "productfeeds@biketrax.co.uk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.productcode }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "3e0d7a87-ada6-4fc8-944d-42377734f6d5",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        720
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "794a7fc8-eb56-42eb-a847-45071465836f",
+      "name": "NoOp",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT prodid,ecomid,posid,{{ $(\"Globals\").first().json[\"name\"].toLowerCase()+\"alias\" }} AS alias FROM odoodata.map_categorylisting WHERE {{ $(\"Globals\").first().json[\"name\"].toLowerCase()+\"Alias\" }} IS NOT NULL",
+        "options": {}
+      },
+      "id": "2911151c-101b-437a-8661-0b8ab46ea931",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1000,
+        320
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE {{\"datatransit.transit_\" + $(\"Globals\").first().json[\"name\"].toLowerCase()}} SET\n  categ_id = {{ $json.categ_id }},\n  public_categ_ids = {{ $json.public_categ_ids }},\n  pos_categ_id = {{ $json.pos_categ_id }}\nWHERE subcategory = {{ \"'\"+$json.subcategory+\"'\" }}",
+        "options": {}
+      },
+      "id": "560c304f-2cb6-4100-a2b2-9607b115f57b",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1760,
+        320
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT productcode,subcategory FROM {{\"datatransit.transit_\"+$('Globals').first().json.name.toLowerCase()}} WHERE categ_id = NULL;",
+        "options": {}
+      },
+      "id": "079cd002-118f-4dd8-b878-fa098566f2a4",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        920,
+        720
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "create-categ-sync",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "06790e19-0c32-4919-90c4-b65c4c287492",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        220,
+        520
+      ],
+      "webhookId": "add16103-7cb1-4cfd-b054-a0034f25b898"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ $json.body.globals }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $json.body.name }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4bfa44a2-cc18-479d-8fc9-af3a944494cb",
+      "name": "Globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        400,
+        520
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "230",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.21.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "globals": {
+              "SupplierName": "Madison",
+              "PartnerId": 47,
+              "ProductTagId": 8,
+              "LeadTimeAddition": 3,
+              "Webhook": "update-madison",
+              "LastCount": "20052",
+              "CreateSequence": "create-categ-sync"
+            },
+            "name": "Madison",
+            "create-sequence": "create-categ-sync"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-08-08T15:46:20.698Z",
+      "updatedAt": "2023-08-08T15:46:20.698Z",
+      "id": "4S5wvtegUIvgvqYs",
+      "name": "PostgreSQL"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-05T12:55:09.000Z",
+  "versionId": "5505fb1f-d099-4879-b61b-32f9dd13bb33"
+}
