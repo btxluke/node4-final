@@ -317,8 +317,8 @@
       ],
       "credentials": {
         "postgres": {
-          "id": "dqel3RyoT6NsGiSw",
-          "name": "odooData"
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
         }
       }
     },
@@ -338,8 +338,8 @@
       ],
       "credentials": {
         "postgres": {
-          "id": "dqel3RyoT6NsGiSw",
-          "name": "odooData"
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
         }
       }
     }
@@ -348,8 +348,15 @@
     "When Called By Another Workflow": [
       {
         "json": {
-          "name": "Silverfish",
-          "globals": "[{\"SupplierName\": \"Silverfish\",\"PartnerId\": 61,\"ProductTagId\": 10,\"LeadTimeAddition\":5,\"Webhook\":\"https://node4.biketrax.co.uk/webhook/d6637f7a-97f9-4f2d-96bd-a493b0112995\"}]"
+          "globals": {
+            "SupplierName": "Madison",
+            "PartnerId": 47,
+            "ProductTagId": 8,
+            "LeadTimeAddition": 3,
+            "Webhook": "update-madison",
+            "LastCount": "20052"
+          },
+          "name": "Madison"
         }
       }
     ]
@@ -367,6 +374,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2023-08-08T15:49:11.000Z",
-  "versionId": "8b9f4607-0a1c-40d7-86a8-d50e211a47f6"
+  "updatedAt": "2023-09-05T10:15:45.000Z",
+  "versionId": "f0d4ac80-6fb3-4167-8977-e5df59d95b0d"
 }
