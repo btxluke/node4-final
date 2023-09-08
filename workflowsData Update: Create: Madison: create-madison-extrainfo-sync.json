@@ -1,0 +1,325 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Compare Datasets": {
+      "main": [
+        [
+          {
+            "node": "Create",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-08T12:20:31.060Z",
+  "id": "oLHinEXQJ0udGk6Q",
+  "name": "Data Update: Create: Madison: create-madison-extrainfo-sync",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "create-madison-extrainfo-sync",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "65c74d07-46f7-4b54-a136-e3b68b355948",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        840,
+        660
+      ],
+      "webhookId": "add16103-7cb1-4cfd-b054-a0034f25b898"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ $json.body.globals }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $json.body.name }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a224c4ea-8263-47c1-8d18-5b0dfe0c32bf",
+      "name": "Globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1020,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.attribute.value",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": []
+        }
+      },
+      "id": "449d0cb1-df2d-47aa-8ed6-68e043a21b2d",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        780
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "technicalspec",
+              "field2": "name"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6332572e-5c38-420e-85dd-2c3b9a36cb7b",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        660
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "889b2ba6-0c60-450b-9a2e-24f4d36ec5bd",
+      "name": "Create",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.attribute.value",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json[\"technicalspec\"] }}"
+            },
+            {
+              "fieldName": "attribute_id",
+              "fieldValue": "={{ $json[\"attribute_id\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "53bd4164-3c7d-44d0-94a1-a54b6f8e8b39",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        660
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT DISTINCT(technicalspec), technicalspeclabel AS attribute_id FROM transit_madison WHERE technicalspec IS NOT NULL;",
+        "options": {}
+      },
+      "id": "d0239116-bc42-40e1-b06d-ba550bfcdaa1",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1220,
+        540
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "ca4dc35c-b292-4289-af92-49b824a0a105",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        820
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "230",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.21.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "globals": {
+              "SupplierName": "Madison",
+              "PartnerId": 47,
+              "ProductTagId": 8,
+              "LeadTimeAddition": 3,
+              "Webhook": "update-madison",
+              "LastCount": "20052",
+              "CreateSequence": "create-categ-sync"
+            },
+            "name": "Madison",
+            "create-sequence": "create-categ-sync"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-08-08T15:46:20.698Z",
+      "updatedAt": "2023-08-08T15:46:20.698Z",
+      "id": "4S5wvtegUIvgvqYs",
+      "name": "PostgreSQL"
+    },
+    {
+      "createdAt": "2023-08-08T15:13:33.587Z",
+      "updatedAt": "2023-08-08T15:13:33.587Z",
+      "id": "bbI8zuoQ3XV0LUP0",
+      "name": "set"
+    },
+    {
+      "createdAt": "2023-08-08T15:53:13.355Z",
+      "updatedAt": "2023-08-08T15:53:13.355Z",
+      "id": "ojpualuYNuuEDwh1",
+      "name": "odoo"
+    },
+    {
+      "createdAt": "2023-08-08T15:13:29.759Z",
+      "updatedAt": "2023-08-08T15:13:29.759Z",
+      "id": "tBmb6plfpQ8YfeIK",
+      "name": "compare"
+    },
+    {
+      "createdAt": "2023-08-12T15:12:53.694Z",
+      "updatedAt": "2023-08-12T15:12:53.694Z",
+      "id": "veItN06CNprBqx4u",
+      "name": "webhook"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-08T13:45:50.000Z",
+  "versionId": "ad8d8d8d-b869-4ff1-bde5-43462bab6c07"
+}
