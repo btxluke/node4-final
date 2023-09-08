@@ -1,0 +1,229 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "attribute_ids write": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "MySQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "attribute_ids write",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-08T09:57:56.259Z",
+  "id": "l9zBPK5JQm2Vp3z9",
+  "name": "Data Update: GENERIC: Create: create-attribute-write",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "create-attribute-write",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "12901b58-0d44-4b2e-b04f-9aebcb1efd3e",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        760,
+        420
+      ],
+      "webhookId": "add16103-7cb1-4cfd-b054-a0034f25b898"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ $json.body.globals }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $json.body.name }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ebb4cdd4-57ce-428b-bb1a-f4dff376e4eb",
+      "name": "Globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        940,
+        420
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "8eb34037-ae44-48de-863b-688f68245d2d",
+      "name": "attribute_ids write",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        420
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "attribute_ids",
+              "value": "={{ [$json[\"brand\"],($json[\"colour\"] >= 1 ? $json[\"colour\"] : null),$json[\"productextrainfo\"],$json[\"size\"],$json[\"version\"]].filter(Boolean).map(Number).join(\",\") }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7f40143e-3a0e-4232-aa20-96e4204b21f4",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "=`Transit-{{ $(\"When Called By Another Workflow\").first().json[\"Name\"] }}`",
+          "mode": "name"
+        },
+        "updateKey": "ProductCode",
+        "columns": "attribute_ids"
+      },
+      "id": "459dcdee-cc4b-4fa7-b2c3-bfbe9bbc17e1",
+      "name": "MySQL2",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        420
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6",
+          "name": "node3: dataTransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT productcode, standardsize AS size, size AS version, colour, brand FROM transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase()}}; ",
+        "options": {}
+      },
+      "id": "e0f8a3bb-a1e6-4227-878f-8a459d5d171e",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1300,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "230",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.21.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "globals": {
+              "SupplierName": "Madison",
+              "PartnerId": 47,
+              "ProductTagId": 8,
+              "LeadTimeAddition": 3,
+              "Webhook": "update-madison",
+              "LastCount": "20052",
+              "CreateSequence": "create-categ-sync"
+            },
+            "name": "Madison",
+            "create-sequence": "create-categ-sync"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-08T10:03:14.000Z",
+  "versionId": "feb34d10-7f94-4a8f-a855-bfdcd6903fb1"
+}
