@@ -117,7 +117,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET \"size\" = {{$json.id}} WHERE \"size\" = {{\"'\"+\n$json.name\n.replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\\"/g, \"\\\\\\\"\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"\n}};",
+        "query": "UPDATE transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET \"size\" = {{$json.id}} WHERE \"size\" = {{\"'\"+\n$json.name\n.replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"\n}};",
         "options": {
           "queryBatching": "single"
         }
@@ -178,6 +178,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-05T17:37:00.000Z",
-  "versionId": "378f08f3-1312-4ff1-b762-9e0abc6f8675"
+  "updatedAt": "2023-09-08T11:04:39.000Z",
+  "versionId": "0852307c-2b3c-4cac-b4f6-d7428b65f836"
 }
