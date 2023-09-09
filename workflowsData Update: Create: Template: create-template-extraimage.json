@@ -1,0 +1,754 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move Binary Data": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image1": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image2": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move Binary Data1": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Move Binary Data2": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Image3": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image4": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move Binary Data3": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Move Binary Data4": {
+      "main": [
+        [
+          {
+            "node": "Merge7",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge5": {
+      "main": [
+        [
+          {
+            "node": "Merge7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge6": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge7": {
+      "main": [
+        [
+          {
+            "node": "Odoo3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Blank Picture",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Image",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Image1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Image2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Image3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Image4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-09T15:57:06.773Z",
+  "id": "95dcti2KNNswf1hN",
+  "name": "Data Update: Create: Template: create-template-extraimage",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "={{ $json.data[\"image_urls\"] }}",
+        "responseFormat": "file",
+        "options": {}
+      },
+      "id": "ef734843-980d-440b-8e21-19fe2e52f39e",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        140,
+        540
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "setAllData": false,
+        "destinationKey": "image_1920",
+        "options": {
+          "encoding": "base64"
+        }
+      },
+      "id": "19174855-3252-4bd6-ae6d-91d2655fb4bf",
+      "name": "Move Binary Data",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "crop",
+        "width": 1920,
+        "height": 1920,
+        "options": {}
+      },
+      "id": "6d3344c8-c1f8-413d-9133-f0993990731f",
+      "name": "Edit Image",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        880,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "crop",
+        "width": 1024,
+        "height": 1024,
+        "options": {}
+      },
+      "id": "03b3cafa-5e97-44f9-a4ac-b1c4200b41bb",
+      "name": "Edit Image1",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        880,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "crop",
+        "width": 512,
+        "height": 512,
+        "options": {}
+      },
+      "id": "92ffc149-e314-43dc-a954-5b9b4f7c2c75",
+      "name": "Edit Image2",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        880,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "setAllData": false,
+        "destinationKey": "image_1024",
+        "options": {
+          "encoding": "base64"
+        }
+      },
+      "id": "8c12bd43-b3a7-4f5b-94cd-49a79d23cf3a",
+      "name": "Move Binary Data1",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "setAllData": false,
+        "destinationKey": "image_512",
+        "options": {
+          "encoding": "base64"
+        }
+      },
+      "id": "b1a6dff3-07c2-4f21-8b59-0a717a2495b3",
+      "name": "Move Binary Data2",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "crop",
+        "width": 256,
+        "height": 256,
+        "options": {}
+      },
+      "id": "cda4f41d-ba51-4343-98d3-fac7d254c27a",
+      "name": "Edit Image3",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        880,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "crop",
+        "width": 128,
+        "height": 128,
+        "options": {}
+      },
+      "id": "fb2436d3-8b25-4dca-a350-3f2148df16f8",
+      "name": "Edit Image4",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        880,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "setAllData": false,
+        "destinationKey": "image_256",
+        "options": {
+          "encoding": "base64"
+        }
+      },
+      "id": "1bc0747b-6097-48b9-ae8b-211afeb5ea9e",
+      "name": "Move Binary Data3",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "setAllData": false,
+        "destinationKey": "image_128",
+        "options": {
+          "encoding": "base64"
+        }
+      },
+      "id": "81b475ad-9670-4284-ba3f-ed88151a479d",
+      "name": "Move Binary Data4",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.image",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "image_1920",
+              "fieldValue": "={{ $json[\"image_1920\"] }}"
+            },
+            {
+              "fieldName": "image_1024",
+              "fieldValue": "={{ $json[\"image_1024\"] }}"
+            },
+            {
+              "fieldName": "image_512",
+              "fieldValue": "={{ $json[\"image_512\"] }}"
+            },
+            {
+              "fieldName": "image_256",
+              "fieldValue": "={{ $json[\"image_256\"] }}"
+            },
+            {
+              "fieldName": "image_128",
+              "fieldValue": "={{ $json[\"image_128\"] }}"
+            },
+            {
+              "fieldName": "={{ $node[\"Globals\"].json[\"record_type\"] == \"template\" ? \"product_tmpl_id\" : \"product_variant_id\" }}",
+              "fieldValue": "={{ $node[\"Globals\"].json[\"id\"] }}"
+            },
+            {
+              "fieldName": "name",
+              "fieldValue": "={{$node[\"Globals\"].json.data[\"name\"]}} {{ $json.data.index }}"
+            }
+          ]
+        }
+      },
+      "id": "2359c9b4-18bb-45d3-8a95-4cca548324fa",
+      "name": "Odoo3",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        1080
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "mergeByIndex"
+      },
+      "id": "fcd93689-188a-442f-b50a-28d60426a04f",
+      "name": "Merge4",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "mergeByIndex"
+      },
+      "id": "acb9c51f-285d-4456-b441-5f84a605ad3e",
+      "name": "Merge5",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "mergeByIndex"
+      },
+      "id": "29ce57b4-13e0-494e-a664-e86d21e4e71c",
+      "name": "Merge6",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "mergeByIndex"
+      },
+      "id": "393fd527-4fae-4fea-8269-345bd05dcec8",
+      "name": "Merge7",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json[\"bufferSizeKB\"] }}",
+              "operation": "smallerEqual",
+              "value2": 1
+            }
+          ]
+        }
+      },
+      "id": "3a0bf308-92f3-4bba-99b8-1b1ccf2992ce",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        640,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const buffer = await this.helpers.getBinaryDataBuffer(0, 'data');\n\nreturn {\n  bufferSize: buffer.length,\n  bufferSizeKB: Number.parseFloat((buffer.length / 1024).toFixed(2))\n};"
+      },
+      "id": "1017d50f-c383-46ee-9c37-34d5371686ea",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        320,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "8b4d2530-441a-4788-892c-26de112a48b3",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        480,
+        540
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "67010560-c220-4b6a-97e7-d6dfc82f2847",
+      "name": "Blank Picture",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        880,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "path": "create-template-extraimage",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "224d8803-47d4-4aeb-aa4d-0b2141f208b2",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        340
+      ],
+      "webhookId": "add16103-7cb1-4cfd-b054-a0034f25b898"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "data",
+              "value": "={{ $json.json}}"
+            },
+            {
+              "name": "type",
+              "value": "={{ $json.json.record_type }}"
+            }
+          ],
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ $json.json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "444cda9a-47e9-41a9-b965-f8b106d0e816",
+      "name": "Globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        100,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "body",
+        "options": {}
+      },
+      "id": "0b743d5c-6833-4ffd-8f59-e0a0143a1fdb",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        -180,
+        340
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "607",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.21.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": [
+            {
+              "json": {
+                "id": 530159,
+                "record_type": "variant",
+                "name": "Volante KinetiCore Helmet Detail Image",
+                "image_urls": "https://www.madisonb2b.co.uk/netalogue/zoom/cz254102a.jpg",
+                "index": 1
+              },
+              "pairedItem": {
+                "item": 0
+              }
+            },
+            {
+              "json": {
+                "id": 530159,
+                "record_type": "variant",
+                "name": "Volante KinetiCore Helmet Detail Image",
+                "image_urls": "https://www.madisonb2b.co.uk/netalogue/zoom/cz254102b.jpg",
+                "index": 2
+              },
+              "pairedItem": {
+                "item": 1
+              }
+            },
+            {
+              "json": {
+                "id": 530159,
+                "record_type": "variant",
+                "name": "Volante KinetiCore Helmet Detail Image",
+                "image_urls": "https://www.madisonb2b.co.uk/netalogue/zoom/cz254102c.jpg",
+                "index": 3
+              },
+              "pairedItem": {
+                "item": 2
+              }
+            }
+          ]
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-09T17:01:10.000Z",
+  "versionId": "d62dd4e6-1817-4acb-b1e8-a1c686f51ec7"
+}
