@@ -1,0 +1,1937 @@
+{
+  "active": true,
+  "connections": {
+    "Retrieve Variants": {
+      "main": [
+        [
+          {
+            "node": "Multiple Variation",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rename Template": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supplier Price List": {
+      "main": [
+        [
+          {
+            "node": "Template",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Variant",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extra Images": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "end",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "MySQL5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Template": {
+      "main": [
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Variant": {
+      "main": [
+        [
+          {
+            "node": "Odoo4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update EAN etc": {
+      "main": [
+        [
+          {
+            "node": "Odoo5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "MySQL3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "end",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set2": {
+      "main": [
+        [
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SplitInBatches": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Extra Images1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Multiple Variation": {
+      "main": [
+        [
+          {
+            "node": "Item Lists2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists2": {
+      "main": [
+        [
+          {
+            "node": "Odoo6",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set3": {
+      "main": [
+        [
+          {
+            "node": "Item Lists3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists3": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Item Lists4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists4": {
+      "main": [
+        [
+          {
+            "node": "IF4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF4": {
+      "main": [
+        [
+          {
+            "node": "Array Items to remove",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "dump",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Array Items to remove": {
+      "main": [
+        [
+          {
+            "node": "Item Lists5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists5": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo6": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Item Lists6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists6": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Item Lists7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Item Lists7": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "Set4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set4": {
+      "main": [
+        [
+          {
+            "node": "Supplier Price List",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Update EAN etc",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Extra Images",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Main Variant Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Main Variant Image": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set5": {
+      "main": [
+        [
+          {
+            "node": "IF5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF5": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Image": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL5": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data": {
+      "main": [
+        [
+          {
+            "node": "Retrieve Variants",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Rename Template",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Set3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Set2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Set5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-09T14:59:14.780Z",
+  "id": "gu2OWMzKQyp6JAZY",
+  "name": "Data Update: Generic: Create: Resolve Variants: Multiple Groups",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "8ab5b226-21a1-46b5-a4df-960632bb5414",
+      "name": "Retrieve Variants",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        440,
+        1040
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e6d7ba32-4c6e-46ae-8870-63be230c3157",
+      "name": "Rename Template",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        420,
+        1540
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "update",
+        "customResourceId": "={{ $json[\"product_tmpl_id\"][0] }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json[\"name\"].split(\"],\")[1] }}"
+            },
+            {
+              "fieldName": "display_name",
+              "fieldValue": "={{ $json[\"name\"].split(\"],\")[1] }}"
+            }
+          ]
+        }
+      },
+      "id": "8fe1256d-5be2-4f2a-aedf-8279227ea7ce",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        580,
+        1540
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "b4f4f485-dc1e-43cb-acd5-21526e990ca5",
+      "name": "Supplier Price List",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.supplierinfo",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "partner_id",
+              "fieldValue": "={{ $json[\"supplier\"][1] }}"
+            },
+            {
+              "fieldName": "price",
+              "fieldValue": "={{ $json[\"yourprice\"] }}"
+            },
+            {
+              "fieldName": "company_id",
+              "fieldValue": "={{1}}"
+            },
+            {
+              "fieldName": "currency_id",
+              "fieldValue": "={{142}}"
+            },
+            {
+              "fieldName": "product_tmpl_id",
+              "fieldValue": "={{ $node[\"Supplier Price List\"].json[\"product_tmpl_id\"][0] }}"
+            },
+            {
+              "fieldName": "display_name",
+              "fieldValue": "={{ $json[\"supplier\"][0] }}"
+            },
+            {
+              "fieldName": "delay",
+              "fieldValue": "={{ $json[\"LeadTime\"] > 3 ? $json.LeadTime : 3 }}"
+            }
+          ]
+        }
+      },
+      "id": "a359e900-f364-4984-885d-e54d88f98aba",
+      "name": "Odoo2",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        3140,
+        700
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "ba754875-9e98-43f0-9529-949c72783b32",
+      "name": "Extra Images",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        1500
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "image_urls",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "e63533e8-4c08-4785-949d-a2d6563d679b",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        3680,
+        1380
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.image_urls ? true : false}}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "9ab1ff39-075f-48a1-ae65-862927508a47",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        3840,
+        1380
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "cc150b6d-8c12-440f-9274-642e79fe9606",
+      "name": "end",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        4680,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "27"
+      },
+      "id": "0794d7a4-a632-407f-a0e1-5050fa1afce0",
+      "name": "Extra Images1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        4320,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "image_urls",
+              "value": "={{[$json[\"AlternativeImage1Url\"],$json[\"AlternativeImage2Url\"],$json[\"AlternativeImage3Url\"]].filter(Boolean)}}"
+            },
+            {
+              "name": "record_type",
+              "value": "template"
+            },
+            {
+              "name": "name",
+              "value": "={{ $node[\"Extra Images\"].json[\"display_name\"].split(\",\")[1].split(\"(\")[0] }} Detail Image"
+            }
+          ],
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ $node[\"Extra Images\"].json[\"product_tmpl_id\"][0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "adddd4fe-247c-4987-bf1e-f27046ab6719",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        3520,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json[\"attribute_id\"][1] }}",
+              "value2": "Size"
+            }
+          ]
+        }
+      },
+      "id": "32fe9e21-658f-45d8-a635-7acccd4a36a9",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2900,
+        1500
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "d08b56a1-aea4-4d5f-9439-f2b9aece204a",
+      "name": "Template",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2960,
+        700
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "208abba6-0e25-4875-9ad2-42165abcc946",
+      "name": "Variant",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2960,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.supplierinfo",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "partner_id",
+              "fieldValue": "={{ $json[\"supplier\"][1] }}"
+            },
+            {
+              "fieldName": "price",
+              "fieldValue": "={{ $json[\"yourprice\"] }}"
+            },
+            {
+              "fieldName": "company_id",
+              "fieldValue": "={{1}}"
+            },
+            {
+              "fieldName": "currency_id",
+              "fieldValue": "={{142}}"
+            },
+            {
+              "fieldName": "display_name",
+              "fieldValue": "={{ $json[\"supplier\"][0] }}"
+            },
+            {
+              "fieldName": "delay",
+              "fieldValue": "={{ $json[\"LeadTime\"] > 3 ? $json.LeadTime : 3 }}"
+            },
+            {
+              "fieldName": "product_id",
+              "fieldValue": "={{ $json[\"ptav_product_variant_ids\"][0] }}"
+            }
+          ]
+        }
+      },
+      "id": "582f7dc3-d1be-4609-805c-b159806305dc",
+      "name": "Odoo4",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        3140,
+        860
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "0c64e1d4-b23d-4be9-af96-11d1be0f9940",
+      "name": "Update EAN etc",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.product",
+        "operation": "update",
+        "customResourceId": "={{ $json[\"ptav_product_variant_ids\"][0] }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "default_code",
+              "fieldValue": "={{ $json[\"productcode\"] }}"
+            },
+            {
+              "fieldName": "barcode",
+              "fieldValue": "={{ $json[\"ean\"].trim() }}"
+            },
+            {
+              "fieldName": "standard_price",
+              "fieldValue": "={{ Number( $json[\"yourprice\"]) }}"
+            },
+            {
+              "fieldName": "weight",
+              "fieldValue": "={{ $json[\"Weight\"] ? $json.weight : 5}}"
+            }
+          ]
+        }
+      },
+      "id": "5ae0e833-c11a-404e-866f-c90b83422ed7",
+      "name": "Odoo5",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2900,
+        1080
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "39268d5f-da98-4ac0-8b83-9b357bb196a7",
+      "name": "SplitInBatches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 1,
+      "position": [
+        3140,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "image_urls",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "188185bd-d9a7-4dad-883a-ca6b96752788",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        3840,
+        1680
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.image_urls ? true : false}}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "6528e7e3-1bdd-4ede-89f0-a456818b0bda",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "image_urls",
+              "value": "={{[$json[\"alternativeimage1url\"],$json[\"alternativeimage2url\"],$json[\"alternativeimage3url\"]].filter(Boolean)}}"
+            },
+            {
+              "name": "record_type",
+              "value": "variant"
+            },
+            {
+              "name": "name",
+              "value": "={{ $node[\"SplitInBatches\"].json[\"display_name\"].split(\",\")[1] }} Detail Image"
+            }
+          ],
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ $node[\"SplitInBatches\"].json[\"ptav_product_variant_ids\"][0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "291793be-6e15-49f5-8c46-af66b1bb82a4",
+      "name": "Set2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        3680,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "for (var i = 0; i < items.length; i++) {\n  items[i].json.index = i+1;\n}\n\nreturn items;"
+      },
+      "id": "1f76d41c-afb1-4588-b85b-0d31b6d51928",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        4160,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "for (var i = 0; i < items.length; i++) {\n  items[i].json.index = i+1;\n}\n\nreturn items;"
+      },
+      "id": "28f596bf-9b3b-4911-adb0-e598693dcc56",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        4160,
+        1800
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "4197cbae-922d-4de2-985f-9af3cdd9c908",
+      "name": "Multiple Variation",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        900,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template.attribute.value",
+        "operation": "get",
+        "customResourceId": "={{ $json[\"product_template_variant_value_ids\"] }}",
+        "options": {
+          "fieldsList": [
+            "product_attribute_value_id",
+            "id"
+          ]
+        }
+      },
+      "id": "6eb51f78-66da-45d1-ae92-228f7107836f",
+      "name": "Odoo6",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        1480
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "product_template_variant_value_ids",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "e1d62ee6-0687-4e87-8e86-557b518fb12b",
+      "name": "Item Lists2",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        1400
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "number": [
+            {
+              "name": "Size",
+              "value": "={{ $('Data').first().json[\"supplier\"][0] == \"Madison\" ? parseInt($json.standardsize) : parseInt($json[\"size\"]) }}"
+            },
+            {
+              "name": "Colour",
+              "value": "={{ parseInt($json[\"colour\"]) }}"
+            },
+            {
+              "name": "Version",
+              "value": "={{$('Data').first().json[\"supplier\"][0] == \"Madison\" ? parseInt($json.standardsize) : parseInt($json.version)}}"
+            },
+            {
+              "name": "attribute_ids",
+              "value": "={{      $json[\"attribute_ids\"].split(\",\").map(Number)    }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "347c01e0-5c0e-40bb-a94c-86b4c4560e9c",
+      "name": "Set3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        1740
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "attribute_ids",
+        "options": {}
+      },
+      "id": "149da08b-3a28-4e1e-9564-f62d312dead2",
+      "name": "Item Lists3",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "for (const item of $input.all()) {\n  \n  var attribute_id = item.json.attribute_ids;\n  var l = $input.all().length;\n  var attItems = $input.all();\n  var attcounter = 0;\n  var i = 0;\n\n  while (i < l) {\n    if (attItems[i].json.attribute_ids == attribute_id) {\n      attcounter++;\n      console.log(attcounter)\n    }\n    i++;\n  }\n  item.json.attcounter = attcounter;\n}\n\nreturn $input.all();"
+      },
+      "id": "5e58bf7b-69cf-4b5e-b657-c7981905c3e0",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates"
+      },
+      "id": "e9b1645c-d672-431b-a016-8af9f2c0f068",
+      "name": "Item Lists4",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        2160
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ parseInt($json[\"attcounter\"]) }}",
+              "operation": "largerEqual",
+              "value2": "= {{  parseInt( $(\"Postgres\").all().length )}}"
+            }
+          ]
+        }
+      },
+      "id": "3f558644-6ce2-4fc2-947e-4cc1efffc79f",
+      "name": "IF4",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        2160
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3de95f0f-dc64-4a40-beb0-d62cc9fd3133",
+      "name": "dump",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        2380
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "61b50cc6-7b03-4fc1-8de3-2c2fda606531",
+      "name": "Array Items to remove",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "130a5c0b-6874-47a3-b7ac-661178dfaeb4",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1780,
+        1760
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "aggregateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "attribute_ids",
+              "renameField": true,
+              "outputFieldName": "persistant_attribute_ids"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8d67dc86-5359-4bcc-a920-0082a29d40ed",
+      "name": "Item Lists5",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        2060
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  var l = item.json.persistant_attribute_ids.length;\n  var i = 0\nconsole.log(l)\n  while (i < l) {\n    var persistant = item.json.persistant_attribute_ids[i];\n    item.json.attribute_ids = item.json.attribute_ids.filter(function(item) {return item !== persistant });\n    i++\n  }\n\nitem.json.attribute_ids.sort(function(a,b) {return a - b;});  \n\n}\n\nreturn $input.all();"
+      },
+      "id": "5bd2eba6-6a0e-470d-87c3-b004317a02cf",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        2080,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  var l = $input.all().length;\n  var i = 0;\n console.log(l)\n  while (i < l) {\n    if(item.json.id == $input.all()[i].json.id) {\n      var insertArray = $input.all()[i].json.product_attribute_value_id;\n      var conCat = item.json.product_attribute_value_id.concat(insertArray);\n      item.json.product_attribute_value_id = conCat;\n    };\n    i++;\n  }\n  \n  item.json.product_attribute_value_id = item.json.product_attribute_value_id.filter(Number).filter(Boolean);\n  item.json.product_attribute_value_id.sort(function(a,b) {return a - b;});\n  \n   item.json.product_attribute_value_id =  item.json.product_attribute_value_id.filter(function(item, pos, self) {\n    return  self.indexOf(item) == pos;\n  });\n}\n\nreturn $input.all();"
+      },
+      "id": "b45bb4fd-0531-4352-8abb-d6558298bb54",
+      "name": "Code4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "product_template_variant_value_ids",
+              "field2": "id"
+            }
+          ]
+        },
+        "options": {
+          "clashHandling": {
+            "values": {
+              "resolveClash": "preferInput1"
+            }
+          }
+        }
+      },
+      "id": "c277d066-f29d-4ca7-bf53-fc6d2f86a984",
+      "name": "Merge3",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates"
+      },
+      "id": "37a01ffc-308c-4426-b0f4-f8f15bfdd9e9",
+      "name": "Item Lists6",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "product_attribute_value_id",
+              "field2": "attribute_ids"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "93b1a7c8-1476-46b3-97d1-9d9a30a58a93",
+      "name": "Merge4",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        2240,
+        1500
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates",
+        "compare": "allFieldsExcept",
+        "fieldsToExclude": {
+          "fields": [
+            {
+              "fieldName": "product_template_variant_value_ids"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1763ae2d-8bdb-4f7f-b3b3-0d26b522da22",
+      "name": "Item Lists7",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "number": [
+            {
+              "name": "ptav_product_variant_ids",
+              "value": "={{  [$json.id]  }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d5a3aa1b-30a1-4649-bca8-d4eee70b6e42",
+      "name": "Set4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        2380,
+        1500
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "209a768d-d877-40c2-9266-59ef509cb4a4",
+      "name": "Main Variant Image",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        2020
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "type",
+              "value": "product.product"
+            }
+          ],
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ $node[\"Split In Batches\"].json[\"ptav_product_variant_ids\"][0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a439cc15-862b-4a9e-8a41-35b2734cce72",
+      "name": "Set5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        3740,
+        2020
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.imageurl}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "57a670ab-de8f-4b88-b22b-315b554917d4",
+      "name": "IF5",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        3960,
+        2020
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "337136f0-5d7a-439a-bdaf-827be9e9ca57",
+      "name": "No Image",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3960,
+        2260
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "c52a7865-1cd2-481e-ae9d-3803e4d594f5",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 1,
+      "position": [
+        2960,
+        2020
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT AlternativeImage1Url,AlternativeImage2Url,AlternativeImage3Url FROM {{\"`Transit-\"+$json.supplier[0]+\"`\"}} WHERE ProductCode = {{\"'\"+$json.ProductCode+\"'\"}};",
+        "options": {}
+      },
+      "id": "59f3ac5d-98ce-4f38-a5bb-24ef50f2daed",
+      "name": "MySQL5",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.1,
+      "position": [
+        3240,
+        1380
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6",
+          "name": "node3: dataTransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "create-resolve-multiple-groups",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "fdc0fed7-ee22-4322-b4a8-1bb55199ecfc",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        100,
+        1040
+      ],
+      "webhookId": "82a4570d-3d22-4c67-829c-08e113c0dfa2"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $json.body"
+      },
+      "id": "5a09722b-853e-4e1e-80d4-951ddf5f7f30",
+      "name": "Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "height": 1601.663336049646,
+        "width": 2712.42580078982
+      },
+      "id": "d6d89102-2a2e-4ff6-b287-a40078a44245",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "height": 806.8808545101238,
+        "width": 661.2576944775276
+      },
+      "id": "498bab6b-5d07-489a-bf6d-0361d6f3e17d",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2680,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM {{\"transit_\"+$json.supplier[0].toLowerCase()}} WHERE variantgrouping = {{\"'\"+$json.name.split(\"[\")[1].split(\"]\")[0].replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"}};",
+        "options": {}
+      },
+      "id": "2d1d1378-4db1-41d8-8492-30c3653432b8",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        900,
+        1740
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "REPLACE INTO `Map-ProductStock` SET id = {{ $json[\"ptav_product_variant_ids\"] }}, product_tmpl_id = {{ $json[\"product_tmpl_id\"][0] }}, barcode = {{\"'\"+ $json[\"barcode\"]+\"'\" }}",
+        "options": {}
+      },
+      "id": "59d70abb-417b-46c3-a22b-aa792359e606",
+      "name": "MySQL3",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.1,
+      "position": [
+        2900,
+        1320
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT alternativeimage1url,alternativeimage2url,alternativeimage3url FROM {{\"transit_\"+$json.supplier[0].toLowerCase()}} WHERE ProductCode = {{\"'\"+$json.productcode+\"'\"}};",
+        "options": {}
+      },
+      "id": "8dfc30ee-fec8-4eb7-9091-62de3b41b1b9",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        3520,
+        1680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "height": 834.518239568733,
+        "width": 1785.1394803234516
+      },
+      "id": "e50770a9-086c-460f-8c12-289cdf545d86",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2698.2265789757403,
+        1660
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/create-template-extraimage",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{$('Code1').all()}}",
+        "options": {}
+      },
+      "id": "96fd8b07-d26b-4b73-8a0c-d061cd1bf6c3",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4320,
+        1800
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT ImageUrl FROM {{\"transit_\"+$json.supplier[0].toLowerCase()}} WHERE productcode = {{\"'\"+$json.productcode+\"'\"}};",
+        "options": {}
+      },
+      "id": "68c0083f-fc31-4020-8780-eacdb19b0089",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        3400,
+        2020
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/create-template-mainimage",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "f040e35e-7820-432a-b3db-db07350256bf",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4180,
+        2020
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "921",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.21.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": [
+            {
+              "json": {
+                "id": 530159,
+                "product_template_variant_value_ids": [
+                  329580,
+                  329577
+                ],
+                "product_tmpl_id": [
+                  153872,
+                  "Volante KinetiCore Helmet, Matt "
+                ],
+                "name": "Volante KinetiCore Helmet, Matt ",
+                "supplier": [
+                  "Madison",
+                  47
+                ]
+              },
+              "pairedItem": {
+                "item": 0
+              }
+            },
+            {
+              "json": {
+                "id": 530156,
+                "product_template_variant_value_ids": [
+                  329579,
+                  329578
+                ],
+                "product_tmpl_id": [
+                  153872,
+                  "Volante KinetiCore Helmet, Matt "
+                ],
+                "name": "Volante KinetiCore Helmet, Matt ",
+                "supplier": [
+                  "Madison",
+                  47
+                ]
+              },
+              "pairedItem": {
+                "item": 1
+              }
+            },
+            {
+              "json": {
+                "id": 530157,
+                "product_template_variant_value_ids": [
+                  329579,
+                  329577
+                ],
+                "product_tmpl_id": [
+                  153872,
+                  "Volante KinetiCore Helmet, Matt "
+                ],
+                "name": "Volante KinetiCore Helmet, Matt ",
+                "supplier": [
+                  "Madison",
+                  47
+                ]
+              },
+              "pairedItem": {
+                "item": 2
+              }
+            },
+            {
+              "json": {
+                "id": 530158,
+                "product_template_variant_value_ids": [
+                  329580,
+                  329578
+                ],
+                "product_tmpl_id": [
+                  153872,
+                  "Volante KinetiCore Helmet, Matt "
+                ],
+                "name": "Volante KinetiCore Helmet, Matt ",
+                "supplier": [
+                  "Madison",
+                  47
+                ]
+              },
+              "pairedItem": {
+                "item": 3
+              }
+            }
+          ]
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Data": [
+      {
+        "json": {
+          "id": 530159,
+          "product_template_variant_value_ids": [
+            329580,
+            329577
+          ],
+          "product_tmpl_id": [
+            153872,
+            "[VARVOLANTEKC],Volante KinetiCore Helmet, Matt "
+          ],
+          "name": "[VARVOLANTEKC],Volante KinetiCore Helmet, Matt ",
+          "supplier": [
+            "Madison",
+            47
+          ]
+        }
+      },
+      {
+        "json": {
+          "id": 530156,
+          "product_template_variant_value_ids": [
+            329579,
+            329578
+          ],
+          "product_tmpl_id": [
+            153872,
+            "[VARVOLANTEKC],Volante KinetiCore Helmet, Matt "
+          ],
+          "name": "[VARVOLANTEKC],Volante KinetiCore Helmet, Matt ",
+          "supplier": [
+            "Madison",
+            47
+          ]
+        }
+      },
+      {
+        "json": {
+          "id": 530157,
+          "product_template_variant_value_ids": [
+            329579,
+            329577
+          ],
+          "product_tmpl_id": [
+            153872,
+            "[VARVOLANTEKC],Volante KinetiCore Helmet, Matt "
+          ],
+          "name": "[VARVOLANTEKC],Volante KinetiCore Helmet, Matt ",
+          "supplier": [
+            "Madison",
+            47
+          ]
+        }
+      },
+      {
+        "json": {
+          "id": 530158,
+          "product_template_variant_value_ids": [
+            329580,
+            329578
+          ],
+          "product_tmpl_id": [
+            153872,
+            "[VARVOLANTEKC],Volante KinetiCore Helmet, Matt "
+          ],
+          "name": "[VARVOLANTEKC],Volante KinetiCore Helmet, Matt ",
+          "supplier": [
+            "Madison",
+            47
+          ]
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-09T17:02:43.000Z",
+  "versionId": "1b190b8e-70a4-475d-a5cd-017512901192"
+}
