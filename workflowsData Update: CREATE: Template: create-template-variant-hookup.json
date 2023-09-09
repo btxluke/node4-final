@@ -1,0 +1,491 @@
+{
+  "active": true,
+  "connections": {
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Odoo3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "Item Lists2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists2": {
+      "main": [
+        [
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Odoo3": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-09T12:04:54.631Z",
+  "id": "CU87e993xk6YBkhO",
+  "name": "Data Update: CREATE: Template: create-template-variant-hookup",
+  "nodes": [
+    {
+      "parameters": {
+        "fieldToSplitOut": "common_attribute_ids",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "45e907cf-e186-4949-bb72-c4aec5e219bc",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        440,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.attribute.value",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": []
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "id",
+              "value": "={{ $json.common_attribute_ids }}"
+            }
+          ]
+        }
+      },
+      "id": "1f04155a-4300-46f0-baf8-e9ea7f88c9af",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        640,
+        460
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "id",
+              "field2": "common_attribute_ids"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "876a3414-3739-4250-84c3-df68e625122f",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        860,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "common_attribute_ids",
+              "value": "={{ parseInt($json[\"common_attribute_ids\"])}}"
+            },
+            {
+              "name": "product_template_id",
+              "value": "={{ $json[\"product_template_id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "90a3421e-ca7c-492c-a8fd-b49964a380cf",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        640,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ $json[\"common_attribute_ids\"] }}"
+            },
+            {
+              "name": "product_template_id",
+              "value": "={{ $json[\"product_template_id\"] }}"
+            }
+          ],
+          "string": [
+            {
+              "name": "attribute_id",
+              "value": "={{ $json[\"attribute_id\"] }}"
+            },
+            {
+              "name": "display_name",
+              "value": "={{ $json[\"display_name\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "29444d9d-f577-4156-87d0-efa660eb4662",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template.attribute.line",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "attribute_id",
+              "fieldValue": "={{ $json[\"attribute_id\"][0] }}"
+            },
+            {
+              "fieldName": "value_ids",
+              "fieldValue": "={{ $json[\"id\"] }}"
+            },
+            {
+              "fieldName": "product_tmpl_id",
+              "fieldValue": "={{ $node[\"Data\"].json[\"product_template_id\"] }}"
+            },
+            {
+              "fieldName": "active",
+              "fieldValue": "={{true}}"
+            }
+          ]
+        }
+      },
+      "id": "40042543-aea9-45a1-97ef-aeb96c15f547",
+      "name": "Odoo3",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        960
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "aggregateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0301782f-68a4-4825-8228-566e1d402bdd",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {
+          "clashHandling": {
+            "values": {
+              "resolveClash": "preferInput1"
+            }
+          }
+        }
+      },
+      "id": "eee9477c-4a1f-4a01-bab4-a42e17b28ebd",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nvar newOutput = [];\nvar calledTypes = [];\n//iterate and get attribute labels \nfor (const item of $input.all()) {\n  var group = item.json.attribute_id[1];\n  calledTypes.push(group)\n}\n\n//filter duplicates\nconst distinct = (value, index, self) => {\n  return self.indexOf(value) === index;\n}\nconst distinctTypes = calledTypes.filter(distinct);\n\n//iterate through, and push into groups\nvar i = 0;\nvar l = distinctTypes.length;\n\nwhile(i<l) {\n  var attributeGroup = distinctTypes[i];\n  var groupArray = [];\n  var i2 = 0;\n  var l2 = $input.all().length;\n\n  while (i2<l2) {\n    if ($input.all()[i2].json.attribute_id[1] == attributeGroup) {\n      groupArray.push($input.all()[i2].json);\n    };\n    i2++;\n  }\n  \n  var json = {};\n  json.grouping = attributeGroup;\n  json.list = groupArray;\n  newOutput.push(json);\n\n  i++; \n}\n\nreturn newOutput;"
+      },
+      "id": "9c930067-a815-41e8-b54e-5cd781c2dc66",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "0c0f363f-b0a2-48af-98ea-5f8a283e973c",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "list",
+        "options": {}
+      },
+      "id": "dd2836a4-69dc-4faa-940f-09bfcf07431e",
+      "name": "Item Lists2",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        860,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "path": "create-template-variant-hookup",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "5b556429-e9bb-4985-a39b-1678d20b1143",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        60,
+        680
+      ],
+      "webhookId": "9f45d2bf-88c3-4890-8b0f-245142dcd696"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $json.body"
+      },
+      "id": "b1695fde-30d5-4e32-a59b-055321ac369c",
+      "name": "Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        680
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "68",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.21.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "product_template_id": 153869,
+            "common_attribute_ids": [
+              2977,
+              64,
+              3736
+            ]
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-09T17:02:51.000Z",
+  "versionId": "c4f287ea-ac6a-47fd-9c2e-b12b327935fe"
+}
