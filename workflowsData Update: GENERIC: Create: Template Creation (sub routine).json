@@ -1,0 +1,1806 @@
+{
+  "active": false,
+  "connections": {
+    "VariantGroup Name": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Split attribute_ids",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "Item Lists2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        [
+          {
+            "node": "IF5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Picture": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Main Image": {
+      "main": [
+        [
+          {
+            "node": "Variant Group Routine",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Variant Group Routine": {
+      "main": [
+        [
+          {
+            "node": "Set2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Variant Group Hookup": {
+      "main": [
+        [
+          {
+            "node": "Set product_tmpl_id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set2": {
+      "main": [
+        [
+          {
+            "node": "IF7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set product_tmpl_id": {
+      "main": [
+        [
+          {
+            "node": "Resolve Variant Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split attribute_ids": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "NoOp",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "VariantGroup Name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Variant Group Routine",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Main Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IF4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set3": {
+      "main": [
+        [
+          {
+            "node": "Item Lists3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists3": {
+      "main": [
+        [
+          {
+            "node": "Item Lists4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists4": {
+      "main": [
+        [
+          {
+            "node": "Item Lists5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists5": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "IF6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Picture1": {
+      "main": [
+        [
+          {
+            "node": "Set4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set4": {
+      "main": [
+        [
+          {
+            "node": "IF3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Main Image1": {
+      "main": [
+        [
+          {
+            "node": "Variant Group Routine1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Variant Group Routine1": {
+      "main": [
+        [
+          {
+            "node": "Set5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Variant Group Hookup1": {
+      "main": [
+        [
+          {
+            "node": "Set product_tmpl_id1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set5": {
+      "main": [
+        [
+          {
+            "node": "Variant Group Hookup1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set product_tmpl_id1": {
+      "main": [
+        [
+          {
+            "node": "Resolve Variant Details1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split attribute_ids1": {
+      "main": [
+        [
+          {
+            "node": "Set3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF3": {
+      "main": [
+        [
+          {
+            "node": "Variant Group Routine1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Main Image1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "Split attribute_ids1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resolve Variant Details1": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF4": {
+      "main": [
+        [
+          {
+            "node": "NoOp1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF5": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Add Picture",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF6": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Add Picture1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing1": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resolve Variant Details": {
+      "main": [
+        [
+          {
+            "node": "Set6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF7": {
+      "main": [
+        [
+          {
+            "node": "Set product_tmpl_id",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Variant Group Hookup",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-09T10:24:19.527Z",
+  "id": "mH04Tb4DE4OQKY7f",
+  "name": "Data Update: GENERIC: Create: Template Creation (sub routine)",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "const a1= items[0].json.productname; \n\nif (items.length > 1) {\n  const a2= items[1].json.productname;\n  const L = a1.length;\n  var i= 0;\n  while(i<L && a1.charAt(i)=== a2.charAt(i)) i++;\n} else {\n  var i= items[0].json.productname.length;\n}\nreturn [{\n  json: {\n    commonDescription : a1.substring(0, i)\n  }\n}];\n"
+      },
+      "id": "0e74f75a-bd7b-442d-ab2e-cfe4e2f54ccc",
+      "name": "VariantGroup Name",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        540,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {}
+      },
+      "id": "3857a187-0daa-493c-af61-241d5f6230ee",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        760,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "number": [
+            {
+              "name": "common_attribute_ids",
+              "value": "={{$json.attribute_ids.split(\",\").map(Number)}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2fec5848-09ae-4e62-bddb-5d21d1f728bb",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        560,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "common_attribute_ids",
+        "options": {}
+      },
+      "id": "f2bae3f0-56ad-42d8-aabe-e6a29c306bc7",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        740,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates"
+      },
+      "id": "5c55b1a9-8c07-4a01-b6ee-55b024a6a271",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        880,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "aggregateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "common_attribute_ids"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5f2ee30a-90fa-474c-8a3a-e356752de4b7",
+      "name": "Item Lists2",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {
+          "clashHandling": {
+            "values": {
+              "resolveClash": "preferInput2"
+            }
+          }
+        }
+      },
+      "id": "3c189659-527b-4a1b-b40b-5108eed36e67",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1380,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "active",
+              "fieldValue": "={{ true }}"
+            },
+            {
+              "fieldName": "allow_out_of_stock_order",
+              "fieldValue": "={{true}}"
+            },
+            {
+              "fieldName": "available_in_pos",
+              "fieldValue": "={{$json.categ_id == 101 ? false : true}}"
+            },
+            {
+              "fieldName": "available_threshold",
+              "fieldValue": "={{ 5 }}"
+            },
+            {
+              "fieldName": "categ_id",
+              "fieldValue": "={{ $json[\"categ_id\"] }}"
+            },
+            {
+              "fieldName": "default_code",
+              "fieldValue": "={{ $json[\"productcode\"] }}"
+            },
+            {
+              "fieldName": "description",
+              "fieldValue": "={{ $json[\"longdescription\"] }}"
+            },
+            {
+              "fieldName": "name",
+              "fieldValue": "=VARIANT GROUP [{{ $json[\"variantgrouping\"] }}],{{ $json[\"commonDescription\"] }}"
+            },
+            {
+              "fieldName": "list_price",
+              "fieldValue": "={{ $json[\"rrp\"] }}"
+            },
+            {
+              "fieldName": "is_published",
+              "fieldValue": "={{true}}"
+            },
+            {
+              "fieldName": "website_published",
+              "fieldValue": "={{$json.categ_id == 101 ? false : true}}"
+            },
+            {
+              "fieldName": "detailed_type",
+              "fieldValue": "product"
+            },
+            {
+              "fieldName": "type",
+              "fieldValue": "product"
+            },
+            {
+              "fieldName": "website_meta_description",
+              "fieldValue": "=Shop for {{ $json[\"productname\"] }} for £{{     ((Math.round(($json[\"rrp\"]*(1+($json.vat/100)))*100))/100).toFixed(2)    }} at BIKETRAX "
+            },
+            {
+              "fieldName": "website_meta_keywords",
+              "fieldValue": "={{ $json[\"keywords\"] }}"
+            },
+            {
+              "fieldName": "website_description",
+              "fieldValue": "={{ $json[\"longdescription\"] }}"
+            },
+            {
+              "fieldName": "pos_categ_id",
+              "fieldValue": "={{ $json.categ_id == 101 ? false : $json[\"pos_categ_id\"]}}"
+            },
+            {
+              "fieldName": "public_categ_ids",
+              "fieldValue": "={{$json.categ_id == 101 ? false : Array($json.public_categ_ids.toString()).map(Number)}}"
+            },
+            {
+              "fieldName": "product_tag_ids",
+              "fieldValue": "={{ [$(\"Globals\").first().json[\"globals\"][\"ProductTagId\"]] }}"
+            },
+            {
+              "fieldName": "property_account_expense_id",
+              "fieldValue": "={{49}}"
+            },
+            {
+              "fieldName": "property_account_income_id",
+              "fieldValue": "={{ 46 }}"
+            },
+            {
+              "fieldName": "standard_price",
+              "fieldValue": "={{ $json[\"yourprice\"] }}"
+            },
+            {
+              "fieldName": "barcode",
+              "fieldValue": "={{ $json[\"ean\"] }}"
+            },
+            {
+              "fieldName": "weight",
+              "fieldValue": "={{ $json[\"weight\"] ? $json.weight : 0.5 }}"
+            },
+            {
+              "fieldName": "sale_delay",
+              "fieldValue": "={{ $(\"Globals\").first().json[\"globals\"][\"LeadTimeAddition\"] }}"
+            },
+            {
+              "fieldName": "supplier_taxes_id",
+              "fieldValue": "={{$json.vat == 20 ? [11] : [3]}}"
+            },
+            {
+              "fieldName": "display_name",
+              "fieldValue": "={{ $json[\"commonDescription\"] }}"
+            },
+            {
+              "fieldName": "taxes_id",
+              "fieldValue": "={{$json.vat == 20 ? [10] : [1]}}"
+            }
+          ]
+        }
+      },
+      "id": "33f9b6c0-339d-4e01-b5cd-75401450f97b",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        800
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {},
+      "id": "b40e1f19-bf5a-4f15-bec5-cf63d909ab38",
+      "name": "Add Picture",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        560,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "data",
+              "value": "={{ $node[\"Postgres\"].data}}"
+            }
+          ],
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ $node[\"Odoo1\"].json[\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8aa406af-a820-4ad9-ba74-36b1e92e1d12",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        740,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "25"
+      },
+      "id": "e86643e3-7d95-436a-8a04-1946bbcfaa33",
+      "name": "Main Image",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        1020
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {},
+      "id": "29427b03-010e-43c4-b8fd-232c18296f42",
+      "name": "Variant Group Routine",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        560,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "55"
+      },
+      "id": "dd6003cd-d035-44e0-8339-7d19582f3d3d",
+      "name": "Variant Group Hookup",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "common_attribute_ids",
+              "value": "={{ $node[\"Merge1\"].json[\"common_attribute_ids\"] }}"
+            }
+          ],
+          "number": [
+            {
+              "name": "product_template_id",
+              "value": "={{ $node[\"Odoo1\"].json[\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6fdbe500-b1f3-40a5-a7d4-44e2c9ba3350",
+      "name": "Set2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        780,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "product_tmpl_id",
+              "value": "={{ $node[\"Odoo1\"].json[\"id\"] }}"
+            }
+          ],
+          "string": [
+            {
+              "name": "supplier",
+              "value": "={{[$(\"When Called By Another Workflow\").first().json[\"Name\"],$(\"When Called By Another Workflow\").first().json[\"Globals\"][\"PartnerId\"]]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "816011c0-5492-4996-9539-7670881140b5",
+      "name": "Set product_tmpl_id",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "26"
+      },
+      "id": "04605131-0a8e-4325-a0f2-d95c0379b86c",
+      "name": "Resolve Variant Details",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        1260
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "b4e30726-e16f-4edf-83b3-3bbaa167cc88",
+      "name": "Split attribute_ids",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        240,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json[\"categ_id\"] }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "8d9ac282-192e-4a10-aac1-d849c186ad15",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        220,
+        580
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "9f5b1eda-92bd-40be-be86-d07c49622d97",
+      "name": "NoOp",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        540,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json[\"data\"][\"imageurl\"] }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "0b71c7c5-a348-45d3-9862-7c24067133da",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        960,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json[\"rrp\"] }}",
+              "operation": "equal",
+              "value2": "={{ $input.first().json.rrp }}"
+            }
+          ]
+        }
+      },
+      "id": "b4f3d7e4-f5f7-48db-9966-1f0504645102",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "c896eeae-b341-4677-a219-1481a8cdab1e",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 1,
+      "position": [
+        460,
+        1500
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "number": [
+            {
+              "name": "common_attribute_ids",
+              "value": "={{$json.attribute_ids.split(\",\").map(Number)}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "50e7050e-a344-441e-a6a6-9f92ce52dd5d",
+      "name": "Set3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "common_attribute_ids",
+        "options": {}
+      },
+      "id": "82ed1bc5-9ee2-4b9b-8b8b-34103aabcd09",
+      "name": "Item Lists3",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates"
+      },
+      "id": "57953730-50d6-4f87-a418-71064ba9416c",
+      "name": "Item Lists4",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "aggregateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "common_attribute_ids"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c56fad52-a3e8-41ca-9f8c-1d1b00023c9b",
+      "name": "Item Lists5",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "multiplex",
+        "options": {
+          "clashHandling": {
+            "values": {
+              "resolveClash": "preferInput2"
+            }
+          }
+        }
+      },
+      "id": "1af3822d-a133-49c5-a6dd-468ef2cdb684",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1880,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "active",
+              "fieldValue": "={{ true }}"
+            },
+            {
+              "fieldName": "allow_out_of_stock_order",
+              "fieldValue": "={{true}}"
+            },
+            {
+              "fieldName": "available_in_pos",
+              "fieldValue": "={{$json.categ_id == 101 ? false : true}}"
+            },
+            {
+              "fieldName": "available_threshold",
+              "fieldValue": "={{ 5 }}"
+            },
+            {
+              "fieldName": "categ_id",
+              "fieldValue": "={{ $json[\"categ_id\"] }}"
+            },
+            {
+              "fieldName": "default_code",
+              "fieldValue": "={{ $json[\"ProductCode\"] }}"
+            },
+            {
+              "fieldName": "description",
+              "fieldValue": "={{ $json[\"LongDescription\"] }}"
+            },
+            {
+              "fieldName": "name",
+              "fieldValue": "=VARIANT GROUP [{{ $json[\"VariantGrouping\"] }}],{{ $json[\"ProductName\"] }}"
+            },
+            {
+              "fieldName": "list_price",
+              "fieldValue": "={{ $json[\"Rrp\"] }}"
+            },
+            {
+              "fieldName": "is_published",
+              "fieldValue": "={{true}}"
+            },
+            {
+              "fieldName": "website_published",
+              "fieldValue": "={{$json.categ_id == 101 ? false : true}}"
+            },
+            {
+              "fieldName": "detailed_type",
+              "fieldValue": "product"
+            },
+            {
+              "fieldName": "type",
+              "fieldValue": "product"
+            },
+            {
+              "fieldName": "website_meta_description",
+              "fieldValue": "=Shop for {{ $json[\"ProductName\"] }} for £{{     ((Math.round(($json[\"UnitMsrp\"]*(1+($json.Vat/100)))*100))/100).toFixed(2)    }} at BIKETRAX "
+            },
+            {
+              "fieldName": "website_meta_keywords",
+              "fieldValue": "={{ $json[\"Keywords\"] }}"
+            },
+            {
+              "fieldName": "website_description",
+              "fieldValue": "={{ $json[\"LongDescription\"] }}"
+            },
+            {
+              "fieldName": "pos_categ_id",
+              "fieldValue": "={{$json.categ_id == 101 ? false : $json[\"pos_categ_id\"]}}"
+            },
+            {
+              "fieldName": "public_categ_ids",
+              "fieldValue": "={{$json.categ_id == 101 ? false : Array($json.public_categ_ids.toString()).map(Number)}}"
+            },
+            {
+              "fieldName": "product_tag_ids",
+              "fieldValue": "={{ [$(\"When Called By Another Workflow\").first().json[\"Globals\"][\"ProductTagId\"]] }}"
+            },
+            {
+              "fieldName": "property_account_expense_id",
+              "fieldValue": "={{49}}"
+            },
+            {
+              "fieldName": "property_account_income_id",
+              "fieldValue": "={{ 46 }}"
+            },
+            {
+              "fieldName": "standard_price",
+              "fieldValue": "={{ $json[\"YourPrice\"] }}"
+            },
+            {
+              "fieldName": "barcode",
+              "fieldValue": "={{ $json[\"Ean\"] }}"
+            },
+            {
+              "fieldName": "weight",
+              "fieldValue": "={{ $json[\"Weight\"] ? $json.Weight : 0.5}}"
+            },
+            {
+              "fieldName": "sale_delay",
+              "fieldValue": "={{ $(\"When Called By Another Workflow\").first().json[\"Globals\"][\"LeadTimeAddition\"] }}"
+            },
+            {
+              "fieldName": "supplier_taxes_id",
+              "fieldValue": "={{$json.Vat = 20 ? [11] : [3]}}"
+            },
+            {
+              "fieldName": "display_name",
+              "fieldValue": "={{ $json[\"commonDescription\"] }}"
+            },
+            {
+              "fieldName": "taxes_id",
+              "fieldValue": "={{$json.Vat = 20 ? [10] : [1]}}"
+            }
+          ]
+        }
+      },
+      "id": "421fb2ac-3fa4-481b-9697-c91d96c7a9da",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2040,
+        1700
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {},
+      "id": "3cc973b4-d52a-4f00-83e2-8811ac284989",
+      "name": "Add Picture1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        1920
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "data",
+              "value": "={{ $node[\"MySQL1\"].data}}"
+            }
+          ],
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ $node[\"Odoo\"].json[\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3503c177-625f-4963-8c54-25ddeeb3e16d",
+      "name": "Set4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        1920
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "25"
+      },
+      "id": "5b0916a9-a83c-43d0-b254-c355b35c29ba",
+      "name": "Main Image1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        1920
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5c565ca2-b5c2-4d98-9065-d85bab146aa0",
+      "name": "Variant Group Routine1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        2160
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "55"
+      },
+      "id": "d4f08fb5-8e4a-46b5-890a-d6b67a73a5ac",
+      "name": "Variant Group Hookup1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        2160
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "common_attribute_ids",
+              "value": "={{ $node[\"Merge2\"].json[\"common_attribute_ids\"] }}"
+            }
+          ],
+          "number": [
+            {
+              "name": "product_template_id",
+              "value": "={{ $json[\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "89a76d30-b435-470a-a753-82b7cd786100",
+      "name": "Set5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        2160
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "product_tmpl_id",
+              "value": "={{ $node[\"Odoo\"].json[\"id\"] }}"
+            }
+          ],
+          "string": [
+            {
+              "name": "supplier",
+              "value": "={{[$(\"When Called By Another Workflow\").first().json[\"Name\"],$(\"When Called By Another Workflow\").first().json[\"Globals\"][\"PartnerId\"]]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1c562a1f-d6af-42ee-906a-e3c25ce489ff",
+      "name": "Set product_tmpl_id1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1800,
+        2160
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "26"
+      },
+      "id": "9d57d2bd-84a1-4aa7-b3c4-3186d7993415",
+      "name": "Resolve Variant Details1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        2160
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "a9890332-44b4-4fcc-9559-06fcbbd2d1e7",
+      "name": "Split attribute_ids1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        740,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json[\"data\"][\"ImageUrl\"] }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "e1bd63e3-d56e-4f18-89ae-aa488c3b5bad",
+      "name": "IF3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        1920
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json[\"categ_id\"] }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "ef3def97-7f03-4fc7-9c6c-328efa9c2374",
+      "name": "IF4",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -500,
+        1380
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "2fc85515-22d7-47cd-b9d5-739d300ff1a3",
+      "name": "NoOp1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.error}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "f0e1cc8a-2709-46df-a605-9dc822948eb0",
+      "name": "IF5",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        800
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5cb828b1-52d4-421d-bd2e-7163e84d346f",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2020,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.error}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "24078ebc-f16f-4b69-8dff-3e35af00bc32",
+      "name": "IF6",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2200,
+        1700
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "df7b63db-96fe-4035-ac30-3784ea7c2b2f",
+      "name": "No Operation, do nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2460,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "boolean": [
+            {
+              "name": "success",
+              "value": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "41437866-427d-4703-9e4b-e305ff1f79b2",
+      "name": "Set6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        1260
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.common_attribute_ids[0] }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "99aac621-ab2e-4d8e-bc83-78eeb3087a8a",
+      "name": "IF7",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        1260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM {{ \"`Transit-\"+ $(\"When Called By Another Workflow\").first().json[\"Name\"]+\"`\" }} WHERE ProductCode = {{\"'\"+$node[\"Split In Batches\"].json.ProductCode+\"'\"}};",
+        "options": {}
+      },
+      "id": "5a15e452-5619-424e-9cbd-448bfa7d49e4",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.1,
+      "position": [
+        180,
+        1700
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6",
+          "name": "node3: dataTransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "create-template-subroutine",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "eb949c18-0ece-4d03-9fa1-03d7bd665250",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -760,
+        400
+      ],
+      "webhookId": "add16103-7cb1-4cfd-b054-a0034f25b898"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ $json.body.globals }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $json.body.name }}"
+            },
+            {
+              "name": "variantgrouping",
+              "value": "={{ $json.body.variantgrouping }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cd040e75-1151-4d87-b5c5-3ce275d5c43a",
+      "name": "Globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -580,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "height": 577.0568205128204,
+        "width": 1705.7573519813536
+      },
+      "id": "3aa7cb36-5261-4091-932c-83b65b828cff",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        187.9999999999991,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM {{  \"transit_\" + $(\"Globals\").first().json[\"name\"] }} WHERE VariantGrouping = {{\"'\"+$json.variantgrouping\n        .replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"}};",
+        "options": {}
+      },
+      "id": "b69ec45d-d849-4758-a8ef-d448c5256caf",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -400,
+        400
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Merge2": [
+      {
+        "json": {
+          "commonDescription": "Wolf Tooth CAMO Elliptical Chainring Drop-Stop B / 30T",
+          "ProductCode": "WTELPCAMOAL30B",
+          "Ean": "810006808001",
+          "ProductName": "Wolf Tooth CAMO Elliptical Chainring Drop-Stop B / 30T",
+          "YourPrice": "35.40",
+          "Rrp": "49.00",
+          "Vat": 20,
+          "StockCount": "0",
+          "ShortDescription": null,
+          "LongDescription": "<p>The Wolf Tooth CAMO Elliptical Chainring is not only beautifully machined and lightweight but utilises a patented wide-narrow design that is perfectly suited to 1x setups – dropped chains are a thing of the past. Unlock your dream drivetrain configuration and satisfy your inner tweaker.</p>\n<p>Bred from ice-cold Minneapolis winters and explicitly designed to work perfectly with Wolf Tooth's CAMO Spider, this chainring means more time spent riding and less fumbling with dropped chains.</p>\n<p>In line with Wolf Tooth’s guiding ethos of providing unrivalled design innovation, reliability and durability, this chainring employs a patented Drop-Stop® wide-narrow tooth profile, which not only keeps the chain securely in place on single chainring setups but dislodges mud, dirt and excess precipitation more efficiently.</p>\n<p>Synonymous with ultra-high-end custom builds and stalwart steeds alike, Wolf Tooth chainrings are machined entirely in-house at Wolf Tooth’s HQ in Minnesota, USA. The anodised finish and machined lettering that adorn every chainring are hallmarks of master craftsmanship. If you’re a discerning cyclist looking to invest in a premium grade chainring that will outlast its competitors and function perfectly on a 1x setup, this is the only way to go.</p>\n<p><strong>CAMO</strong></p>\n<p>Wolf Tooth developed the Chainline and Material Optimisation (CAMO) design to let you replace your stock direct mount style chainrings with a spider and traditional chainring setup.</p>\n<p>The spider, used in conjunction with a Wolf Tooth chainring, means that you can set up the perfect chainline for greater shifting precision. It also reduces the cost of future replacement chainrings and enables you to add a flash of colour to your ride.</p>\n<p><strong>PowerTrac</strong></p>\n<p>Wolf Tooth’s PowerTrac design, as the name indicates, is driven by a concern for power and traction – and crucially for you, premised on a wealth of knowledge from precision engineers who also love to ride bikes.</p>\n<p>A growing number of riders are converting to elliptical chainrings on 1x setups, for the simple reason that they have been demonstrated to improve ride quality.</p>\n<p>The idea behind elliptical chainrings can be summarised as follows: biomechanical power output varies throughout a pedal stroke. Positions where power is higher have a larger diameter section of chainring, and thus a greater engagement area, which translates into greater forward propulsion. At positions where biomechanical power is lower, a smaller chainring diameter means greater efficiency in rotation. Overall, what this means for you is maximised power output throughout each pedal stroke.</p>\n<p>Wolf Tooth notes that elliptical rings also mean steadier torque on the rear wheel, as there is less spinning on the downstroke and easier rotation as a result. Steadier torque on the rear wheel gives better traction and sustained momentum – great on tough climbs and on loose terrain.</p>\n<p>If you’re looking to invest in a truly top-tier, durable chainring that will outlast its competitors and function perfectly on a 1x setup, then this is a solid choice.</p>\n<p><strong>Compatibility:</strong></p>\n<ul>\n<li>Compatible with Wolf Tooth CAMO spiders; it is NOT compatible with any other chainring mountings</li>\n<li>You will require a CAMO spider to fit this chainring, this is sold separately</li>\n<li>For 1x9, 1x10,1x11 and 1x12 drivetrains (including SRAM Eagle and SRAM Eagle Transmission)</li>\n<li>Compatible with all 9, 10 and 11 speed chains, as well as 12-speed from KMC, Connex, Wipperman, Campagnolo, SRAM Eagle and SRAM Road and Transmission (T-Type) Flattop chains</li>\n<li>If using a 9-speed drivetrain, use a 10-speed chain (shifts and works well on a 9-speed drivetrain and fits the ring more tightly for better chain retention)</li>\n</ul>",
+          "ImageUrl": "https://cdn.shopify.com/s/files/1/0304/0971/9867/products/wtelpcamoal30_1_dogp0g.jpg?v=1682345229",
+          "AlternativeImage1Url": null,
+          "AlternativeImage2Url": null,
+          "AlternativeImage3Url": null,
+          "Size": "7378",
+          "Colour": "Drop-Stop B",
+          "Brand": "17939",
+          "PackQty": "",
+          "LeadTime": 42,
+          "VariantGrouping": "WTELPCAMOALB",
+          "SubCategory": "round Chainrings",
+          "categ_id": 40,
+          "pos_categ_id": 37,
+          "public_categ_ids": 55,
+          "StandardSize": null,
+          "attribute_ids": "17939,7378",
+          "TechnicalSpec": null,
+          "TechnicalSpecLabel": null,
+          "common_attribute_ids": [
+            17939,
+            7378
+          ]
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "221",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.21.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "variantgrouping": "BRRX820R",
+            "name": "Madison",
+            "globals": {
+              "SupplierName": "Madison",
+              "PartnerId": 47,
+              "ProductTagId": 8,
+              "LeadTimeAddition": 3,
+              "Webhook": "update-madison",
+              "LastCount": "20052",
+              "CreateSequence": "create-categ-sync"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-09-09T10:51:59.000Z",
+  "versionId": "34c43025-a665-43ac-9978-e0466affcb9c"
+}
