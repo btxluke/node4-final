@@ -1,0 +1,727 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Move Binary Data": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image1": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image2": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move Binary Data1": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Move Binary Data2": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Image3": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Image4": {
+      "main": [
+        [
+          {
+            "node": "Move Binary Data4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move Binary Data3": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Move Binary Data4": {
+      "main": [
+        [
+          {
+            "node": "Merge7",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge5": {
+      "main": [
+        [
+          {
+            "node": "Merge7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge6": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge7": {
+      "main": [
+        [
+          {
+            "node": "Odoo3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Blank Picture",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Image",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Image1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Image2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Image3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Image4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-09T11:19:55.114Z",
+  "id": "XDKlp7EvQ5w7tjOK",
+  "name": "Data Update: Create: Template: create-template-mainimage",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "={{ $json.imageurl ? $json.imageurl : $json[\"data\"][\"imageurl\"]  }}",
+        "responseFormat": "file",
+        "options": {}
+      },
+      "id": "75671158-b6ff-4e11-bbc7-42bfd0699b27",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        660
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "setAllData": false,
+        "destinationKey": "image_1920",
+        "options": {
+          "encoding": "base64"
+        }
+      },
+      "id": "5b9c6381-a3c8-45d2-8978-d69575758c9a",
+      "name": "Move Binary Data",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        840,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "crop",
+        "width": 1920,
+        "height": 1920,
+        "options": {}
+      },
+      "id": "dbb80c1d-413a-4123-a323-ebd4a66ddd44",
+      "name": "Edit Image",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        640,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "crop",
+        "width": 1024,
+        "height": 1024,
+        "options": {}
+      },
+      "id": "d7051c44-0c3e-4900-9861-f0c21546c59e",
+      "name": "Edit Image1",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        640,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "crop",
+        "width": 512,
+        "height": 512,
+        "options": {}
+      },
+      "id": "1c9408d6-806b-4bdd-97b2-850be3cde7c7",
+      "name": "Edit Image2",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        640,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "setAllData": false,
+        "destinationKey": "image_1024",
+        "options": {
+          "encoding": "base64"
+        }
+      },
+      "id": "73e659d8-5aa2-4d4f-b1ee-b95449f87826",
+      "name": "Move Binary Data1",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        840,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "setAllData": false,
+        "destinationKey": "image_512",
+        "options": {
+          "encoding": "base64"
+        }
+      },
+      "id": "d3f44bc7-4b7a-4eac-9d32-9e0a46a04d2b",
+      "name": "Move Binary Data2",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        840,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "crop",
+        "width": 256,
+        "height": 256,
+        "options": {}
+      },
+      "id": "3a4d7984-ad6e-4827-88ca-06df46ac14fe",
+      "name": "Edit Image3",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        640,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "crop",
+        "width": 128,
+        "height": 128,
+        "options": {}
+      },
+      "id": "aac43761-704a-44b1-9db1-79e633f34635",
+      "name": "Edit Image4",
+      "type": "n8n-nodes-base.editImage",
+      "typeVersion": 1,
+      "position": [
+        640,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "setAllData": false,
+        "destinationKey": "image_256",
+        "options": {
+          "encoding": "base64"
+        }
+      },
+      "id": "6a938af5-4b7c-44d5-bbf2-e9eadeb3c4f7",
+      "name": "Move Binary Data3",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        840,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "setAllData": false,
+        "destinationKey": "image_128",
+        "options": {
+          "encoding": "base64"
+        }
+      },
+      "id": "9e8ced42-d93f-4e76-895a-4d05aaf26e79",
+      "name": "Move Binary Data4",
+      "type": "n8n-nodes-base.moveBinaryData",
+      "typeVersion": 1,
+      "position": [
+        840,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "={{$node[\"Globals\"].json.type}}",
+        "operation": "update",
+        "customResourceId": "={{$node[\"Globals\"].json.id}}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "image_1920",
+              "fieldValue": "={{ $json[\"image_1920\"] }}"
+            },
+            {
+              "fieldName": "image_1024",
+              "fieldValue": "={{ $json[\"image_1024\"] }}"
+            },
+            {
+              "fieldName": "image_512",
+              "fieldValue": "={{ $json[\"image_512\"] }}"
+            },
+            {
+              "fieldName": "image_256",
+              "fieldValue": "={{ $json[\"image_256\"] }}"
+            },
+            {
+              "fieldName": "image_128",
+              "fieldValue": "={{ $json[\"image_128\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "a0963932-73e5-4990-8ba0-dc0cf7bc043e",
+      "name": "Odoo3",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        1240
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "mergeByIndex"
+      },
+      "id": "faef3ad5-ce57-4744-a84d-4a72ebe82f25",
+      "name": "Merge4",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "mergeByIndex"
+      },
+      "id": "a982f563-19c3-4025-9888-dd37b10dc9b7",
+      "name": "Merge5",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "mergeByIndex"
+      },
+      "id": "a7491829-7a73-40f0-a5cb-cd14117fd665",
+      "name": "Merge6",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "mergeByIndex"
+      },
+      "id": "c4d1d0da-46f7-469a-8d90-37e8ba9dc961",
+      "name": "Merge7",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        1240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json[\"bufferSizeKB\"] }}",
+              "operation": "smallerEqual",
+              "value2": 1
+            }
+          ]
+        }
+      },
+      "id": "70f794cb-7f44-4d14-935f-237fc294725d",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        400,
+        680
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "2187a63a-5ae2-403f-a68a-f0c3be7df545",
+      "name": "Blank Picture",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        640,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const buffer = await this.helpers.getBinaryDataBuffer(0, 'data');\n\nreturn {\n  bufferSize: buffer.length,\n  bufferSizeKB: Number.parseFloat((buffer.length / 1024).toFixed(2))\n};"
+      },
+      "id": "1a64c503-6060-4c49-9f18-61a8fbcaefac",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        80,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "bd10d38b-a65c-4ab0-b676-d2693cf21675",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        240,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "path": "create-template-mainimage",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "b958969c-8217-43a7-a0ae-c40000b6e844",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -260,
+        480
+      ],
+      "webhookId": "add16103-7cb1-4cfd-b054-a0034f25b898"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "data",
+              "value": "={{ $json.body.data ? $json.body.data : $json.body }}"
+            },
+            {
+              "name": "type",
+              "value": "={{ $json.body.type }}"
+            }
+          ],
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ $json.body.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fd07bd6a-14d4-4dbd-b8d4-11663cefc8cd",
+      "name": "Globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        480
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "108",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.21.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "imageurl": "https://www.madisonb2b.co.uk/netalogue/zoom/cz254102.jpg",
+            "id": 530159,
+            "type": "product.product"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-08-10T13:01:44.729Z",
+      "updatedAt": "2023-08-10T13:01:44.729Z",
+      "id": "9sOXgdnAKkDHmBZQ",
+      "name": "if"
+    },
+    {
+      "createdAt": "2023-08-08T15:13:24.003Z",
+      "updatedAt": "2023-08-08T15:13:24.003Z",
+      "id": "NlzClU8dTHaCHNlt",
+      "name": "http"
+    },
+    {
+      "createdAt": "2023-09-09T11:22:38.868Z",
+      "updatedAt": "2023-09-09T11:22:38.868Z",
+      "id": "PTYetInkPCvEytyO",
+      "name": "Edit Image"
+    },
+    {
+      "createdAt": "2023-08-08T15:51:11.963Z",
+      "updatedAt": "2023-08-08T15:51:11.963Z",
+      "id": "evqsbisrBK9HqVQU",
+      "name": "Merge"
+    },
+    {
+      "createdAt": "2023-08-08T15:53:13.355Z",
+      "updatedAt": "2023-08-08T15:53:13.355Z",
+      "id": "ojpualuYNuuEDwh1",
+      "name": "odoo"
+    },
+    {
+      "createdAt": "2023-09-09T11:22:53.018Z",
+      "updatedAt": "2023-09-09T11:22:53.018Z",
+      "id": "rF3F2wNVJEIVpYLj",
+      "name": "Move Binary"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-09T16:59:32.000Z",
+  "versionId": "82c889cd-f243-4c48-a7ad-1bbcb1d4a9a9"
+}
