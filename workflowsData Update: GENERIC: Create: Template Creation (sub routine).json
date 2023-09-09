@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "VariantGroup Name": {
       "main": [
@@ -116,33 +116,11 @@
         ]
       ]
     },
-    "Main Image": {
-      "main": [
-        [
-          {
-            "node": "Variant Group Routine",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Variant Group Routine": {
       "main": [
         [
           {
             "node": "Set2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Variant Group Hookup": {
-      "main": [
-        [
-          {
-            "node": "Set product_tmpl_id",
             "type": "main",
             "index": 0
           }
@@ -164,7 +142,7 @@
       "main": [
         [
           {
-            "node": "Resolve Variant Details",
+            "node": "HTTP Request2",
             "type": "main",
             "index": 0
           }
@@ -216,7 +194,7 @@
         ],
         [
           {
-            "node": "Main Image",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -505,17 +483,6 @@
         ]
       ]
     },
-    "Resolve Variant Details": {
-      "main": [
-        [
-          {
-            "node": "Set6",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "IF7": {
       "main": [
         [
@@ -527,7 +494,7 @@
         ],
         [
           {
-            "node": "Variant Group Hookup",
+            "node": "HTTP Request1",
             "type": "main",
             "index": 0
           }
@@ -577,6 +544,39 @@
           }
         ]
       ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Variant Group Routine",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Set product_tmpl_id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Set6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-09-09T10:24:19.527Z",
@@ -585,7 +585,7 @@
   "nodes": [
     {
       "parameters": {
-        "jsCode": "const a1= items[0].json.productname; \n\nif (items.length > 1) {\n  const a2= items[1].json.productname;\n  const L = a1.length;\n  var i= 0;\n  while(i<L && a1.charAt(i)=== a2.charAt(i)) i++;\n} else {\n  var i= items[0].json.productname.length;\n}\nreturn [{\n  json: {\n    commonDescription : a1.substring(0, i)\n  }\n}];\n"
+        "jsCode": "const a1= items[0].json.productname;\nvar shortestString = a1.length;\n\nif (items.length > 1) {\n  var i2 = 0;\n  while (i2<items.length) {\n    const a2= items[i2].json.productname;\n    const L = a1.length;\n    var i= 0;\n    while(i<L && a1.charAt(i)=== a2.charAt(i)) {  \n      i++;\n    };\n    if (i<shortestString){shortestString = i;}\n    i2++;\n  };\n}; \nif (shortestString == 0) {\n  shortestString = a1.length;\n}\nreturn [{\n  json: {\n    commonDescription : a1.substring(0, shortestString)\n  }\n}];\n"
       },
       "id": "0e74f75a-bd7b-442d-ab2e-cfe4e2f54ccc",
       "name": "VariantGroup Name",
@@ -761,7 +761,7 @@
             },
             {
               "fieldName": "website_meta_description",
-              "fieldValue": "=Shop for {{ $json[\"productname\"] }} for £{{     ((Math.round(($json[\"rrp\"]*(1+($json.vat/100)))*100))/100).toFixed(2)    }} at BIKETRAX "
+              "fieldValue": "=Shop for {{ $json[\"commonDescription\"] }} for £{{     ((Math.round(($json[\"rrp\"]*(1+($json.vat/100)))*100))/100).toFixed(2)    }} at BIKETRAX "
             },
             {
               "fieldName": "website_meta_keywords",
@@ -856,7 +856,11 @@
           "string": [
             {
               "name": "data",
-              "value": "={{ $node[\"Postgres\"].data}}"
+              "value": "={{ $node[\"Postgres\"].json}}"
+            },
+            {
+              "name": "type",
+              "value": "product.template"
             }
           ],
           "number": [
@@ -878,20 +882,6 @@
       ]
     },
     {
-      "parameters": {
-        "workflowId": "25"
-      },
-      "id": "e86643e3-7d95-436a-8a04-1946bbcfaa33",
-      "name": "Main Image",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        1260,
-        1020
-      ],
-      "continueOnFail": true
-    },
-    {
       "parameters": {},
       "id": "29427b03-010e-43c4-b8fd-232c18296f42",
       "name": "Variant Group Routine",
@@ -900,20 +890,8 @@
       "position": [
         560,
         1260
-      ]
-    },
-    {
-      "parameters": {
-        "workflowId": "55"
-      },
-      "id": "dd6003cd-d035-44e0-8339-7d19582f3d3d",
-      "name": "Variant Group Hookup",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        1260,
-        1360
-      ]
+      ],
+      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -956,7 +934,11 @@
           "string": [
             {
               "name": "supplier",
-              "value": "={{[$(\"When Called By Another Workflow\").first().json[\"Name\"],$(\"When Called By Another Workflow\").first().json[\"Globals\"][\"PartnerId\"]]}}"
+              "value": "={{[$(\"Globals\").first().json[\"name\"],$(\"Globals\").first().json[\"globals\"][\"PartnerId\"]]}}"
+            },
+            {
+              "name": "delay",
+              "value": "={{ $('Globals').first().json.globals.LeadTimeAddition }}"
             }
           ]
         },
@@ -968,19 +950,6 @@
       "typeVersion": 1,
       "position": [
         1520,
-        1260
-      ]
-    },
-    {
-      "parameters": {
-        "workflowId": "26"
-      },
-      "id": "04605131-0a8e-4325-a0f2-d95c0379b86c",
-      "name": "Resolve Variant Details",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        1700,
         1260
       ]
     },
@@ -1595,7 +1564,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 1,
       "position": [
-        2180,
+        2020,
         1260
       ],
       "executeOnce": true
@@ -1689,8 +1658,8 @@
     },
     {
       "parameters": {
-        "height": 577.0568205128204,
-        "width": 1705.7573519813536
+        "height": 1093.989780885781,
+        "width": 2041.2118974358998
       },
       "id": "3aa7cb36-5261-4091-932c-83b65b828cff",
       "name": "Sticky Note",
@@ -1721,54 +1690,67 @@
           "name": "datatransit"
         }
       }
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/create-template-mainimage",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{$json}}",
+        "options": {}
+      },
+      "id": "20e5f966-abf7-4db3-8c58-9ca8352f1df3",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1220,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/create-template-variant-hookup",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{$json}}",
+        "options": {}
+      },
+      "id": "0991b529-b0d1-458c-a4d6-142758172f79",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1260,
+        1340
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/create-resolve-variant-codes",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "b3d581f0-2825-4572-b432-df9f19388f26",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1740,
+        1260
+      ]
     }
   ],
   "pinData": {
-    "Merge2": [
-      {
-        "json": {
-          "commonDescription": "Wolf Tooth CAMO Elliptical Chainring Drop-Stop B / 30T",
-          "ProductCode": "WTELPCAMOAL30B",
-          "Ean": "810006808001",
-          "ProductName": "Wolf Tooth CAMO Elliptical Chainring Drop-Stop B / 30T",
-          "YourPrice": "35.40",
-          "Rrp": "49.00",
-          "Vat": 20,
-          "StockCount": "0",
-          "ShortDescription": null,
-          "LongDescription": "<p>The Wolf Tooth CAMO Elliptical Chainring is not only beautifully machined and lightweight but utilises a patented wide-narrow design that is perfectly suited to 1x setups – dropped chains are a thing of the past. Unlock your dream drivetrain configuration and satisfy your inner tweaker.</p>\n<p>Bred from ice-cold Minneapolis winters and explicitly designed to work perfectly with Wolf Tooth's CAMO Spider, this chainring means more time spent riding and less fumbling with dropped chains.</p>\n<p>In line with Wolf Tooth’s guiding ethos of providing unrivalled design innovation, reliability and durability, this chainring employs a patented Drop-Stop® wide-narrow tooth profile, which not only keeps the chain securely in place on single chainring setups but dislodges mud, dirt and excess precipitation more efficiently.</p>\n<p>Synonymous with ultra-high-end custom builds and stalwart steeds alike, Wolf Tooth chainrings are machined entirely in-house at Wolf Tooth’s HQ in Minnesota, USA. The anodised finish and machined lettering that adorn every chainring are hallmarks of master craftsmanship. If you’re a discerning cyclist looking to invest in a premium grade chainring that will outlast its competitors and function perfectly on a 1x setup, this is the only way to go.</p>\n<p><strong>CAMO</strong></p>\n<p>Wolf Tooth developed the Chainline and Material Optimisation (CAMO) design to let you replace your stock direct mount style chainrings with a spider and traditional chainring setup.</p>\n<p>The spider, used in conjunction with a Wolf Tooth chainring, means that you can set up the perfect chainline for greater shifting precision. It also reduces the cost of future replacement chainrings and enables you to add a flash of colour to your ride.</p>\n<p><strong>PowerTrac</strong></p>\n<p>Wolf Tooth’s PowerTrac design, as the name indicates, is driven by a concern for power and traction – and crucially for you, premised on a wealth of knowledge from precision engineers who also love to ride bikes.</p>\n<p>A growing number of riders are converting to elliptical chainrings on 1x setups, for the simple reason that they have been demonstrated to improve ride quality.</p>\n<p>The idea behind elliptical chainrings can be summarised as follows: biomechanical power output varies throughout a pedal stroke. Positions where power is higher have a larger diameter section of chainring, and thus a greater engagement area, which translates into greater forward propulsion. At positions where biomechanical power is lower, a smaller chainring diameter means greater efficiency in rotation. Overall, what this means for you is maximised power output throughout each pedal stroke.</p>\n<p>Wolf Tooth notes that elliptical rings also mean steadier torque on the rear wheel, as there is less spinning on the downstroke and easier rotation as a result. Steadier torque on the rear wheel gives better traction and sustained momentum – great on tough climbs and on loose terrain.</p>\n<p>If you’re looking to invest in a truly top-tier, durable chainring that will outlast its competitors and function perfectly on a 1x setup, then this is a solid choice.</p>\n<p><strong>Compatibility:</strong></p>\n<ul>\n<li>Compatible with Wolf Tooth CAMO spiders; it is NOT compatible with any other chainring mountings</li>\n<li>You will require a CAMO spider to fit this chainring, this is sold separately</li>\n<li>For 1x9, 1x10,1x11 and 1x12 drivetrains (including SRAM Eagle and SRAM Eagle Transmission)</li>\n<li>Compatible with all 9, 10 and 11 speed chains, as well as 12-speed from KMC, Connex, Wipperman, Campagnolo, SRAM Eagle and SRAM Road and Transmission (T-Type) Flattop chains</li>\n<li>If using a 9-speed drivetrain, use a 10-speed chain (shifts and works well on a 9-speed drivetrain and fits the ring more tightly for better chain retention)</li>\n</ul>",
-          "ImageUrl": "https://cdn.shopify.com/s/files/1/0304/0971/9867/products/wtelpcamoal30_1_dogp0g.jpg?v=1682345229",
-          "AlternativeImage1Url": null,
-          "AlternativeImage2Url": null,
-          "AlternativeImage3Url": null,
-          "Size": "7378",
-          "Colour": "Drop-Stop B",
-          "Brand": "17939",
-          "PackQty": "",
-          "LeadTime": 42,
-          "VariantGrouping": "WTELPCAMOALB",
-          "SubCategory": "round Chainrings",
-          "categ_id": 40,
-          "pos_categ_id": 37,
-          "public_categ_ids": 55,
-          "StandardSize": null,
-          "attribute_ids": "17939,7378",
-          "TechnicalSpec": null,
-          "TechnicalSpecLabel": null,
-          "common_attribute_ids": [
-            17939,
-            7378
-          ]
-        }
-      }
-    ],
     "Webhook": [
       {
         "json": {
           "headers": {
             "host": "node4.biketrax.co.uk",
             "user-agent": "axios/0.21.4",
-            "content-length": "221",
+            "content-length": "225",
             "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
             "content-type": "application/json",
             "x-forwarded-for": "172.21.0.1",
@@ -1779,7 +1761,7 @@
           "params": {},
           "query": {},
           "body": {
-            "variantgrouping": "BRRX820R",
+            "variantgrouping": "VARVOLANTEKC",
             "name": "Madison",
             "globals": {
               "SupplierName": "Madison",
@@ -1791,16 +1773,34 @@
               "CreateSequence": "create-categ-sync"
             }
           }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Set product_tmpl_id": [
+      {
+        "json": {
+          "product_tmpl_id": 153872,
+          "supplier": [
+            "Madison",
+            47
+          ],
+          "delay": 3
         }
       }
     ]
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2023-09-09T10:51:59.000Z",
-  "versionId": "34c43025-a665-43ac-9978-e0466affcb9c"
+  "triggerCount": 1,
+  "updatedAt": "2023-09-09T17:00:37.000Z",
+  "versionId": "b178682a-e9d1-41b5-ac05-b63688d3bed8"
 }
