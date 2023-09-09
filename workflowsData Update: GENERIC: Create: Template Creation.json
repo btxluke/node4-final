@@ -5,18 +5,7 @@
       "main": [
         [
           {
-            "node": "Execute Workflow",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Execute Workflow": {
-      "main": [
-        [
-          {
-            "node": "IF",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -95,6 +84,17 @@
           }
         ]
       ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-09-08T14:12:04.251Z",
@@ -117,28 +117,14 @@
     },
     {
       "parameters": {
-        "workflowId": "70"
-      },
-      "id": "53e819e1-7f99-4e1a-88a9-b856066dec3d",
-      "name": "Execute Workflow",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        1960,
-        440
-      ],
-      "alwaysOutputData": true
-    },
-    {
-      "parameters": {
         "values": {
           "string": [
             {
-              "name": "Name",
+              "name": "name",
               "value": "={{ $(\"Globals\").first().json.name }}"
             },
             {
-              "name": "Globals",
+              "name": "globals",
               "value": "={{ $(\"Globals\").first().json.globals }}"
             }
           ]
@@ -257,6 +243,23 @@
           "name": "datatransit"
         }
       }
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/create-template-subroutine",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "35e9bc2a-7064-456b-885d-4533dff72eaa",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1960,
+        760
+      ]
     }
   ],
   "pinData": {
@@ -330,6 +333,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-09-08T14:23:16.000Z",
-  "versionId": "bf85f77a-d68f-4cc4-a5af-8ce2a854f6e3"
+  "updatedAt": "2023-09-09T10:51:41.000Z",
+  "versionId": "ecfb66af-f0be-464b-bc14-eab8ce25b900"
 }
