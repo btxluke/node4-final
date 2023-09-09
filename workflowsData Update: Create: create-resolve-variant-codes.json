@@ -1,0 +1,691 @@
+{
+  "active": true,
+  "connections": {
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "multiple variant group",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Single Variant Item",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Single Variant Item": {
+      "main": [
+        [
+          {
+            "node": "Extra Images",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Supplier Price List",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Update Name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extra Images": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supplier Price List": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Extra Images1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "end",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "multiple variant group": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Name": {
+      "main": [
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "MySQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-09T13:59:31.371Z",
+  "id": "ANIwNwHwHUES96sb",
+  "name": "Data Update: Create: create-resolve-variant-codes",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.product",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "product_template_variant_value_ids",
+            "product_tmpl_id",
+            "name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "product_tmpl_id",
+              "value": "={{ $json[\"product_tmpl_id\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "d5533a40-e473-4d07-a0fb-e5d6a6f9cff9",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        820,
+        420
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$items().length  }}",
+              "operation": "largerEqual",
+              "value2": 2
+            }
+          ]
+        }
+      },
+      "id": "0cc6f38b-4a27-4256-9786-29e36aa73841",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        980,
+        420
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "af00589e-ab79-4f7d-bdb6-c5b067812cb2",
+      "name": "Single Variant Item",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        660,
+        660
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "d0243a9a-c6fb-459a-874f-2c306d60d5ee",
+      "name": "multiple variant group",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "image_urls",
+              "value": "={{[$json[\"AlternativeImage1Url\"],$json[\"AlternativeImage2Url\"],$json[\"AlternativeImage3Url\"]].filter(Boolean)}}"
+            },
+            {
+              "name": "record_type",
+              "value": "template"
+            },
+            {
+              "name": "name",
+              "value": "={{ $node[\"Single Variant Item\"].json[\"display_name\"] }} Detail Image"
+            }
+          ],
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ $node[\"Single Variant Item\"].json[\"product_tmpl_id\"][0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "69a1dadd-be30-4ec5-80e6-fb0930d8a512",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        660
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "d7553a94-8d8c-4089-9976-acd7fea3a3d7",
+      "name": "Extra Images",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        820,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "image_urls",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "bb09ad72-d784-4699-9387-3b9875a2ac81",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        660
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {},
+      "id": "8449f5f1-eb44-4215-b0eb-825b12ee28fd",
+      "name": "Supplier Price List",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        820,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.supplierinfo",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "partner_id",
+              "fieldValue": "={{ $node[\"Data\"].json[\"supplier\"][1] }}"
+            },
+            {
+              "fieldName": "price",
+              "fieldValue": "={{ $json[\"yourprice\"] }}"
+            },
+            {
+              "fieldName": "company_id",
+              "fieldValue": "={{1}}"
+            },
+            {
+              "fieldName": "currency_id",
+              "fieldValue": "={{142}}"
+            },
+            {
+              "fieldName": "product_tmpl_id",
+              "fieldValue": "={{ $node[\"Supplier Price List\"].json[\"product_tmpl_id\"][0] }}"
+            },
+            {
+              "fieldName": "display_name",
+              "fieldValue": "={{ $node[\"Data\"].json[\"supplier\"][0] }}"
+            },
+            {
+              "fieldName": "delay",
+              "fieldValue": "={{ $node[\"Data\"].json[\"delay\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "2fb54bda-6ef3-4490-bf3a-bd2f7036a707",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        820
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.image_urls ? true : false}}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "ad2da90a-4fda-41d1-ba09-fe65748ad241",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        660
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6f050a96-4ba1-46ed-93de-810568b8c4ec",
+      "name": "end",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "27"
+      },
+      "id": "620d4fa5-b0df-4d6c-b46b-b3d7f00e1deb",
+      "name": "Extra Images1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        660
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {},
+      "id": "f94a61cd-5e21-40e1-97d3-f8762ce0d0fb",
+      "name": "Update Name",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        820,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "update",
+        "customResourceId": "={{ $node[\"Odoo\"].json[\"product_tmpl_id\"][0] }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $node[\"Odoo\"].json[\"name\"].split(\",\")[1] }}"
+            }
+          ]
+        }
+      },
+      "id": "f01534d7-2c44-42d6-8e11-ea76508869f7",
+      "name": "Odoo2",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        980,
+        1000
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field\n// called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.supplier = $('Data').first().json.supplier ;\n}\n\nreturn $input.all();"
+      },
+      "id": "dad081c1-93e0-434e-82b9-c024636d246b",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "REPLACE INTO `Map-ProductStock` SET id = {{ $json[\"id\"] }}, product_tmpl_id = {{ $json[\"product_tmpl_id\"][0] }}, barcode = {{ \"'\"+$json[\"barcode\"]+\"'\" }}",
+        "options": {}
+      },
+      "id": "f22691b9-704f-4681-9519-ce23f29d8c38",
+      "name": "MySQL1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.1,
+      "position": [
+        980,
+        1180
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "2",
+          "name": "node3.biketrax.co.uk: odooData"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "path": "create-resolve-variant-codes",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "dc0e1c91-5c43-4bbc-85c0-402051f9f0be",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        380,
+        420
+      ],
+      "webhookId": "9f45d2bf-88c3-4890-8b0f-245142dcd696"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $json.body"
+      },
+      "id": "cc43a0eb-d75f-49d4-b5b3-1206ecbb3692",
+      "name": "Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        540,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT alternativeimage1url,alternativeimage2url,alternativeimage3url FROM {{ \"transit_\"+$node[\"Data\"].json[\"supplier\"][0].toLowerCase()}} WHERE productcode = {{  \"'\"+$json.default_code+\"'\"}};",
+        "options": {}
+      },
+      "id": "6257a739-01da-4080-af08-30c471479c07",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        980,
+        660
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM {{ \"transit_\"+$node[\"Data\"].json[\"supplier\"][0].toLowerCase()}} WHERE productcode = {{ \"'\"+$json.default_code+\"'\"}};",
+        "options": {}
+      },
+      "id": "b13dc6f7-4470-46ca-97c2-7852527ff3c9",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        980,
+        820
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "height": 496.25766871165763,
+        "width": 1448.4662576687124
+      },
+      "id": "69279700-ef20-4c46-8117-dfb9d74ac436",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        380,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "height": 277.23926380368107,
+        "width": 863.5582822085889
+      },
+      "id": "b68c2311-1ea5-4150-889b-95c659edbf7a",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        760,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/create-resolve-multiple-groups",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code').all() }}",
+        "options": {}
+      },
+      "id": "ccfd787e-4b31-47b9-8f15-84b0cbe031b4",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1680,
+        420
+      ],
+      "executeOnce": true
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "62",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.21.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "product_tmpl_id": 153872,
+            "supplier": [
+              "Madison",
+              47
+            ],
+            "delay": 3
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-09T17:00:14.000Z",
+  "versionId": "c7130899-4654-4a9a-8ad1-f642e968a74e"
+}
