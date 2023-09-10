@@ -440,7 +440,7 @@
       "main": [
         [
           {
-            "node": "No Operation, do nothing",
+            "node": "Exists already, add tag",
             "type": "main",
             "index": 0
           }
@@ -572,6 +572,84 @@
         [
           {
             "node": "Set6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exists already, add tag": {
+      "main": [
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo2": {
+      "main": [
+        [
+          {
+            "node": "Odoo3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo3": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Odoo4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo6": {
+      "main": [
+        [
+          {
+            "node": "IF8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF8": {
+      "main": [
+        [
+          {
+            "node": "Odoo5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Change",
             "type": "main",
             "index": 0
           }
@@ -1505,17 +1583,6 @@
       ]
     },
     {
-      "parameters": {},
-      "id": "5cb828b1-52d4-421d-bd2e-7163e84d346f",
-      "name": "No Operation, do nothing",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        2020,
-        800
-      ]
-    },
-    {
       "parameters": {
         "conditions": {
           "string": [
@@ -1741,16 +1808,267 @@
         1740,
         1260
       ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.product",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "product_tmpl_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "default_code",
+              "value": "={{$('Merge1').first().json.productcode  }}"
+            }
+          ]
+        }
+      },
+      "id": "23025aba-b460-4257-9aab-81e2a34563eb",
+      "name": "Odoo2",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        800
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "5cb828b1-52d4-421d-bd2e-7163e84d346f",
+      "name": "Exists already, add tag",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2020,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "get",
+        "customResourceId": "={{ $json.product_tmpl_id[0] }}",
+        "options": {
+          "fieldsList": [
+            "product_tag_ids"
+          ]
+        }
+      },
+      "id": "75845fc6-5cf1-46dc-bf80-975d72e06867",
+      "name": "Odoo3",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2420,
+        800
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "$input.first().json.product_tag_ids.push($('Globals').first().json.globals.ProductTagId)\n\n\nreturn $input.first();"
+      },
+      "id": "eb1ebcc5-aa42-43e6-bf6d-b49f5d839027",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2640,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "update",
+        "customResourceId": "={{ $json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "product_tag_ids",
+              "fieldValue": "={{ $json.product_tag_ids }}"
+            },
+            {
+              "fieldName": "allow_out_of_stock_order",
+              "fieldValue": "={{ $('Merge1').first().json.stockcount == 1 }}"
+            }
+          ]
+        }
+      },
+      "id": "94c58fee-1c72-4d39-932b-0b83d65ed677",
+      "name": "Odoo4",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2860,
+        800
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.supplierinfo",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "price",
+              "fieldValue": "={{ $('Merge1').first().json.yourprice }}"
+            },
+            {
+              "fieldName": "delay",
+              "fieldValue": "={{ $('Merge1').first().json[\"stockcount\"] == 1 ? $('Globals').first().json.globals.LeadTimeAddition : $json.leadtime > 0 ? $json.leadtime + $('Globals').first().json.globals.LeadTimeAddition  : 365 + $('Globals').first().json.globals.LeadTimeAddition }}"
+            },
+            {
+              "fieldName": "partner_id",
+              "fieldValue": "={{$('Globals').first().json.globals.PartnerId}}"
+            },
+            {
+              "fieldName": "display_name",
+              "fieldValue": "={{[$('Globals').first().json.name]}}"
+            },
+            {
+              "fieldName": "company_id",
+              "fieldValue": "={{1}}"
+            },
+            {
+              "fieldName": "currency_id",
+              "fieldValue": "={{142}}"
+            },
+            {
+              "fieldName": "product_tmpl_id",
+              "fieldValue": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "id": "92bc3c29-f484-4317-993a-a2b5df3d23f3",
+      "name": "Odoo5",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2860,
+        1300
+      ],
+      "retryOnFail": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.supplierinfo",
+        "operation": "getAll",
+        "limit": 1,
+        "options": {},
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "product_tmpl_id",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "id": "de0b4e73-27f8-47f1-b511-9184207c291a",
+      "name": "Odoo6",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2640,
+        1080
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.id }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "ec4688a5-05a8-4a14-8fff-4b1e9e7165ba",
+      "name": "IF8",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2640,
+        1300
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "faa49b16-e6b6-4ce9-a1bc-5055117bee2c",
+      "name": "No Change",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2860,
+        1520
+      ]
     }
   ],
   "pinData": {
+    "Set product_tmpl_id": [
+      {
+        "json": {
+          "product_tmpl_id": 153872,
+          "supplier": [
+            "Madison",
+            47
+          ],
+          "delay": 3
+        }
+      }
+    ],
     "Webhook": [
       {
         "json": {
           "headers": {
             "host": "node4.biketrax.co.uk",
             "user-agent": "axios/0.21.4",
-            "content-length": "225",
+            "content-length": "223",
             "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
             "content-type": "application/json",
             "x-forwarded-for": "172.21.0.1",
@@ -1761,7 +2079,7 @@
           "params": {},
           "query": {},
           "body": {
-            "variantgrouping": "VARVOLANTEKC",
+            "variantgrouping": "VARSISGBAR",
             "name": "Madison",
             "globals": {
               "SupplierName": "Madison",
@@ -1773,21 +2091,6 @@
               "CreateSequence": "create-categ-sync"
             }
           }
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ],
-    "Set product_tmpl_id": [
-      {
-        "json": {
-          "product_tmpl_id": 153872,
-          "supplier": [
-            "Madison",
-            47
-          ],
-          "delay": 3
         }
       }
     ]
@@ -1801,6 +2104,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-09T17:00:37.000Z",
-  "versionId": "b178682a-e9d1-41b5-ac05-b63688d3bed8"
+  "updatedAt": "2023-09-10T10:51:05.000Z",
+  "versionId": "c90b8512-f433-423d-aa08-9872e2bc5341"
 }
