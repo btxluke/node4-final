@@ -1233,7 +1233,7 @@
         3660,
         1700
       ],
-      "disabled": true
+      "executeOnce": true
     }
   ],
   "pinData": {
@@ -1296,6 +1296,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-09-08T14:12:41.000Z",
-  "versionId": "c4f4e47f-79f4-435f-a9ba-d0410341a95e"
+  "updatedAt": "2023-09-10T08:12:00.000Z",
+  "versionId": "9a76a633-99bb-4eb3-bead-a8bb54ec4e86"
 }
