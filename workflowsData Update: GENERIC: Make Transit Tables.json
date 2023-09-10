@@ -1009,7 +1009,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "INSERT INTO datatransit.{{\"transit_\"+$(\"Globals\").first().json.name.toLowerCase()}} (productcode,\nean,\nvariantgrouping,\nproductname,\nyourprice,\nrrp,\nvat,\nstockcount,\nshortdescription,\nlongdescription,\nimageurl,\nalternativeimage1url,\nalternativeimage2url,\nalternativeimage3url,\n\"size\",\ncolour,\nbrand,\npackqty,\nleadtime,\nsubcategory,\ntechnicalspec,\ntechnicalspeclabel\n)\nSELECT \n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.productcode,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.ean,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.variantgrouping,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.productname,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.yourprice,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.rrp,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.vat,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.stockcount,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.shortdescription,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.longdescription,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.imageurl,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.alternativeimage1url,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.alternativeimage2url,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.alternativeimage3url,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.\"size\",\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.colour,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.brand,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.packqty,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.leadtime,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.subcategory,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.technicalspec,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.technicalspeclabel\nFROM odoodata.{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}\nLEFT JOIN datatransit.{{\"index_\"+$(\"Globals\").first().json.name.toLowerCase()}} b ON {{\"odoodata.feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.ean = b.barcode\nWHERE {{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.ean NOT IN (SELECT barcode FROM odoodata.map_productstock) ON CONFLICT (productcode) DO NOTHING;\n",
+        "query": "INSERT INTO datatransit.{{\"transit_\"+$(\"Globals\").first().json.name.toLowerCase()}} (productcode,\nean,\nvariantgrouping,\nproductname,\nyourprice,\nrrp,\nvat,\nstockcount,\nshortdescription,\nlongdescription,\nimageurl,\nalternativeimage1url,\nalternativeimage2url,\nalternativeimage3url,\n\"size\",\ncolour,\nbrand,\npackqty,\nleadtime,\nsubcategory,\ntechnicalspec,\ntechnicalspeclabel\n)\nSELECT \n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.productcode,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.ean,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.variantgrouping,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.productname,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.yourprice,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.rrp,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.vat,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.stockcount,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.shortdescription,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.longdescription,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.imageurl,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.alternativeimage1url,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.alternativeimage2url,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.alternativeimage3url,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.\"size\",\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.colour,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.brand,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.packqty,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.leadtime,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.subcategory,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.technicalspec,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.technicalspeclabel\nFROM odoodata.{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}\nLEFT JOIN datatransit.{{\"index_\"+$(\"Globals\").first().json.name.toLowerCase()}} b ON {{\"odoodata.feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.ean = b.barcode\nWHERE {{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.ean NOT IN (SELECT barcode FROM datatransit.{{\"index_\"+$(\"Globals\").first().json.name.toLowerCase()}}) ON CONFLICT (productcode) DO NOTHING;\n",
         "options": {}
       },
       "id": "9b573819-ce6a-4e19-a96d-54b638517208",
@@ -1259,7 +1259,39 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "463",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.21.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "globals": {
+              "SupplierName": "Madison",
+              "PartnerId": 47,
+              "ProductTagId": 8,
+              "LeadTimeAddition": 3,
+              "Webhook": "update-madison",
+              "LastCount": "20060",
+              "CreateSequence": "create-categ-sync,create-size-sync,create-version-write,create-brand-sync,create-brand-write,create-colour-sync,create-colour-write,create-attribute-write,create-madison-extrainfo-label-sync,create-madison-extrainfo-label-write,create-madison-extrainfo-sync,create-madison-extrainfo-write"
+            },
+            "name": "Madison"
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner",
@@ -1268,6 +1300,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-03T14:02:42.000Z",
-  "versionId": "6d6d0d96-2b5b-4934-9e7a-aa3abd266dfb"
+  "updatedAt": "2023-09-10T09:15:33.000Z",
+  "versionId": "3d6ea0d5-5c58-4f3f-8752-2388481e1213"
 }
