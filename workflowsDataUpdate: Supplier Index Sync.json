@@ -334,12 +334,10 @@
           "headers": {
             "host": "node4.biketrax.co.uk",
             "user-agent": "axios/0.21.4",
-            "content-length": "129",
+            "content-length": "463",
             "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-            "baggage": "sentry-environment=production,sentry-release=1.1.1,sentry-public_key=1f954e089a054b8e943ae4f4042b2bff,sentry-trace_id=82f45211d6fb4b11974b13de0b955215",
             "content-type": "application/json",
-            "sentry-trace": "82f45211d6fb4b11974b13de0b955215-a29117361856d971-0",
-            "x-forwarded-for": "172.19.0.1",
+            "x-forwarded-for": "172.21.0.1",
             "x-forwarded-host": "node4.biketrax.co.uk",
             "x-forwarded-proto": "https",
             "accept-encoding": "gzip"
@@ -348,17 +346,16 @@
           "query": {},
           "body": {
             "globals": {
-              "SupplierName": "ZyroFisher",
-              "PartnerId": 69,
-              "ProductTagId": 13,
+              "SupplierName": "Madison",
+              "PartnerId": 47,
+              "ProductTagId": 8,
               "LeadTimeAddition": 3,
-              "LastCount": "23550"
+              "Webhook": "update-madison",
+              "LastCount": "20060",
+              "CreateSequence": "create-categ-sync,create-size-sync,create-version-write,create-brand-sync,create-brand-write,create-colour-sync,create-colour-write,create-attribute-write,create-madison-extrainfo-label-sync,create-madison-extrainfo-label-write,create-madison-extrainfo-sync,create-madison-extrainfo-write"
             },
-            "name": "Zyro"
+            "name": "Madison"
           }
-        },
-        "pairedItem": {
-          "item": 0
         }
       }
     ]
@@ -372,6 +369,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-08-26T14:39:26.000Z",
-  "versionId": "3a1e0c03-79c5-453a-bd13-bea47f755ab2"
+  "updatedAt": "2023-09-10T10:53:18.000Z",
+  "versionId": "cc0781bf-281a-46e3-966b-17aef3a34835"
 }
