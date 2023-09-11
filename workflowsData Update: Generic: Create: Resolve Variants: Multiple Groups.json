@@ -1618,6 +1618,7 @@
         1740
       ],
       "executeOnce": true,
+      "retryOnFail": true,
       "credentials": {
         "postgres": {
           "id": "ayAxbLgcy5Lpqy5D",
@@ -1932,6 +1933,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-10T07:55:45.000Z",
-  "versionId": "3ca62f5d-b520-4b4a-b6c1-08e6c4668c24"
+  "updatedAt": "2023-09-10T13:31:43.000Z",
+  "versionId": "9677520d-e181-4c8f-aa71-c48360044b2d"
 }
