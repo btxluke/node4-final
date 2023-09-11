@@ -23,24 +23,6 @@
         ]
       ]
     },
-    "IF": {
-      "main": [
-        [
-          {
-            "node": "Postgres1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "SplitInBatches",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Webhook": {
       "main": [
         [
@@ -89,7 +71,7 @@
       "main": [
         [
           {
-            "node": "IF",
+            "node": "Postgres1",
             "type": "main",
             "index": 0
           }
@@ -138,26 +120,6 @@
       "position": [
         1560,
         620
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "boolean": [
-            {
-              "value1": "={{ $json.success }}",
-              "value2": true
-            }
-          ]
-        }
-      },
-      "id": "8753633d-d553-4c43-9ed3-e8b780afd6ef",
-      "name": "IF",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 1,
-      "position": [
-        2160,
-        760
       ]
     },
     {
@@ -234,9 +196,11 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.2,
       "position": [
-        2400,
-        840
+        2140,
+        760
       ],
+      "retryOnFail": true,
+      "maxTries": 5,
       "credentials": {
         "postgres": {
           "id": "ayAxbLgcy5Lpqy5D",
@@ -259,7 +223,8 @@
       "position": [
         1960,
         760
-      ]
+      ],
+      "continueOnFail": true
     }
   ],
   "pinData": {
@@ -333,6 +298,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-09-10T07:58:57.000Z",
-  "versionId": "2f0c3ae6-b7ae-4b7c-b5ac-b86f550e3192"
+  "updatedAt": "2023-09-10T12:59:05.000Z",
+  "versionId": "b16f6232-9c52-4d90-ae60-41efd17d2ed3"
 }
