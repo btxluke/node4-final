@@ -65,6 +65,7 @@
         700,
         340
       ],
+      "retryOnFail": true,
       "credentials": {
         "odooApi": {
           "id": "2ttPRWxNWqAWB6fY",
@@ -178,6 +179,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-08T11:04:39.000Z",
-  "versionId": "0852307c-2b3c-4cac-b4f6-d7428b65f836"
+  "updatedAt": "2023-09-17T08:56:45.000Z",
+  "versionId": "04faf435-7bad-4b02-9373-aaeaa98c329d"
 }
