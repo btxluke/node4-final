@@ -1,0 +1,76 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-18T11:59:14.152Z",
+  "id": "2ntyqsIkdEjMypUS",
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a9b9fbda-3be9-4a5b-8066-a27b4f15a2cd",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "={{$('Execute Workflow Trigger').json}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "67fab7d0-ce1e-4f84-9aa7-137dcf82cdcc",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        420
+      ]
+    }
+  ],
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      },
+      {
+        "json": {
+          "name": "Second item",
+          "code": 2
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-09-18T11:59:14.152Z",
+  "versionId": "a3485446-4cae-4904-b78b-7aac7929bc7c"
+}
