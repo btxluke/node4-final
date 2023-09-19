@@ -1,0 +1,102 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "DebugHelper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DebugHelper": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-18T11:59:14.152Z",
+  "id": "2ntyqsIkdEjMypUS",
+  "name": "demo flow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "1d667b05-b18a-4561-ad3f-cb698f511fc8",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        880,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "category": "randomData",
+        "randomDataCount": 1000
+      },
+      "id": "f468792d-d824-445c-8857-2312fdb75706",
+      "name": "DebugHelper",
+      "type": "n8n-nodes-base.debugHelper",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.partner",
+        "operation": "getAll",
+        "limit": 1,
+        "options": {
+          "fieldsList": [
+            "city"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "name",
+              "operator": "like",
+              "value": "={{ $json.firstname }}"
+            }
+          ]
+        }
+      },
+      "id": "1e1a493c-7270-4e5e-a00a-ac37812c0af0",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        420
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-09-19T10:51:15.000Z",
+  "versionId": "ead5c7a6-6e77-433e-adf8-070cad33376b"
+}
