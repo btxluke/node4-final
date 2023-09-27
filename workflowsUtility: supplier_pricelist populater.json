@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Get Globals",
+            "node": "Set Supplier",
             "type": "main",
             "index": 0
           }
@@ -45,7 +45,7 @@
         ],
         [
           {
-            "node": "No Operation, do nothing",
+            "node": "Add variantgrouping",
             "type": "main",
             "index": 0
           }
@@ -67,18 +67,7 @@
       "main": [
         [
           {
-            "node": "No Operation, do nothing",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "No Operation, do nothing": {
-      "main": [
-        [
-          {
-            "node": "Postgres2",
+            "node": "Add variantgrouping",
             "type": "main",
             "index": 0
           }
@@ -190,6 +179,50 @@
           }
         ]
       ]
+    },
+    "Set Supplier": {
+      "main": [
+        [
+          {
+            "node": "Get Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres6": {
+      "main": [
+        [
+          {
+            "node": "create supplier listing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add variantgrouping": {
+      "main": [
+        [
+          {
+            "node": "Postgres6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "create supplier listing": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-09-26T14:14:30.701Z",
@@ -203,14 +236,14 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        580,
+        500,
         220
       ]
     },
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT DISTINCT(product_tmpl_id) FROM index_madison WHERE supplier_pricelist_ids IS NULL;",
+        "query": "SELECT DISTINCT(product_tmpl_id), supplier_pricelist_ids FROM {{ \"index_\"+$json.name.toLowerCase() }} WHERE supplier_pricelist_ids IS NULL;",
         "options": {}
       },
       "id": "4d04b8aa-30eb-482d-a01f-cc056e8eb003",
@@ -218,8 +251,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        1480,
-        420
+        1600,
+        220
       ],
       "credentials": {
         "postgres": {
@@ -235,7 +268,10 @@
         "operation": "getAll",
         "returnAll": true,
         "options": {
-          "fieldsList": []
+          "fieldsList": [
+            "id",
+            "product_tmpl_id"
+          ]
         },
         "filterRequest": {
           "filter": [
@@ -251,10 +287,11 @@
       "type": "n8n-nodes-base.odoo",
       "typeVersion": 1,
       "position": [
-        1700,
-        420
+        1820,
+        220
       ],
       "alwaysOutputData": true,
+      "retryOnFail": true,
       "credentials": {
         "odooApi": {
           "id": "2ttPRWxNWqAWB6fY",
@@ -278,14 +315,14 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        1920,
+        2580,
         420
       ]
     },
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE datatransit.index_madison SET\nsupplier_pricelist_ids = {{ \"'\"+$json.id+\"'\" }}\nWHERE product_tmpl_id = {{$json.product_tmpl_id[0] }}",
+        "query": "UPDATE {{ \"datatransit.index_\"+$('Globals').first().json.name.toLowerCase()}} SET\nsupplier_pricelist_ids = {{ \"'\"+$json.id+\"'\" }}\nWHERE product_tmpl_id = {{$json.product_tmpl_id[0] }}",
         "options": {}
       },
       "id": "c1a46e37-0cc2-4786-9ce5-ac472dde988f",
@@ -293,8 +330,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        2140,
-        420
+        2940,
+        400
       ],
       "credentials": {
         "postgres": {
@@ -310,25 +347,14 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        1260,
-        420
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "0075b0d8-6980-4dd2-83bb-81315ea96b63",
-      "name": "No Operation, do nothing",
-      "type": "n8n-nodes-base.noOp",
-      "typeVersion": 1,
-      "position": [
-        1040,
-        640
+        1380,
+        220
       ]
     },
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT DISTINCT(product_tmpl_id) FROM index_madison WHERE supplier_pricelist_ids IS NULL;",
+        "query": "SELECT DISTINCT(product_tmpl_id) FROM {{ \"datatransit.index_\"+$('Globals').first().json.name.toLowerCase() }} WHERE supplier_pricelist_ids IS NULL;",
         "options": {}
       },
       "id": "781be8b1-fdc2-42c5-88a6-620301f4f91a",
@@ -336,7 +362,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        1260,
+        1920,
         640
       ],
       "credentials": {
@@ -356,14 +382,14 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 2,
       "position": [
-        1480,
+        2140,
         640
       ]
     },
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT variantgrouping, {{ $json.product_tmpl_id }} AS product_tmpl_id FROM index_madison WHERE product_tmpl_id = {{ $json.product_tmpl_id }}",
+        "query": "SELECT variantgrouping, {{ $json.product_tmpl_id }} AS product_tmpl_id FROM {{ \"datatransit.index_\"+$('Globals').first().json.name.toLowerCase() }} WHERE product_tmpl_id = {{ $json.product_tmpl_id }}",
         "options": {}
       },
       "id": "1ac58d7b-ce0e-43fa-b7f6-b02864b230f3",
@@ -371,7 +397,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        1700,
+        2360,
         640
       ],
       "credentials": {
@@ -384,7 +410,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT yourprice, variantgrouping, {{ $json.product_tmpl_id }} AS product_tmpl_id, leadtime FROM feed_madison WHERE variantgrouping = {{ \"'\"+$json.variantgrouping+\"'\" }}",
+        "query": "SELECT yourprice, variantgrouping, {{ $json.product_tmpl_id }} AS product_tmpl_id, leadtime FROM {{ \"odooData.feed_\"+$('Globals').first().json.name.toLowerCase() }} WHERE variantgrouping = {{ \"'\"+$json.variantgrouping+\"'\" }}",
         "options": {}
       },
       "id": "55a25b64-0887-48d6-8c95-76cf2fdf40b3",
@@ -392,7 +418,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        2300,
+        2960,
         640
       ],
       "credentials": {
@@ -436,7 +462,7 @@
       "type": "n8n-nodes-base.odoo",
       "typeVersion": 1,
       "position": [
-        2500,
+        3160,
         640
       ],
       "executeOnce": true,
@@ -450,7 +476,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT * FROM map_supplierinfo WHERE name = 'Madison'",
+        "query": "SELECT * FROM map_supplierinfo WHERE name = {{ \"'\"+$json.supplier+\"'\" }}",
         "options": {}
       },
       "id": "ac7ee2a8-88f0-437b-bbc2-2a3a06e6a790",
@@ -458,7 +484,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        740,
+        1020,
         220
       ],
       "credentials": {
@@ -490,7 +516,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 2,
       "position": [
-        960,
+        1180,
         220
       ]
     },
@@ -505,7 +531,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        2720,
+        3380,
         640
       ],
       "credentials": {
@@ -531,27 +557,83 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        1920,
+        2580,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "supplier",
+              "value": "Zyro"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bbe4647b-0ea3-463c-8a46-2980391f0810",
+      "name": "Set Supplier",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        720,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE {{ \"datatransit.index_\"+$('Globals').first().json.name.toLowerCase() }}\nSET variantgrouping = b.variantgrouping\nFROM {{ \"odooData.feed_\"+$('Globals').first().json.name.toLowerCase() }} b\nWHERE barcode = b.ean",
+        "options": {}
+      },
+      "id": "ecb8c04b-00f3-4341-a0ca-592300f267d1",
+      "name": "Postgres6",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1480,
+        640
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "0075b0d8-6980-4dd2-83bb-81315ea96b63",
+      "name": "Add variantgrouping",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        640
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "43faa4b9-02c6-451c-92e8-c57397f59ffb",
+      "name": "create supplier listing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1700,
         640
       ]
     }
   ],
-  "pinData": {
-    "Odoo": [
-      {
-        "json": {
-          "name": "First item",
-          "code": 1
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-09-26T16:19:43.000Z",
-  "versionId": "48b83a3b-066a-4b1c-ad64-be55019209aa"
+  "updatedAt": "2023-09-27T10:43:28.000Z",
+  "versionId": "8961f25c-bec4-48c9-a569-17e01921d5e5"
 }
