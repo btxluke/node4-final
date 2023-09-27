@@ -102,6 +102,17 @@
           }
         ]
       ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-08-12T10:16:36.959Z",
@@ -325,6 +336,24 @@
         740
       ],
       "executeOnce": true
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/pricelist-checker",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Globals').first().json }}",
+        "options": {}
+      },
+      "id": "28153068-e892-4027-b51a-8693cf728e2b",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1100,
+        1000
+      ],
+      "executeOnce": true
     }
   ],
   "pinData": {
@@ -369,6 +398,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-10T10:53:18.000Z",
-  "versionId": "cc0781bf-281a-46e3-966b-17aef3a34835"
+  "updatedAt": "2023-09-27T14:36:27.000Z",
+  "versionId": "5f277a8b-f869-4a7f-a819-814c9dd97c2c"
 }
