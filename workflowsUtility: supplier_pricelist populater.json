@@ -1,17 +1,6 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "When clicking \"Execute Workflow\"": {
-      "main": [
-        [
-          {
-            "node": "Set Supplier",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Postgres": {
       "main": [
         [
@@ -118,17 +107,6 @@
         ]
       ]
     },
-    "Get Globals": {
-      "main": [
-        [
-          {
-            "node": "Globals",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Globals": {
       "main": [
         [
@@ -180,17 +158,6 @@
         ]
       ]
     },
-    "Set Supplier": {
-      "main": [
-        [
-          {
-            "node": "Get Globals",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Postgres6": {
       "main": [
         [
@@ -223,23 +190,23 @@
           }
         ]
       ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-09-26T14:14:30.701Z",
   "id": "NcCSuVjV7aeHK3kb",
   "name": "Utility: supplier_pricelist populater",
   "nodes": [
-    {
-      "parameters": {},
-      "id": "41cec6b4-8a9a-47ef-bf88-779b9bce9ab6",
-      "name": "When clicking \"Execute Workflow\"",
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        500,
-        220
-      ]
-    },
     {
       "parameters": {
         "operation": "executeQuery",
@@ -475,37 +442,16 @@
     },
     {
       "parameters": {
-        "operation": "executeQuery",
-        "query": "SELECT * FROM map_supplierinfo WHERE name = {{ \"'\"+$json.supplier+\"'\" }}",
-        "options": {}
-      },
-      "id": "ac7ee2a8-88f0-437b-bbc2-2a3a06e6a790",
-      "name": "Get Globals",
-      "type": "n8n-nodes-base.postgres",
-      "typeVersion": 2.3,
-      "position": [
-        1020,
-        220
-      ],
-      "credentials": {
-        "postgres": {
-          "id": "dqel3RyoT6NsGiSw",
-          "name": "odooData"
-        }
-      }
-    },
-    {
-      "parameters": {
         "keepOnlySet": true,
         "values": {
           "string": [
             {
               "name": "globals",
-              "value": "={{ JSON.parse($json.globals)[0] }}"
+              "value": "={{ $json.body.globals }}"
             },
             {
               "name": "name",
-              "value": "={{ $json.name }}"
+              "value": "={{ $json.body.name }}"
             }
           ]
         },
@@ -563,28 +509,6 @@
     },
     {
       "parameters": {
-        "keepOnlySet": true,
-        "values": {
-          "string": [
-            {
-              "name": "supplier",
-              "value": "Zyro"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "bbe4647b-0ea3-463c-8a46-2980391f0810",
-      "name": "Set Supplier",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 2,
-      "position": [
-        720,
-        220
-      ]
-    },
-    {
-      "parameters": {
         "operation": "executeQuery",
         "query": "UPDATE {{ \"datatransit.index_\"+$('Globals').first().json.name.toLowerCase() }}\nSET variantgrouping = b.variantgrouping\nFROM {{ \"odooData.feed_\"+$('Globals').first().json.name.toLowerCase() }} b\nWHERE barcode = b.ean",
         "options": {}
@@ -625,15 +549,63 @@
         1700,
         640
       ]
+    },
+    {
+      "parameters": {
+        "path": "pricelist-checker",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "9076367c-6ab9-4861-9ee1-e4a6795b1ec5",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        960,
+        220
+      ],
+      "webhookId": "7e4da479-3318-4c04-ad85-22181630fa56"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "463",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "name": "Madison",
+            "globals": {
+              "SupplierName": "Madison",
+              "PartnerId": 47,
+              "ProductTagId": 8,
+              "LeadTimeAddition": 3,
+              "Webhook": "update-madison",
+              "LastCount": "20060",
+              "CreateSequence": "create-categ-sync,create-size-sync,create-version-write,create-brand-sync,create-brand-write,create-colour-sync,create-colour-write,create-attribute-write,create-madison-extrainfo-label-sync,create-madison-extrainfo-label-write,create-madison-extrainfo-sync,create-madison-extrainfo-write"
+            }
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2023-09-27T10:43:28.000Z",
-  "versionId": "8961f25c-bec4-48c9-a569-17e01921d5e5"
+  "triggerCount": 1,
+  "updatedAt": "2023-09-27T14:36:44.000Z",
+  "versionId": "209dfa0a-2192-4552-a143-79f97efb18fe"
 }
