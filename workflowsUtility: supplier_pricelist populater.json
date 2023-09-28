@@ -67,7 +67,7 @@
       "main": [
         [
           {
-            "node": "Split In Batches",
+            "node": "IF2",
             "type": "main",
             "index": 0
           }
@@ -79,6 +79,13 @@
         [
           {
             "node": "Postgres3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
             "type": "main",
             "index": 0
           }
@@ -196,6 +203,24 @@
         [
           {
             "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
             "type": "main",
             "index": 0
           }
@@ -329,9 +354,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        1920,
+        1740,
         640
       ],
+      "alwaysOutputData": true,
       "credentials": {
         "postgres": {
           "id": "ayAxbLgcy5Lpqy5D",
@@ -349,7 +375,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 2,
       "position": [
-        2140,
+        2360,
         640
       ]
     },
@@ -364,7 +390,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        2360,
+        2580,
         640
       ],
       "credentials": {
@@ -377,7 +403,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT yourprice, variantgrouping, {{ $json.product_tmpl_id }} AS product_tmpl_id, leadtime FROM {{ \"odooData.feed_\"+$('Globals').first().json.name.toLowerCase() }} WHERE variantgrouping = {{ \"'\"+$json.variantgrouping+\"'\" }}",
+        "query": "SELECT yourprice, variantgrouping, {{ $json.product_tmpl_id }} AS product_tmpl_id, leadtime FROM {{ \"odooData.feed_\"+$('Globals').first().json.name.toLowerCase() }} WHERE variantgrouping = {{ \"'\"+$json.variantgrouping\n        .replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\" }}",
         "options": {}
       },
       "id": "55a25b64-0887-48d6-8c95-76cf2fdf40b3",
@@ -385,7 +411,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        2960,
+        3180,
         640
       ],
       "credentials": {
@@ -429,7 +455,7 @@
       "type": "n8n-nodes-base.odoo",
       "typeVersion": 1,
       "position": [
-        3160,
+        3380,
         640
       ],
       "executeOnce": true,
@@ -477,7 +503,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        3380,
+        3600,
         640
       ],
       "credentials": {
@@ -503,7 +529,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        2580,
+        2800,
         640
       ]
     },
@@ -518,7 +544,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        1480,
+        1420,
         640
       ],
       "credentials": {
@@ -546,7 +572,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        1700,
+        1580,
         640
       ]
     },
@@ -565,6 +591,37 @@
         220
       ],
       "webhookId": "7e4da479-3318-4c04-ad85-22181630fa56"
+    },
+    {
+      "parameters": {},
+      "id": "7e0de73e-fc83-416f-87c5-c6d081393485",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2520,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.product_tmpl_id }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "d863d838-7783-46a2-a1c2-c34875a991f8",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        640
+      ]
     }
   ],
   "pinData": {
@@ -606,6 +663,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-27T14:36:44.000Z",
-  "versionId": "209dfa0a-2192-4552-a143-79f97efb18fe"
+  "updatedAt": "2023-09-28T09:41:41.000Z",
+  "versionId": "259be8e6-8402-47fc-85bf-cbd44d1c11f3"
 }
