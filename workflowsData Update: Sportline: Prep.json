@@ -1,0 +1,1470 @@
+{
+  "active": false,
+  "connections": {
+    "SSH": {
+      "main": [
+        [
+          {
+            "node": "firstFail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH2": {
+      "main": [
+        [
+          {
+            "node": "SSH",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "SSH2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "SSH1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH1": {
+      "main": [
+        [
+          {
+            "node": "SSH3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH3": {
+      "main": [
+        [
+          {
+            "node": "SSH4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH4": {
+      "main": [
+        [
+          {
+            "node": "IF3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SSH1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet File": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "firstFail": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Postgres3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres3": {
+      "main": [
+        [
+          {
+            "node": "Postgres5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres5": {
+      "main": [
+        [
+          {
+            "node": "Postgres6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres6": {
+      "main": [
+        [
+          {
+            "node": "Postgres4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres4": {
+      "main": [
+        [
+          {
+            "node": "Postgres7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres7": {
+      "main": [
+        [
+          {
+            "node": "Postgres8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres8": {
+      "main": [
+        [
+          {
+            "node": "Postgres16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres9": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Postgres9",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Data Update: Process Alter Statements",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres10": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF3": {
+      "main": [
+        [
+          {
+            "node": "SSH5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH5": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Update: Process Alter Statements": {
+      "main": [
+        [
+          {
+            "node": "Postgres11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Postgres15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Amend Expected Lines": {
+      "main": [
+        [
+          {
+            "node": "Postgres13",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres13": {
+      "main": [
+        [
+          {
+            "node": "Set2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres12": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Set3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set3": {
+      "main": [
+        [
+          {
+            "node": "Postgres14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres11": {
+      "main": [
+        [
+          {
+            "node": "Amend Expected Lines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres15": {
+      "main": [
+        [
+          {
+            "node": "globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "globals": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres16": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-29T10:35:31.170Z",
+  "id": "lMPOpMBvFPOz3wFH",
+  "name": "Data Update: Sportline: Prep",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE `Upload-Madison` CHANGE `Product Code` `ProductCode` VARCHAR(40),CHANGE `Description (80 Chars)` `ProductName` VARCHAR(100),CHANGE `Short Description (40 Chars)` `ShortDescription` VARCHAR(40),CHANGE `Long Web Text` `LongDescription` LONGTEXT,CHANGE `Barcode` `Ean` VARCHAR(29),CHANGE `Vat Rate` `Vat` INT(2),CHANGE `Unit of Measure` `PackQty` VARCHAR(11),CHANGE `RRP` `Rrp` DECIMAL(7,2),CHANGE `Lead Time` `LeadTime` INT(3),CHANGE `Image Name` `ImageUrl` VARCHAR(100),CHANGE `Alternative Image 1` `AlternativeImage1Url` VARCHAR(100),CHANGE `Alternative Image 2` `AlternativeImage2Url` VARCHAR(100),CHANGE `Alternative Image 3` `AlternativeImage3Url` VARCHAR(100),CHANGE `Supplier Code` `SupplierCode` VARCHAR(30),CHANGE `Brand Colour` `Colour` VARCHAR(100),CHANGE `Variant Grouping` `VariantGrouping` VARCHAR(30),CHANGE `Outer Quantity` `OuterQuantity` INT(3),CHANGE `Your Price` `YourPrice` DECIMAL(7,2),CHANGE `Sub Category` `SubCategory` VARCHAR(100),CHANGE `Product Extra Info (eg Crank Length / Lens Colour)` `TechnicalSpec` LONGTEXT,CHANGE `Product Extra Information Label` `TechnicalSpecLabel` LONGTEXT;"
+      },
+      "id": "125e997f-e29b-4340-84be-b32903ca60a5",
+      "name": "Rename Columns",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        -920,
+        1740
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_sportline FROM /home/luke/feeds/Upload-Sportline.csv DELIMITER ',' CSV HEADER;\"",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "2957f004-c4aa-4487-a754-d9517d92c03c",
+      "name": "SSH",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        -940,
+        680
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=LANG=C sed -i 's/[\\d128-\\d255]//g' /home/luke/feeds/Upload-Sportline.csv",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "47d1b6bd-42a2-4ec7-a346-705ad4830b4d",
+      "name": "SSH2",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        -1120,
+        680
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DROP TABLE IF EXISTS odoodata.upload_sportline; ",
+        "options": {}
+      },
+      "id": "d096f1e8-4996-40cc-b05e-2bbf8ed276ae",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1560,
+        680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE TABLE odoodata.upload_sportline AS\n  SELECT *\nFROM odoodata.template_sportline;",
+        "options": {}
+      },
+      "id": "975f26f6-3465-4e30-a813-e19511b473ba",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1280,
+        680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.stderr }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "c5e0e381-5c4d-4035-8c32-b7c1502ace4a",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "info@biketrax.co.uk",
+        "toEmail": "ithelpdesk@madison.co.uk",
+        "subject": "=Sportline Feed Error - {{ ($('Code').all().length / $('globals').first().json.globals.LastCount) < 0.05 ? 100-((Math.round(($('Code').all().length / $('globals').first().json.globals.LastCount)*10000))/100) + \"% Parsed\" : \"Feed Rejected\" }}",
+        "text": "=Line(s) from the latest Sportline data feed have failed to parse. This is usually because of a break in CSV specifications or incorrect placement of standard delimiters (,) / enclosing marks (\")  in your feed CSV.\n\nHere is an example product code with faulty data, and the error it caused:\n\nProduct Code: {{ $('Code').first().json.failed_code }}\n{{ $('Code').first().json.stderr }}\n\nA list of errors is attached as a XLS file - this represents {{ ($('Code').all().length / $('globals').first().json.globals.LastCount) < 0.05 ? Math.round(($('Code').all().length / $('globals').first().json.globals.LastCount)*10000)/100 + \"% of your feed, so the remainder has been parsed\" : \"more than 5% of your feed, so the entire feed has been rejected\" }}. If you could correct the errors for future exports, then then the item(s) can be added to our database on the next run. Our data routines run daily, but this email will be sent a maximum of once a week, if you would prefer to recieve it more frequently (or as soon as errors emerge), please email luke@biketrax.co.uk.\n\nMany thanks,\n\nBiketraxBot (Product Information Database)",
+        "options": {
+          "attachments": "data",
+          "ccEmail": "luke@biketrax.co.uk",
+          "replyTo": "luke@biketrax.co.uk"
+        }
+      },
+      "id": "4dfb37bc-16f1-47b8-9901-e29fade174b0",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        1720,
+        760
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "smtp": {
+          "id": "H2cITTqls0BiVgFE",
+          "name": "info@biketrax.co.uk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=grep -n {{ \"\\\"\"+$json.stderr.split(\"\\\"\")[2]+\"\\\"\" }}  /home/luke/feeds/Upload-Sportline{{ $runIndex == 0 ? \"\" : $runIndex }}.csv | cut -f1 -d:"
+      },
+      "id": "8cffc2dd-1644-4df5-b9c9-7488f9b7e887",
+      "name": "SSH1",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        560
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "AGAk5dnezH3Jdg8v",
+          "name": "Node3 (postgres)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "={{\"sed '\"+$json.stdout+\"d'\"}} /home/luke/feeds/Upload-Sportline{{ $runIndex == 0 ? \"\" : $runIndex }}.csv > /home/luke/feeds/Upload-Madison{{ $runIndex+1 }}.csv"
+      },
+      "id": "74b225c4-5aea-419f-af24-0b8d549322f6",
+      "name": "SSH3",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        60,
+        560
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_madison FROM /home/luke/feeds/Upload-Sportline{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "b7254793-3029-42cf-898d-a882b4dcc0b8",
+      "name": "SSH4",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        260,
+        560
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "AGAk5dnezH3Jdg8v",
+          "name": "Node3 (postgres)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.stderr }}",
+              "operation": "isEmpty"
+            }
+          ],
+          "number": [
+            {
+              "value1": "={{ $runIndex }}",
+              "operation": "largerEqual",
+              "value2": "={{ Number($('globals').first().json.globals.LastCount)*0.05 }}"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "e9d517bf-b473-467a-b566-8c1754bae3c9",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        640,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "failed_code",
+              "value": "={{$('SSH4').item.json.stderr.split(\"\\\"\")[2]}}"
+            },
+            {
+              "name": "stderr",
+              "value": "={{ $('SSH4').item.json.stderr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cb2c8ae9-d2b1-4ec7-8960-a5690cc424a4",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        460,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "let results = [],\n  i = 0;\n\ndo {\n  try {\n    results = results.concat($(\"Set\").all(0, i));\n  } catch (error) {\n        results = results.concat($(\"firstFail\").all()); \n    return results;\n  }\n  i++;\n} while (true);\n"
+      },
+      "id": "609c0277-0619-4fd8-b51f-934eda312133",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        760
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "options": {
+          "fileName": "parsing_errors.xls",
+          "headerRow": true
+        }
+      },
+      "id": "10bf03fa-a0dd-4f80-b7d8-798616467056",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        760
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $today.weekday }}",
+              "operation": "equal",
+              "value2": 1
+            }
+          ]
+        }
+      },
+      "id": "19ba1ee0-6c3b-445f-a36f-cc7a7dcf79e8",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "failed_code",
+              "value": "={{$json.stderr.split(\"\\\"\")[2]}}"
+            },
+            {
+              "name": "stderr",
+              "value": "={{ $json.stderr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "13d3af37-4681-47ec-985d-6bcb91bf2815",
+      "name": "firstFail",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -580,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE odoodata.upload_madison SET rrp = rrp::NUMERIC / (1+(\"Vat Rate\"::INTEGER/100));",
+        "options": {}
+      },
+      "id": "41c8f3d8-40f9-44d9-95a0-c8727b66562f",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1560,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE odoodata.upload_sportline\nADD COLUMN IF NOT EXISTS stockcount INT NULL DEFAULT NULL;",
+        "options": {}
+      },
+      "id": "614296dd-f9a7-4582-b88f-cef761b23d01",
+      "name": "Postgres3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1400,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_sportline a\n  SET stockcount = b.\"In Stock\"::NUMERIC\nFROM stock_sportline b\nWHERE a.\"Product Code\" = b.\"Product Code\";",
+        "options": {}
+      },
+      "id": "232ddfec-03d5-414f-b8ac-9f730eebbae8",
+      "name": "Postgres4",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -920,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE stock_sportline SET\n  \"In Stock\" = '1'\nWHERE \"In Stock\" = 'Y';",
+        "options": {}
+      },
+      "id": "d5e005fb-7d7b-457a-9447-dfe511c300ec",
+      "name": "Postgres5",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1240,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE stock_sportline SET\n  \"In Stock\" = '0'\nWHERE \"In Stock\" = 'N';",
+        "options": {}
+      },
+      "id": "6d4c33ac-6f10-42c6-b444-e9d85be27a01",
+      "name": "Postgres6",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1080,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_sportline \nSET \"Sub Category\" = \"Sub Sub Category\" \nWHERE \"Sub Category\" = 'Transmissions'\nOR \"Sub Category\" = 'Finishing Kit'\nOR \"Sub Category\" = 'Tyres & Tubes'\nOR (\"Sub Category\" = 'Accessories' AND category = 'Clothing');",
+        "options": {}
+      },
+      "id": "3f1090f4-3e4d-4913-9b8b-ae2cedf28047",
+      "name": "Postgres7",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -760,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM upload_sportline WHERE category = 'POS';",
+        "options": {}
+      },
+      "id": "473d9432-5f7d-4be6-87a0-3f95f3d72e75",
+      "name": "Postgres8",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -600,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_sportline\nSET {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} = CONCAT('https://www.sportlineb2b.co.uk/netalogue/zoom/',{{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }},'.jpg')\nWHERE {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} != ''\nOR {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} != NULL;",
+        "options": {
+          "queryBatching": "independently"
+        }
+      },
+      "id": "58d231d6-c999-4253-8d8d-91335a06c16b",
+      "name": "Postgres9",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1400,
+        1340
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_sportline\nSET {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} = NULL\nWHERE {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} = '';",
+        "options": {
+          "queryBatching": "independently"
+        }
+      },
+      "id": "303abc0c-beb7-4fca-8691-8ac1c7460368",
+      "name": "Postgres10",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1400,
+        1520
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    \"field\": \"Image Name\"\n  },\n  {\n    \"field\": \"Alternative Image 1\"\n  },\n  {\n    \"field\": \"Alternative Image 2\"\n  },\n  {\n    \"field\": \"Alternative Image 3\"\n  }\n];"
+      },
+      "id": "4dbbb013-635b-4638-9adb-21de28068210",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1560,
+        1340
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "2edbb1fb-c87a-4496-ac4e-f37000b82c94",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -1080,
+        1420
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "workflowId": "Vc6ZgR8vArPNZu09"
+      },
+      "id": "f8014edc-6c46-4867-ab63-41db9ea893a9",
+      "name": "Data Update: Process Alter Statements",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "alterStatements",
+              "value": "RENAME COLUMN \"Product Code\" TO \"productcode\", ALTER COLUMN \"productcode\" TYPE CHAR(40), RENAME COLUMN \"Description (80 Chars)\" TO \"productname\", ALTER COLUMN \"productname\" TYPE CHAR(100), RENAME COLUMN \"Short Description (40 Chars)\" TO \"shortdescription\", ALTER COLUMN \"shortdescription\" TYPE CHAR(40), RENAME COLUMN \"Long Web Text\" TO \"longdescription\", ALTER COLUMN \"longdescription\" TYPE TEXT, RENAME COLUMN \"barcode\" TO \"ean\", ALTER COLUMN \"ean\" TYPE CHAR(29), RENAME COLUMN \"Vat Rate\" TO \"vat\", ALTER COLUMN \"vat\" TYPE INT USING \"vat\"::NUMERIC, RENAME COLUMN \"Unit of Measure\" TO \"packqty\", ALTER COLUMN \"packqty\" TYPE CHAR(11), ALTER COLUMN \"rrp\" TYPE NUMERIC USING \"rrp\"::NUMERIC, RENAME COLUMN \"Lead Time\" TO \"leadtime\", ALTER COLUMN \"leadtime\" TYPE INT USING \"leadtime\"::NUMERIC, RENAME COLUMN \"Image Name\" TO \"imageurl\", ALTER COLUMN \"imageurl\" TYPE TEXT, RENAME COLUMN \"Alternative Image 1\" TO \"alternativeimage1url\", ALTER COLUMN \"alternativeimage1url\" TYPE TEXT, RENAME COLUMN \"Alternative Image 2\" TO \"alternativeimage2url\", ALTER COLUMN \"alternativeimage2url\" TYPE TEXT, RENAME COLUMN \"Alternative Image 3\" TO \"alternativeimage3url\", ALTER COLUMN \"alternativeimage3url\" TYPE TEXT, RENAME COLUMN \"Supplier Code\" TO \"suppliercode\", ALTER COLUMN \"suppliercode\" TYPE CHAR(30), RENAME COLUMN \"Brand Colour\" TO \"colour\", ALTER COLUMN \"colour\" TYPE CHAR(100), RENAME COLUMN \"Variant Grouping\" TO \"variantgrouping\", ALTER COLUMN \"variantgrouping\" TYPE CHAR(30), RENAME COLUMN \"Outer Quantity\" TO \"outerquantity\", ALTER COLUMN \"outerquantity\" TYPE INT USING \"outerquantity\"::NUMERIC, RENAME COLUMN \"Your Price\" TO \"yourprice\", ALTER COLUMN \"yourprice\" TYPE NUMERIC USING \"yourprice\"::NUMERIC, RENAME COLUMN \"Sub Category\" TO \"subcategory\", ALTER COLUMN \"subcategory\" TYPE CHAR(100), RENAME COLUMN \"Product Extra Info (eg Crank Length / Lens Colour)\" TO \"technicalspec\", ALTER COLUMN \"technicalspec\" TYPE TEXT, RENAME COLUMN \"Product Extra Information Label\" TO \"technicalspeclabel\", ALTER COLUMN \"technicalspeclabel\" TYPE TEXT"
+            },
+            {
+              "name": "supplier",
+              "value": "Madison"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "86610bac-9449-42e7-851a-0cbe19995c0c",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -760,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch"
+      },
+      "id": "c2313bbe-6584-4935-92d7-6ba1d0b05266",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        -1220,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $runIndex }}",
+              "operation": "larger"
+            }
+          ]
+        }
+      },
+      "id": "03997a63-ed17-438a-9472-e0919165136c",
+      "name": "IF3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        60,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "command": "=rm /home/luke/feeds/Upload-Sportline{{ $runIndex }}.csv",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "db8987bf-46bb-46c7-a5fc-b1670225d7dc",
+      "name": "SSH5",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        260,
+        780
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE odoodata.upload_madison SET rrp = ROUND(rrp::NUMERIC / (1+(vat::NUMERIC/100)),2);",
+        "options": {}
+      },
+      "id": "49b22f7a-280a-4a19-a5ff-7be5a36f021b",
+      "name": "Postgres11",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -420,
+        1420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "sportline-prep",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "f0a3f8f0-b7b7-4628-9908-3b368167bb52",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -1820,
+        680
+      ],
+      "webhookId": "5a34a389-138a-4c9b-b6fc-8bf4e160f5bd"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COUNT (productcode) FROM upload_madison;",
+        "options": {}
+      },
+      "id": "8ba222c7-02a4-4917-a493-bb9b7b71452c",
+      "name": "Postgres12",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        1520
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "3b573b53-a6d8-4d48-946c-cd88b62a045b",
+      "name": "Amend Expected Lines",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE Name = 'Madison';",
+        "options": {}
+      },
+      "id": "caa42808-4cbc-49f5-845f-0c6aa76aa3d3",
+      "name": "Postgres13",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -60,
+        1300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ JSON.parse($json.globals)[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f58a8c4f-61ea-4080-ac6e-32da8472191f",
+      "name": "Set2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        160,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "3aace0f5-f61a-4722-8f82-564c79f1c5ac",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        380,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals.LastCount",
+              "value": "={{ $json.count }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "602226f4-eeb7-4574-bd64-8db8044ed5cd",
+      "name": "Set3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        600,
+        1420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = {{ \"'\"+$json.name+\"'\" }}; ",
+        "options": {}
+      },
+      "id": "6170ac36-481c-4139-9ea0-d93b1f57d274",
+      "name": "Postgres14",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        820,
+        1420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE Name = 'Sportline';",
+        "options": {}
+      },
+      "id": "6f6cf5e3-058c-453b-a63a-180aaa1d302b",
+      "name": "Postgres15",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1840,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ JSON.parse($json.globals)[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "24b57a89-9ed4-4f79-8700-715a35a1ea03",
+      "name": "globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -1680,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE upload_sportline SET brand = 'Shimano' WHERE brand LIKE 'Shimano%';",
+        "options": {}
+      },
+      "id": "071eadb3-4b5d-4f0d-9b8c-ff2ca5804a16",
+      "name": "Postgres16",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -440,
+        1120
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Amend Expected Lines": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2Bg%2FR%2BDoyn7CGTlRw1Z6%2Fb%2B2XCNN67Jh2o%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX18uU5MJnfgfy%2FRUMU1I8pymRwiN6gsci6M%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU1NGU2NmU4LTA0YzYtNGZhZi1iZTdjLWMyNDIwYzY2NGU3NCIsImVtYWlsIjoibHVrZUBiaWtldHJheC5jby51ayIsInBhc3N3b3JkIjoiOTRkYjE5YmM3MjMxNDgxODQ3MDRjMmYxZGZkYjlmYjAzNDQxMjM0MjcwMThhODllNGQ5ODQ4NWM2MzUyOGQ0ZSIsImlhdCI6MTY5NTk4MzIxOCwiZXhwIjoxNjk2NTg4MDE4fQ.7Z9QDo3iSle1tRZObWTa5pQXItCmEWOJgoPyWtYPGaA; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2FCJMCyY3vxed0%2BT4S6NK5MQMGNHjvDw7i5OtwZ%2Bl4pOrEcJUJ8DIdUeU0beLI9XziKWrH8VZceqg%3D%3D; rl_group_id=RudderEncrypt%3AU2FsdGVkX19NUpnsratNhv4nr3%2B4UFoOoxtn%2BSEpz%2Bw%3D; rl_group_trait=RudderEncrypt%3AU2FsdGVkX1%2B4rf%2FDoQBSffE5XFK8yGk8%2BVE9NbWFmn0%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2B4zoBw01XamJXWZ%2Bl3OGxGB0mPrMIEFXmK0Cs%2B1yLLoAKR7PpN1QnLV%2B21ai3KbOlXT4bVOV7oKqzj3b%2F2PHH9BFBn9d%2BnTkDPvb6cE02mC2dbo5jZJlk2TRc8e2QqHSqENvHt8UM22y5oz4a%2FDBa8Sjh5mDpvygM%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2BymjC2O9c2llqiss3MCsUYolckmtpa8eTw7H4%2FJULYalrabALIeBy1xWpeJ7FVXmc5%2BCoPf6LxaSRiSRItQalZ2Y2ewDORuyoL0IpDzYpQCXT4wvvSeKpAUITFmgf7ZoEQ746ULqkgAlUCp%2BELqVS4bpN44br7Iq4%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22%24active_feature_flags%22%3A%5B%22013_distribution_test%22%2C%22011_ask_AI%22%2C%22012_signup_cta_wording%22%2C%22009_choosing_trial_plan%22%2C%22006_cloud_opt_in%22%2C%22010_relevant_usecase%22%2C%22schema-view%22%5D%2C%22%24enabled_feature_flags%22%3A%7B%22013_distribution_test%22%3A%22variant%22%2C%22011_ask_AI%22%3A%22gpt3%22%2C%22012_signup_cta_wording%22%3A%22variant%22%2C%22009_choosing_trial_plan%22%3A%22variant%22%2C%22004_checklist%22%3Afalse%2C%22008_template_variants%22%3Afalse%2C%22006_cloud_opt_in%22%3A%22control%22%2C%22010_relevant_usecase%22%3A%22control%22%2C%22schema-view%22%3Atrue%7D%2C%22%24feature_flag_payloads%22%3A%7B%7D%2C%22distinct_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24device_id%22%3A%22018a2b9e-7557-79eb-bfa1-dace9620ffc5%22%2C%22%24user_state%22%3A%22identified%22%2C%22%24user_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24stored_person_properties%22%3A%7B%22instance_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%22%2C%22created_at_timestamp%22%3A1691497889718%7D%2C%22%24sesid%22%3A%5B1695983775213%2C%22018ae082-abbc-710d-abb3-790decb23662%22%2C1695983774652%5D%2C%22%24session_recording_enabled_server_side%22%3Afalse%2C%22%24autocapture_disabled_server_side%22%3Afalse%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2FMu%2BFSPNGSWsZ53bDna5qJY7wkNQTUIjQJEqOCJVzLFZyc%2BWw8XUMDlEv2eREFajx71tA1njUe7uUDfsgSnijDTLVe%2FUefEAgV%2FNu6Rzi%2BVs6DJCdLsykoZTedDFb7aNeIwB%2B%2FFQuNww%3D%3D",
+            "sec-ch-ua": "\"Google Chrome\";v=\"117\", \"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"117\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1",
+            "upgrade-insecure-requests": "1",
+            "x-forwarded-for": "195.224.58.58",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https"
+          },
+          "params": {},
+          "query": {}
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-08-08T15:46:20.698Z",
+      "updatedAt": "2023-08-08T15:46:20.698Z",
+      "id": "4S5wvtegUIvgvqYs",
+      "name": "PostgreSQL"
+    },
+    {
+      "createdAt": "2023-08-10T09:20:24.007Z",
+      "updatedAt": "2023-08-10T09:20:24.007Z",
+      "id": "HV0Z3uOvnzoAoe20",
+      "name": "Spreadsheet"
+    },
+    {
+      "createdAt": "2023-08-08T15:13:33.587Z",
+      "updatedAt": "2023-08-08T15:13:33.587Z",
+      "id": "bbI8zuoQ3XV0LUP0",
+      "name": "set"
+    },
+    {
+      "createdAt": "2023-08-10T09:20:30.275Z",
+      "updatedAt": "2023-08-10T09:20:30.275Z",
+      "id": "cDsMu9S1EDCMPUY2",
+      "name": "email"
+    },
+    {
+      "createdAt": "2023-08-10T09:20:13.241Z",
+      "updatedAt": "2023-08-10T09:20:13.241Z",
+      "id": "gpFnWqOy05McH1n2",
+      "name": "SSH"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-29T10:58:51.000Z",
+  "versionId": "7e50e3cc-3697-4cd2-8b3d-d14f8861b011"
+}
