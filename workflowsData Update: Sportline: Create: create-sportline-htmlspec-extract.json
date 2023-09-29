@@ -1,0 +1,282 @@
+{
+  "active": true,
+  "connections": {
+    "HTML Extract": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "To Be Created": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets": {
+      "main": [
+        [],
+        [],
+        [],
+        [
+          {
+            "node": "To Be Created",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "HTML Extract",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-29T15:51:28.222Z",
+  "id": "87MWrrWJRZUOLBAj",
+  "name": "Data Update: Sportline: Create: create-sportline-htmlspec-extract",
+  "nodes": [
+    {
+      "parameters": {
+        "dataPropertyName": "technicalspec",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "attribute",
+              "cssSelector": "th",
+              "returnArray": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6941613b-8765-45d5-b714-186aadbe2436",
+      "name": "HTML Extract",
+      "type": "n8n-nodes-base.htmlExtract",
+      "typeVersion": 1,
+      "position": [
+        600,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "attribute",
+        "options": {}
+      },
+      "id": "1ba6a999-c881-405c-9a38-323446582268",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        760,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.attribute",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": []
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "name",
+              "value": "={{ $json.attribute }}"
+            }
+          ]
+        }
+      },
+      "id": "31cd74eb-fad2-492b-8f47-a09101a519fb",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        940,
+        340
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "name",
+              "field2": "attribute"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4215d283-228e-4ce4-ae06-6280d698f1e7",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        440
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {},
+      "id": "da8851c0-8587-40f4-9664-6b12c54ae877",
+      "name": "To Be Created",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.attribute",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json[\"attribute\"] }}"
+            },
+            {
+              "fieldName": "display_type",
+              "fieldValue": "radio"
+            }
+          ]
+        }
+      },
+      "id": "66b12029-c60b-49ec-9963-31c1d2c1a6c7",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        440
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "create-sportline-htmlspec-extract",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "9923e531-31c9-4647-9987-c0f9d3aa1612",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        80,
+        440
+      ],
+      "webhookId": "709aab89-c982-414b-ad92-7396d4b887c1"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "productcode",
+              "value": "={{ $json.body.productcode }}"
+            },
+            {
+              "name": "technicalspec",
+              "value": "={{ $json.body.technicalspec }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "109632e5-072e-489b-b10a-8a174676c221",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        300,
+        440
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-29T16:00:14.000Z",
+  "versionId": "19243bfc-b8c8-404b-807b-86b6596774f7"
+}
