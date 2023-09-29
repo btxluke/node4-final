@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "SSH": {
       "main": [
@@ -1081,11 +1081,11 @@
           "string": [
             {
               "name": "alterStatements",
-              "value": "RENAME COLUMN \"Product Code\" TO \"productcode\", ALTER COLUMN \"productcode\" TYPE CHAR(40), RENAME COLUMN \"Description (80 Chars)\" TO \"productname\", ALTER COLUMN \"productname\" TYPE CHAR(100), RENAME COLUMN \"Short Description (40 Chars)\" TO \"shortdescription\", ALTER COLUMN \"shortdescription\" TYPE CHAR(40), RENAME COLUMN \"Long Web Text\" TO \"longdescription\", ALTER COLUMN \"longdescription\" TYPE TEXT, RENAME COLUMN \"barcode\" TO \"ean\", ALTER COLUMN \"ean\" TYPE CHAR(29), RENAME COLUMN \"Vat Rate\" TO \"vat\", ALTER COLUMN \"vat\" TYPE INT USING \"vat\"::NUMERIC, RENAME COLUMN \"Unit of Measure\" TO \"packqty\", ALTER COLUMN \"packqty\" TYPE CHAR(11), ALTER COLUMN \"rrp\" TYPE NUMERIC USING \"rrp\"::NUMERIC, RENAME COLUMN \"Lead Time\" TO \"leadtime\", ALTER COLUMN \"leadtime\" TYPE INT USING \"leadtime\"::NUMERIC, RENAME COLUMN \"Image Name\" TO \"imageurl\", ALTER COLUMN \"imageurl\" TYPE TEXT, RENAME COLUMN \"Alternative Image 1\" TO \"alternativeimage1url\", ALTER COLUMN \"alternativeimage1url\" TYPE TEXT, RENAME COLUMN \"Alternative Image 2\" TO \"alternativeimage2url\", ALTER COLUMN \"alternativeimage2url\" TYPE TEXT, RENAME COLUMN \"Alternative Image 3\" TO \"alternativeimage3url\", ALTER COLUMN \"alternativeimage3url\" TYPE TEXT, RENAME COLUMN \"Supplier Code\" TO \"suppliercode\", ALTER COLUMN \"suppliercode\" TYPE CHAR(30), RENAME COLUMN \"Brand Colour\" TO \"colour\", ALTER COLUMN \"colour\" TYPE CHAR(100), RENAME COLUMN \"Variant Grouping\" TO \"variantgrouping\", ALTER COLUMN \"variantgrouping\" TYPE CHAR(30), RENAME COLUMN \"Outer Quantity\" TO \"outerquantity\", ALTER COLUMN \"outerquantity\" TYPE INT USING \"outerquantity\"::NUMERIC, RENAME COLUMN \"Your Price\" TO \"yourprice\", ALTER COLUMN \"yourprice\" TYPE NUMERIC USING \"yourprice\"::NUMERIC, RENAME COLUMN \"Sub Category\" TO \"subcategory\", ALTER COLUMN \"subcategory\" TYPE CHAR(100), RENAME COLUMN \"Product Extra Info (eg Crank Length / Lens Colour)\" TO \"technicalspec\", ALTER COLUMN \"technicalspec\" TYPE TEXT, RENAME COLUMN \"Product Extra Information Label\" TO \"technicalspeclabel\", ALTER COLUMN \"technicalspeclabel\" TYPE TEXT"
+              "value": "RENAME COLUMN \"Product Code\" TO \"productcode\", ALTER COLUMN \"productcode\" TYPE CHAR(40), RENAME COLUMN \"Description (80 Chars)\" TO \"productname\", ALTER COLUMN \"productname\" TYPE CHAR(100), RENAME COLUMN \"Short Description (40 Chars)\" TO \"shortdescription\", ALTER COLUMN \"shortdescription\" TYPE CHAR(40), RENAME COLUMN \"Long Web Text\" TO \"longdescription\", ALTER COLUMN \"longdescription\" TYPE TEXT, RENAME COLUMN \"barcode\" TO \"ean\", ALTER COLUMN \"ean\" TYPE CHAR(29), RENAME COLUMN \"Vat Rate\" TO \"vat\", ALTER COLUMN \"vat\" TYPE INT USING \"vat\"::NUMERIC, RENAME COLUMN \"Unit of Measure\" TO \"packqty\", ALTER COLUMN \"packqty\" TYPE CHAR(11), ALTER COLUMN \"rrp\" TYPE NUMERIC USING \"rrp\"::NUMERIC, RENAME COLUMN \"Lead Time\" TO \"leadtime\", ALTER COLUMN \"leadtime\" TYPE INT USING \"leadtime\"::NUMERIC, RENAME COLUMN \"Image Name\" TO \"imageurl\", ALTER COLUMN \"imageurl\" TYPE TEXT, RENAME COLUMN \"Alternative Image 1\" TO \"alternativeimage1url\", ALTER COLUMN \"alternativeimage1url\" TYPE TEXT, RENAME COLUMN \"Alternative Image 2\" TO \"alternativeimage2url\", ALTER COLUMN \"alternativeimage2url\" TYPE TEXT, RENAME COLUMN \"Alternative Image 3\" TO \"alternativeimage3url\", ALTER COLUMN \"alternativeimage3url\" TYPE TEXT, RENAME COLUMN \"Supplier Code\" TO \"suppliercode\", ALTER COLUMN \"suppliercode\" TYPE CHAR(30), RENAME COLUMN \"Brand Colour\" TO \"colour\", ALTER COLUMN \"colour\" TYPE CHAR(100), RENAME COLUMN \"Variant Grouping\" TO \"variantgrouping\", ALTER COLUMN \"variantgrouping\" TYPE CHAR(30), RENAME COLUMN \"Outer Quantity\" TO \"outerquantity\", ALTER COLUMN \"outerquantity\" TYPE INT USING \"outerquantity\"::NUMERIC, RENAME COLUMN \"Your Price\" TO \"yourprice\", ALTER COLUMN \"yourprice\" TYPE NUMERIC USING \"yourprice\"::NUMERIC, RENAME COLUMN \"Sub Category\" TO \"subcategory\", ALTER COLUMN \"subcategory\" TYPE CHAR(100), RENAME COLUMN \"Specification HTML\" TO \"technicalspec\", ALTER COLUMN \"technicalspec\" TYPE TEXT, ADD COLUMN \"technicalspeclabel\" TEXT"
             },
             {
               "name": "supplier",
-              "value": "Madison"
+              "value": "Sportline"
             }
           ]
         },
@@ -1156,7 +1156,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE odoodata.upload_madison SET rrp = ROUND(rrp::NUMERIC / (1+(vat::NUMERIC/100)),2);",
+        "query": "UPDATE odoodata.upload_sportline SET rrp = ROUND(rrp::NUMERIC / (1+(vat::NUMERIC/100)),2);",
         "options": {}
       },
       "id": "49b22f7a-280a-4a19-a5ff-7be5a36f021b",
@@ -1193,7 +1193,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT COUNT (productcode) FROM upload_madison;",
+        "query": "SELECT COUNT (productcode) FROM upload_sportline;",
         "options": {}
       },
       "id": "8ba222c7-02a4-4917-a493-bb9b7b71452c",
@@ -1225,7 +1225,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE Name = 'Madison';",
+        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE Name = 'Sportline';",
         "options": {}
       },
       "id": "caa42808-4cbc-49f5-845f-0c6aa76aa3d3",
@@ -1386,14 +1386,6 @@
     }
   ],
   "pinData": {
-    "Amend Expected Lines": [
-      {
-        "json": {
-          "name": "First item",
-          "code": 1
-        }
-      }
-    ],
     "Webhook": [
       {
         "json": {
@@ -1465,6 +1457,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-09-29T10:58:51.000Z",
-  "versionId": "7e50e3cc-3697-4cd2-8b3d-d14f8861b011"
+  "updatedAt": "2023-09-29T11:24:39.000Z",
+  "versionId": "ce3b4ec7-b0df-4513-a45b-99023cc21414"
 }
