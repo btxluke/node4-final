@@ -1,0 +1,294 @@
+{
+  "active": true,
+  "connections": {
+    "HTML Spec Table": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SplitInBatches": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML Attribute Value breakdown": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTML Attribute Value breakdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "HTML Attribute Convert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTML Attribute Convert": {
+      "main": [
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTML Spec Table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-29T14:56:30.283Z",
+  "id": "dlvTXDnGNsx4HtAp",
+  "name": "Data Update: Sportline: Create: create-sportline-htmlspec",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "19676f8e-eac5-45dd-9189-ba2f4136feda",
+      "name": "HTML Spec Table",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "d4f59b30-8456-4766-935a-01473a5caf8b",
+      "name": "SplitInBatches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        1580
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "20"
+      },
+      "id": "5b713585-5035-4943-b15d-b5faea89145b",
+      "name": "HTML Attribute Value breakdown",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        1680
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "workflowId": "21"
+      },
+      "id": "1727fb59-5e40-41f3-99f3-0cc0113e286e",
+      "name": "HTML Attribute Convert",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        1900
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch",
+        "output": "input2"
+      },
+      "id": "f7c9b949-899d-44e3-811a-afb5c5bc46e5",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        2040,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch",
+        "output": "input2"
+      },
+      "id": "536816e6-524e-4dc2-824a-ac3b3fc49d62",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        2040,
+        1900
+      ]
+    },
+    {
+      "parameters": {
+        "path": "create-sportline-htmlspec",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "c188add9-ef67-417b-92f8-bec83bb9cda7",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        1580
+      ],
+      "webhookId": "c92747be-9975-4705-990f-10f8eefe2a0d"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT productcode, technicalspec FROM transit_sportline WHERE technicalspec IS NOT NULL AND technicalspec != ''",
+        "options": {}
+      },
+      "id": "43b8c40e-04ca-4ec2-8797-df1cbdbf5690",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1580,
+        1580
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/create-sportline-htmlspec-extract",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{$json}}",
+        "options": {}
+      },
+      "id": "a16ef724-cb37-4af6-9339-6334c9d0cd82",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2040,
+        1480
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2Bg%2FR%2BDoyn7CGTlRw1Z6%2Fb%2B2XCNN67Jh2o%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX18uU5MJnfgfy%2FRUMU1I8pymRwiN6gsci6M%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU1NGU2NmU4LTA0YzYtNGZhZi1iZTdjLWMyNDIwYzY2NGU3NCIsImVtYWlsIjoibHVrZUBiaWtldHJheC5jby51ayIsInBhc3N3b3JkIjoiOTRkYjE5YmM3MjMxNDgxODQ3MDRjMmYxZGZkYjlmYjAzNDQxMjM0MjcwMThhODllNGQ5ODQ4NWM2MzUyOGQ0ZSIsImlhdCI6MTY5NTk4MzIxOCwiZXhwIjoxNjk2NTg4MDE4fQ.7Z9QDo3iSle1tRZObWTa5pQXItCmEWOJgoPyWtYPGaA; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2FLM3NcYXRPK7XmS2BoG0JE4vdeyo389Oe6NnU1GpOAokH7dwWU3mnJVeFNDS0RtJNkngQpwtX%2FVQ%3D%3D; rl_group_id=RudderEncrypt%3AU2FsdGVkX19ItZrnsspVmzqrcd1LlIZx6GWVLsFetEI%3D; rl_group_trait=RudderEncrypt%3AU2FsdGVkX1%2FMsLtOp69ue%2BDzHrSPuA6NmRQxd5TMHrA%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2BuPxembSvDdQQ9%2BjhOUMCQLKh7%2B5u%2FVh0%2F%2FkdAV1b4GMMciKnwEwKrwjQjypmiP3V6heg9UgZtyia2e47dPstN3MqLnngrxL8ESfQoT9qCkvMvxXXxahdXyp8lGhg5I6U%2FzymzojCfcg64uxMhDUyaJisoNBD77aU%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2FOBix3j0aRizDjtr2demSziaUqjpFpczzDEQfA62EKarKw5LSQCTm0yR0uuo68OjIluCczBggwVsO1BSGxyCy1QGRMz0wqmE4pp5cv5Jt%2Fi8x0eB7xY232JQmAX8NRloplxm%2FqP4XVEgb3jWoC2%2FA9mRYhmQ5cdBk%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22%24active_feature_flags%22%3A%5B%22013_distribution_test%22%2C%22011_ask_AI%22%2C%22012_signup_cta_wording%22%2C%22009_choosing_trial_plan%22%2C%22006_cloud_opt_in%22%2C%22010_relevant_usecase%22%2C%22schema-view%22%5D%2C%22%24enabled_feature_flags%22%3A%7B%22013_distribution_test%22%3A%22variant%22%2C%22011_ask_AI%22%3A%22gpt3%22%2C%22012_signup_cta_wording%22%3A%22variant%22%2C%22009_choosing_trial_plan%22%3A%22variant%22%2C%22004_checklist%22%3Afalse%2C%22008_template_variants%22%3Afalse%2C%22006_cloud_opt_in%22%3A%22control%22%2C%22010_relevant_usecase%22%3A%22control%22%2C%22schema-view%22%3Atrue%7D%2C%22%24feature_flag_payloads%22%3A%7B%7D%2C%22distinct_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24device_id%22%3A%22018a2b9e-7557-79eb-bfa1-dace9620ffc5%22%2C%22%24user_state%22%3A%22identified%22%2C%22%24user_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24stored_person_properties%22%3A%7B%22instance_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%22%2C%22created_at_timestamp%22%3A1691497889718%7D%2C%22%24sesid%22%3A%5B1696001087076%2C%22018ae18a-d664-7d2f-8599-c30051ef1451%22%2C1696001087076%5D%2C%22%24session_recording_enabled_server_side%22%3Afalse%2C%22%24autocapture_disabled_server_side%22%3Afalse%7D; rl_session=RudderEncrypt%3AU2FsdGVkX19ZY88Rv1SmrPQsxxTI%2FBG0WT6HQfgD4b%2FqVpnnucs9Wz4SfG62eaHyBquOOKh%2BGGz9lzhRjtT7RaeEmpLwXWGGEIFtQPp0yN4yr7%2F0ODELmx2yAbCafhnVuNJ3v%2F2Kjk86T0TpTJCUbg%3D%3D",
+            "sec-ch-ua": "\"Google Chrome\";v=\"117\", \"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"117\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1",
+            "upgrade-insecure-requests": "1",
+            "x-forwarded-for": "195.224.58.58",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https"
+          },
+          "params": {},
+          "query": {}
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-29T16:00:56.000Z",
+  "versionId": "cbf4ca00-f7fc-43f2-9b79-fcc83670fdf7"
+}
