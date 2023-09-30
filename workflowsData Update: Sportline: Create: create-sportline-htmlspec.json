@@ -33,22 +33,11 @@
         ]
       ]
     },
-    "HTML Attribute Value breakdown": {
-      "main": [
-        [
-          {
-            "node": "Merge1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Merge": {
       "main": [
         [
           {
-            "node": "HTML Attribute Value breakdown",
+            "node": "HTTP Request1",
             "type": "main",
             "index": 0
           }
@@ -59,18 +48,7 @@
       "main": [
         [
           {
-            "node": "HTML Attribute Convert",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTML Attribute Convert": {
-      "main": [
-        [
-          {
-            "node": "SplitInBatches",
+            "node": "HTTP Request2",
             "type": "main",
             "index": 0
           }
@@ -109,6 +87,28 @@
           }
         ]
       ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-09-29T14:56:30.283Z",
@@ -138,34 +138,6 @@
       "position": [
         1740,
         1580
-      ]
-    },
-    {
-      "parameters": {
-        "workflowId": "20"
-      },
-      "id": "5b713585-5035-4943-b15d-b5faea89145b",
-      "name": "HTML Attribute Value breakdown",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        2180,
-        1680
-      ],
-      "alwaysOutputData": true,
-      "executeOnce": true
-    },
-    {
-      "parameters": {
-        "workflowId": "21"
-      },
-      "id": "1727fb59-5e40-41f3-99f3-0cc0113e286e",
-      "name": "HTML Attribute Convert",
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1,
-      "position": [
-        2320,
-        1900
       ]
     },
     {
@@ -249,6 +221,40 @@
         2040,
         1480
       ]
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/create-sportline-htmlspec-av-breakdown",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{$json}}",
+        "options": {}
+      },
+      "id": "65eca0ff-6408-4760-896c-972b218a975c",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2200,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/create-sportline-htmlspec-convert",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{$json}}",
+        "options": {}
+      },
+      "id": "11128952-a20e-461c-952e-7cb8acaa3aa1",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2200,
+        1900
+      ]
     }
   ],
   "pinData": {
@@ -289,6 +295,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-29T16:00:56.000Z",
-  "versionId": "cbf4ca00-f7fc-43f2-9b79-fcc83670fdf7"
+  "updatedAt": "2023-09-30T10:55:25.000Z",
+  "versionId": "4c465eef-8912-4746-8657-b584243028af"
 }
