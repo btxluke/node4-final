@@ -1,0 +1,537 @@
+{
+  "active": true,
+  "connections": {
+    "HTML Extract1": {
+      "main": [
+        [
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TextManipulation": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "TextManipulation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Blank",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Odoo2": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets": {
+      "main": [
+        [],
+        [],
+        [],
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "HTML Extract1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-30T09:21:38.336Z",
+  "id": "dokjDycvdQVfRlS9",
+  "name": "Data Update: Sportline: Create: create-sportline-htmlspec-av-breakdown",
+  "nodes": [
+    {
+      "parameters": {
+        "dataPropertyName": "technicalspec",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "attributeValue",
+              "cssSelector": "td",
+              "returnArray": true
+            },
+            {
+              "key": "attribute",
+              "cssSelector": "th",
+              "returnArray": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4bf72928-4f3e-46e7-b146-cc54eb44705e",
+      "name": "HTML Extract1",
+      "type": "n8n-nodes-base.htmlExtract",
+      "typeVersion": 1,
+      "position": [
+        760,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "attributeValue",
+        "options": {}
+      },
+      "id": "89e852a7-d379-46ce-b969-872793b1e06b",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        940,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "attribute",
+        "options": {}
+      },
+      "id": "6427791a-02db-4549-ad5e-999eb0bd07f8",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        940,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "a221a614-55e3-41de-b366-547b613fb8be",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1160,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "textsWithManipulations": {
+          "textsWithManipulationsValues": [
+            {
+              "dataSources": {
+                "dataSource": [
+                  {
+                    "text": "={{ $json[\"attributeValue\"] }}",
+                    "destinationKey": "attributeValue"
+                  }
+                ]
+              },
+              "manipulations": {
+                "manipulation": [
+                  {
+                    "caseType": "titlecase"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "id": "58c5e327-bbad-4a62-95ea-731a35b2a516",
+      "name": "TextManipulation",
+      "type": "n8n-nodes-text-manipulation.textManipulation",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.attribute",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": []
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "name",
+              "value": "={{ $json.attribute }}"
+            }
+          ]
+        }
+      },
+      "id": "0da2a9df-f203-4220-8708-c7de21b82e90",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        440
+      ],
+      "executeOnce": false,
+      "alwaysOutputData": true,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "name",
+              "field2": "attribute"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9d91ce12-8c18-4de7-9abc-7f4c1b13f7fe",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1920,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json[\"attributeValue\"] }}",
+              "operation": "isNotEmpty"
+            },
+            {
+              "value1": "={{ $json[\"attributeValue\"] }}",
+              "operation": "notEqual",
+              "value2": "N/A"
+            }
+          ]
+        }
+      },
+      "id": "7a0b8a6d-161b-447f-a2b8-e0708cbe0f9e",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        540
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e1087f27-5466-46e4-89ab-3f18f759b75f",
+      "name": "Blank",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.attribute.value",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "name",
+              "fieldValue": "={{ $json[\"attributeValue\"].trim()}}"
+            },
+            {
+              "fieldName": "attribute_id",
+              "fieldValue": "={{ $json[\"id\"] }}"
+            }
+          ]
+        }
+      },
+      "id": "a9498334-5a08-4d10-801b-2d670fe36096",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        780
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.attribute.value",
+        "operation": "getAll",
+        "limit": 1,
+        "options": {
+          "fieldsList": [
+            "name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "name",
+              "value": "={{ $json.attributeValue }}"
+            },
+            {
+              "fieldName": "attribute_id",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        }
+      },
+      "id": "43ea71c3-3e7a-4633-9f45-d954d62b8ec3",
+      "name": "Odoo2",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2080,
+        460
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "name",
+              "field2": "attributeValue"
+            }
+          ]
+        },
+        "resolve": "preferInput1",
+        "options": {}
+      },
+      "id": "fb49ae2c-019c-4f0f-bd0d-32e572299ae5",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "path": "create-sportline-htmlspec-av-breakdown",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "ebf15eeb-ab07-4ab9-99a9-1a712c02ac4c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        220,
+        540
+      ],
+      "webhookId": "98de3a68-8726-4b78-be29-d05c18e8f92e"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "productcode",
+              "value": "={{ $json.body.productcode }}"
+            },
+            {
+              "name": "technicalspec",
+              "value": "={{ $json.body.technicalspec }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e57299c6-51eb-4253-b989-7a0ba5e9b574",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        440,
+        540
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "1225",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "productcode": "GN21850LG",
+            "technicalspec": "<table  class=\"\"mc-spec-table\"\"><tr>  <th>Frame</th>  <td>Reynolds 931 steel </td></tr><tr>  <th>Rear  Shock</th>  <td>N/A</td></tr><tr>  <th>Fork</th>  <td>Genesis carbon road disc </td></tr><tr>  <th>Headset</th>  <td>F17A 1 1/8\"\" - 1 1/5\"\"</td></tr><tr>  <th>Shifters</th>  <td>N/A</td></tr><tr>  <th>Rear  Derailleur</th>  <td>N/A</td></tr><tr>  <th>Front  Derailleur</th>  <td> N/A</td></tr><tr>  <th>Chainset</th>  <td>N/A</td></tr><tr>  <th>Bottom  Bracket</th>  <td>  N/A</td></tr><tr>  <th>Chain</th>  <td>N/A</td></tr><tr>  <th>Cassette  /  Freewheel</th>  <td> N/A</td></tr><tr>  <th>Rims</th>  <td>N/A</td></tr><tr>  <th>Hubs</th>  <td>N/A</td></tr><tr>  <th>Spokes</th>  <td>N/A</td></tr><tr>  <th>Tyres</th>  <td> N/A</td></tr><tr>  <th>Brakes</th>  <td>N/A</td></tr><tr>  <th>Brake  levers</th>  <td>N/A</td></tr><tr>  <th>Handlebars</th>  <td>  N/A</td></tr><tr>  <th>Stem</th>  <td>N/A</td></tr><tr>  <th>Saddle</th>  <td>N/A</td></tr><tr>  <th>Seatpost</th>  <td>N/A</td></tr><tr>  <th>Pedals</th>  <td>N/A</td></tr><tr>  <th>Drive Unit</th>  <td>N/A</td></tr><tr>  <th>Battery</th>  <td>N/A</td></tr><tr><th>charger</th>  <td>N/A</td></tr><tr> </table>"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-30T09:52:51.000Z",
+  "versionId": "4a6a02c5-b1e1-4d89-848c-53b2eeb347c9"
+}
