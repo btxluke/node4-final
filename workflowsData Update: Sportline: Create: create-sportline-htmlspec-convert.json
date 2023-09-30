@@ -1,0 +1,703 @@
+{
+  "active": true,
+  "connections": {
+    "HTML Extract": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TextManipulation": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists1": {
+      "main": [
+        [
+          {
+            "node": "Set2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Item Lists2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Set3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set2": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists3": {
+      "main": [
+        [
+          {
+            "node": "Item Lists1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set3": {
+      "main": [
+        [
+          {
+            "node": "Item Lists3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "TextManipulation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "data": {
+      "main": [
+        [
+          {
+            "node": "HTML Extract",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-09-30T09:56:14.051Z",
+  "id": "SgRT6MWmm8CDshtV",
+  "name": "Data Update: Sportline: Create: create-sportline-htmlspec-convert",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "create-sportline-htmlspec-convert",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "dc2fef9a-6da4-4574-973a-0c3ebac20044",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        380,
+        680
+      ],
+      "webhookId": "9cd81e8f-987d-44b1-9b27-2b011a3d7f61"
+    },
+    {
+      "parameters": {
+        "dataPropertyName": "technicalspec",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "attributeValue",
+              "cssSelector": "td",
+              "returnArray": true
+            }
+          ]
+        },
+        "options": {
+          "trimValues": true
+        }
+      },
+      "id": "a76dd321-dace-4837-a800-cc958721ceb9",
+      "name": "HTML Extract",
+      "type": "n8n-nodes-base.htmlExtract",
+      "typeVersion": 1,
+      "position": [
+        760,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "attributeValue",
+        "options": {}
+      },
+      "id": "7240e277-5c80-4a53-9543-79628f2369e6",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        980,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.attribute.value",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": []
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "name",
+              "value": "={{ $json.attributeValue }}"
+            }
+          ]
+        }
+      },
+      "id": "27fe44b5-6c2c-45d4-b766-8c8155e457d1",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        580
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "name",
+              "field2": "attributeValue"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c387a3bb-538d-4e54-b5f4-088ecdbdf1b0",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "textsWithManipulations": {
+          "textsWithManipulationsValues": [
+            {
+              "dataSources": {
+                "dataSource": [
+                  {
+                    "text": "={{ $json[\"attributeValue\"] }}",
+                    "destinationKey": "attributeValue"
+                  }
+                ]
+              },
+              "manipulations": {
+                "manipulation": [
+                  {
+                    "caseType": "titlecase"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "id": "e9be969a-fa83-477a-b625-ec7436c861ff",
+      "name": "TextManipulation",
+      "type": "n8n-nodes-text-manipulation.textManipulation",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "aggregateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "28f45899-c7a7-4580-9521-4ebbecc98103",
+      "name": "Item Lists1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        3520,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "=SELECT attribute_ids AS id FROM `Transit-Sportline` WHERE ProductCode = \"{{ $node[\"When Called By Another Workflow\"].json[\"ProductCode\"] }}\";"
+      },
+      "id": "37c7e61f-c23f-4c6a-b25c-555b6e1cc4b0",
+      "name": "MySQL",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        1040
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "mySql": {
+          "id": "6",
+          "name": "node3: dataTransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ $json[\"id\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c23b2f1e-aa84-4c24-9ccb-6b8c9fcc659f",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1960,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "=id",
+        "options": {}
+      },
+      "id": "ade4a4a4-c3d9-4f81-8500-80bbf4cd5340",
+      "name": "Item Lists2",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "id",
+              "value": "={{ $json.id != null ? $json[\"id\"].split(\",\") : null }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "97451d34-406c-4463-aa20-3ecea65f5614",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        2100,
+        820
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5306026f-a633-488c-896b-0309aca17c11",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        2900,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "attribute_ids",
+              "value": "={{ $json[\"id\"].join() }}"
+            },
+            {
+              "name": "productcode",
+              "value": "={{ $('data').item.json[\"productcode\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e7580a8c-c028-4c7d-853d-70d59882fbe5",
+      "name": "Set2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        3680,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "`Transit-Sportline`",
+          "mode": "name"
+        },
+        "updateKey": "ProductCode",
+        "columns": "attribute_ids"
+      },
+      "id": "2510962f-f7cb-4c5b-986d-47f4e6a19066",
+      "name": "MySQL1",
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 1,
+      "position": [
+        3580,
+        1240
+      ],
+      "credentials": {
+        "mySql": {
+          "id": "6",
+          "name": "node3: dataTransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "removeDuplicates",
+        "compare": "selectedFields",
+        "fieldsToCompare": {
+          "fields": [
+            {
+              "fieldName": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0d905019-4ef6-4940-ab22-3dafba58daa4",
+      "name": "Item Lists3",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 2,
+      "position": [
+        3320,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ parseInt($json.id) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "08ec03f9-c2ba-43b3-91b2-33cdc007007a",
+      "name": "Set3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        3120,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.attributeValue }}",
+              "operation": "notEqual",
+              "value2": "N/A"
+            }
+          ]
+        }
+      },
+      "id": "f09c2077-58b3-4b28-8003-d87bce9b3dad",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        680
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "9b37531a-691e-46dc-a62e-40243cc7386a",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT attribute_ids AS id FROM transit_sportline WHERE productcode = {{\"'\"+$('data').item.json.productcode+\"'\" }};",
+        "options": {}
+      },
+      "id": "757814b0-3f99-46e2-9274-7ade77713575",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1960,
+        820
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "productcode",
+              "value": "={{ $json.body.productcode }}"
+            },
+            {
+              "name": "technicalspec",
+              "value": "={{ $json.body.technicalspec }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4b6fe735-c784-41fd-99aa-ad99f29f2e36",
+      "name": "data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        560,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE transit_sportline \nSET attribute_ids = {{ \"'\"+$json.attribute_ids+\"'\" }}\nWHERE productcode = {{ \"'\"+$json.productcode+\"'\" }};",
+        "options": {}
+      },
+      "id": "443877f4-5638-437e-a240-50a7386515b8",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        2900,
+        900
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "axios/0.21.4",
+            "content-length": "1225",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.18.0.1",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "productcode": "GN21850LG",
+            "technicalspec": "<table  class=\"\"mc-spec-table\"\"><tr>  <th>Frame</th>  <td>Reynolds 931 steel </td></tr><tr>  <th>Rear  Shock</th>  <td>N/A</td></tr><tr>  <th>Fork</th>  <td>Genesis carbon road disc </td></tr><tr>  <th>Headset</th>  <td>F17A 1 1/8\"\" - 1 1/5\"\"</td></tr><tr>  <th>Shifters</th>  <td>N/A</td></tr><tr>  <th>Rear  Derailleur</th>  <td>N/A</td></tr><tr>  <th>Front  Derailleur</th>  <td> N/A</td></tr><tr>  <th>Chainset</th>  <td>N/A</td></tr><tr>  <th>Bottom  Bracket</th>  <td>  N/A</td></tr><tr>  <th>Chain</th>  <td>N/A</td></tr><tr>  <th>Cassette  /  Freewheel</th>  <td> N/A</td></tr><tr>  <th>Rims</th>  <td>N/A</td></tr><tr>  <th>Hubs</th>  <td>N/A</td></tr><tr>  <th>Spokes</th>  <td>N/A</td></tr><tr>  <th>Tyres</th>  <td> N/A</td></tr><tr>  <th>Brakes</th>  <td>N/A</td></tr><tr>  <th>Brake  levers</th>  <td>N/A</td></tr><tr>  <th>Handlebars</th>  <td>  N/A</td></tr><tr>  <th>Stem</th>  <td>N/A</td></tr><tr>  <th>Saddle</th>  <td>N/A</td></tr><tr>  <th>Seatpost</th>  <td>N/A</td></tr><tr>  <th>Pedals</th>  <td>N/A</td></tr><tr>  <th>Drive Unit</th>  <td>N/A</td></tr><tr>  <th>Battery</th>  <td>N/A</td></tr><tr><th>charger</th>  <td>N/A</td></tr><tr> </table>"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-09-30T10:49:06.000Z",
+  "versionId": "1ddf1c2f-685c-4ec3-9c69-d84a939f6f54"
+}
