@@ -231,6 +231,7 @@
       "parameters": {
         "path": "create-sportline-htmlspec-extract",
         "responseMode": "lastNode",
+        "responseData": "noData",
         "options": {}
       },
       "id": "9923e531-31c9-4647-9987-c0f9d3aa1612",
@@ -277,6 +278,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-29T16:00:14.000Z",
-  "versionId": "19243bfc-b8c8-404b-807b-86b6596774f7"
+  "updatedAt": "2023-09-30T11:00:13.000Z",
+  "versionId": "a143d6bc-baf6-455b-bbd4-8d15b23884e7"
 }
