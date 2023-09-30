@@ -203,7 +203,8 @@
       "position": [
         940,
         640
-      ]
+      ],
+      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -217,7 +218,8 @@
       "position": [
         940,
         440
-      ]
+      ],
+      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -532,6 +534,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-30T09:52:51.000Z",
-  "versionId": "4a6a02c5-b1e1-4d89-848c-53b2eeb347c9"
+  "updatedAt": "2023-09-30T11:28:20.000Z",
+  "versionId": "e51211ec-2103-4119-8b87-45cc9576e794"
 }
