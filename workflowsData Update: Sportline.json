@@ -525,7 +525,7 @@
     },
     {
       "parameters": {
-        "url": "=https://node4.biketrax.co.uk/webhook-test/create-template",
+        "url": "=https://node4.biketrax.co.uk/webhook/create-template",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{$('Globals').first().json}}",
@@ -556,38 +556,7 @@
       ]
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "node4.biketrax.co.uk",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-            "accept-encoding": "gzip, deflate, br",
-            "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
-            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2Bg%2FR%2BDoyn7CGTlRw1Z6%2Fb%2B2XCNN67Jh2o%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX18uU5MJnfgfy%2FRUMU1I8pymRwiN6gsci6M%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU1NGU2NmU4LTA0YzYtNGZhZi1iZTdjLWMyNDIwYzY2NGU3NCIsImVtYWlsIjoibHVrZUBiaWtldHJheC5jby51ayIsInBhc3N3b3JkIjoiOTRkYjE5YmM3MjMxNDgxODQ3MDRjMmYxZGZkYjlmYjAzNDQxMjM0MjcwMThhODllNGQ5ODQ4NWM2MzUyOGQ0ZSIsImlhdCI6MTY5NTk4MzIxOCwiZXhwIjoxNjk2NTg4MDE4fQ.7Z9QDo3iSle1tRZObWTa5pQXItCmEWOJgoPyWtYPGaA; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2BlYUshsIRRBpxBq8zk4T6VX1qS4voINeZ3nvLjoIq6G8mMQXmrFvvwPXJ0cTU88eWNw%2FMaMhkXDw%3D%3D; rl_group_id=RudderEncrypt%3AU2FsdGVkX1%2B8etRPmia55n6AZtIsBdzTqakspFHM61M%3D; rl_group_trait=RudderEncrypt%3AU2FsdGVkX19B%2BXPGxMCKKyQZILbNCfDFPAnqw%2BtBmCw%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX19JYzxpQhaL%2F0ogLk2Mwoz%2FIP0ohmFLU0dSvf6tUmqhudW3c0c%2BOk4zNexGwmXcnc%2FB90WYLUKoVGVADMXYfjo4TKfZAaOBSuwGB%2B22emkRdZCb4ujU3DSL4HDOKOfoUPIbtc5U%2FSQhvdgdgCSIBonIrTjrpjiz3ZU%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX18%2B0pDRyPRwtrXRn5XZgEShtRD3mqEvy%2BHtLTXSlEKwvuecATQaJARJ3%2Bg5njhTW5vNuGrT%2BbUSlkv%2F5duSJGhBw8lgf9hWxOYyb9fHwi8mGNCPRYQKC3NFvn128OcgiQgOYFVfqGHryB8FclaZ63JQ2A7%2BqdRSP8g%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22%24active_feature_flags%22%3A%5B%22013_distribution_test%22%2C%22011_ask_AI%22%2C%22012_signup_cta_wording%22%2C%22009_choosing_trial_plan%22%2C%22006_cloud_opt_in%22%2C%22010_relevant_usecase%22%2C%22schema-view%22%5D%2C%22%24enabled_feature_flags%22%3A%7B%22013_distribution_test%22%3A%22variant%22%2C%22011_ask_AI%22%3A%22gpt3%22%2C%22012_signup_cta_wording%22%3A%22variant%22%2C%22009_choosing_trial_plan%22%3A%22variant%22%2C%22004_checklist%22%3Afalse%2C%22008_template_variants%22%3Afalse%2C%22006_cloud_opt_in%22%3A%22control%22%2C%22010_relevant_usecase%22%3A%22control%22%2C%22schema-view%22%3Atrue%7D%2C%22%24feature_flag_payloads%22%3A%7B%7D%2C%22distinct_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24device_id%22%3A%22018a2b9e-7557-79eb-bfa1-dace9620ffc5%22%2C%22%24user_state%22%3A%22identified%22%2C%22%24user_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24stored_person_properties%22%3A%7B%22instance_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%22%2C%22created_at_timestamp%22%3A1691497889718%7D%2C%22%24sesid%22%3A%5B1695986714631%2C%22018ae07f-7f1e-7de3-afcc-9c25457f1d36%22%2C1695983566622%5D%2C%22%24session_recording_enabled_server_side%22%3Afalse%2C%22%24autocapture_disabled_server_side%22%3Afalse%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2FA06TwPq77fL1jqX9MGH9aHZvl9HHmfMSNWG%2Bb3ikb%2BKTJn%2BItYhxjBZc7XY5R%2FYcyZ0CdfelKdCdX02rXTsdvfaVIPt9vcE1xZJSUT9%2FKZZRDnLwTg4Trh5IXi5oImLM%2B9R5duZPoIg%3D%3D",
-            "sec-ch-ua": "\"Google Chrome\";v=\"117\", \"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"117\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
-            "sec-fetch-dest": "document",
-            "sec-fetch-mode": "navigate",
-            "sec-fetch-site": "none",
-            "sec-fetch-user": "?1",
-            "upgrade-insecure-requests": "1",
-            "x-forwarded-for": "195.224.58.58",
-            "x-forwarded-host": "node4.biketrax.co.uk",
-            "x-forwarded-proto": "https"
-          },
-          "params": {},
-          "query": {}
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -616,6 +585,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-09-30T10:59:20.000Z",
-  "versionId": "9900a911-f32b-4854-9f21-ec82b9275df5"
+  "updatedAt": "2023-09-30T13:46:30.000Z",
+  "versionId": "6ea4ff42-d461-4004-b3fc-dc434ffc6b5a"
 }
