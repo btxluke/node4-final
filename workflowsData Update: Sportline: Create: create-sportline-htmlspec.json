@@ -220,7 +220,8 @@
       "position": [
         2040,
         1480
-      ]
+      ],
+      "continueOnFail": true
     },
     {
       "parameters": {
@@ -237,7 +238,8 @@
       "position": [
         2200,
         1680
-      ]
+      ],
+      "continueOnFail": true
     },
     {
       "parameters": {
@@ -254,7 +256,8 @@
       "position": [
         2200,
         1900
-      ]
+      ],
+      "continueOnFail": true
     }
   ],
   "pinData": {
@@ -295,6 +298,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-30T10:55:25.000Z",
-  "versionId": "4c465eef-8912-4746-8657-b584243028af"
+  "updatedAt": "2023-09-30T11:34:59.000Z",
+  "versionId": "dc475998-f2c0-4466-9465-ca6bceab0ff4"
 }
