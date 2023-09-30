@@ -227,40 +227,7 @@
       "continueOnFail": true
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "node4.biketrax.co.uk",
-            "user-agent": "axios/0.21.4",
-            "content-length": "230",
-            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-            "content-type": "application/json",
-            "x-forwarded-for": "172.21.0.1",
-            "x-forwarded-host": "node4.biketrax.co.uk",
-            "x-forwarded-proto": "https",
-            "accept-encoding": "gzip"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "globals": {
-              "SupplierName": "Madison",
-              "PartnerId": 47,
-              "ProductTagId": 8,
-              "LeadTimeAddition": 3,
-              "Webhook": "update-madison",
-              "LastCount": "20052",
-              "CreateSequence": "create-categ-sync"
-            },
-            "name": "Madison",
-            "create-sequence": "create-categ-sync"
-          }
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
@@ -298,6 +265,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-09-10T12:59:05.000Z",
-  "versionId": "b16f6232-9c52-4d90-ae60-41efd17d2ed3"
+  "updatedAt": "2023-09-30T14:07:40.000Z",
+  "versionId": "d1884182-a860-4703-b82a-6a313c46dd27"
 }
