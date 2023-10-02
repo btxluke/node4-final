@@ -1,22 +1,11 @@
 {
   "active": true,
   "connections": {
-    "SplitInBatches": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Set": {
       "main": [
         [
           {
-            "node": "SplitInBatches",
+            "node": "Split In Batches",
             "type": "main",
             "index": 0
           }
@@ -60,7 +49,7 @@
       "main": [
         [
           {
-            "node": "SplitInBatches",
+            "node": "Split In Batches",
             "type": "main",
             "index": 0
           }
@@ -77,26 +66,30 @@
           }
         ]
       ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-09-08T14:12:04.251Z",
   "id": "R8pRpHNtkgwg5leJ",
   "name": "Data Update: GENERIC: Create: Template Creation",
   "nodes": [
-    {
-      "parameters": {
-        "batchSize": 1,
-        "options": {}
-      },
-      "id": "af2540b4-394b-45f1-a9ac-3a6eabb24ab6",
-      "name": "SplitInBatches",
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 1,
-      "position": [
-        1780,
-        760
-      ]
-    },
     {
       "parameters": {
         "values": {
@@ -225,11 +218,51 @@
         760
       ],
       "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "9a2ecf93-1a42-42b7-8f4b-e4022d372f6a",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        1800,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "boolean": [
+            {
+              "name": "success",
+              "value": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0069292c-a923-4c00-b470-f51d8b5714f8",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1960,
+        980
+      ],
+      "executeOnce": true
     }
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
   "tags": [
@@ -265,6 +298,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-09-30T14:07:40.000Z",
-  "versionId": "d1884182-a860-4703-b82a-6a313c46dd27"
+  "updatedAt": "2023-10-02T08:13:41.000Z",
+  "versionId": "d5e5e31c-067c-46bd-95c8-f0bc5fdb75b4"
 }
