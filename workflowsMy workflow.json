@@ -1,11 +1,11 @@
 {
   "active": false,
   "connections": {
-    "Execute Workflow Trigger": {
+    "When clicking \"Execute Workflow\"": {
       "main": [
         [
           {
-            "node": "Set",
+            "node": "Odoo",
             "type": "main",
             "index": 0
           }
@@ -13,64 +13,49 @@
       ]
     }
   },
-  "createdAt": "2023-09-18T11:59:14.152Z",
-  "id": "2ntyqsIkdEjMypUS",
+  "createdAt": "2023-10-03T09:29:01.578Z",
+  "id": "yKoZRRdmi0Nnx4xr",
   "name": "My workflow",
   "nodes": [
     {
       "parameters": {},
-      "id": "a9b9fbda-3be9-4a5b-8066-a27b4f15a2cd",
-      "name": "Execute Workflow Trigger",
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "id": "282f3a97-6171-416c-8e63-cfb8527d8768",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
         820,
-        420
+        360
       ]
     },
     {
       "parameters": {
-        "values": {
-          "string": [
-            {
-              "name": "={{$('Execute Workflow Trigger').json}}"
-            }
-          ]
-        },
+        "operation": "getAll",
         "options": {}
       },
-      "id": "67fab7d0-ce1e-4f84-9aa7-137dcf82cdcc",
-      "name": "Set",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 2,
+      "id": "ca9b4318-d528-4b2f-bfff-b52b779a9e62",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
       "position": [
         1040,
-        420
-      ]
-    }
-  ],
-  "pinData": {
-    "Execute Workflow Trigger": [
-      {
-        "json": {
-          "name": "First item",
-          "code": 1
-        }
-      },
-      {
-        "json": {
-          "name": "Second item",
-          "code": 2
+        360
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
         }
       }
-    ]
-  },
+    }
+  ],
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-09-18T11:59:14.152Z",
-  "versionId": "a3485446-4cae-4904-b78b-7aac7929bc7c"
+  "updatedAt": "2023-10-03T09:29:01.578Z",
+  "versionId": "6a88805e-8bbd-4337-807a-d6548690f6a9"
 }
