@@ -56,6 +56,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -270,38 +277,53 @@
           "name": "datatransit"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "\nreturn {\"changes\":false};"
+      },
+      "id": "2ae8f4c5-386e-47d8-807e-2cc5933afd66",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1580,
+        700
+      ]
     }
   ],
   "pinData": {
     "Webhook": [
       {
         "json": {
-          "headers": {
-            "host": "node4.biketrax.co.uk",
-            "user-agent": "axios/0.21.4",
-            "content-length": "230",
-            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-            "content-type": "application/json",
-            "x-forwarded-for": "172.21.0.1",
-            "x-forwarded-host": "node4.biketrax.co.uk",
-            "x-forwarded-proto": "https",
-            "accept-encoding": "gzip"
+          "globals": {
+            "SupplierName": "Madison",
+            "PartnerId": 47,
+            "ProductTagId": 8,
+            "LeadTimeAddition": 3,
+            "Webhook": "update-madison",
+            "LastCount": "20164",
+            "CreateSequence": "create-categ-sync,create-size-sync,create-version-write,create-brand-sync,create-brand-write,create-colour-sync,create-colour-write,create-attribute-write,create-madison-extrainfo-label-sync,create-madison-extrainfo-label-write,create-madison-extrainfo-sync,create-madison-extrainfo-write"
           },
-          "params": {},
-          "query": {},
-          "body": {
-            "globals": {
-              "SupplierName": "Madison",
-              "PartnerId": 47,
-              "ProductTagId": 8,
-              "LeadTimeAddition": 3,
-              "Webhook": "update-madison",
-              "LastCount": "20052",
-              "CreateSequence": "create-categ-sync"
-            },
-            "name": "Madison",
-            "create-sequence": "create-categ-sync"
-          }
+          "name": "Madison",
+          "create-sequence": "create-categ-sync"
+        }
+      }
+    ],
+    "Globals": [
+      {
+        "json": {
+          "globals": {
+            "SupplierName": "Madison",
+            "PartnerId": 47,
+            "ProductTagId": 8,
+            "LeadTimeAddition": 3,
+            "Webhook": "update-madison",
+            "LastCount": "20164",
+            "CreateSequence": "create-categ-sync,create-size-sync,create-version-write,create-brand-sync,create-brand-write,create-colour-sync,create-colour-write,create-attribute-write,create-madison-extrainfo-label-sync,create-madison-extrainfo-label-write,create-madison-extrainfo-sync,create-madison-extrainfo-write"
+          },
+          "name": "Madison",
+          "create-sequence": "create-categ-sync"
         }
       }
     ]
@@ -315,6 +337,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-10-04T09:00:12.000Z",
-  "versionId": "b74d4a21-25c3-491a-b16f-8c1098c9a017"
+  "updatedAt": "2023-11-02T10:29:02.000Z",
+  "versionId": "43d9bcff-9b7d-49dc-97bd-241244d7d48d"
 }
