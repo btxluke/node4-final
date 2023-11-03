@@ -592,7 +592,16 @@
       "executeOnce": true
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -621,6 +630,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-09-10T11:07:38.000Z",
-  "versionId": "00dbcb8d-d441-43da-bc9b-d021f2123ba4"
+  "updatedAt": "2023-11-02T15:26:09.000Z",
+  "versionId": "e9e65129-9b9b-4ddb-91c6-52e4dc1cf57a"
 }
