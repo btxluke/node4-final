@@ -1,0 +1,68 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-08T16:21:05.172Z",
+  "id": "dRQQdJGJqMWR1p5d",
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "3446c6b0-2c00-41d0-a6e0-1827d830c31e",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.product",
+        "operation": "get",
+        "customResourceId": "158931",
+        "options": {
+          "fieldsList": [
+            "detailed_type"
+          ]
+        }
+      },
+      "id": "70c447fe-7562-47e2-8496-822ab44af642",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        360
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-11-08T16:21:05.172Z",
+  "versionId": "8a8a5763-fb03-44c7-b53c-52f6172bdebe"
+}
