@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "IF": {
       "main": [
@@ -401,7 +401,7 @@
       "main": [
         [
           {
-            "node": "Set4",
+            "node": "Postgres18",
             "type": "main",
             "index": 0
           }
@@ -424,6 +424,17 @@
         [
           {
             "node": "Amend Expected Lines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres18": {
+      "main": [
+        [
+          {
+            "node": "Set4",
             "type": "main",
             "index": 0
           }
@@ -481,11 +492,12 @@
           "id": "H2cITTqls0BiVgFE",
           "name": "info@biketrax.co.uk"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
-        "command": "=grep -n {{ \"\\\"\"+$json.stderr.split(\"\\\"\")[2]+\"\\\"\" }}  /home/luke/feeds/Upload-Silverfish{{ $runIndex == 0 ? \"\" : $runIndex }}.csv | cut -f1 -d:"
+        "command": "=grep -n {{ \"\\\"\"+$json.failed_code+\"\\\"\" }}  /home/luke/feeds/Upload-Silverfish{{ $runIndex == 0 ? \"\" : $runIndex }}.csv | cut -f1 -d:"
       },
       "id": "0fe78a98-f050-4376-9616-65c06a3b66ee",
       "name": "SSH1",
@@ -504,7 +516,7 @@
     },
     {
       "parameters": {
-        "command": "={{\"sed '\"+$json.stdout+\"d'\"}} /home/luke/feeds/Upload-Silverfish{{ $runIndex == 0 ? \"\" : $runIndex }}.csv > /home/luke/feeds/Upload-Silverfish{{ $runIndex+1 }}.csv"
+        "command": "={{\"sed '\"+$json.stdout.split(\"\\n\")[0]+\"d'\"}} /home/luke/feeds/Upload-Silverfish{{ $runIndex == 0 ? \"\" : $runIndex }}.csv > /home/luke/feeds/Upload-Silverfish{{ $runIndex+1 }}.csv"
       },
       "id": "3b4cea8c-217c-4467-a8ce-f57dae634ca3",
       "name": "SSH3",
@@ -523,7 +535,7 @@
     },
     {
       "parameters": {
-        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_madison FROM /home/luke/feeds/Upload-Silverfish{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
+        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_silverfish FROM /home/luke/feeds/Upload-Silverfish{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
         "cwd": "/home/luke/feeds/"
       },
       "id": "ced231a6-69a6-4f2b-93e4-81dafd468089",
@@ -576,7 +588,7 @@
           "string": [
             {
               "name": "failed_code",
-              "value": "={{$('SSH4').item.json.stderr.split(\"\\\"\")[2]}}"
+              "value": "={{$('SSH4').item.json.stderr.split(\"\\\"\")[2] == \" of relation \" ? $('SSH4').item.json.stderr.split(\"(\")[1].split(\",\")[0] : $('SSH4').item.json.stderr.split(\"\\\"\")[2] }}"
             },
             {
               "name": "stderr",
@@ -655,7 +667,7 @@
           "string": [
             {
               "name": "failed_code",
-              "value": "={{$json.stderr.split(\"\\\"\")[2]}}"
+              "value": "={{$json.stderr.split(\"\\\"\")[2] == \" of relation \" ? $json.stderr.split(\"(\")[1].split(\",\")[0] : $json.stderr.split(\"\\\"\")[2] }}"
             },
             {
               "name": "stderr",
@@ -1182,38 +1194,30 @@
         -1400,
         1460
       ]
-    }
-  ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "node4.biketrax.co.uk",
-            "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-            "accept-encoding": "gzip, deflate, br",
-            "accept-language": "en-GB,en;q=0.5",
-            "cookie": "rl_session=RudderEncrypt%3AU2FsdGVkX1%2BQ%2FhYQPHEavD1Idg6UtEGrKPVsUqA8KlNjwTVPavZztnS512IvoJDZvrrXrKJzGuOYvwu8IajvODxVIMCvkpo0syVpDlwH9%2B9HIz9Xkf7GmUcXPmisi%2FnE4Esvcgo1sLP1mkZiZVzI4A%3D%3D; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2Bx7yE9Wp9Sgo8RPHZlAaHIggMrEBkOFzQR9Uap%2BIz8hugZEJqT5Ilopd8eB%2Fd3%2B%2Fo3YUu7NA6jPQ%3D%3D; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2B%2BcAYcPGne%2FbvIRyJ4XZWiG%2FFeJvFAGvI%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX18%2F4mZjQ6GY%2FvcdjiuzUiyZMvWTPz9Hdus%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU1NGU2NmU4LTA0YzYtNGZhZi1iZTdjLWMyNDIwYzY2NGU3NCIsImVtYWlsIjoibHVrZUBiaWtldHJheC5jby51ayIsInBhc3N3b3JkIjoiOTRkYjE5YmM3MjMxNDgxODQ3MDRjMmYxZGZkYjlmYjAzNDQxMjM0MjcwMThhODllNGQ5ODQ4NWM2MzUyOGQ0ZSIsImlhdCI6MTcwMTY4NjI2NCwiZXhwIjoxNzAyMjkxMDY0fQ.U9Wov0pRZcRi9Cga4GHoqMTTh85iKI30vM_DiyY4dWM; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22%24active_feature_flags%22%3A%5B%22015_form_trigger_usecase%22%2C%22009_choosing_trial_plan%22%2C%22011_ask_AI%22%2C%22006_cloud_opt_in%22%2C%22schema-view%22%5D%2C%22%24enabled_feature_flags%22%3A%7B%22015_form_trigger_usecase%22%3A%22variant%22%2C%22009_choosing_trial_plan%22%3A%22variant%22%2C%22011_ask_AI%22%3A%22gpt3%22%2C%22006_cloud_opt_in%22%3A%22control%22%2C%22schema-view%22%3Atrue%7D%2C%22%24feature_flag_payloads%22%3A%7B%7D%2C%22distinct_id%22%3A%226bbc4c74f1a02fc452f7a8e4243bd2440e4ea6d8d57b4685172512bccdfc870c%233a52ddb3-249a-4083-a115-1b809099258d%22%2C%22%24device_id%22%3A%22018c344f-60e2-7e43-a83e-8f39fef9f6d5%22%2C%22%24user_state%22%3A%22identified%22%2C%22%24user_id%22%3A%226bbc4c74f1a02fc452f7a8e4243bd2440e4ea6d8d57b4685172512bccdfc870c%233a52ddb3-249a-4083-a115-1b809099258d%22%2C%22%24stored_person_properties%22%3A%7B%22instance_id%22%3A%226bbc4c74f1a02fc452f7a8e4243bd2440e4ea6d8d57b4685172512bccdfc870c%22%2C%22created_at_timestamp%22%3A1647709126056%7D%2C%22%24sesid%22%3A%5B1701686475340%2C%22018c344f-60ea-7918-aa80-1cb7b9a84a34%22%2C1701684666602%5D%2C%22%24client_session_props%22%3A%7B%22sessionId%22%3A%22018c344f-60ea-7918-aa80-1cb7b9a84a34%22%2C%22props%22%3A%7B%22initialPathName%22%3A%22%2Fworkflows%22%2C%22referringDomain%22%3A%22%24direct%22%7D%7D%2C%22%24session_recording_enabled_server_side%22%3Afalse%2C%22%24session_recording_network_payload_capture%22%3A%7B%22capturePerformance%22%3Afalse%7D%2C%22%24autocapture_disabled_server_side%22%3Afalse%7D; rl_user_id=RudderEncrypt%3AU2FsdGVkX18zUhLNZyIsxuqvXo9tLTSdUj3dkkd3D598qHwGdfLzVCerl3f4e01PvbjGkmcRzA8YZopqGuvcQlps418jWmDZNBtKevC8ngUCMKCXJfr5JE%2Bi1tHH7Kv55wN8%2B%2BV2HZ3Mf1FvW99FYp3pPSDm1TzppzUs86wf2gs%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2B87f08lXa3uA0PEMZfGTG%2B6zkrPmmCEjMCcsWtm1B%2Ff1P4cPc9mF%2Bxz5PepXGaTckIINlifS2jrK6XoEk5nEXSrPy%2Fm2dW5zO0gz%2BN0BV0LNhlSnnI2olztBhggNr77YodT%2Bpvz2xA72FdCuyVxQsbn7g19j48Dq0%3D",
-            "sec-fetch-dest": "document",
-            "sec-fetch-mode": "navigate",
-            "sec-fetch-site": "none",
-            "sec-fetch-user": "?1",
-            "te": "trailers",
-            "upgrade-insecure-requests": "1",
-            "x-forwarded-for": "51.155.215.158",
-            "x-forwarded-host": "node4.biketrax.co.uk",
-            "x-forwarded-proto": "https"
-          },
-          "params": {},
-          "query": {}
-        },
-        "pairedItem": {
-          "item": 0
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM upload_silverfish WHERE \"UPC/EAN\" IS NULL;",
+        "options": {}
+      },
+      "id": "ab86ef4c-8171-4288-9446-d96dd706e914",
+      "name": "Postgres18",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -820,
+        1260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
         }
       }
-    ]
-  },
+    }
+  ],
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -1254,6 +1258,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-04T11:47:32.000Z",
-  "versionId": "70e1a060-ee3b-4003-83e3-b42487b3dab1"
+  "updatedAt": "2023-12-04T13:14:58.000Z",
+  "versionId": "577a85fa-7aad-49a5-a9f6-c6b3e6e9bd69"
 }
