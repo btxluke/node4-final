@@ -1,0 +1,1234 @@
+{
+  "active": false,
+  "connections": {
+    "Category Sync": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Size Sync": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brand Sync": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brand Write": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Colour Sync": {
+      "main": [
+        [
+          {
+            "node": "Code6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Template Creation": {
+      "main": [
+        [
+          {
+            "node": "Code8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Variant Write": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Template Creation1": {
+      "main": [
+        [
+          {
+            "node": "Code18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Product Import": {
+      "main": [
+        [
+          {
+            "node": "Category Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Colour Write": {
+      "main": [
+        [
+          {
+            "node": "Code7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Attribute Write": {
+      "main": [
+        [
+          {
+            "node": "Template Creation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Size Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Product Import",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Variant Write",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Brand Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Brand Write",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "Colour Sync",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code6": {
+      "main": [
+        [
+          {
+            "node": "Colour Write",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code7": {
+      "main": [
+        [
+          {
+            "node": "Attribute Write",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code8": {
+      "main": [
+        [
+          {
+            "node": "Template Creation1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code18": {
+      "main": [
+        [
+          {
+            "node": "Index Write",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres12": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Transit Tables",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Silverfish Prep",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Sequence": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code9": {
+      "main": [
+        [
+          {
+            "node": "Create Sequence",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transit Tables": {
+      "main": [
+        [
+          {
+            "node": "Code9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Silverfish Prep": {
+      "main": [
+        [
+          {
+            "node": "Postgres12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-04T12:38:18.665Z",
+  "id": "5qVKGuobpIL9Qe9e",
+  "name": "Data Update: Silverfish",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowId": "77"
+      },
+      "id": "865063df-59e1-46ed-884f-21a659a068d4",
+      "name": "Category Sync",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        3040,
+        920
+      ],
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "62"
+      },
+      "id": "5692b6d4-d33d-42a0-886b-3f3df9330287",
+      "name": "Size Sync",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        3160,
+        1120
+      ],
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "64"
+      },
+      "id": "62dce5f9-9d02-4c7b-bca5-28e8bae5542c",
+      "name": "Brand Sync",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        3500,
+        1120
+      ],
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowId": "65"
+      },
+      "id": "41265bc9-cd50-41fd-9d9a-342d9bdd1bec",
+      "name": "Brand Write",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        3680,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "66"
+      },
+      "id": "1d07d915-9e6a-46d4-8943-f0a2331115f7",
+      "name": "Colour Sync",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        3820,
+        1120
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "parameters": {},
+      "id": "f4d65b6c-0cb2-4d65-ab2c-d8080d32f39e",
+      "name": "Template Creation",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        4340,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "69"
+      },
+      "id": "bddb6108-5367-4b0a-a79c-68ab3f3cce91",
+      "name": "Template Creation1",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        4620,
+        1020
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "workflowId": "63"
+      },
+      "id": "46ec0656-7fcc-4a09-8ebd-9688f9916dcd",
+      "name": "Variant Write",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        920
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.tag",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "id",
+            "name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "name",
+              "value": "Zyro"
+            }
+          ]
+        }
+      },
+      "id": "d314ebe5-eaf7-4ffc-ad0a-92cbac84a29d",
+      "name": "Odoo3",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        980,
+        1920
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch",
+        "output": "input2"
+      },
+      "id": "eb10d45f-141b-44a8-8246-bc5d85c30def",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1500,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{  JSON.parse($json[\"globals\"])[0]  }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $json.name }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cd799aba-9f9d-4144-add2-6193df788d2d",
+      "name": "Globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Progress\n",
+        "height": 1459.622641509435,
+        "width": 1369.7035040431265
+      },
+      "id": "689650bf-1d20-4df1-8c48-d4494cca409f",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        840,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "content": "##Progress: Create",
+        "height": 320.17725067385476,
+        "width": 705.3541778975705
+      },
+      "id": "3d5d9833-b285-493c-9c9e-d3a30e5ec5c7",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        906.4211320754716
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "dc35a825-29a1-4a78-919e-46e515e8d759",
+      "name": "Product Import",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "67"
+      },
+      "id": "d6d27ad6-a4f4-4969-94da-dad71a1cfdf8",
+      "name": "Colour Write",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "68"
+      },
+      "id": "6faa44e4-17b4-4141-b168-905e3ea348f7",
+      "name": "Attribute Write",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        4140,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "c1c5ebd6-4da4-4e46-be10-5bcfa19eda6b",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        3040,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "4a64057c-9eef-4a87-99f8-75d5b73d76a8",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "6a0116f1-9218-4e91-a6a2-b7bae2b1380d",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        3220,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "c8ef79d7-3175-4355-ac56-531b404ca19a",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "306ec76f-a9d8-4cf4-9f8e-030ec855f5ef",
+      "name": "Code4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        3540,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "cccd9942-6a86-4d60-8661-13d5c5dccd66",
+      "name": "Code5",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        3680,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "658f0092-5fd3-40aa-9bc7-696ac5c463e6",
+      "name": "Code6",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        3860,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "24b98e84-2c81-4d4e-a936-c3d6b0707863",
+      "name": "Code7",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "13fc03e0-25e3-45c3-9f58-ed5899247f5e",
+      "name": "Code8",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        4480,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "res.partner",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "id",
+            "name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "name",
+              "operator": "like",
+              "value": "Zyro"
+            }
+          ]
+        }
+      },
+      "id": "4bf682c2-3e27-4725-b216-3eed0c65a8da",
+      "name": "Odoo4",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        1920
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "110"
+      },
+      "id": "9cc40dea-5b68-48d6-8b32-2cb263304d03",
+      "name": "Index Write",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        4620,
+        1280
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "cd7e99b0-17b2-4e20-a525-1f987115d75e",
+      "name": "Code18",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        4480,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "path": "update-silverfish",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "44022678-3e69-448c-9adc-01d3b0db603c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        980,
+        1000
+      ],
+      "webhookId": "f0273f1e-8571-4c10-ab6a-00eecdc5351c"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE Name = 'Silverfish';",
+        "options": {}
+      },
+      "id": "90f1c5ae-75de-49bf-a4fb-679e0fd533ca",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1260,
+        840
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/transit-tables",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Globals').first().json }}",
+        "options": {}
+      },
+      "id": "17db8638-a2f0-4a3d-a0f2-d129a442ab75",
+      "name": "Transit Tables",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2300,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COUNT (productcode) FROM upload_silverfish;",
+        "options": {}
+      },
+      "id": "73646325-0677-4503-99c5-6cd3b552cb83",
+      "name": "Postgres12",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1860,
+        1220
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.count }}",
+              "operation": "largerEqual",
+              "value2": "={{ $('Globals').first().json.globals.LastCount * 0.75 }}"
+            },
+            {
+              "value1": "={{ $json.count }}",
+              "value2": "={{ $('Globals').first().json.globals.LastCount * 1.25 }}"
+            }
+          ],
+          "string": [
+            {
+              "value1": "={{ $('Globals').first().json.globals.errorState }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "4e0a2b05-97c0-496c-9b5f-a8b6a6e179fd",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2020,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "productfeeds@biketrax.co.uk",
+        "toEmail": "luke@biketrax.co.uk",
+        "subject": "Silverfish Feed Rejected!",
+        "text": "=Silverfish feed rejected:\n\nExpected Lines: {{$('Globals').first().json.globals.LastCount}} (Range - 75% - 125%)\nRecieved Lines: {{ $json.count }}\n",
+        "options": {}
+      },
+      "id": "1d551d92-235e-40c3-bc08-cc82b315610c",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        2020,
+        1460
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "xOWEzMfuqVVoWrw0",
+          "name": "productfeeds@biketrax.co.uk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = 'Silverfish';",
+        "options": {}
+      },
+      "id": "dcd3b684-d619-4afb-8548-848ce5f46444",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        2280,
+        1680
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ $('Globals').first().json.globals }}"
+            },
+            {
+              "name": "globals.errorState",
+              "value": "={{ true }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a68eda1f-a436-459a-89ae-994bada16491",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        2020,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "create-sequence",
+              "value": "={{ $json.globals.CreateSequence.split(\",\") }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bab7f80d-23b5-4d8d-8f80-e6e1d3b041f8",
+      "name": "Create Sequence",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        2840,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "create-sequence",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "9ac718d7-21e2-4f7a-83b5-1acdc3d59781",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        3000,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://node4.biketrax.co.uk/webhook/{{ $json['create-sequence'] }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{$json}}",
+        "options": {}
+      },
+      "id": "5bd81a63-c6ec-4349-8b3e-313b9eaaad0a",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3540,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "da6bdd02-0fb4-4113-a3c8-64bf9b66339d",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        3220,
+        1700
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "f64a8f16-49f8-40b8-b11b-dfe8cad369b2",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3560,
+        2000
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://node4.biketrax.co.uk/webhook/create-template",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{$('Globals').first().json}}",
+        "options": {}
+      },
+      "id": "a50106ee-b19e-4999-b826-3d001e4e8586",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3740,
+        2000
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $('Globals').first()"
+      },
+      "id": "a34e34cb-bbc5-48a5-9210-33d96598d939",
+      "name": "Code9",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        2680,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/silverfish-prep",
+        "options": {}
+      },
+      "id": "055d460f-ccc7-4095-98af-f0c9eb730990",
+      "name": "Silverfish Prep",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1680,
+        1220
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "en-GB,en;q=0.5",
+            "cookie": "rl_session=RudderEncrypt%3AU2FsdGVkX1%2FUefPCQutQkbNsTnQaow0CkjEwHmChCreZL3e4YdJHvFnGen2MCxA4jDi7aH5YBBpemN2mGKuyjm79XkygiK%2FmZP6YhoXo%2BP2l22nK7ROWIvGEnXO3lKiOtzmHzTTAh8diMJ2%2Fbc3ZtQ%3D%3D; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2Bp6NGPmjHBYjPi8gtBXmC4WaElffPVAxLzbCvMg2a%2FbgpbNUy%2FbYFWFaH%2BxnPqfKWcrtOuOqUDmw%3D%3D; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2B%2BcAYcPGne%2FbvIRyJ4XZWiG%2FFeJvFAGvI%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX18%2F4mZjQ6GY%2FvcdjiuzUiyZMvWTPz9Hdus%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU1NGU2NmU4LTA0YzYtNGZhZi1iZTdjLWMyNDIwYzY2NGU3NCIsImVtYWlsIjoibHVrZUBiaWtldHJheC5jby51ayIsInBhc3N3b3JkIjoiOTRkYjE5YmM3MjMxNDgxODQ3MDRjMmYxZGZkYjlmYjAzNDQxMjM0MjcwMThhODllNGQ5ODQ4NWM2MzUyOGQ0ZSIsImlhdCI6MTcwMTY4NjI2NCwiZXhwIjoxNzAyMjkxMDY0fQ.U9Wov0pRZcRi9Cga4GHoqMTTh85iKI30vM_DiyY4dWM; rl_user_id=RudderEncrypt%3AU2FsdGVkX18yfGsuUpN%2BOTsCgbRj%2B2aurxksjAohDW1bvwpAwuN2zKPA%2BJDh2kblm7s6GplGbD3l%2B3xAqwElIKRh8bGaaPA6R162d74Q%2Bs%2B7CIzmNd4BHPhpcLqSLA8OF7EVlWrQFztaGEEUDHozjP2s5nSyq2K4D0gJA69ttPo%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX19Ta15ZuCJnWEsarNdZoSik7gXrKcScMgwVJirQlQRDGARsf8KTzpnMViJCYkcsIzorqhfK%2F1q%2F24rGdUxItIW%2Fhlx%2FXopz1VID0CEBaZfucLF8igt6WmbMQAoJaGwuBscOBk12gCQp6EU6peYrzDfQnsmGCGKUPKQ%3D; rl_group_id=RudderEncrypt%3AU2FsdGVkX19FHR%2B0MZ38k2Vr%2FYteEQkhciMwlBOAheE%3D; rl_group_trait=RudderEncrypt%3AU2FsdGVkX19wvSuSLIkbleBZlv7MqrRneEyny8wB%2BNQ%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22%24active_feature_flags%22%3A%5B%22015_form_trigger_usecase%22%2C%22009_choosing_trial_plan%22%2C%22011_ask_AI%22%2C%22006_cloud_opt_in%22%2C%22schema-view%22%5D%2C%22%24enabled_feature_flags%22%3A%7B%22016_template_credential_setup%22%3Afalse%2C%22015_form_trigger_usecase%22%3A%22control%22%2C%22009_choosing_trial_plan%22%3A%22variant%22%2C%22011_ask_AI%22%3A%22gpt3%22%2C%22006_cloud_opt_in%22%3A%22control%22%2C%22schema-view%22%3Atrue%7D%2C%22%24feature_flag_payloads%22%3A%7B%7D%2C%22distinct_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24device_id%22%3A%22018c344f-60e2-7e43-a83e-8f39fef9f6d5%22%2C%22%24user_state%22%3A%22identified%22%2C%22%24user_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24stored_person_properties%22%3A%7B%22instance_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%22%2C%22created_at_timestamp%22%3A1691497889718%7D%2C%22%24sesid%22%3A%5B1701693501212%2C%22018c344f-60ea-7918-aa80-1cb7b9a84a34%22%2C1701684666602%5D%2C%22%24client_session_props%22%3A%7B%22sessionId%22%3A%22018c344f-60ea-7918-aa80-1cb7b9a84a34%22%2C%22props%22%3A%7B%22initialPathName%22%3A%22%2Fworkflows%22%2C%22referringDomain%22%3A%22%24direct%22%7D%7D%2C%22%24session_recording_enabled_server_side%22%3Afalse%2C%22%24session_recording_network_payload_capture%22%3A%7B%22capturePerformance%22%3Afalse%7D%2C%22%24autocapture_disabled_server_side%22%3Afalse%7D",
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1",
+            "te": "trailers",
+            "upgrade-insecure-requests": "1",
+            "x-forwarded-for": "51.155.215.158",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https"
+          },
+          "params": {},
+          "query": {}
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-08-08T15:46:20.698Z",
+      "updatedAt": "2023-08-08T15:46:20.698Z",
+      "id": "4S5wvtegUIvgvqYs",
+      "name": "PostgreSQL"
+    },
+    {
+      "createdAt": "2023-08-10T13:01:44.729Z",
+      "updatedAt": "2023-08-10T13:01:44.729Z",
+      "id": "9sOXgdnAKkDHmBZQ",
+      "name": "if"
+    },
+    {
+      "createdAt": "2023-08-08T15:13:24.003Z",
+      "updatedAt": "2023-08-08T15:13:24.003Z",
+      "id": "NlzClU8dTHaCHNlt",
+      "name": "http"
+    },
+    {
+      "createdAt": "2023-08-08T15:13:33.587Z",
+      "updatedAt": "2023-08-08T15:13:33.587Z",
+      "id": "bbI8zuoQ3XV0LUP0",
+      "name": "set"
+    },
+    {
+      "createdAt": "2023-08-10T09:20:30.275Z",
+      "updatedAt": "2023-08-10T09:20:30.275Z",
+      "id": "cDsMu9S1EDCMPUY2",
+      "name": "email"
+    },
+    {
+      "createdAt": "2023-08-08T15:51:11.963Z",
+      "updatedAt": "2023-08-08T15:51:11.963Z",
+      "id": "evqsbisrBK9HqVQU",
+      "name": "Merge"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-12-04T13:02:17.000Z",
+  "versionId": "0b8ecf1d-6466-4e28-9f29-356e4107a76a"
+}
