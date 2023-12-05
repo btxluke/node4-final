@@ -1259,40 +1259,7 @@
       ]
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "node4.biketrax.co.uk",
-            "user-agent": "axios/0.21.4",
-            "content-length": "134",
-            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-            "content-type": "application/json",
-            "x-forwarded-for": "172.18.0.1",
-            "x-forwarded-host": "node4.biketrax.co.uk",
-            "x-forwarded-proto": "https",
-            "accept-encoding": "gzip"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "globals": {
-              "SupplierName": "Silverfish",
-              "PartnerId": 61,
-              "ProductTagId": 10,
-              "LeadTimeAddition": 5,
-              "LastCount": "9979"
-            },
-            "name": "Silverfish"
-          }
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner",
@@ -1301,6 +1268,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-12-04T13:06:35.000Z",
-  "versionId": "ef776532-8009-47ff-953b-91ac8ef18360"
+  "updatedAt": "2023-12-05T08:49:16.000Z",
+  "versionId": "6f0f27f1-8e08-440d-af83-d7a9d78c5225"
 }
