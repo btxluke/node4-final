@@ -1266,7 +1266,7 @@
           "headers": {
             "host": "node4.biketrax.co.uk",
             "user-agent": "axios/0.21.4",
-            "content-length": "130",
+            "content-length": "134",
             "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
             "content-type": "application/json",
             "x-forwarded-for": "172.18.0.1",
@@ -1278,13 +1278,13 @@
           "query": {},
           "body": {
             "globals": {
-              "SupplierName": "Sportline",
-              "PartnerId": 42,
-              "ProductTagId": 6,
-              "LeadTimeAddition": 3,
-              "LastCount": "609"
+              "SupplierName": "Silverfish",
+              "PartnerId": 61,
+              "ProductTagId": 10,
+              "LeadTimeAddition": 5,
+              "LastCount": "9979"
             },
-            "name": "Sportline"
+            "name": "Silverfish"
           }
         },
         "pairedItem": {
@@ -1301,6 +1301,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-29T11:45:04.000Z",
-  "versionId": "918ce6ff-3cf8-4acf-8081-86cae2ffdab4"
+  "updatedAt": "2023-12-04T13:06:35.000Z",
+  "versionId": "ef776532-8009-47ff-953b-91ac8ef18360"
 }
