@@ -203,7 +203,7 @@
     },
     {
       "parameters": {
-        "url": "https://node4.biketrax.co.uk/webhook/create-template-subroutine",
+        "url": "https://node4.biketrax.co.uk/webhook-test/create-template-subroutine",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ $json }}",
@@ -257,39 +257,7 @@
       "executeOnce": true
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "node4.biketrax.co.uk",
-            "user-agent": "axios/0.21.4",
-            "content-length": "463",
-            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
-            "content-type": "application/json",
-            "x-forwarded-for": "172.18.0.1",
-            "x-forwarded-host": "node4.biketrax.co.uk",
-            "x-forwarded-proto": "https",
-            "accept-encoding": "gzip"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "globals": {
-              "SupplierName": "Madison",
-              "PartnerId": 47,
-              "ProductTagId": 8,
-              "LeadTimeAddition": 3,
-              "Webhook": "update-madison",
-              "LastCount": "20110",
-              "CreateSequence": "create-categ-sync,create-size-sync,create-version-write,create-brand-sync,create-brand-write,create-colour-sync,create-colour-write,create-attribute-write,create-madison-extrainfo-label-sync,create-madison-extrainfo-label-write,create-madison-extrainfo-sync,create-madison-extrainfo-write"
-            },
-            "name": "Madison"
-          }
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -330,6 +298,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-10-04T09:00:42.000Z",
-  "versionId": "8c27d435-891c-404b-8426-99a86183fb5c"
+  "updatedAt": "2023-12-05T17:31:20.000Z",
+  "versionId": "acb7977e-9255-4ce5-ab9f-68dc2adfa5be"
 }
