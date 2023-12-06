@@ -2064,20 +2064,7 @@
       ]
     }
   ],
-  "pinData": {
-    "Set product_tmpl_id": [
-      {
-        "json": {
-          "product_tmpl_id": 153872,
-          "supplier": [
-            "Madison",
-            47
-          ],
-          "delay": 3
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -2087,6 +2074,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-30T13:38:33.000Z",
-  "versionId": "f55ad867-8540-488a-9f16-8277e772d4dc"
+  "updatedAt": "2023-12-05T17:29:38.000Z",
+  "versionId": "9386c5f4-b420-4016-9975-746673d17022"
 }
