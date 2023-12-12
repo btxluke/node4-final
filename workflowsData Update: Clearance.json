@@ -1,0 +1,676 @@
+{
+  "active": false,
+  "connections": {
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Globals": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Populate feed_",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Populate feed_": {
+      "main": [
+        [
+          {
+            "node": "Rename Keys",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rename Keys": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-11T16:01:51.771Z",
+  "id": "hDIE8BJtUbioxJYz",
+  "name": "Data Update: Clearance",
+  "nodes": [
+    {
+      "parameters": {
+        "mode": "chooseBranch",
+        "output": "input2"
+      },
+      "id": "53984835-b3ff-4e5f-ac0c-76c955ba7f18",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        1480,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{  JSON.parse($json.globals)[0]  }}"
+            },
+            {
+              "name": "name",
+              "value": "={{$json.name}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9641f442-a370-4327-9ccc-b06198218037",
+      "name": "Globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "path": "update-clearance",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "e76e170b-a202-499f-955f-513d8a425537",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        840,
+        780
+      ],
+      "webhookId": "493dd800-61a8-4358-b5cf-70f6ca8f6ac2"
+    },
+    {
+      "parameters": {
+        "content": "## Progress\n",
+        "height": 1459.622641509435,
+        "width": 1561.207547169811
+      },
+      "id": "09973e07-9d6c-454e-a8ed-f6557bdabe52",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        600,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE Name = 'Clearance';",
+        "options": {}
+      },
+      "id": "083fe7c2-22e1-4839-a260-2923c78b23dd",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        1040,
+        580
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "TRUNCATE feed_clearance;",
+        "options": {}
+      },
+      "id": "bb0a6a2d-0a06-4b82-ad41-c3fc1af83ac3",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1700,
+        760
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.product",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "default_code",
+            "barcode",
+            "display_name",
+            "standard_price",
+            "list_price",
+            "taxes_id",
+            "qty_available",
+            "x_studio_brand_1"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "all_product_tag_ids",
+              "operator": "in",
+              "value": "={{ 64}}"
+            }
+          ]
+        }
+      },
+      "id": "7d74269f-9fca-400e-ab51-1c2a79b4dc0b",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        760
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keys": {
+          "key": [
+            {
+              "currentKey": "default_code",
+              "newKey": "productcode"
+            },
+            {
+              "currentKey": "barcode",
+              "newKey": "ean"
+            },
+            {
+              "currentKey": "display_name",
+              "newKey": "productname"
+            },
+            {
+              "currentKey": "standard_price",
+              "newKey": "yourprice"
+            },
+            {
+              "currentKey": "list_price",
+              "newKey": "rrp"
+            },
+            {
+              "currentKey": "x_studio_brand_1",
+              "newKey": "brand"
+            },
+            {}
+          ]
+        },
+        "additionalOptions": {}
+      },
+      "id": "4c6d8545-9ecf-49fc-9be7-037be63046e7",
+      "name": "Rename Keys",
+      "type": "n8n-nodes-base.renameKeys",
+      "typeVersion": 1,
+      "position": [
+        2340,
+        520
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "dfbbe01e-425a-4db2-9f6c-9d4397aa541e",
+      "name": "Populate feed_",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "number": [
+            {
+              "name": "vat",
+              "value": "={{ $json.taxes_id[0] == 10 ? 20 : 0 }}"
+            },
+            {
+              "name": "stockcount",
+              "value": "={{ $json.qty_available > 0 ? 1: 0}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0ed3f7e1-befe-42b1-8924-6327680b63b1",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        2540,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "for (const item of $input.all()) {\n  delete item.json.id;\n  delete item.json.taxes_id;\n  delete item.json.qty_available;\n}\n\nreturn $input.all();"
+      },
+      "id": "5d86e524-60d9-4eba-b137-39b3b1e92471",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2760,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "odoodata",
+          "mode": "list",
+          "cachedResultName": "odoodata"
+        },
+        "table": {
+          "__rl": true,
+          "value": "feed_clearance",
+          "mode": "list",
+          "cachedResultName": "feed_clearance"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "yourprice": "={{ $json.yourprice }}",
+            "rrp": "={{ $json.rrp }}",
+            "vat": "={{ $json.vat }}",
+            "stockcount": "={{ $json.stockcount }}",
+            "leadtime": 0,
+            "productcode": "={{ $json.productcode }}",
+            "ean": "={{ $json.ean }}",
+            "productname": "={{ $json.productname }}",
+            "brand": "={{ $json.brand }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "productcode",
+              "displayName": "productcode",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ean",
+              "displayName": "ean",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "productname",
+              "displayName": "productname",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "yourprice",
+              "displayName": "yourprice",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "rrp",
+              "displayName": "rrp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "vat",
+              "displayName": "vat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "stockcount",
+              "displayName": "stockcount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "shortdescription",
+              "displayName": "shortdescription",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "longdescription",
+              "displayName": "longdescription",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "imageurl",
+              "displayName": "imageurl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "alternativeimage1url",
+              "displayName": "alternativeimage1url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "alternativeimage2url",
+              "displayName": "alternativeimage2url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "alternativeimage3url",
+              "displayName": "alternativeimage3url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "size",
+              "displayName": "size",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "colour",
+              "displayName": "colour",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "brand",
+              "displayName": "brand",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "weight",
+              "displayName": "weight",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "packqty",
+              "displayName": "packqty",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "leadtime",
+              "displayName": "leadtime",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "variantgrouping",
+              "displayName": "variantgrouping",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "subcategory",
+              "displayName": "subcategory",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "keywords",
+              "displayName": "keywords",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "technicalspec",
+              "displayName": "technicalspec",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "technicalspeclabel",
+              "displayName": "technicalspeclabel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "40725752-62f0-4877-b230-d4a27e66b460",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        2980,
+        520
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-08-08T15:46:20.698Z",
+      "updatedAt": "2023-08-08T15:46:20.698Z",
+      "id": "4S5wvtegUIvgvqYs",
+      "name": "PostgreSQL"
+    },
+    {
+      "createdAt": "2023-08-08T15:51:26.157Z",
+      "updatedAt": "2023-08-08T15:51:26.157Z",
+      "id": "Vuerdt8JErJ7XwoD",
+      "name": "code"
+    },
+    {
+      "createdAt": "2023-08-08T15:51:11.963Z",
+      "updatedAt": "2023-08-08T15:51:11.963Z",
+      "id": "evqsbisrBK9HqVQU",
+      "name": "Merge"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-12-11T16:26:13.000Z",
+  "versionId": "e090aeee-ebdf-4fe4-838b-c53b269c3dc0"
+}
