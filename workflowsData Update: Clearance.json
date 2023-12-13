@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Merge2": {
       "main": [
@@ -65,7 +65,7 @@
       "main": [
         [
           {
-            "node": "Populate feed_",
+            "node": "IF",
             "type": "main",
             "index": 0
           }
@@ -110,6 +110,53 @@
         [
           {
             "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Populate feed_",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Odoo2",
             "type": "main",
             "index": 0
           }
@@ -249,7 +296,9 @@
             "list_price",
             "taxes_id",
             "qty_available",
-            "x_studio_brand_1"
+            "x_studio_brand_1",
+            "additional_product_tag_ids",
+            "product_tag_ids"
           ]
         },
         "filterRequest": {
@@ -315,7 +364,7 @@
       "type": "n8n-nodes-base.renameKeys",
       "typeVersion": 1,
       "position": [
-        2340,
+        2560,
         520
       ]
     },
@@ -326,7 +375,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2140,
+        2360,
         520
       ]
     },
@@ -351,20 +400,20 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 2,
       "position": [
-        2540,
+        2760,
         520
       ]
     },
     {
       "parameters": {
-        "jsCode": "for (const item of $input.all()) {\n  delete item.json.id;\n  delete item.json.taxes_id;\n  delete item.json.qty_available;\n}\n\nreturn $input.all();"
+        "jsCode": "for (const item of $input.all()) {\n  delete item.json.id;\n  delete item.json.taxes_id;\n  delete item.json.qty_available;\n  delete item.json.additional_product_tag_ids;\n  delete item.json.product_tag_ids;\n}\n\nreturn $input.all();"
       },
       "id": "5d86e524-60d9-4eba-b137-39b3b1e92471",
       "name": "Code",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2760,
+        2980,
         520
       ]
     },
@@ -622,7 +671,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        2980,
+        3200,
         520
       ],
       "credentials": {
@@ -631,14 +680,157 @@
           "name": "odooData"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.qty_available }}",
+              "operation": "larger"
+            }
+          ]
+        }
+      },
+      "id": "6d1ac659-a833-46f7-a039-919536a89451",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  let arr = [64,65];\n  item.json.additional_product_tag_ids = item.json.additional_product_tag_ids.filter(tag => !arr.includes(tag));\n  item.json.product_tag_ids = item.json.product_tag_ids.filter(tag => !arr.includes(tag))\n}\n\nreturn $input.all();"
+      },
+      "id": "2ddd19fd-fee6-4cb9-a65d-268829b36d7f",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2360,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.product_tag_ids }}",
+              "operation": "isEmpty"
+            },
+            {
+              "value1": "={{ $json.additional_product_tag_ids }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "ca402b5d-e57e-4018-b52f-67870b0e8dfb",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.product",
+        "operation": "update",
+        "customResourceId": "={{ $json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "active",
+              "fieldValue": "={{ false }}"
+            }
+          ]
+        }
+      },
+      "id": "dc5319f0-7f62-424c-be3c-8780d5b7f837",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2760,
+        840
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.product",
+        "operation": "update",
+        "customResourceId": "={{ $json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "additional_product_tag_ids",
+              "fieldValue": "={{ $json.additional_product_tag_ids }}"
+            },
+            {
+              "fieldName": "additional_product_tag_ids",
+              "fieldValue": "={{ $json.product_tag_ids }}"
+            }
+          ]
+        }
+      },
+      "id": "d03b0614-9cc5-4940-903a-28cf2979a00e",
+      "name": "Odoo2",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        2760,
+        1120
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
     }
   ],
   "pinData": {
     "Webhook": [
       {
         "json": {
-          "name": "First item",
-          "code": 1
+          "headers": {
+            "host": "node4.biketrax.co.uk",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX19uzB%2F2RwI3pb3oig7i%2BGYjUaXUvBafSXo%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX1%2BoZ2i4ru9I4nIZdoAOC8oawp2SlBFiGbs%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU1NGU2NmU4LTA0YzYtNGZhZi1iZTdjLWMyNDIwYzY2NGU3NCIsImVtYWlsIjoibHVrZUBiaWtldHJheC5jby51ayIsInBhc3N3b3JkIjoiOTRkYjE5YmM3MjMxNDgxODQ3MDRjMmYxZGZkYjlmYjAzNDQxMjM0MjcwMThhODllNGQ5ODQ4NWM2MzUyOGQ0ZSIsImlhdCI6MTcwMjMxMDQ4MSwiZXhwIjoxNzAyOTE1MjgxfQ.csor39Qgf9Qg-GW7e2PSifBiQ5NbvWjoWx4Y-oUrcls; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2BwpI%2BlsW%2FG4xZXM8x6%2F8YyEMf%2F7bIvz%2B7cV7A7XE15GbSJbkBNRvetDtLzmrMcb%2BdOohjfJH4PVw%3D%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2BQvqagtAW7JxCX5t0R%2BOTyb1XTvIB2rsFlspJ4mGBJ8%2BqqoUsNx5tIHe9MWJq4qkr4m%2FwkMd8iBiq590hFmNdp4S67B63xoB3etC%2FDl9mmtsran55SmYrv3M8MG11ijVkSC0VfDp0V6oDR%2FuNAPATGKOzU%2BMspKsc%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2FUwb4rYFfjR4DjAJ%2Bk9IbiznDmiolIOHZfC2Czbf%2F%2B14MlpPu7VdV8Y4ejL1Ll18G1prjC3UHsMuRgHdLPTZRwy8P%2FEjx3Nwv9yblgSADS1C7zKJ2IMCgorVQ3PWahNA9QxcCfKDGZ0i2v5KH4BSrvbGLNEYkBUlw%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22distinct_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24sesid%22%3A%5B1702382955060%2C%22018c5dea-15cf-7225-acf3-57f7639803b3%22%2C1702382671311%5D%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2Bj3%2BkJkpG4bDhLyIw90CugiKqBMVvZAhtqC0yIBX0%2B8n8V2ZzpMqZr72oDtoVJIftFSTF6QcokJWCfRDAE4ZMhGp844Nsyn792OEmMjYooWauzFCoDO0ZZouzC7KFNZji4UGdAw4VvEQ%3D%3D",
+            "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"Google Chrome\";v=\"120\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1",
+            "upgrade-insecure-requests": "1",
+            "x-forwarded-for": "195.224.58.58",
+            "x-forwarded-host": "node4.biketrax.co.uk",
+            "x-forwarded-proto": "https"
+          },
+          "params": {},
+          "query": {}
+        },
+        "pairedItem": {
+          "item": 0
         }
       }
     ]
@@ -671,6 +863,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-11T16:26:13.000Z",
-  "versionId": "e090aeee-ebdf-4fe4-838b-c53b269c3dc0"
+  "updatedAt": "2023-12-12T15:28:29.000Z",
+  "versionId": "3864a57d-33fa-494c-8148-e58043c55246"
 }
