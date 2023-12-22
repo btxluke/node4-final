@@ -1,0 +1,129 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-22T09:39:57.303Z",
+  "id": "A1AbQ93D9y0XUj6X",
+  "name": "Utility: OOS Message Routine",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "5e2b2ade-ebdf-444e-b647-e651af4400d3",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "x_studio_brand_1",
+            "display_name"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "allow_out_of_stock_order",
+              "value": "={{ false }}"
+            },
+            {
+              "fieldName": "active",
+              "value": "={{ true }}"
+            },
+            {
+              "fieldName": "product_tag_ids",
+              "operator": "in",
+              "value": "={{ [15,11,17,23,14] }}"
+            }
+          ]
+        }
+      },
+      "id": "2326a3c0-ade8-4c6a-9c7a-0221803cffe3",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        420
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "update",
+        "customResourceId": "={{ $json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "out_of_stock_message",
+              "fieldValue": "=This product is currently unavailable, and we don't have automated information available on when it will be available again. We're happy to investigate further, email us on <a href=\"mailto:info@biketrax.co.uk?subject=Special Order: {{ $json.x_studio_brand_1 }} {{ $json.display_name }}!&body=Hi! I'm interested in special ordering this product. Can you provide more information on when it is available?\">info@biketrax.co.uk</a> for help."
+            }
+          ]
+        }
+      },
+      "id": "64122a0a-9027-4728-8a2f-4b1a179d3177",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        420
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-22T11:13:40.000Z",
+  "versionId": "d3c7c22e-898b-4ac2-ad82-123377af80e7"
+}
