@@ -1,0 +1,121 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-26T12:26:34.821Z",
+  "id": "C480ey9KjONUju1Y",
+  "name": "Utility: Populate Compare Prices",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "ec19d2b4-5660-4886-a99b-9d2a1e787c45",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        880,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "list_price",
+            "taxes_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "active",
+              "value": "={{ true }}"
+            },
+            {
+              "fieldName": "compare_list_price",
+              "value": "={{false}}"
+            }
+          ]
+        }
+      },
+      "id": "8ab1c97b-1a8d-409e-8fd2-364437fa43b9",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        360
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "update",
+        "customResourceId": "={{ $json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "compare_list_price",
+              "fieldValue": "={{ $json.taxes_id[0] == 10 ? $json.list_price * 1.2 : $json.list_price }}"
+            }
+          ]
+        }
+      },
+      "id": "e58d290c-a438-48e4-b578-a00ce4aac2c3",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        360
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-26T12:30:49.000Z",
+  "versionId": "083ea681-29c6-407a-9ecf-4af5aad482e7"
+}
