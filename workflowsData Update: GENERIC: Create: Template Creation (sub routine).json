@@ -791,7 +791,7 @@
             },
             {
               "fieldName": "allow_out_of_stock_order",
-              "fieldValue": "={{true}}"
+              "fieldValue": "={{$('Globals').first().json.globals.Webhook ? true : false}}"
             },
             {
               "fieldName": "available_in_pos",
@@ -900,6 +900,14 @@
             {
               "fieldName": "x_studio_brand_1",
               "fieldValue": "={{ $json.realbrand }}"
+            },
+            {
+              "fieldName": "out_of_stock_message",
+              "fieldValue": "=This product is currently unavailable, and we don't have automated information available on when it will be available again. We're happy to investigate further, email us on <a href=\"mailto:info@biketrax.co.uk?subject=Special Order: {{ $json.brand }} {{ $json.productcode }}!&body=Hi! I'm interested in special ordering this product. Can you provide more information on when it is available?\">info@biketrax.co.uk</a> for help."
+            },
+            {
+              "fieldName": "=compare_list_price",
+              "fieldValue": "={{$json.vat == 20 ? $json.rrp * 1.2 : $json.rrp}}"
             }
           ]
         }
@@ -2064,7 +2072,27 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "body": {
+            "success": true,
+            "name": "Silverfish",
+            "globals": {
+              "SupplierName": "Silverfish",
+              "PartnerId": 61,
+              "ProductTagId": 10,
+              "LeadTimeAddition": 5,
+              "LastCount": "9979",
+              "Webhook": "update-silverfish",
+              "CreateSequence": "create-categ-sync,create-size-sync,create-version-write,create-brand-sync,create-brand-write,create-colour-sync,create-colour-write,create-attribute-write"
+            }
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -2074,6 +2102,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-12-05T17:29:38.000Z",
-  "versionId": "9386c5f4-b420-4016-9975-746673d17022"
+  "updatedAt": "2023-12-26T12:26:06.000Z",
+  "versionId": "5d00d43e-56d5-4847-a9ee-0b91a8084e6a"
 }
