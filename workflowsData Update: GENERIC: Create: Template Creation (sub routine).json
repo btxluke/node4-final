@@ -2072,27 +2072,7 @@
       ]
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "body": {
-            "success": true,
-            "name": "Silverfish",
-            "globals": {
-              "SupplierName": "Silverfish",
-              "PartnerId": 61,
-              "ProductTagId": 10,
-              "LeadTimeAddition": 5,
-              "LastCount": "9979",
-              "Webhook": "update-silverfish",
-              "CreateSequence": "create-categ-sync,create-size-sync,create-version-write,create-brand-sync,create-brand-write,create-colour-sync,create-colour-write,create-attribute-write"
-            }
-          }
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -2102,6 +2082,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-12-26T12:26:06.000Z",
-  "versionId": "5d00d43e-56d5-4847-a9ee-0b91a8084e6a"
+  "updatedAt": "2024-06-28T10:02:20.000Z",
+  "versionId": "645f32c3-133a-4af7-b67e-d1906bc73d2e"
 }
