@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Category Sync": {
       "main": [
@@ -547,36 +547,6 @@
     },
     {
       "parameters": {
-        "resource": "custom",
-        "customResource": "product.tag",
-        "operation": "getAll",
-        "returnAll": true,
-        "options": {
-          "fieldsList": [
-            "id",
-            "name"
-          ]
-        },
-        "filterRequest": {
-          "filter": [
-            {
-              "fieldName": "name",
-              "value": "Zyro"
-            }
-          ]
-        }
-      },
-      "id": "d314ebe5-eaf7-4ffc-ad0a-92cbac84a29d",
-      "name": "Odoo3",
-      "type": "n8n-nodes-base.odoo",
-      "typeVersion": 1,
-      "position": [
-        980,
-        1920
-      ]
-    },
-    {
-      "parameters": {
         "mode": "chooseBranch",
         "output": "input2"
       },
@@ -797,37 +767,6 @@
       "position": [
         4480,
         1020
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "custom",
-        "customResource": "res.partner",
-        "operation": "getAll",
-        "returnAll": true,
-        "options": {
-          "fieldsList": [
-            "id",
-            "name"
-          ]
-        },
-        "filterRequest": {
-          "filter": [
-            {
-              "fieldName": "name",
-              "operator": "like",
-              "value": "Zyro"
-            }
-          ]
-        }
-      },
-      "id": "4bf682c2-3e27-4725-b216-3eed0c65a8da",
-      "name": "Odoo4",
-      "type": "n8n-nodes-base.odoo",
-      "typeVersion": 1,
-      "position": [
-        1280,
-        1920
       ]
     },
     {
@@ -1156,36 +1095,7 @@
       ]
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "node4.biketrax.co.uk",
-            "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-            "accept-encoding": "gzip, deflate, br",
-            "accept-language": "en-GB,en;q=0.5",
-            "cookie": "rl_session=RudderEncrypt%3AU2FsdGVkX1%2FUefPCQutQkbNsTnQaow0CkjEwHmChCreZL3e4YdJHvFnGen2MCxA4jDi7aH5YBBpemN2mGKuyjm79XkygiK%2FmZP6YhoXo%2BP2l22nK7ROWIvGEnXO3lKiOtzmHzTTAh8diMJ2%2Fbc3ZtQ%3D%3D; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2Bp6NGPmjHBYjPi8gtBXmC4WaElffPVAxLzbCvMg2a%2FbgpbNUy%2FbYFWFaH%2BxnPqfKWcrtOuOqUDmw%3D%3D; rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2B%2BcAYcPGne%2FbvIRyJ4XZWiG%2FFeJvFAGvI%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX18%2F4mZjQ6GY%2FvcdjiuzUiyZMvWTPz9Hdus%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU1NGU2NmU4LTA0YzYtNGZhZi1iZTdjLWMyNDIwYzY2NGU3NCIsImVtYWlsIjoibHVrZUBiaWtldHJheC5jby51ayIsInBhc3N3b3JkIjoiOTRkYjE5YmM3MjMxNDgxODQ3MDRjMmYxZGZkYjlmYjAzNDQxMjM0MjcwMThhODllNGQ5ODQ4NWM2MzUyOGQ0ZSIsImlhdCI6MTcwMTY4NjI2NCwiZXhwIjoxNzAyMjkxMDY0fQ.U9Wov0pRZcRi9Cga4GHoqMTTh85iKI30vM_DiyY4dWM; rl_user_id=RudderEncrypt%3AU2FsdGVkX18yfGsuUpN%2BOTsCgbRj%2B2aurxksjAohDW1bvwpAwuN2zKPA%2BJDh2kblm7s6GplGbD3l%2B3xAqwElIKRh8bGaaPA6R162d74Q%2Bs%2B7CIzmNd4BHPhpcLqSLA8OF7EVlWrQFztaGEEUDHozjP2s5nSyq2K4D0gJA69ttPo%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX19Ta15ZuCJnWEsarNdZoSik7gXrKcScMgwVJirQlQRDGARsf8KTzpnMViJCYkcsIzorqhfK%2F1q%2F24rGdUxItIW%2Fhlx%2FXopz1VID0CEBaZfucLF8igt6WmbMQAoJaGwuBscOBk12gCQp6EU6peYrzDfQnsmGCGKUPKQ%3D; rl_group_id=RudderEncrypt%3AU2FsdGVkX19FHR%2B0MZ38k2Vr%2FYteEQkhciMwlBOAheE%3D; rl_group_trait=RudderEncrypt%3AU2FsdGVkX19wvSuSLIkbleBZlv7MqrRneEyny8wB%2BNQ%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22%24active_feature_flags%22%3A%5B%22015_form_trigger_usecase%22%2C%22009_choosing_trial_plan%22%2C%22011_ask_AI%22%2C%22006_cloud_opt_in%22%2C%22schema-view%22%5D%2C%22%24enabled_feature_flags%22%3A%7B%22016_template_credential_setup%22%3Afalse%2C%22015_form_trigger_usecase%22%3A%22control%22%2C%22009_choosing_trial_plan%22%3A%22variant%22%2C%22011_ask_AI%22%3A%22gpt3%22%2C%22006_cloud_opt_in%22%3A%22control%22%2C%22schema-view%22%3Atrue%7D%2C%22%24feature_flag_payloads%22%3A%7B%7D%2C%22distinct_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24device_id%22%3A%22018c344f-60e2-7e43-a83e-8f39fef9f6d5%22%2C%22%24user_state%22%3A%22identified%22%2C%22%24user_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24stored_person_properties%22%3A%7B%22instance_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%22%2C%22created_at_timestamp%22%3A1691497889718%7D%2C%22%24sesid%22%3A%5B1701693501212%2C%22018c344f-60ea-7918-aa80-1cb7b9a84a34%22%2C1701684666602%5D%2C%22%24client_session_props%22%3A%7B%22sessionId%22%3A%22018c344f-60ea-7918-aa80-1cb7b9a84a34%22%2C%22props%22%3A%7B%22initialPathName%22%3A%22%2Fworkflows%22%2C%22referringDomain%22%3A%22%24direct%22%7D%7D%2C%22%24session_recording_enabled_server_side%22%3Afalse%2C%22%24session_recording_network_payload_capture%22%3A%7B%22capturePerformance%22%3Afalse%7D%2C%22%24autocapture_disabled_server_side%22%3Afalse%7D",
-            "sec-fetch-dest": "document",
-            "sec-fetch-mode": "navigate",
-            "sec-fetch-site": "none",
-            "sec-fetch-user": "?1",
-            "te": "trailers",
-            "upgrade-insecure-requests": "1",
-            "x-forwarded-for": "51.155.215.158",
-            "x-forwarded-host": "node4.biketrax.co.uk",
-            "x-forwarded-proto": "https"
-          },
-          "params": {},
-          "query": {}
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
@@ -1229,6 +1139,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-04T13:02:17.000Z",
-  "versionId": "0b8ecf1d-6466-4e28-9f29-356e4107a76a"
+  "updatedAt": "2024-06-28T15:02:31.000Z",
+  "versionId": "ac7d5cab-14bd-4e71-b83f-18d4172883c2"
 }
