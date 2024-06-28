@@ -1830,7 +1830,8 @@
       "position": [
         1740,
         1260
-      ]
+      ],
+      "executeOnce": true
     },
     {
       "parameters": {
@@ -2082,6 +2083,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-06-28T10:02:20.000Z",
-  "versionId": "645f32c3-133a-4af7-b67e-d1906bc73d2e"
+  "updatedAt": "2024-06-28T13:43:49.000Z",
+  "versionId": "41e0b13d-6095-411b-aa37-694ed1644a7b"
 }
