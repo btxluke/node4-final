@@ -280,16 +280,7 @@
       ]
     }
   ],
-  "pinData": {
-    "Execute Workflow Trigger": [
-      {
-        "json": {
-          "alterStatements": "RENAME COLUMN \"Vendor SKU\" TO \"ProductCode\", ALTER COLUMN \"ProductCode\" TYPE CHAR(40), RENAME COLUMN \"Product Name\" TO \"ProductName\", ALTER COLUMN \"ProductName\" TYPE CHAR(235), RENAME COLUMN \"UPC/EAN\" TO \"Ean\", ALTER COLUMN \"Ean\" TYPE CHAR(22), RENAME COLUMN \"Unit MSRP\" TO \"Rrp\", ALTER COLUMN \"Rrp\" TYPE DECIMAL(7,2) USING \"Rrp\"::NUMERIC, RENAME COLUMN \"Pack Qty\" TO \"PackQty\", ALTER COLUMN \"PackQty\" TYPE CHAR(27), RENAME COLUMN \"Variant Grouping\" TO \"VariantGrouping\", ALTER COLUMN \"VariantGrouping\" TYPE CHAR(30), RENAME COLUMN \"Short Description\" TO \"ShortDescription\", ALTER COLUMN \"ShortDescription\" TYPE CHAR(222), RENAME COLUMN \"Long Description\" TO \"LongDescription\", ALTER COLUMN \"LongDescription\" TYPE TEXT, RENAME COLUMN \"Unit Cost\" TO \"YourPrice\", ALTER COLUMN \"YourPrice\" TYPE DECIMAL(7,2) USING \"YourPrice\"::NUMERIC, RENAME COLUMN \"Lead Time\" TO \"LeadTime\", ALTER COLUMN \"LeadTime\" TYPE SMALLINT USING \"LeadTime\"::NUMERIC, RENAME COLUMN \"Sub Category\" TO \"SubCategory\", ALTER COLUMN \"SubCategory\" TYPE CHAR(30), RENAME COLUMN \"image\" TO \"ImageUrl\", ALTER COLUMN \"ImageUrl\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 1\" TO \"AlternativeImage1Url\", ALTER COLUMN \"AlternativeImage1Url\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 2\" TO \"AlternativeImage2Url\", ALTER COLUMN \"AlternativeImage2Url\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 3\" TO \"AlternativeImage3Url\", ALTER COLUMN \"AlternativeImage3Url\" TYPE CHAR(102), RENAME COLUMN \"Stock Count\" TO \"StockCount\", ALTER COLUMN \"StockCount\" TYPE SMALLINT USING \"StockCount\"::NUMERIC, RENAME COLUMN \"Technical Spec\" TO \"TechnicalSpec\", ALTER COLUMN \"TechnicalSpec\" TYPE TEXT, ADD COLUMN \"TechnicalSpecLabel\" TEXT DEFAULT NULL",
-          "supplier": "Silverfish"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -330,6 +321,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2023-08-25T07:38:40.000Z",
-  "versionId": "2a1fde02-4bee-4f57-bb55-6a0bafa81040"
+  "updatedAt": "2024-06-30T13:27:08.000Z",
+  "versionId": "0efdc2fd-dcab-448c-a4a4-24d97f578a21"
 }
