@@ -1,0 +1,133 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-30T16:17:18.649Z",
+  "id": "y2c4ry0crnUsxPbM",
+  "name": "Utility: FDW Master Refresh",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "master-fdw-resync",
+        "options": {}
+      },
+      "id": "6315c351-cc9f-4f62-a0fe-38c440e13430",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        880,
+        420
+      ],
+      "webhookId": "5ee20f2a-85e8-4019-bf44-97ef4c699138"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DROP SCHEMA IF EXISTS odoodata CASCADE; \n",
+        "options": {}
+      },
+      "id": "eee22225-5e31-47d2-a619-f703ec739b28",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1100,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "IMPORT FOREIGN SCHEMA odoodata \n    FROM SERVER odoodata_bridge INTO odoodata ;\n",
+        "options": {}
+      },
+      "id": "215a1a71-885a-47c6-b188-9399a4da975f",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1100,
+        820
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE SCHEMA odoodata ;\n",
+        "options": {}
+      },
+      "id": "1a4ff7cf-2848-4fcb-a2d4-a5d44b902b8b",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1100,
+        620
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-06-30T16:22:50.000Z",
+  "versionId": "627a91ae-9445-48c4-8c5e-9d2a286d3ec0"
+}
