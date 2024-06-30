@@ -672,7 +672,7 @@
     },
     {
       "parameters": {
-        "command": "={{\"sed '\"+$json.stdout+\"d'\"}} /home/luke/feeds/Upload-Sportline{{ $runIndex == 0 ? \"\" : $runIndex }}.csv > /home/luke/feeds/Upload-Madison{{ $runIndex+1 }}.csv"
+        "command": "={{\"sed '\"+$json.stdout+\"d'\"}} /home/luke/feeds/Upload-Sportline{{ $runIndex == 0 ? \"\" : $runIndex }}.csv > /home/luke/feeds/Upload-Sportline{{ $runIndex+1 }}.csv"
       },
       "id": "74b225c4-5aea-419f-af24-0b8d549322f6",
       "name": "SSH3",
@@ -691,7 +691,7 @@
     },
     {
       "parameters": {
-        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_madison FROM /home/luke/feeds/Upload-Sportline{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
+        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_sportline FROM /home/luke/feeds/Upload-Sportline{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
         "cwd": "/home/luke/feeds/"
       },
       "id": "b7254793-3029-42cf-898d-a882b4dcc0b8",
@@ -725,8 +725,7 @@
               "value2": "={{ Number($('globals').first().json.globals.LastCount)*0.05 }}"
             }
           ]
-        },
-        "combineOperation": "any"
+        }
       },
       "id": "e9d517bf-b473-467a-b566-8c1754bae3c9",
       "name": "IF1",
@@ -1081,7 +1080,7 @@
           "string": [
             {
               "name": "alterStatements",
-              "value": "RENAME COLUMN \"Product Code\" TO \"productcode\", ALTER COLUMN \"productcode\" TYPE CHAR(40), RENAME COLUMN \"Description (80 Chars)\" TO \"productname\", ALTER COLUMN \"productname\" TYPE CHAR(100), RENAME COLUMN \"Short Description (40 Chars)\" TO \"shortdescription\", ALTER COLUMN \"shortdescription\" TYPE CHAR(40), RENAME COLUMN \"Long Web Text\" TO \"longdescription\", ALTER COLUMN \"longdescription\" TYPE TEXT, RENAME COLUMN \"barcode\" TO \"ean\", ALTER COLUMN \"ean\" TYPE CHAR(29), RENAME COLUMN \"Vat Rate\" TO \"vat\", ALTER COLUMN \"vat\" TYPE INT USING \"vat\"::NUMERIC, RENAME COLUMN \"Unit of Measure\" TO \"packqty\", ALTER COLUMN \"packqty\" TYPE CHAR(11), ALTER COLUMN \"rrp\" TYPE NUMERIC USING \"rrp\"::NUMERIC, RENAME COLUMN \"Lead Time\" TO \"leadtime\", ALTER COLUMN \"leadtime\" TYPE INT USING \"leadtime\"::NUMERIC, RENAME COLUMN \"Image Name\" TO \"imageurl\", ALTER COLUMN \"imageurl\" TYPE TEXT, RENAME COLUMN \"Alternative Image 1\" TO \"alternativeimage1url\", ALTER COLUMN \"alternativeimage1url\" TYPE TEXT, RENAME COLUMN \"Alternative Image 2\" TO \"alternativeimage2url\", ALTER COLUMN \"alternativeimage2url\" TYPE TEXT, RENAME COLUMN \"Alternative Image 3\" TO \"alternativeimage3url\", ALTER COLUMN \"alternativeimage3url\" TYPE TEXT, RENAME COLUMN \"Supplier Code\" TO \"suppliercode\", ALTER COLUMN \"suppliercode\" TYPE CHAR(30), RENAME COLUMN \"Brand Colour\" TO \"colour\", ALTER COLUMN \"colour\" TYPE CHAR(100), RENAME COLUMN \"Variant Grouping\" TO \"variantgrouping\", ALTER COLUMN \"variantgrouping\" TYPE CHAR(30), RENAME COLUMN \"Outer Quantity\" TO \"outerquantity\", ALTER COLUMN \"outerquantity\" TYPE INT USING \"outerquantity\"::NUMERIC, RENAME COLUMN \"Your Price\" TO \"yourprice\", ALTER COLUMN \"yourprice\" TYPE NUMERIC USING \"yourprice\"::NUMERIC, RENAME COLUMN \"Sub Category\" TO \"subcategory\", ALTER COLUMN \"subcategory\" TYPE CHAR(100), RENAME COLUMN \"Specification HTML\" TO \"technicalspec\", ALTER COLUMN \"technicalspec\" TYPE TEXT, ADD COLUMN \"technicalspeclabel\" TEXT"
+              "value": "RENAME COLUMN \"Product Code\" TO \"productcode\", ALTER COLUMN \"productcode\" TYPE CHAR(40), RENAME COLUMN \"Description (80 Chars)\" TO \"productname\", ALTER COLUMN \"productname\" TYPE CHAR(100), RENAME COLUMN \"Short Description (40 Chars)\" TO \"shortdescription\", ALTER COLUMN \"shortdescription\" TYPE CHAR(40), RENAME COLUMN \"Long Web Text\" TO \"longdescription\", ALTER COLUMN \"longdescription\" TYPE TEXT, RENAME COLUMN \"barcode\" TO \"ean\", ALTER COLUMN \"ean\" TYPE CHAR(29), RENAME COLUMN \"Vat Rate\" TO \"vat\", ALTER COLUMN \"vat\" TYPE INT USING \"vat\"::NUMERIC, RENAME COLUMN \"Unit of Measure\" TO \"packqty\", ALTER COLUMN \"packqty\" TYPE CHAR(11), ALTER COLUMN \"rrp\" TYPE NUMERIC USING \"rrp\"::NUMERIC, RENAME COLUMN \"Lead Time\" TO \"leadtime\", ALTER COLUMN \"leadtime\" TYPE INT USING \"leadtime\"::NUMERIC, RENAME COLUMN \"Image Name\" TO \"imageurl\", ALTER COLUMN \"imageurl\" TYPE TEXT, RENAME COLUMN \"Alternative Image 1\" TO \"alternativeimage1url\", ALTER COLUMN \"alternativeimage1url\" TYPE TEXT, RENAME COLUMN \"Alternative Image 2\" TO \"alternativeimage2url\", ALTER COLUMN \"alternativeimage2url\" TYPE TEXT, RENAME COLUMN \"Alternative Image 3\" TO \"alternativeimage3url\", ALTER COLUMN \"alternativeimage3url\" TYPE TEXT, RENAME COLUMN \"Supplier Code\" TO \"suppliercode\", ALTER COLUMN \"suppliercode\" TYPE CHAR(30), RENAME COLUMN \"Brand Colour\" TO \"colour\", ALTER COLUMN \"colour\" TYPE CHAR(100), RENAME COLUMN \"Variant Grouping\" TO \"variantgrouping\", ALTER COLUMN \"variantgrouping\" TYPE CHAR(30), RENAME COLUMN \"Outer Quantity\" TO \"outerquantity\", ALTER COLUMN \"outerquantity\" TYPE INT USING \"outerquantity\"::NUMERIC, RENAME COLUMN \"Trade Price\" TO \"yourprice\", ALTER COLUMN \"yourprice\" TYPE NUMERIC USING \"yourprice\"::NUMERIC, RENAME COLUMN \"Sub Category\" TO \"subcategory\", ALTER COLUMN \"subcategory\" TYPE CHAR(100), RENAME COLUMN \"Specification HTML\" TO \"technicalspec\", ALTER COLUMN \"technicalspec\" TYPE TEXT, ADD COLUMN \"technicalspeclabel\" TEXT, DROP COLUMN \"Your Price\""
             },
             {
               "name": "supplier",
@@ -1385,38 +1384,7 @@
       }
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "node4.biketrax.co.uk",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-            "accept-encoding": "gzip, deflate, br",
-            "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
-            "cookie": "rl_page_init_referrer=RudderEncrypt%3AU2FsdGVkX1%2Bg%2FR%2BDoyn7CGTlRw1Z6%2Fb%2B2XCNN67Jh2o%3D; rl_page_init_referring_domain=RudderEncrypt%3AU2FsdGVkX18uU5MJnfgfy%2FRUMU1I8pymRwiN6gsci6M%3D; n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU1NGU2NmU4LTA0YzYtNGZhZi1iZTdjLWMyNDIwYzY2NGU3NCIsImVtYWlsIjoibHVrZUBiaWtldHJheC5jby51ayIsInBhc3N3b3JkIjoiOTRkYjE5YmM3MjMxNDgxODQ3MDRjMmYxZGZkYjlmYjAzNDQxMjM0MjcwMThhODllNGQ5ODQ4NWM2MzUyOGQ0ZSIsImlhdCI6MTY5NTk4MzIxOCwiZXhwIjoxNjk2NTg4MDE4fQ.7Z9QDo3iSle1tRZObWTa5pQXItCmEWOJgoPyWtYPGaA; rl_anonymous_id=RudderEncrypt%3AU2FsdGVkX1%2FCJMCyY3vxed0%2BT4S6NK5MQMGNHjvDw7i5OtwZ%2Bl4pOrEcJUJ8DIdUeU0beLI9XziKWrH8VZceqg%3D%3D; rl_group_id=RudderEncrypt%3AU2FsdGVkX19NUpnsratNhv4nr3%2B4UFoOoxtn%2BSEpz%2Bw%3D; rl_group_trait=RudderEncrypt%3AU2FsdGVkX1%2B4rf%2FDoQBSffE5XFK8yGk8%2BVE9NbWFmn0%3D; rl_user_id=RudderEncrypt%3AU2FsdGVkX1%2B4zoBw01XamJXWZ%2Bl3OGxGB0mPrMIEFXmK0Cs%2B1yLLoAKR7PpN1QnLV%2B21ai3KbOlXT4bVOV7oKqzj3b%2F2PHH9BFBn9d%2BnTkDPvb6cE02mC2dbo5jZJlk2TRc8e2QqHSqENvHt8UM22y5oz4a%2FDBa8Sjh5mDpvygM%3D; rl_trait=RudderEncrypt%3AU2FsdGVkX1%2BymjC2O9c2llqiss3MCsUYolckmtpa8eTw7H4%2FJULYalrabALIeBy1xWpeJ7FVXmc5%2BCoPf6LxaSRiSRItQalZ2Y2ewDORuyoL0IpDzYpQCXT4wvvSeKpAUITFmgf7ZoEQ746ULqkgAlUCp%2BELqVS4bpN44br7Iq4%3D; ph_phc_4URIAm1uYfJO7j8kWSe0J8lc8IqnstRLS7Jx8NcakHo_posthog=%7B%22%24active_feature_flags%22%3A%5B%22013_distribution_test%22%2C%22011_ask_AI%22%2C%22012_signup_cta_wording%22%2C%22009_choosing_trial_plan%22%2C%22006_cloud_opt_in%22%2C%22010_relevant_usecase%22%2C%22schema-view%22%5D%2C%22%24enabled_feature_flags%22%3A%7B%22013_distribution_test%22%3A%22variant%22%2C%22011_ask_AI%22%3A%22gpt3%22%2C%22012_signup_cta_wording%22%3A%22variant%22%2C%22009_choosing_trial_plan%22%3A%22variant%22%2C%22004_checklist%22%3Afalse%2C%22008_template_variants%22%3Afalse%2C%22006_cloud_opt_in%22%3A%22control%22%2C%22010_relevant_usecase%22%3A%22control%22%2C%22schema-view%22%3Atrue%7D%2C%22%24feature_flag_payloads%22%3A%7B%7D%2C%22distinct_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24device_id%22%3A%22018a2b9e-7557-79eb-bfa1-dace9620ffc5%22%2C%22%24user_state%22%3A%22identified%22%2C%22%24user_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%23e54e66e8-04c6-4faf-be7c-c2420c664e74%22%2C%22%24stored_person_properties%22%3A%7B%22instance_id%22%3A%22a13b88bcc4f075601cb03976e302271640b69ef501a91a6df62cec4b5d57da7c%22%2C%22created_at_timestamp%22%3A1691497889718%7D%2C%22%24sesid%22%3A%5B1695983775213%2C%22018ae082-abbc-710d-abb3-790decb23662%22%2C1695983774652%5D%2C%22%24session_recording_enabled_server_side%22%3Afalse%2C%22%24autocapture_disabled_server_side%22%3Afalse%7D; rl_session=RudderEncrypt%3AU2FsdGVkX1%2FMu%2BFSPNGSWsZ53bDna5qJY7wkNQTUIjQJEqOCJVzLFZyc%2BWw8XUMDlEv2eREFajx71tA1njUe7uUDfsgSnijDTLVe%2FUefEAgV%2FNu6Rzi%2BVs6DJCdLsykoZTedDFb7aNeIwB%2B%2FFQuNww%3D%3D",
-            "sec-ch-ua": "\"Google Chrome\";v=\"117\", \"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"117\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
-            "sec-fetch-dest": "document",
-            "sec-fetch-mode": "navigate",
-            "sec-fetch-site": "none",
-            "sec-fetch-user": "?1",
-            "upgrade-insecure-requests": "1",
-            "x-forwarded-for": "195.224.58.58",
-            "x-forwarded-host": "node4.biketrax.co.uk",
-            "x-forwarded-proto": "https"
-          },
-          "params": {},
-          "query": {}
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -1457,6 +1425,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-09-29T11:24:39.000Z",
-  "versionId": "ce3b4ec7-b0df-4513-a45b-99023cc21414"
+  "updatedAt": "2024-06-30T14:21:06.000Z",
+  "versionId": "0f84e3d0-3e13-4f98-ae1c-7b4e2d31b868"
 }
