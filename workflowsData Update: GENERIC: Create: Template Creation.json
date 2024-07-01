@@ -160,7 +160,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT DISTINCT(variantgrouping) FROM {{\"transit_\"+$(\"Globals\").first().json[\"name\"].toLowerCase() }};",
+        "query": "SELECT DISTINCT(variantgrouping) FROM {{\"transit_\"+$(\"Globals\").first().json[\"name\"].toLowerCase() }} ORDER BY variantgrouping ASC LIMIT 60;",
         "options": {}
       },
       "id": "63f6dbcc-0c62-4fa6-8e50-9c810835ff9d",
@@ -298,6 +298,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-06-28T09:57:49.000Z",
-  "versionId": "109af24c-518f-47fa-8d62-5be41fcb62df"
+  "updatedAt": "2024-07-01T15:25:37.000Z",
+  "versionId": "5f531474-1d80-4b18-82f6-7774a95495ed"
 }
