@@ -1152,7 +1152,8 @@
       "position": [
         3740,
         2000
-      ]
+      ],
+      "executeOnce": true
     },
     {
       "parameters": {
@@ -1212,6 +1213,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-10-04T08:33:10.000Z",
-  "versionId": "b253b6e4-e88f-4ac2-abfe-431af78c4dfe"
+  "updatedAt": "2024-07-02T10:03:54.000Z",
+  "versionId": "26ad1242-b1a7-4a4e-a461-262a724c9452"
 }
