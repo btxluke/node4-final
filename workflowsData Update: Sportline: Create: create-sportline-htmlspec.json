@@ -70,7 +70,7 @@
       "main": [
         [
           {
-            "node": "SplitInBatches",
+            "node": "IF",
             "type": "main",
             "index": 0
           }
@@ -109,6 +109,24 @@
           }
         ]
       ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-09-29T14:56:30.283Z",
@@ -122,7 +140,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        1400,
+        1180,
         1580
       ]
     },
@@ -136,7 +154,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 1,
       "position": [
-        1740,
+        1960,
         1580
       ]
     },
@@ -150,7 +168,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 2,
       "position": [
-        2040,
+        2260,
         1680
       ]
     },
@@ -164,7 +182,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 2,
       "position": [
-        2040,
+        2260,
         1900
       ]
     },
@@ -179,7 +197,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        1220,
+        1000,
         1580
       ],
       "webhookId": "c92747be-9975-4705-990f-10f8eefe2a0d"
@@ -195,9 +213,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        1580,
+        1360,
         1580
       ],
+      "alwaysOutputData": true,
       "credentials": {
         "postgres": {
           "id": "ayAxbLgcy5Lpqy5D",
@@ -218,7 +237,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2040,
+        2260,
         1480
       ],
       "continueOnFail": true
@@ -236,7 +255,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2200,
+        2420,
         1680
       ],
       "continueOnFail": true
@@ -254,10 +273,41 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2200,
+        2420,
         1900
       ],
       "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.productcode }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "88e2b1d1-8ac5-4b70-b2e7-1d6b1b57f259",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        1580
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "38487c96-5f31-4473-b722-9ebbc52b8c14",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        1820
+      ]
     }
   ],
   "pinData": {
@@ -298,6 +348,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-30T11:34:59.000Z",
-  "versionId": "dc475998-f2c0-4466-9465-ca6bceab0ff4"
+  "updatedAt": "2024-07-03T06:23:16.000Z",
+  "versionId": "a4acef3d-bc4c-40fd-ae00-7bfdac53ac48"
 }
