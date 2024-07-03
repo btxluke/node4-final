@@ -78,6 +78,28 @@
         ],
         [
           {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Postgres3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres3": {
+      "main": [
+        [
+          {
             "node": "Set1",
             "type": "main",
             "index": 0
@@ -160,7 +182,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT DISTINCT(variantgrouping) FROM {{\"transit_\"+$(\"Globals\").first().json[\"name\"].toLowerCase() }} ORDER BY variantgrouping ASC LIMIT 60;",
+        "query": "SELECT DISTINCT(variantgrouping) FROM {{\"transit_\"+$(\"Globals\").first().json[\"name\"].toLowerCase() }} ORDER BY variantgrouping ASC LIMIT 30;",
         "options": {}
       },
       "id": "63f6dbcc-0c62-4fa6-8e50-9c810835ff9d",
@@ -189,7 +211,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.2,
       "position": [
-        2140,
+        2360,
         760
       ],
       "retryOnFail": true,
@@ -214,7 +236,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1960,
+        2180,
         760
       ],
       "continueOnFail": true
@@ -251,10 +273,106 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 2,
       "position": [
-        1960,
-        980
+        2360,
+        1120
       ],
       "executeOnce": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COUNT (DISTINCT(variantgrouping)) FROM {{\"transit_\"+$(\"Globals\").first().json[\"name\"].toLowerCase() }} ;",
+        "options": {}
+      },
+      "id": "88a94c62-b4a4-42e6-b14d-d6c0e4fadff6",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        1800,
+        1100
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "odoodata",
+          "mode": "list",
+          "cachedResultName": "odoodata"
+        },
+        "table": {
+          "__rl": true,
+          "value": "map_supplierinfo",
+          "mode": "list",
+          "cachedResultName": "map_supplierinfo"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "transit_queue": "={{ $json.count }}",
+            "name": "={{ $('Globals').first().json[\"name\"] }}"
+          },
+          "matchingColumns": [
+            "name"
+          ],
+          "schema": [
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "globals",
+              "displayName": "globals",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "transit_queue",
+              "displayName": "transit_queue",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dfd5df8e-d084-470a-9d39-3ee1d5a1db18",
+      "name": "Postgres3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        2020,
+        1100
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -298,6 +416,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-07-01T15:25:37.000Z",
-  "versionId": "5f531474-1d80-4b18-82f6-7774a95495ed"
+  "updatedAt": "2024-07-03T14:05:24.000Z",
+  "versionId": "ff356d6e-98dd-49d5-bed9-15d1d411134a"
 }
