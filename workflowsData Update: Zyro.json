@@ -913,7 +913,7 @@
         "specifyBody": "json",
         "jsonBody": "={{ $('Globals').first().json }}",
         "options": {
-          "timeout": 7200000
+          "timeout": 14400000
         }
       },
       "id": "f0997148-de66-4d99-9b26-b83091b4b3f2",
@@ -1215,6 +1215,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-07-03T06:18:24.000Z",
-  "versionId": "f0cdb32f-9e3a-4119-954c-3cd2fc69832d"
+  "updatedAt": "2024-07-05T07:24:29.000Z",
+  "versionId": "6d4d56c0-4e4e-450a-9f1b-13a52ceb5af1"
 }
