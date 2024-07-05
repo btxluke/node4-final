@@ -264,6 +264,18 @@
               "name": "success",
               "value": true
             }
+          ],
+          "number": [
+            {
+              "name": "count",
+              "value": "={{ $('Postgres2').item.json.count }}"
+            }
+          ],
+          "string": [
+            {
+              "name": "name",
+              "value": "={{ $(\"Globals\").first().json.name }}"
+            }
           ]
         },
         "options": {}
@@ -378,7 +390,7 @@
   "pinData": {},
   "settings": {
     "executionOrder": "v1",
-    "saveDataSuccessExecution": "all",
+    "saveDataSuccessExecution": "none",
     "saveManualExecutions": true,
     "callerPolicy": "workflowsFromSameOwner"
   },
@@ -416,6 +428,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-07-04T16:53:33.000Z",
-  "versionId": "bc327b7e-f507-4c65-939b-3f1218429255"
+  "updatedAt": "2024-07-05T07:50:07.000Z",
+  "versionId": "92994429-1627-4110-808b-6de947ab814f"
 }
