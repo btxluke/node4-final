@@ -1,0 +1,410 @@
+{
+  "active": true,
+  "connections": {
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare Datasets": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [
+          {
+            "node": "Odoo5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Compare Datasets",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Odoo1": {
+      "main": [
+        [
+          {
+            "node": "Odoo4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-07-14T13:03:26.602Z",
+  "id": "QhI2ScmsWVPJ0Wfd",
+  "name": "Utility: warehouse-orderpoint-subflow",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "utility-warehouse-orderpoint-subflow",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "e6c70381-f233-43f2-b82e-1ec6a747932b",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        480,
+        440
+      ],
+      "webhookId": "14a63d94-62d9-40e3-87af-3eebfc5faa62"
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "stock.warehouse.orderpoint",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "id",
+            "product_id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "vendor_id",
+              "value": "={{ $json.globals.PartnerId }}"
+            }
+          ]
+        }
+      },
+      "id": "87b1a3df-7518-4e3d-9a24-7cb0ca9b6b5d",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        960,
+        440
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \"id\",product_tmpl_id FROM {{ \"index_\" + $json.name.toLowerCase()}}",
+        "options": {}
+      },
+      "id": "f6d8a3ac-056e-4150-9659-e5181d695eda",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        960,
+        220
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "id",
+              "field2": "id"
+            }
+          ]
+        },
+        "resolve": "preferInput1",
+        "fuzzyCompare": true,
+        "options": {
+          "skipFields": "orderpoint_id,product_tmpl_id"
+        }
+      },
+      "id": "6f7114fe-a556-40c1-b36c-dba25f61d6c2",
+      "name": "Compare Datasets",
+      "type": "n8n-nodes-base.compareDatasets",
+      "typeVersion": 2.3,
+      "position": [
+        1340,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "number": [
+            {
+              "name": "id",
+              "value": "={{ $json.product_id[0]}}"
+            },
+            {
+              "name": "orderpoint_id",
+              "value": "={{ $json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "39c7bba8-3b05-4093-91d0-857a8c45ac9d",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "stock.warehouse.orderpoint",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "company_id",
+              "fieldValue": "={{ 1 }}"
+            },
+            {
+              "fieldName": "location_id",
+              "fieldValue": "={{8}}"
+            },
+            {
+              "fieldName": "name",
+              "fieldValue": "=OP/AUTO/{{$('Set').item.json.globals.SupplierName.toUpperCase() + \"/\" + $json.product_tmpl_id}}"
+            },
+            {
+              "fieldName": "product_id",
+              "fieldValue": "={{ $json.id }}"
+            },
+            {
+              "fieldName": "product_max_qty",
+              "fieldValue": "0"
+            },
+            {
+              "fieldName": "product_min_qty",
+              "fieldValue": "0"
+            },
+            {
+              "fieldName": "qty_multiple",
+              "fieldValue": "0"
+            },
+            {
+              "fieldName": "trigger",
+              "fieldValue": "auto"
+            },
+            {
+              "fieldName": "warehouse_id",
+              "fieldValue": "={{ 1 }}"
+            },
+            {
+              "fieldName": "route_id",
+              "fieldValue": "={{ 7 }}"
+            },
+            {
+              "fieldName": "show_supplier",
+              "fieldValue": "={{ true }}"
+            },
+            {
+              "fieldName": "supplier_id",
+              "fieldValue": "={{ $('Set').item.json.globals.WarehouseSupId }}"
+            }
+          ]
+        }
+      },
+      "id": "d7393acd-db89-4eb6-8bef-8b1d5c3f746b",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        40
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "stock.warehouse.orderpoint",
+        "operation": "update",
+        "customResourceId": "={{ $json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "vendor_id",
+              "fieldValue": "={{ $('Set').item.json.globals.PartnerId }}"
+            }
+          ]
+        }
+      },
+      "id": "bee90b99-aa97-4284-89d7-9e870a7c3a02",
+      "name": "Odoo4",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1800,
+        40
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "stock.warehouse.orderpoint",
+        "operation": "delete",
+        "customResourceId": "={{ $json.orderpoint_id }}"
+      },
+      "id": "3ea253fe-52b8-4b8d-bdba-3c20e1261982",
+      "name": "Odoo5",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        400
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {},
+      "id": "ddb219b1-e235-43c2-a45b-b61bcdadd756",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "name",
+              "value": "={{ $json.body.name }}"
+            },
+            {
+              "name": "globals",
+              "value": "={{ $json.body.globals[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7751738e-bc74-48cb-8c3e-a7b0c1f894bf",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        700,
+        440
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-07-14T18:04:39.000Z",
+  "versionId": "b7ba57c2-7da5-417b-ba16-832d62a51c5a"
+}
