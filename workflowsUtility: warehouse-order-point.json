@@ -1,0 +1,206 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-07-13T14:34:15.980Z",
+  "id": "7oLWKvLeIE8unxOk",
+  "name": "Utility: warehouse-order-point",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "56f492eb-c0c5-469b-86f0-4d7c330e3f54",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        120,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM map_supplierinfo WHERE globals LIKE '%WarehouseSupId%'",
+        "options": {}
+      },
+      "id": "2d58750a-e19f-432e-9677-2b123b1c6c43",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        340,
+        400
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "a6c0a550-5caf-4966-abef-127f41e5237a",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        960,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ JSON.parse($json.globals) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fb76d2d6-84d4-48aa-b0a1-07ebed7656c8",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        560,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://node4.biketrax.co.uk/webhook/utility-warehouse-orderpoint-subflow",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "89295c44-4f92-4274-9731-87e12fc0f019",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1180,
+        400
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "d61ff6d8-1d0c-4231-8688-745d32f47dcf",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "path": "warehouse-order-point",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "b227cb98-5917-4a77-9dfe-096ceafdd53a",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        120,
+        200
+      ],
+      "webhookId": "6254345c-68b2-4e7e-9c9c-422f053501b0"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-07-14T18:04:50.000Z",
+  "versionId": "437f1b27-60de-4fae-a4af-8ee2c4411592"
+}
