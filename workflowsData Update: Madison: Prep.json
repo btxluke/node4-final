@@ -689,7 +689,7 @@
     },
     {
       "parameters": {
-        "command": "={{\"sed '\"+$json.stdout+\"d'\"}} /home/luke/feeds/Upload-Madison{{ $runIndex == 0 ? \"\" : $runIndex }}.csv > /home/luke/feeds/Upload-Madison{{ $runIndex+1 }}.csv"
+        "command": "={{\"sed '\"+$json.stdout.split('\\n')[0]+\"d'\"}} /home/luke/feeds/Upload-Madison{{ $runIndex == 0 ? \"\" : $runIndex }}.csv > /home/luke/feeds/Upload-Madison{{ $runIndex+1 }}.csv"
       },
       "id": "59a303ef-afdb-40c6-96ee-a796f3812118",
       "name": "SSH3",
@@ -1488,6 +1488,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-08-16T10:09:33.000Z",
-  "versionId": "f6002319-16cf-4531-9040-1c4be0b94afa"
+  "updatedAt": "2024-08-16T14:06:12.000Z",
+  "versionId": "7362ba4e-7c66-4d82-9e15-c1af91ee1cc1"
 }
