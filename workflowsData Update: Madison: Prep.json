@@ -734,16 +734,8 @@
               "value1": "={{ $json.stderr }}",
               "operation": "isEmpty"
             }
-          ],
-          "number": [
-            {
-              "value1": "={{ $runIndex }}",
-              "operation": "largerEqual",
-              "value2": "={{ Number($('globals').first().json.globals.LastCount)*0.05 }}"
-            }
           ]
-        },
-        "combineOperation": "any"
+        }
       },
       "id": "0901a1ad-86f7-4130-9588-c77149452074",
       "name": "IF1",
@@ -1496,6 +1488,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-06-30T16:56:51.000Z",
-  "versionId": "fc42704c-0e65-4bfd-8624-1cfa7914cab4"
+  "updatedAt": "2024-08-16T10:09:33.000Z",
+  "versionId": "f6002319-16cf-4531-9040-1c4be0b94afa"
 }
