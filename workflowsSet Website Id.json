@@ -1,0 +1,151 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Odoo": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-08-23T12:35:13.268Z",
+  "id": "FFJRXPM41zVgLSai",
+  "name": "Set Website Id",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "caa8f0c0-95c6-4176-ba9d-46a8d4ee2444",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "getAll",
+        "returnAll": true,
+        "options": {
+          "fieldsList": [
+            "id"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "website_id",
+              "value": "={{false}}"
+            }
+          ]
+        }
+      },
+      "id": "edf78fdb-3ccc-4306-a1f2-451bf7d7881d",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        420
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "update",
+        "customResourceId": "={{ $json.id }}",
+        "fieldsToCreateOrUpdate": {
+          "fields": [
+            {
+              "fieldName": "website_id",
+              "fieldValue": "={{ 2 }}"
+            }
+          ]
+        }
+      },
+      "id": "07d68a26-8082-41fd-bcd7-f85b9870ed7d",
+      "name": "Odoo1",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        420
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "set-website-id",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "b8114c31-7090-4fbc-9340-57f0109875e1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        820,
+        600
+      ],
+      "webhookId": "13e7fe9b-e1ba-4706-9097-f2a84afe3972"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-08-08T15:53:13.355Z",
+      "updatedAt": "2023-08-08T15:53:13.355Z",
+      "id": "ojpualuYNuuEDwh1",
+      "name": "odoo"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-08-23T13:34:51.000Z",
+  "versionId": "6783f32e-3c9f-443f-beed-b4399b3aadfd"
+}
