@@ -109,7 +109,7 @@
       "main": [
         [
           {
-            "node": "Postgres2",
+            "node": "IF2",
             "type": "main",
             "index": 0
           }
@@ -157,6 +157,24 @@
         [
           {
             "node": "Odoo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
             "type": "main",
             "index": 0
           }
@@ -671,15 +689,17 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        3200,
+        3400,
         520
       ],
+      "retryOnFail": false,
       "credentials": {
         "postgres": {
           "id": "dqel3RyoT6NsGiSw",
           "name": "odooData"
         }
-      }
+      },
+      "continueOnFail": true
     },
     {
       "parameters": {
@@ -801,6 +821,38 @@
           "name": "Odoo account"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.productcode }}",
+              "operation": "notEqual",
+              "value2": "={{ false }}"
+            }
+          ]
+        }
+      },
+      "id": "d23b1562-2a8c-4b93-95dc-b73d5311083a",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        3200,
+        520
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3249fcad-2d3d-48e1-abd0-7ee0e6ad1a9f",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        3300,
+        760
+      ]
     }
   ],
   "pinData": {
@@ -863,6 +915,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-12T15:28:29.000Z",
-  "versionId": "3864a57d-33fa-494c-8148-e58043c55246"
+  "updatedAt": "2024-09-14T13:39:04.000Z",
+  "versionId": "ae6623a5-95f6-4cc5-9583-bc4f9c170808"
 }
