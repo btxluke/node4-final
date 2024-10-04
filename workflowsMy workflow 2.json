@@ -11,26 +11,15 @@
           }
         ]
       ]
-    },
-    "Odoo": {
-      "main": [
-        [
-          {
-            "node": "Odoo1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
-  "createdAt": "2023-10-14T08:23:57.102Z",
-  "id": "yLMLeqobzjfiqq3Y",
+  "createdAt": "2024-10-04T06:46:45.499Z",
+  "id": "nG1V5ktzWOe17CwP",
   "name": "My workflow 2",
   "nodes": [
     {
       "parameters": {},
-      "id": "1b7e5135-b1d4-470d-bbba-b753bac124b1",
+      "id": "525b314f-4d7e-4d4b-b95c-b4e8604479e4",
       "name": "When clicking \"Execute Workflow\"",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
@@ -42,60 +31,16 @@
     {
       "parameters": {
         "resource": "custom",
-        "customResource": "product.supplierinfo",
+        "customResource": "voip.phonecall",
         "operation": "getAll",
-        "returnAll": true,
-        "options": {
-          "fieldsList": [
-            "id"
-          ]
-        },
-        "filterRequest": {
-          "filter": [
-            {
-              "fieldName": "delay",
-              "operator": "lesserThen",
-              "value": "0"
-            }
-          ]
-        }
+        "options": {}
       },
-      "id": "a12cab81-9c48-44be-a0e6-f742838e0175",
+      "id": "6a82edd2-b563-4033-b1d4-95d3cb098121",
       "name": "Odoo",
       "type": "n8n-nodes-base.odoo",
       "typeVersion": 1,
       "position": [
         1040,
-        420
-      ],
-      "credentials": {
-        "odooApi": {
-          "id": "2ttPRWxNWqAWB6fY",
-          "name": "Odoo account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "resource": "custom",
-        "customResource": "product.supplierinfo",
-        "operation": "update",
-        "customResourceId": "={{ $json.id }}",
-        "fieldsToCreateOrUpdate": {
-          "fields": [
-            {
-              "fieldName": "delay",
-              "fieldValue": "365"
-            }
-          ]
-        }
-      },
-      "id": "91b88159-2b58-458c-9c61-6c3a03be9605",
-      "name": "Odoo1",
-      "type": "n8n-nodes-base.odoo",
-      "typeVersion": 1,
-      "position": [
-        1260,
         420
       ],
       "credentials": {
@@ -113,6 +58,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-10-14T08:37:43.000Z",
-  "versionId": "81cad585-5b6f-4185-8ab9-199f6c87d69a"
+  "updatedAt": "2024-10-04T06:46:45.499Z",
+  "versionId": "3921e77b-9944-4fa9-a2e9-4e46f66eeb32"
 }
