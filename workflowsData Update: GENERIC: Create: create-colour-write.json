@@ -140,7 +140,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET colour = {{$json.id}} WHERE Colour = {{\"'\"+$json.name.replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\\"/g, \"\\\\\\\"\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"}};",
+        "query": "UPDATE datatransit.transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET colour = {{$json.id}} WHERE Colour = {{\"'\"+$json.name.replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\\"/g, \"\\\\\\\"\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"}};",
         "options": {}
       },
       "id": "277620b6-faf8-432a-b92a-24e969305901",
@@ -227,6 +227,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-10-02T08:15:24.000Z",
-  "versionId": "403b0768-8956-4d60-ae9c-b5311798cf2b"
+  "updatedAt": "2024-10-09T18:37:54.000Z",
+  "versionId": "6f944bac-6fc8-42ca-9ed2-8f8b2736d1e8"
 }
