@@ -560,7 +560,7 @@
     },
     {
       "parameters": {
-        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_zyro FROM /home/luke/feeds/Upload-Zyro.csv DELIMITER ',' CSV HEADER;\"",
+        "command": "=psql -d btxPIM -c \"\\\\COPY odoodata.upload_zyro FROM /home/luke/feeds/Upload-Zyro.csv DELIMITER ',' CSV HEADER;\"",
         "cwd": "/home/luke/feeds/"
       },
       "id": "814cd808-9f2b-49f0-8f15-e06e08250b52",
@@ -707,7 +707,7 @@
     },
     {
       "parameters": {
-        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_madison FROM /home/luke/feeds/Upload-Madison{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
+        "command": "=psql -d btxPIM -c \"\\\\COPY odoodata.upload_madison FROM /home/luke/feeds/Upload-Madison{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
         "cwd": "/home/luke/feeds/"
       },
       "id": "495f2a12-d092-49ce-b885-b50a04d2fabf",
@@ -943,7 +943,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_zyro SET srp = srp::NUMERIC / (1+(vat::numeric/100));",
+        "query": "UPDATE odoodata.upload_zyro SET srp = srp::NUMERIC / (1+(vat::numeric/100));",
         "options": {}
       },
       "id": "0b9c6f17-1cfb-418f-a325-a4a72e7109b5",
@@ -964,7 +964,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "ALTER TABLE upload_zyro \nADD COLUMN yourprice DECIMAL(7,2) NULL",
+        "query": "ALTER TABLE odoodata.upload_zyro \nADD COLUMN yourprice DECIMAL(7,2) NULL",
         "options": {}
       },
       "id": "039e07ac-48bc-4bbc-97e0-6ccc1fe56334",
@@ -1006,7 +1006,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_zyro\nSET \nyourprice = orangeprice\nWHERE yourprice IS NULL",
+        "query": "UPDATE odoodata.upload_zyro\nSET \nyourprice = orangeprice\nWHERE yourprice IS NULL",
         "options": {}
       },
       "id": "0d5fbfa0-315e-4c7b-ac08-49a8bbee4d45",
@@ -1027,7 +1027,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_zyro b\nSET\nstockindicator = c.stockindicator,\nstockduein = c.stockduein\nFROM stock_zyro c \nWHERE b.sku = c.sku;\n",
+        "query": "UPDATE odoodata.upload_zyro b\nSET\nstockindicator = c.stockindicator,\nstockduein = c.stockduein\nFROM odoodata.stock_zyro c \nWHERE b.sku = c.sku;\n",
         "options": {}
       },
       "id": "72d431ba-0e77-4460-876b-ed5d434a11d6",
@@ -1048,7 +1048,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "ALTER TABLE upload_zyro ADD COLUMN leadtime INT DEFAULT 0;",
+        "query": "ALTER TABLE odoodata.upload_zyro ADD COLUMN leadtime INT DEFAULT 0;",
         "options": {}
       },
       "id": "6bed2f25-631a-4d9e-ba8a-c7bc6b67e24c",
@@ -1069,7 +1069,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_zyro \nSET\nleadtime = TO_DATE(stockduein,'DD/MM/YYYY')-CURRENT_DATE\nWHERE stockindicator = 'OOS'\n",
+        "query": "UPDATE odoodata.upload_zyro \nSET\nleadtime = TO_DATE(stockduein,'DD/MM/YYYY')-CURRENT_DATE\nWHERE stockindicator = 'OOS'\n",
         "options": {}
       },
       "id": "30af2d0f-0bd5-4376-802a-eb22aeed3b8a",
@@ -1090,7 +1090,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "ALTER TABLE upload_zyro ADD COLUMN stockcount INT DEFAULT 0;",
+        "query": "ALTER TABLE odoodata.upload_zyro ADD COLUMN stockcount INT DEFAULT 0;",
         "options": {}
       },
       "id": "07602f34-fb50-4dfb-9b37-dc39f224e5ec",
@@ -1111,7 +1111,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_zyro \nSET\nstockcount = 1\nWHERE stockindicator = 'IS'\n",
+        "query": "UPDATE odoodata.upload_zyro \nSET\nstockcount = 1\nWHERE stockindicator = 'IS'\n",
         "options": {}
       },
       "id": "d49519eb-182c-4f7e-b013-c8b622e0f08c",
@@ -1132,7 +1132,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_zyro \nSET \n\"name\" = INITCAP(\"name\"),\nbriefdescription = INITCAP(briefdescription)\n",
+        "query": "UPDATE odoodata.upload_zyro \nSET \n\"name\" = INITCAP(\"name\"),\nbriefdescription = INITCAP(briefdescription)\n",
         "options": {}
       },
       "id": "e64abc98-5012-4be9-9ce8-a4df1903a33a",
@@ -1260,7 +1260,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT COUNT (productcode) FROM upload_zyro;",
+        "query": "SELECT COUNT (productcode) FROM odoodata.upload_zyro;",
         "options": {}
       },
       "id": "ccef873e-c324-4369-b30b-dac6c2654618",
@@ -1302,7 +1302,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = {{ \"'\"+$json.name+\"'\" }}; ",
+        "query": "UPDATE odoodata.map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = {{ \"'\"+$json.name+\"'\" }}; ",
         "options": {}
       },
       "id": "4db08260-a8ce-4f03-bae7-f766d09ab426",
@@ -1359,6 +1359,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-08-26T14:12:52.000Z",
-  "versionId": "e6f68577-4d17-4750-9f5a-30955282813c"
+  "updatedAt": "2024-10-09T16:57:14.000Z",
+  "versionId": "97dfd868-0b8b-43cd-9f33-0ec618a91b4f"
 }
