@@ -881,7 +881,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "TRUNCATE {{\"feed_\" + $json.name.toLowerCase()}};",
+        "query": "TRUNCATE {{\"odoodata.feed_\" + $json.name.toLowerCase()}};",
         "options": {}
       },
       "id": "8e7300a0-1176-4259-8251-7230000ef6b7",
@@ -902,7 +902,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "DELETE FROM {{\"upload_\"+ $(\"Globals\").first().json.name.toLowerCase()}} WHERE \"ean\" = NULL OR \"ean\" = '';",
+        "query": "DELETE FROM {{\"odoodata.upload_\"+ $(\"Globals\").first().json.name.toLowerCase()}} WHERE \"ean\" = NULL OR \"ean\" = '';",
         "options": {}
       },
       "id": "2139e49d-71c1-4e90-a808-73a745237d0d",
@@ -923,7 +923,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "INSERT INTO {{\"odoodata.feed_\"+$(\"Globals\").first().json.name.toLowerCase()}} \n(\"productcode\",\n\"ean\",\n\"productname\",\n\"yourprice\",\n\"rrp\",\n\"vat\",\n\"stockcount\",\n\"shortdescription\",\n\"longdescription\",\n\"imageurl\",\n\"alternativeimage1url\",\n\"alternativeimage2url\",\n\"alternativeimage3url\",\n\"size\",\n\"colour\",\n\"brand\",\n\"weight\",\n\"packqty\",\n\"leadtime\",\n\"variantgrouping\",\n\"subcategory\",\n\"keywords\",\n\"technicalspec\",\n\"technicalspeclabel\"\n)\nSELECT \nb.\"productcode\",\nb.\"ean\",\nb.\"productname\",\nb.\"yourprice\",\nb.\"rrp\",\nb.\"vat\",\nb.\"stockcount\",\nb.\"shortdescription\",\nb.\"longdescription\",\nb.\"imageurl\",\nb.\"alternativeimage1url\",\nb.\"alternativeimage2url\",\nb.\"alternativeimage3url\",\nb.\"size\",\nb.\"colour\",\nb.\"brand\",\nb.\"weight\",\nb.\"packqty\",\nb.\"leadtime\",\nb.\"variantgrouping\",\nb.\"subcategory\",\nb.\"keywords\",\nb.\"technicalspec\",\nb.\"technicalspeclabel\"\nFROM {{\"upload_\"+$(\"Globals\").first().json.name.toLowerCase()}} b WHERE \"ean\" IS NOT NULL ON CONFLICT DO NOTHING;",
+        "query": "INSERT INTO {{\"odoodata.feed_\"+$(\"Globals\").first().json.name.toLowerCase()}} \n(\"productcode\",\n\"ean\",\n\"productname\",\n\"yourprice\",\n\"rrp\",\n\"vat\",\n\"stockcount\",\n\"shortdescription\",\n\"longdescription\",\n\"imageurl\",\n\"alternativeimage1url\",\n\"alternativeimage2url\",\n\"alternativeimage3url\",\n\"size\",\n\"colour\",\n\"brand\",\n\"weight\",\n\"packqty\",\n\"leadtime\",\n\"variantgrouping\",\n\"subcategory\",\n\"keywords\",\n\"technicalspec\",\n\"technicalspeclabel\"\n)\nSELECT \nb.\"productcode\",\nb.\"ean\",\nb.\"productname\",\nb.\"yourprice\",\nb.\"rrp\",\nb.\"vat\",\nb.\"stockcount\",\nb.\"shortdescription\",\nb.\"longdescription\",\nb.\"imageurl\",\nb.\"alternativeimage1url\",\nb.\"alternativeimage2url\",\nb.\"alternativeimage3url\",\nb.\"size\",\nb.\"colour\",\nb.\"brand\",\nb.\"weight\",\nb.\"packqty\",\nb.\"leadtime\",\nb.\"variantgrouping\",\nb.\"subcategory\",\nb.\"keywords\",\nb.\"technicalspec\",\nb.\"technicalspeclabel\"\nFROM {{\"odoodata.upload_\"+$(\"Globals\").first().json.name.toLowerCase()}} b WHERE \"ean\" IS NOT NULL ON CONFLICT DO NOTHING;",
         "options": {
           "queryReplacement": ""
         }
@@ -946,7 +946,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "TRUNCATE {{\"prices_\"+$(\"Globals\").first().json.name.toLowerCase()}};",
+        "query": "TRUNCATE {{\"odoodata.prices_\"+$(\"Globals\").first().json.name.toLowerCase()}};",
         "options": {}
       },
       "id": "6e4430d1-b4d4-4416-a742-9b3b8de77039",
@@ -967,7 +967,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "INSERT INTO {{\"prices_\"+$(\"Globals\").first().json.name.toLowerCase()}} (\nbarcode,list_price,standard_price,leadtime,stockcount)\nSELECT \n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.ean AS barcode,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.rrp AS list_price,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.yourprice AS standard_price,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.leadtime,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.stockcount\nFROM {{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}\nON CONFLICT DO NOTHING;",
+        "query": "INSERT INTO {{\"odoodata.prices_\"+$(\"Globals\").first().json.name.toLowerCase()}} (\nbarcode,list_price,standard_price,leadtime,stockcount)\nSELECT \n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.ean AS barcode,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.rrp AS list_price,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.yourprice AS standard_price,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.leadtime,\n{{\"feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}.stockcount\nFROM {{\"odoodata.feed_\"+$(\"Globals\").first().json.name.toLowerCase()}}\nON CONFLICT DO NOTHING;",
         "options": {}
       },
       "id": "7ecc533a-8569-44c9-939c-17e4dc791bdd",
@@ -988,7 +988,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "TRUNCATE {{\"transit_\"+$(\"Globals\").first().json.name.toLowerCase()}};",
+        "query": "TRUNCATE {{\"datatransit.transit_\"+$(\"Globals\").first().json.name.toLowerCase()}};",
         "options": {}
       },
       "id": "95615300-0699-406d-8158-c91d0ff9ac50",
@@ -1051,7 +1051,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT id AS odoo_id, barcode, default_code, product_tmpl_id AS tmpl_id  FROM {{\"index_\"+$('Globals').first().json.name.toLowerCase() }} WHERE barcode = {{\"\\'\"+$json.barcode+\"\\'\"}}",
+        "query": "SELECT id AS odoo_id, barcode, default_code, product_tmpl_id AS tmpl_id  FROM {{\"datatransit.index_\"+$('Globals').first().json.name.toLowerCase() }} WHERE barcode = {{\"\\'\"+$json.barcode+\"\\'\"}}",
         "options": {}
       },
       "id": "50459231-bc35-404e-a841-89d370cf5f3f",
@@ -1259,7 +1259,27 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "body": {
+            "globals": {
+              "SupplierName": "Sportline",
+              "PartnerId": 42,
+              "ProductTagId": 6,
+              "LeadTimeAddition": 3,
+              "Webhook": "update-sportline",
+              "LastCount": "685",
+              "CreateSequence": "create-categ-sync,create-size-sync,create-version-write,create-brand-sync,create-brand-write,create-colour-sync,create-colour-write,create-attribute-write,create-sportline-htmlspec",
+              "WarehouseSupId": "231151"
+            },
+            "name": "Sportline"
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner",
@@ -1268,6 +1288,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-03T07:19:24.000Z",
-  "versionId": "eb3895ba-afd0-467c-a23b-85e83b352667"
+  "updatedAt": "2024-10-09T18:17:50.000Z",
+  "versionId": "38df9f84-20f8-4390-9a2c-e526fdf598f5"
 }
