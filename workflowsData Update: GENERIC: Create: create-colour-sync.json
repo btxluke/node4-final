@@ -260,7 +260,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT DISTINCT(colour) FROM transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} WHERE colour IS NOT NULL;",
+        "query": "SELECT DISTINCT(colour) FROM datatransit.transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} WHERE colour IS NOT NULL;",
         "options": {}
       },
       "id": "262f6ec8-3109-4d15-b7ec-1128734ef4ac",
@@ -337,6 +337,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-11-02T10:29:02.000Z",
-  "versionId": "43d9bcff-9b7d-49dc-97bd-241244d7d48d"
+  "updatedAt": "2024-10-09T18:28:08.000Z",
+  "versionId": "3f6af28a-1317-498b-87ea-231d95097554"
 }
