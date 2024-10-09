@@ -219,7 +219,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT DISTINCT(technicalspec), technicalspeclabel AS attribute_id FROM transit_madison WHERE technicalspec IS NOT NULL;",
+        "query": "SELECT DISTINCT(technicalspec), technicalspeclabel AS attribute_id FROM datatransit.transit_madison WHERE technicalspec IS NOT NULL;",
         "options": {}
       },
       "id": "d0239116-bc42-40e1-b06d-ba550bfcdaa1",
@@ -323,6 +323,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-09-10T08:50:46.000Z",
-  "versionId": "35bcf5bd-6767-4dc5-b5a7-602742848739"
+  "updatedAt": "2024-10-09T18:34:29.000Z",
+  "versionId": "0e48cff7-8354-45a9-8b6e-75ea9be0198a"
 }
