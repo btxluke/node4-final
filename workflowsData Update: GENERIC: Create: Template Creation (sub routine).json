@@ -1762,7 +1762,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT a.*,b.brand AS realbrand \nFROM {{  \"transit_\" + $(\"Globals\").first().json[\"name\"] }} a\nJOIN {{  \"odoodata.feed_\" + $(\"Globals\").first().json[\"name\"] }} b\nON a.productcode = b.productcode\nWHERE a.VariantGrouping = {{\"'\"+$json.variantgrouping\n        .replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"}};",
+        "query": "SELECT a.*,b.brand AS realbrand \nFROM {{  \"datatransit.transit_\" + $(\"Globals\").first().json[\"name\"] }} a\nJOIN {{  \"odoodata.feed_\" + $(\"Globals\").first().json[\"name\"] }} b\nON a.productcode = b.productcode\nWHERE a.VariantGrouping = {{\"'\"+$json.variantgrouping\n        .replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"}};",
         "options": {}
       },
       "id": "b69ec45d-d849-4758-a8ef-d448c5256caf",
@@ -2083,6 +2083,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-06-28T13:43:49.000Z",
-  "versionId": "41e0b13d-6095-411b-aa37-694ed1644a7b"
+  "updatedAt": "2024-10-09T18:25:06.000Z",
+  "versionId": "5ed51959-ef00-434a-8999-4f6c9cc9a27f"
 }
