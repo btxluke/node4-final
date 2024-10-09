@@ -598,7 +598,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT attribute_ids AS id FROM transit_sportline WHERE productcode = {{\"'\"+$('data').item.json.productcode+\"'\" }};",
+        "query": "SELECT attribute_ids AS id FROM datatransit.transit_sportline WHERE productcode = {{\"'\"+$('data').item.json.productcode+\"'\" }};",
         "options": {}
       },
       "id": "757814b0-3f99-46e2-9274-7ade77713575",
@@ -646,7 +646,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_sportline \nSET attribute_ids = {{ \"'\"+$json.attribute_ids+\"'\" }}\nWHERE productcode = {{ \"'\"+$json.productcode+\"'\" }};",
+        "query": "UPDATE datatransit.transit_sportline \nSET attribute_ids = {{ \"'\"+$json.attribute_ids+\"'\" }}\nWHERE productcode = {{ \"'\"+$json.productcode+\"'\" }};",
         "options": {}
       },
       "id": "443877f4-5638-437e-a240-50a7386515b8",
@@ -699,6 +699,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-30T11:34:20.000Z",
-  "versionId": "d43857f7-a1f2-441b-9501-9d364015ef8f"
+  "updatedAt": "2024-10-09T18:41:55.000Z",
+  "versionId": "86ef0efc-bd2b-4893-a7ef-e088c626f322"
 }
