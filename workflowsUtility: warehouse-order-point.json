@@ -93,7 +93,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT * FROM map_supplierinfo WHERE globals LIKE '%WarehouseSupId%'",
+        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE globals LIKE '%WarehouseSupId%'",
         "options": {}
       },
       "id": "2d58750a-e19f-432e-9677-2b123b1c6c43",
@@ -201,6 +201,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-14T18:04:50.000Z",
-  "versionId": "437f1b27-60de-4fae-a4af-8ee2c4411592"
+  "updatedAt": "2024-10-09T18:01:54.000Z",
+  "versionId": "f84647d1-6fa3-4894-baac-7cc13966eb9b"
 }
