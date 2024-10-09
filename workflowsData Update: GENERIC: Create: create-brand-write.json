@@ -117,7 +117,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET brand = {{$json.id}} WHERE brand = {{\"'\"+$json.name\n        .replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\\"/g, \"\\\\\\\"\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"}};",
+        "query": "UPDATE datatransit.transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET brand = {{$json.id}} WHERE brand = {{\"'\"+$json.name\n        .replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\\"/g, \"\\\\\\\"\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"}};",
         "options": {
           "queryBatching": "single"
         }
@@ -206,6 +206,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-10-02T08:15:36.000Z",
-  "versionId": "2427914e-dec9-42ae-8000-8f3481baad57"
+  "updatedAt": "2024-10-09T18:31:12.000Z",
+  "versionId": "34a3bd9a-a2bb-481a-9032-37457118e07b"
 }
