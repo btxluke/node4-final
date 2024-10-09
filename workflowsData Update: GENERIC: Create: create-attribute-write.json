@@ -139,7 +139,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT productcode, standardsize AS size, size AS version, colour, brand FROM transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase()}}; ",
+        "query": "SELECT productcode, standardsize AS size, size AS version, colour, brand FROM datatransit.transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase()}}; ",
         "options": {}
       },
       "id": "e0f8a3bb-a1e6-4227-878f-8a459d5d171e",
@@ -160,7 +160,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_{{ $('Globals').first().json.name.toLowerCase() }} \nSET attribute_ids = {{ \"'\"+$json.attribute_ids+\"'\" }}\nWHERE productcode = {{ \"'\"+$json.productcode+\"'\" }};",
+        "query": "UPDATE datatransit.transit_{{ $('Globals').first().json.name.toLowerCase() }} \nSET attribute_ids = {{ \"'\"+$json.attribute_ids+\"'\" }}\nWHERE productcode = {{ \"'\"+$json.productcode+\"'\" }};",
         "options": {}
       },
       "id": "0f78c1f5-e65e-4222-ba4e-e7263db77d45",
@@ -189,6 +189,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-06-28T13:42:19.000Z",
-  "versionId": "1b32da76-7182-48c4-92d6-086e77b9665d"
+  "updatedAt": "2024-10-09T18:25:47.000Z",
+  "versionId": "28fe90a2-22fd-438a-b21b-8f206e33e322"
 }
