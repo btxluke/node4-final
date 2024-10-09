@@ -313,7 +313,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT COUNT (productcode) FROM upload_sportline;",
+        "query": "SELECT COUNT (productcode) FROM odoodata.upload_sportline;",
         "options": {}
       },
       "id": "5be93ec6-607b-4101-b503-f60eaa334608",
@@ -388,7 +388,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = 'Madison';",
+        "query": "UPDATE odoodata.map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = 'Madison';",
         "options": {}
       },
       "id": "42675eac-de29-466b-96ee-692a387073ad",
@@ -556,7 +556,16 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -585,6 +594,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-08-16T10:14:11.000Z",
-  "versionId": "7c0c2638-d7a3-4dff-b92e-953278837c03"
+  "updatedAt": "2024-10-09T18:07:58.000Z",
+  "versionId": "7d1ee939-57ba-4c73-9eaf-f159dc17312d"
 }
