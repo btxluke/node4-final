@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Odoo",
+            "node": "Postgres",
             "type": "main",
             "index": 0
           }
@@ -13,13 +13,13 @@
       ]
     }
   },
-  "createdAt": "2023-11-08T16:21:05.172Z",
-  "id": "dRQQdJGJqMWR1p5d",
+  "createdAt": "2024-10-09T09:31:57.160Z",
+  "id": "5r9WHvUmemzxGBLG",
   "name": "My workflow 3",
   "nodes": [
     {
       "parameters": {},
-      "id": "3446c6b0-2c00-41d0-a6e0-1827d830c31e",
+      "id": "9c24bd86-f595-417f-a5a9-dd076c52bb96",
       "name": "When clicking \"Execute Workflow\"",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
@@ -30,28 +30,22 @@
     },
     {
       "parameters": {
-        "resource": "custom",
-        "customResource": "product.product",
-        "operation": "get",
-        "customResourceId": "158931",
-        "options": {
-          "fieldsList": [
-            "detailed_type"
-          ]
-        }
+        "operation": "executeQuery",
+        "query": "SELECT* from index_madison",
+        "options": {}
       },
-      "id": "70c447fe-7562-47e2-8496-822ab44af642",
-      "name": "Odoo",
-      "type": "n8n-nodes-base.odoo",
-      "typeVersion": 1,
+      "id": "ea15975f-d346-42a2-9171-ba4401e4b16b",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
       "position": [
-        1040,
+        980,
         360
       ],
       "credentials": {
-        "odooApi": {
-          "id": "2ttPRWxNWqAWB6fY",
-          "name": "Odoo account"
+        "postgres": {
+          "id": "ayAxbLgcy5Lpqy5D",
+          "name": "datatransit"
         }
       }
     }
@@ -63,6 +57,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-11-08T16:21:05.172Z",
-  "versionId": "8a8a5763-fb03-44c7-b53c-52f6172bdebe"
+  "updatedAt": "2024-10-09T09:31:57.160Z",
+  "versionId": "a912664c-1afc-49de-8726-b3f0e42c3332"
 }
