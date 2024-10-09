@@ -182,7 +182,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT DISTINCT(variantgrouping) FROM {{\"transit_\"+$(\"Globals\").first().json[\"name\"].toLowerCase() }} ORDER BY variantgrouping ASC LIMIT 30;",
+        "query": "SELECT DISTINCT(variantgrouping) FROM {{\"datatransit.transit_\"+$(\"Globals\").first().json[\"name\"].toLowerCase() }} ORDER BY variantgrouping ASC LIMIT 30;",
         "options": {}
       },
       "id": "63f6dbcc-0c62-4fa6-8e50-9c810835ff9d",
@@ -203,7 +203,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "DELETE FROM {{\"transit_\"+ $(\"Globals\").first().json[\"name\"].toLowerCase() }} WHERE variantgrouping = {{\"'\"+$('Split In Batches').item.json.variantgrouping\n         .replace(\"\\\\\", \"\\\\\\\\\")\n         .replace(\"'\", \"''\")\n         .replace(\"\\n\", \"\\\\\\n\")\n         .replace(\"\\r\", \"\\\\\\r\")\n         .replace(\"\\x00\", \"\\\\\\x00\")\n         .replace(\"\\x1a\", \"\\\\\\x1a\")+\"'\"}};",
+        "query": "DELETE FROM {{\"datatransit.transit_\"+ $(\"Globals\").first().json[\"name\"].toLowerCase() }} WHERE variantgrouping = {{\"'\"+$('Split In Batches').item.json.variantgrouping\n         .replace(\"\\\\\", \"\\\\\\\\\")\n         .replace(\"'\", \"''\")\n         .replace(\"\\n\", \"\\\\\\n\")\n         .replace(\"\\r\", \"\\\\\\r\")\n         .replace(\"\\x00\", \"\\\\\\x00\")\n         .replace(\"\\x1a\", \"\\\\\\x1a\")+\"'\"}};",
         "options": {}
       },
       "id": "7c63b232-f04d-4d1b-991e-f827b092ecfa",
@@ -293,7 +293,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT COUNT (DISTINCT(variantgrouping)) FROM {{\"transit_\"+$(\"Globals\").first().json[\"name\"].toLowerCase() }} ;",
+        "query": "SELECT COUNT (DISTINCT(variantgrouping)) FROM {{\"datatransit.transit_\"+$(\"Globals\").first().json[\"name\"].toLowerCase() }} ;",
         "options": {}
       },
       "id": "88a94c62-b4a4-42e6-b14d-d6c0e4fadff6",
@@ -428,6 +428,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-07-05T07:50:07.000Z",
-  "versionId": "92994429-1627-4110-808b-6de947ab814f"
+  "updatedAt": "2024-10-09T18:23:38.000Z",
+  "versionId": "5b0dd280-539c-426e-b706-0faa4a5d412b"
 }
