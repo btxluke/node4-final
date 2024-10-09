@@ -547,7 +547,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT name,id,{{ $('Globals').first().json.name.toLowerCase() }}alias AS alias FROM map_sizelisting WHERE {{ $('Globals').first().json.name.toLowerCase() }}alias IS NOT NULL;  ",
+        "query": "SELECT name,id,{{ $('Globals').first().json.name.toLowerCase() }}alias AS alias FROM odoodata.map_sizelisting WHERE {{ $('Globals').first().json.name.toLowerCase() }}alias IS NOT NULL;  ",
         "options": {}
       },
       "id": "4330a2b1-a9b9-4d52-a5ce-559fd9e389d2",
@@ -568,7 +568,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE {{\"transit_\"+ $(\"Globals\").first().json.name.toLowerCase()  }} SET Size = {{\"'\"+$json.name+\"'\"}} WHERE Size = {{\"'\"+$json.alias+\"'\"}};",
+        "query": "UPDATE {{\"datatransit.transit_\"+ $(\"Globals\").first().json.name.toLowerCase()  }} SET Size = {{\"'\"+$json.name+\"'\"}} WHERE Size = {{\"'\"+$json.alias+\"'\"}};",
         "options": {}
       },
       "id": "d7576da5-1a90-46a7-86c3-485114ff05d9",
@@ -589,7 +589,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET standardsize = {{$json.id}} WHERE \"size\" = {{\"'\"+$json.name+\"'\"}};",
+        "query": "UPDATE datatransit.transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET standardsize = {{$json.id}} WHERE \"size\" = {{\"'\"+$json.name+\"'\"}};",
         "options": {}
       },
       "id": "35ebc23b-2b6e-48b5-9857-e37f78bcff6f",
@@ -610,7 +610,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET size = NULL WHERE standardsize IS NOT NULL;",
+        "query": "UPDATE datatransit.transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET size = NULL WHERE standardsize IS NOT NULL;",
         "options": {}
       },
       "id": "27764f77-050b-4c5b-a5e7-d9f73b465acf",
@@ -631,7 +631,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET size = INITCAP(size) WHERE size IS NOT NULL;",
+        "query": "UPDATE datatransit.transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET size = INITCAP(size) WHERE size IS NOT NULL;",
         "options": {}
       },
       "id": "af28b3dd-1a1b-417a-bc2f-ceba33ccffec",
@@ -652,7 +652,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT DISTINCT(Size) FROM transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} WHERE size IS NOT NULL;",
+        "query": "SELECT DISTINCT(Size) FROM datatransit.transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} WHERE size IS NOT NULL;",
         "options": {}
       },
       "id": "2aa7e9bf-bc25-476d-8c67-b304863deadb",
@@ -733,6 +733,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-10-02T08:16:06.000Z",
-  "versionId": "6595110d-d6f2-43ea-b5e7-b1fc2a05ced4"
+  "updatedAt": "2024-10-09T18:30:11.000Z",
+  "versionId": "2f09dfbc-8cdf-45f9-8a05-475910d535a8"
 }
