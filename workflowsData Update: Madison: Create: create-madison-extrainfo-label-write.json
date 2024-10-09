@@ -109,7 +109,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_madison SET technicalspeclabel = {{$json.id}} WHERE technicalspeclabel = {{\"'\"+$json.name+\"'\"}};",
+        "query": "UPDATE datatransit.transit_madison SET technicalspeclabel = {{$json.id}} WHERE technicalspeclabel = {{\"'\"+$json.name+\"'\"}};",
         "options": {}
       },
       "id": "cb9ec2d3-011f-46af-8d85-5cffbd4c937d",
@@ -196,6 +196,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-10-02T08:13:58.000Z",
-  "versionId": "ac7cc8b4-4a1a-407d-a221-b811eec6f794"
+  "updatedAt": "2024-10-09T18:32:56.000Z",
+  "versionId": "2a2a6cef-544c-4383-8531-2ff5e7bf089a"
 }
