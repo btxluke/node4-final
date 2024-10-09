@@ -1606,7 +1606,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT * FROM {{\"transit_\"+$json.supplier[0].toLowerCase()}} WHERE variantgrouping = {{\"'\"+$json.name.split(\"[\")[1].split(\"]\")[0].replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"}};",
+        "query": "SELECT * FROM {{\"datatransit.transit_\"+$json.supplier[0].toLowerCase()}} WHERE variantgrouping = {{\"'\"+$json.name.split(\"[\")[1].split(\"]\")[0].replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"}};",
         "options": {}
       },
       "id": "2d1d1378-4db1-41d8-8492-30c3653432b8",
@@ -1651,7 +1651,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT alternativeimage1url,alternativeimage2url,alternativeimage3url FROM {{\"transit_\"+$json.supplier[0].toLowerCase()}} WHERE ProductCode = {{\"'\"+$json.productcode+\"'\"}};",
+        "query": "SELECT alternativeimage1url,alternativeimage2url,alternativeimage3url FROM {{\"datatransit.transit_\"+$json.supplier[0].toLowerCase()}} WHERE ProductCode = {{\"'\"+$json.productcode+\"'\"}};",
         "options": {}
       },
       "id": "8dfc30ee-fec8-4eb7-9091-62de3b41b1b9",
@@ -1704,7 +1704,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT ImageUrl FROM {{\"transit_\"+$json.supplier[0].toLowerCase()}} WHERE productcode = {{\"'\"+$json.productcode+\"'\"}};",
+        "query": "SELECT ImageUrl FROM {{\"datatransit.transit_\"+$json.supplier[0].toLowerCase()}} WHERE productcode = {{\"'\"+$json.productcode+\"'\"}};",
         "options": {}
       },
       "id": "68c0083f-fc31-4020-8780-eacdb19b0089",
@@ -1750,6 +1750,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-06-28T13:26:00.000Z",
-  "versionId": "77b7ae2e-9937-43d0-9bdc-a1b1b15920b3"
+  "updatedAt": "2024-10-09T18:27:17.000Z",
+  "versionId": "30fc33f7-1f13-49d2-b930-dab0f6f99fea"
 }
