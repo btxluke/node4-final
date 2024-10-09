@@ -107,7 +107,7 @@
         ],
         [
           {
-            "node": "SSH1",
+            "node": "IF4",
             "type": "main",
             "index": 0
           }
@@ -500,6 +500,35 @@
           }
         ]
       ]
+    },
+    "IF4": {
+      "main": [
+        [
+          {
+            "node": "Template Error",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SSH1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Template Error": {
+      "main": [
+        [
+          {
+            "node": "Send Email1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-09-29T10:35:31.170Z",
@@ -523,7 +552,7 @@
     },
     {
       "parameters": {
-        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_sportline FROM /home/luke/feeds/Upload-Sportline.csv DELIMITER ',' CSV HEADER;\"",
+        "command": "=psql -d btxPIM -c \"\\\\COPY odoodata.upload_sportline FROM /home/luke/feeds/Upload-Sportline.csv DELIMITER ',' CSV HEADER;\"",
         "cwd": "/home/luke/feeds/"
       },
       "id": "2957f004-c4aa-4487-a754-d9517d92c03c",
@@ -691,7 +720,7 @@
     },
     {
       "parameters": {
-        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_sportline FROM /home/luke/feeds/Upload-Sportline{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
+        "command": "=psql -d btxPIM -c \"\\\\COPY odoodata.upload_sportline FROM /home/luke/feeds/Upload-Sportline{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
         "cwd": "/home/luke/feeds/"
       },
       "id": "b7254793-3029-42cf-898d-a882b4dcc0b8",
@@ -880,7 +909,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_sportline a\n  SET stockcount = b.\"In Stock\"::NUMERIC\nFROM stock_sportline b\nWHERE a.\"Product Code\" = b.\"Product Code\";",
+        "query": "UPDATE odoodata.upload_sportline a\n  SET stockcount = b.\"In Stock\"::NUMERIC\nFROM odoodata.stock_sportline b\nWHERE a.\"Product Code\" = b.\"Product Code\";",
         "options": {}
       },
       "id": "232ddfec-03d5-414f-b8ac-9f730eebbae8",
@@ -901,7 +930,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE stock_sportline SET\n  \"In Stock\" = '1'\nWHERE \"In Stock\" = 'Y';",
+        "query": "UPDATE odoodata.stock_sportline SET\n  \"In Stock\" = '1'\nWHERE \"In Stock\" = 'Y';",
         "options": {}
       },
       "id": "d5e005fb-7d7b-457a-9447-dfe511c300ec",
@@ -922,7 +951,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE stock_sportline SET\n  \"In Stock\" = '0'\nWHERE \"In Stock\" = 'N';",
+        "query": "UPDATE odoodata.stock_sportline SET\n  \"In Stock\" = '0'\nWHERE \"In Stock\" = 'N';",
         "options": {}
       },
       "id": "6d4c33ac-6f10-42c6-b444-e9d85be27a01",
@@ -943,7 +972,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_sportline \nSET \"Sub Category\" = \"Sub Sub Category\" \nWHERE \"Sub Category\" = 'Transmissions'\nOR \"Sub Category\" = 'Finishing Kit'\nOR \"Sub Category\" = 'Tyres & Tubes'\nOR (\"Sub Category\" = 'Accessories' AND category = 'Clothing');",
+        "query": "UPDATE odoodata.upload_sportline \nSET \"Sub Category\" = \"Sub Sub Category\" \nWHERE \"Sub Category\" = 'Transmissions'\nOR \"Sub Category\" = 'Finishing Kit'\nOR \"Sub Category\" = 'Tyres & Tubes'\nOR (\"Sub Category\" = 'Accessories' AND category = 'Clothing');",
         "options": {}
       },
       "id": "3f1090f4-3e4d-4913-9b8b-ae2cedf28047",
@@ -964,7 +993,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "DELETE FROM upload_sportline WHERE category = 'POS';",
+        "query": "DELETE FROM odoodata.upload_sportline WHERE category = 'POS';",
         "options": {}
       },
       "id": "473d9432-5f7d-4be6-87a0-3f95f3d72e75",
@@ -985,7 +1014,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_sportline\nSET {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} = CONCAT('https://www.sportlineb2b.co.uk/netalogue/zoom/',{{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }},'.jpg')\nWHERE {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} != ''\nOR {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} != NULL;",
+        "query": "UPDATE odoodata.upload_sportline\nSET {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} = CONCAT('https://www.sportlineb2b.co.uk/netalogue/zoom/',{{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }},'.jpg')\nWHERE {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} != ''\nOR {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} != NULL;",
         "options": {
           "queryBatching": "independently"
         }
@@ -1008,7 +1037,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_sportline\nSET {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} = NULL\nWHERE {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} = '';",
+        "query": "UPDATE odoodata.upload_sportline\nSET {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} = NULL\nWHERE {{ \"\\\"\"+ $('Code2').item.json.field +\"\\\"\" }} = '';",
         "options": {
           "queryBatching": "independently"
         }
@@ -1185,7 +1214,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT COUNT (productcode) FROM upload_sportline;",
+        "query": "SELECT COUNT (productcode) FROM odoodata.upload_sportline;",
         "options": {}
       },
       "id": "8ba222c7-02a4-4917-a493-bb9b7b71452c",
@@ -1295,7 +1324,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = {{ \"'\"+$json.name+\"'\" }}; ",
+        "query": "UPDATE odoodata.map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = {{ \"'\"+$json.name+\"'\" }}; ",
         "options": {}
       },
       "id": "6170ac36-481c-4139-9ea0-d93b1f57d274",
@@ -1358,7 +1387,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_sportline SET brand = 'Shimano' WHERE brand LIKE 'Shimano%';",
+        "query": "UPDATE odoodata.upload_sportline SET brand = 'Shimano' WHERE brand LIKE 'Shimano%';",
         "options": {}
       },
       "id": "071eadb3-4b5d-4f0d-9b8c-ff2ca5804a16",
@@ -1373,6 +1402,60 @@
         "postgres": {
           "id": "dqel3RyoT6NsGiSw",
           "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.failed_code }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "f841a069-d410-4dc6-a07d-0983f901514f",
+      "name": "IF4",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        40,
+        300
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "65f94f43-6c0f-45d5-983b-8657b9e1b9b9",
+      "name": "Template Error",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        420,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "info@biketrax.co.uk",
+        "toEmail": "luke@biketrax.co.uk",
+        "subject": "Sportline_upload Template Error",
+        "text": "={{ $json.stderr }}",
+        "options": {}
+      },
+      "id": "2f92e162-cf49-434e-b163-210a66d7652e",
+      "name": "Send Email1",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        640,
+        80
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "H2cITTqls0BiVgFE",
+          "name": "info@biketrax.co.uk"
         }
       }
     }
@@ -1450,6 +1533,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-08-16T10:10:41.000Z",
-  "versionId": "a4f9ee90-a6bb-42cf-a53a-8c5936289ec4"
+  "updatedAt": "2024-10-09T17:54:18.000Z",
+  "versionId": "addcfbb0-9d9f-4966-bcec-56e09ba161fd"
 }
