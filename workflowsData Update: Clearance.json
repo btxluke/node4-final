@@ -281,7 +281,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "TRUNCATE feed_clearance;",
+        "query": "TRUNCATE odoodata.feed_clearance;",
         "options": {}
       },
       "id": "bb0a6a2d-0a06-4b82-ad41-c3fc1af83ac3",
@@ -915,6 +915,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-09-14T13:39:04.000Z",
-  "versionId": "ae6623a5-95f6-4cc5-9583-bc4f9c170808"
+  "updatedAt": "2024-10-09T17:55:31.000Z",
+  "versionId": "abf19ab1-c6d8-403e-9592-9a8f290aa3b0"
 }
