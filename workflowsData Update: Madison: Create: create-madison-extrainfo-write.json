@@ -154,7 +154,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_madison SET technicalspec = {{$json.id}} WHERE technicalspec = {{\"'\"+$json.name.replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"}};",
+        "query": "UPDATE datatransit.transit_madison SET technicalspec = {{$json.id}} WHERE technicalspec = {{\"'\"+$json.name.replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"}};",
         "options": {}
       },
       "id": "12728d6c-2022-46d1-bffd-aa91a2d23da8",
@@ -186,7 +186,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_madison SET attribute_ids = CONCAT_WS(',',attribute_ids,technicalspec::NUMERIC);",
+        "query": "UPDATE datatransit.transit_madison SET attribute_ids = CONCAT_WS(',',attribute_ids,technicalspec::NUMERIC);",
         "options": {}
       },
       "id": "826095e3-6e16-431a-9fd7-66681b40e2bd",
@@ -248,6 +248,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-09-10T08:10:42.000Z",
-  "versionId": "94ed4722-44ad-402b-ae18-b25bab6b3a50"
+  "updatedAt": "2024-10-09T18:35:06.000Z",
+  "versionId": "c58ce53b-46a7-40bd-b7ac-87f04194f1df"
 }
