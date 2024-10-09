@@ -535,7 +535,7 @@
     },
     {
       "parameters": {
-        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_silverfish FROM /home/luke/feeds/Upload-Silverfish{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
+        "command": "=psql -d btxPIM -c \"\\\\COPY odoodata.upload_silverfish FROM /home/luke/feeds/Upload-Silverfish{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
         "cwd": "/home/luke/feeds/"
       },
       "id": "ced231a6-69a6-4f2b-93e4-81dafd468089",
@@ -746,7 +746,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT COUNT (productcode) FROM upload_silverfish;",
+        "query": "SELECT COUNT (\"ProductCode\") FROM odoodata.upload_silverfish;",
         "options": {}
       },
       "id": "67c83dee-13cf-4e34-a11b-45eaa309c899",
@@ -856,7 +856,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = {{ \"'\"+$json.name+\"'\" }}; ",
+        "query": "UPDATE odoodata.map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = {{ \"'\"+$json.name+\"'\" }}; ",
         "options": {}
       },
       "id": "f76dc817-948a-4776-8196-f3dde4a012e7",
@@ -940,7 +940,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "CREATE TABLE odoodata.upload_silverfish (like template_silverfish INCLUDING CONSTRAINTS);",
+        "query": "CREATE TABLE odoodata.upload_silverfish (like odoodata.template_silverfish INCLUDING CONSTRAINTS);",
         "options": {}
       },
       "id": "89b327bb-05ec-4b7f-b3c5-706df5d61099",
@@ -980,7 +980,7 @@
     },
     {
       "parameters": {
-        "command": "=psql -d odooData -c \"\\\\COPY odoodata.upload_silverfish FROM /home/luke/feeds/Upload-Silverfish.csv DELIMITER ',' CSV HEADER;\"",
+        "command": "=psql -d btxPIM -c \"\\\\COPY odoodata.upload_silverfish FROM /home/luke/feeds/Upload-Silverfish.csv DELIMITER ',' CSV HEADER;\"",
         "cwd": "/home/luke/feeds/"
       },
       "id": "5ee0234b-cde0-475b-95d6-94d6f50f24aa",
@@ -1012,7 +1012,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "DELETE FROM upload_silverfish WHERE \"Unit Cost\" = 'N/A';",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"Unit Cost\" = 'N/A';",
         "options": {}
       },
       "id": "af88b8d2-63ed-404a-a27e-15f6b465bbfd",
@@ -1033,7 +1033,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_silverfish \nSET \"Stock Count\" = 1 \nWHERE\n\"Stock Count\"::NUMERIC > 0;\n  ",
+        "query": "UPDATE odoodata.upload_silverfish \nSET \"Stock Count\" = 1 \nWHERE\n\"Stock Count\"::NUMERIC > 0;\n  ",
         "options": {}
       },
       "id": "1a7548c0-05ce-4356-a441-e1292b31415f",
@@ -1054,7 +1054,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE upload_silverfish \nSET \"Stock Count\" = 0 \nWHERE\n\"Stock Count\"::NUMERIC < 0;\n  ",
+        "query": "UPDATE odoodata.upload_silverfish \nSET \"Stock Count\" = 0 \nWHERE\n\"Stock Count\"::NUMERIC < 0;\n  ",
         "options": {}
       },
       "id": "5f955b02-72cf-4cc9-92c8-b473c9c097e3",
@@ -1075,7 +1075,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "DELETE FROM upload_silverfish WHERE \"Unit Cost\" = 'N/A';",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"Unit Cost\" = 'N/A';",
         "options": {}
       },
       "id": "8ebaa78c-db8b-4d10-9551-b6f1aa08fcbd",
@@ -1096,7 +1096,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "DELETE FROM upload_silverfish WHERE \"Unit MSRP\" = 'N/A';",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"Unit MSRP\" = 'N/A';",
         "options": {}
       },
       "id": "1f334a83-25be-47c2-91d0-e84955c5ac96",
@@ -1143,7 +1143,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "DELETE FROM upload_silverfish WHERE \"Unit MSRP\" = '#N/A';",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"Unit MSRP\" = '#N/A';",
         "options": {}
       },
       "id": "a8e7cb18-df55-44fb-99c5-6b4a1876d2ae",
@@ -1164,7 +1164,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "DELETE FROM upload_silverfish WHERE \"Unit Cost\" = '#N/A';",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"Unit Cost\" = '#N/A';",
         "options": {}
       },
       "id": "798bcbfb-76a9-40fd-9170-007f7ae82bfd",
@@ -1198,7 +1198,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "DELETE FROM upload_silverfish WHERE \"UPC/EAN\" IS NULL;",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"UPC/EAN\" IS NULL;",
         "options": {}
       },
       "id": "ab86ef4c-8171-4288-9446-d96dd706e914",
@@ -1217,7 +1217,16 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "saveDataSuccessExecution": "none",
@@ -1258,6 +1267,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-04T13:14:58.000Z",
-  "versionId": "577a85fa-7aad-49a5-a9f6-c6b3e6e9bd69"
+  "updatedAt": "2024-10-09T17:10:40.000Z",
+  "versionId": "9ea06577-65dd-49dd-b1ef-9aed3fa083de"
 }
