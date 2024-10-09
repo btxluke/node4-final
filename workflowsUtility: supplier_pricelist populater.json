@@ -253,7 +253,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT DISTINCT(product_tmpl_id), supplier_pricelist_ids FROM {{ \"index_\"+$json.name.toLowerCase() }} WHERE supplier_pricelist_ids IS NULL;",
+        "query": "SELECT DISTINCT(product_tmpl_id), supplier_pricelist_ids FROM {{ \"datatransit.index_\"+$json.name.toLowerCase() }} WHERE supplier_pricelist_ids IS NULL;",
         "options": {}
       },
       "id": "4d04b8aa-30eb-482d-a01f-cc056e8eb003",
@@ -422,7 +422,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT yourprice, variantgrouping, {{ $json.product_tmpl_id }} AS product_tmpl_id, leadtime FROM {{ \"odooData.feed_\"+$('Globals').first().json.name.toLowerCase() }} WHERE variantgrouping = {{ \"'\"+$json.variantgrouping\n        .replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\" }}",
+        "query": "SELECT yourprice, variantgrouping, {{ $json.product_tmpl_id }} AS product_tmpl_id, leadtime FROM {{ \"odoodata.feed_\"+$('Globals').first().json.name.toLowerCase() }} WHERE variantgrouping = {{ \"'\"+$json.variantgrouping\n        .replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\" }}",
         "options": {}
       },
       "id": "55a25b64-0887-48d6-8c95-76cf2fdf40b3",
@@ -514,7 +514,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE index_madison SET supplier_pricelist_ids = {{ $json.id }}\nWHERE product_tmpl_id = {{ $('Postgres4').item.json.product_tmpl_id }}",
+        "query": "UPDATE datatransit.index_madison SET supplier_pricelist_ids = {{ $json.id }}\nWHERE product_tmpl_id = {{ $('Postgres4').item.json.product_tmpl_id }}",
         "options": {}
       },
       "id": "7fec9efc-b0de-488e-b171-9f560a5d9461",
@@ -555,7 +555,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE {{ \"datatransit.index_\"+$('Globals').first().json.name.toLowerCase() }}\nSET variantgrouping = b.variantgrouping\nFROM {{ \"odooData.feed_\"+$('Globals').first().json.name.toLowerCase() }} b\nWHERE barcode = b.ean",
+        "query": "UPDATE {{ \"datatransit.index_\"+$('Globals').first().json.name.toLowerCase() }}\nSET variantgrouping = b.variantgrouping\nFROM {{ \"odoodata.feed_\"+$('Globals').first().json.name.toLowerCase() }} b\nWHERE barcode = b.ean",
         "options": {}
       },
       "id": "ecb8c04b-00f3-4341-a0ca-592300f267d1",
@@ -681,6 +681,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-06-30T15:35:28.000Z",
-  "versionId": "acd8af49-3541-433b-9751-a5071796370d"
+  "updatedAt": "2024-10-09T18:13:44.000Z",
+  "versionId": "ff7144d2-f029-47f8-8876-860d4fe3ddb0"
 }
