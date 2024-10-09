@@ -242,7 +242,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_madison SET technicalspeclabel = NULL, technicalspec = NULL WHERE technicalspec = '';",
+        "query": "UPDATE datatransit.transit_madison SET technicalspeclabel = NULL, technicalspec = NULL WHERE technicalspec = '';",
         "options": {}
       },
       "id": "7020d780-f8b0-47f4-91cb-381fe224b0fc",
@@ -263,7 +263,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_madison SET technicalspeclabel = INITCAP(technicalspeclabel), technicalspec = INITCAP(technicalspec) WHERE technicalspec IS NOT NULL;",
+        "query": "UPDATE datatransit.transit_madison SET technicalspeclabel = INITCAP(technicalspeclabel), technicalspec = INITCAP(technicalspec) WHERE technicalspec IS NOT NULL;",
         "options": {}
       },
       "id": "970fe283-2c91-407b-a5f6-10a108c3ea29",
@@ -284,7 +284,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT DISTINCT(technicalspeclabel) FROM transit_madison WHERE technicalspeclabel IS NOT NULL;",
+        "query": "SELECT DISTINCT(technicalspeclabel) FROM datatransit.transit_madison WHERE technicalspeclabel IS NOT NULL;",
         "options": {}
       },
       "id": "5c8e5928-6498-44e6-b2fa-b01b53b58b7f",
@@ -377,6 +377,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-10-02T08:14:17.000Z",
-  "versionId": "ff85f31a-58cc-4b1f-ad07-4a7029c84c93"
+  "updatedAt": "2024-10-09T18:32:29.000Z",
+  "versionId": "04f2561a-f1d8-4dad-aad4-246a43765a90"
 }
