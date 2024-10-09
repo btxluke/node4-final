@@ -560,7 +560,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT alternativeimage1url,alternativeimage2url,alternativeimage3url FROM {{ \"transit_\"+$node[\"Data\"].json[\"supplier\"][0].toLowerCase()}} WHERE productcode = {{  \"'\"+$json.default_code+\"'\"}};",
+        "query": "SELECT alternativeimage1url,alternativeimage2url,alternativeimage3url FROM {{ \"datatransit.transit_\"+$node[\"Data\"].json[\"supplier\"][0].toLowerCase()}} WHERE productcode = {{  \"'\"+$json.default_code+\"'\"}};",
         "options": {}
       },
       "id": "6257a739-01da-4080-af08-30c471479c07",
@@ -581,7 +581,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT * FROM {{ \"transit_\"+$node[\"Data\"].json[\"supplier\"][0].toLowerCase()}} WHERE productcode = {{ \"'\"+$json.default_code+\"'\"}};",
+        "query": "SELECT * FROM {{ \"datatransit.transit_\"+$node[\"Data\"].json[\"supplier\"][0].toLowerCase()}} WHERE productcode = {{ \"'\"+$json.default_code+\"'\"}};",
         "options": {}
       },
       "id": "b13dc6f7-4470-46ca-97c2-7852527ff3c9",
@@ -656,6 +656,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-01T13:57:28.000Z",
-  "versionId": "ba7ff76b-e075-43cf-84d1-554930783cc2"
+  "updatedAt": "2024-10-09T18:24:26.000Z",
+  "versionId": "59aa0297-ebad-4f8d-a02c-440008fcc984"
 }
