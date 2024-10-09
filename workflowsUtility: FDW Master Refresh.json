@@ -33,6 +33,17 @@
           }
         ]
       ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-06-30T16:17:18.649Z",
@@ -116,6 +127,17 @@
           "name": "datatransit"
         }
       }
+    },
+    {
+      "parameters": {},
+      "id": "a8e968df-2c2f-4d09-8b7e-b5892df5aa44",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        880,
+        600
+      ]
     }
   ],
   "pinData": {},
@@ -128,6 +150,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-06-30T16:22:50.000Z",
-  "versionId": "627a91ae-9445-48c4-8c5e-9d2a286d3ec0"
+  "updatedAt": "2024-10-09T10:58:48.000Z",
+  "versionId": "4442ebc7-7f03-4d90-9249-4a2dbda885d3"
 }
