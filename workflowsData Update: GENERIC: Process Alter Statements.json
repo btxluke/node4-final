@@ -111,7 +111,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "{{\"ALTER TABLE upload_\" + $json.supplier.toLowerCase() + \" \" + $json.alterStatements +\";\" }}",
+        "query": "{{\"ALTER TABLE odoodata.upload_\" + $json.supplier.toLowerCase() + \" \" + $json.alterStatements +\";\" }}",
         "options": {
           "queryBatching": "single"
         }
@@ -192,7 +192,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT column_name, data_type\nFROM information_schema.columns\nWHERE table_schema = 'odoodata' AND table_name = {{\"'upload_\"+ $(\"Execute Workflow Trigger\").first().json.supplier.toLowerCase()+\"'\"}};",
+        "query": "SELECT column_name, data_type\nFROM information_schema.columns\nWHERE table_schema = 'odoodata' AND table_name = {{\"'odoodata.upload_\"+ $(\"Execute Workflow Trigger\").first().json.supplier.toLowerCase()+\"'\"}};",
         "options": {}
       },
       "id": "3400d3ce-7830-47b6-bec7-87ca918c2e72",
@@ -213,7 +213,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "ALTER TABLE {{\"upload_\"+ $(\"Execute Workflow Trigger\").first().json.supplier.toLowerCase()}}\nRENAME COLUMN {{ \"\\\"\"+$json.column_name+\"\\\"\"  }} TO {{ $json.column_name.toLowerCase().replace(/\\s/g,'') }};",
+        "query": "ALTER TABLE {{\"odoodata.upload_\"+ $(\"Execute Workflow Trigger\").first().json.supplier.toLowerCase()}}\nRENAME COLUMN {{ \"\\\"\"+$json.column_name+\"\\\"\"  }} TO {{ $json.column_name.toLowerCase().replace(/\\s/g,'') }};",
         "options": {
           "queryBatching": "single"
         }
@@ -321,6 +321,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2024-06-30T13:27:08.000Z",
-  "versionId": "0efdc2fd-dcab-448c-a4a4-24d97f578a21"
+  "updatedAt": "2024-10-09T17:02:37.000Z",
+  "versionId": "5974ea36-30f4-4ebf-b99c-9d993e4634f0"
 }
