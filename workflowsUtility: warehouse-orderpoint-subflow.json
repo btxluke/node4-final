@@ -158,7 +158,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT \"id\",product_tmpl_id FROM {{ \"index_\" + $json.name.toLowerCase()}}",
+        "query": "SELECT \"id\",product_tmpl_id FROM {{ \"datatransit.index_\" + $json.name.toLowerCase()}}",
         "options": {}
       },
       "id": "f6d8a3ac-056e-4150-9659-e5181d695eda",
@@ -405,6 +405,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-14T18:04:39.000Z",
-  "versionId": "b7ba57c2-7da5-417b-ba16-832d62a51c5a"
+  "updatedAt": "2024-10-09T17:58:32.000Z",
+  "versionId": "72cc834e-dd98-411f-af3b-1f81da14d687"
 }
