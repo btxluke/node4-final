@@ -118,7 +118,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET \"size\" = {{$json.id}} WHERE \"size\" = {{\"'\"+\n$json.name\n.replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"\n}};",
+        "query": "UPDATE datatransit.transit_{{ $(\"Globals\").first().json[\"name\"].toLowerCase() }} SET \"size\" = {{$json.id}} WHERE \"size\" = {{\"'\"+\n$json.name\n.replace(/\\\\/g, \"\\\\\\\\\")\n        .replace(/\\'/g, \"''\")\n        .replace(/\\n/g, \"\\\\\\n\")\n        .replace(/\\r/g, \"\\\\\\r\")\n        .replace(/\\x00/g, \"\\\\\\x00\")\n        .replace(/\\x1a/g, \"\\\\\\x1a\")+\"'\"\n}};",
         "options": {
           "queryBatching": "single"
         }
@@ -182,6 +182,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2023-10-02T08:15:58.000Z",
-  "versionId": "07110973-ef9d-4f94-9081-05a5b3073a7d"
+  "updatedAt": "2024-10-09T18:30:44.000Z",
+  "versionId": "5d3665ba-080f-45c6-828b-a78f6baeafff"
 }
