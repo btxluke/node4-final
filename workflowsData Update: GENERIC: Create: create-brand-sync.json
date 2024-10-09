@@ -238,7 +238,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT DISTINCT(brand) FROM transit_{{ $(\"Globals\").first().json[\"name\"]}};",
+        "query": "SELECT DISTINCT(brand) FROM datatransit.transit_{{ $(\"Globals\").first().json[\"name\"]}};",
         "options": {}
       },
       "id": "c857df10-5484-4da2-856e-6f5a3fd5052c",
@@ -315,6 +315,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-06-28T13:12:17.000Z",
-  "versionId": "74eea51f-6dca-420e-8fac-3edaf220c292"
+  "updatedAt": "2024-10-09T18:27:51.000Z",
+  "versionId": "27b61959-e7ac-4aca-ac34-a53036d440bb"
 }
