@@ -928,7 +928,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT COUNT (productcode) FROM upload_zyro;",
+        "query": "SELECT COUNT (productcode) FROM odoodata.upload_zyro;",
         "options": {}
       },
       "id": "9a020149-aa91-45f7-831e-332cd8a3e1e8",
@@ -1003,7 +1003,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = 'Madison';",
+        "query": "UPDATE odoodata.map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = 'Madison';",
         "options": {}
       },
       "id": "6e4fcf62-d8d0-40f2-94e4-ebedc278a496",
@@ -1215,6 +1215,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-07-05T07:24:29.000Z",
-  "versionId": "6d4d56c0-4e4e-450a-9f1b-13a52ceb5af1"
+  "updatedAt": "2024-10-10T07:39:16.000Z",
+  "versionId": "6fde9337-e467-4bde-91d5-72d6c0ff1da7"
 }
