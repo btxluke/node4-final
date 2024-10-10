@@ -363,7 +363,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT COUNT (productcode) FROM upload_madison;",
+        "query": "SELECT COUNT (productcode) FROM odoodata.upload_madison;",
         "options": {}
       },
       "id": "a75bf0bd-0cb1-40ad-9d3d-462ce891f454",
@@ -630,6 +630,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-08-16T14:34:58.000Z",
-  "versionId": "cb037caf-479d-4c5c-975a-61cc3e1b5ba0"
+  "updatedAt": "2024-10-10T07:37:09.000Z",
+  "versionId": "944e0748-45f4-4d4d-a44c-8d4cb8d1ac1d"
 }
