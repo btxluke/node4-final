@@ -694,11 +694,14 @@
     ]
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-10-09T18:41:55.000Z",
-  "versionId": "86ef0efc-bd2b-4893-a7ef-e088c626f322"
+  "updatedAt": "2024-10-10T08:20:50.000Z",
+  "versionId": "1a930e9f-4f11-4f4e-8cc5-f0d25c470930"
 }
