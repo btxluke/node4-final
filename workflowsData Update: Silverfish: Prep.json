@@ -346,7 +346,7 @@
       "main": [
         [
           {
-            "node": "Postgres5",
+            "node": "Postgres7",
             "type": "main",
             "index": 0
           }
@@ -435,6 +435,17 @@
         [
           {
             "node": "Set4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres7": {
+      "main": [
+        [
+          {
+            "node": "Postgres5",
             "type": "main",
             "index": 0
           }
@@ -746,7 +757,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT COUNT (\"ProductCode\") FROM odoodata.upload_silverfish;",
+        "query": "SELECT COUNT (productcode) FROM odoodata.upload_silverfish;",
         "options": {}
       },
       "id": "67c83dee-13cf-4e34-a11b-45eaa309c899",
@@ -1121,7 +1132,7 @@
           "string": [
             {
               "name": "alterStatements",
-              "value": "RENAME COLUMN \"Vendor SKU\" TO \"ProductCode\", ALTER COLUMN \"ProductCode\" TYPE CHAR(40), RENAME COLUMN \"Product Name\" TO \"ProductName\", ALTER COLUMN \"ProductName\" TYPE CHAR(235), RENAME COLUMN \"UPC/EAN\" TO \"Ean\", ALTER COLUMN \"Ean\" TYPE CHAR(22), RENAME COLUMN \"Unit MSRP\" TO \"Rrp\", ALTER COLUMN \"Rrp\" TYPE DECIMAL(7,2) USING \"Rrp\"::NUMERIC, RENAME COLUMN \"Pack Qty\" TO \"PackQty\", ALTER COLUMN \"PackQty\" TYPE CHAR(27), RENAME COLUMN \"Variant Grouping\" TO \"VariantGrouping\", ALTER COLUMN \"VariantGrouping\" TYPE CHAR(30), RENAME COLUMN \"Short Description\" TO \"ShortDescription\", ALTER COLUMN \"ShortDescription\" TYPE CHAR(222), RENAME COLUMN \"Long Description\" TO \"LongDescription\", ALTER COLUMN \"LongDescription\" TYPE TEXT, RENAME COLUMN \"Unit Cost\" TO \"YourPrice\", ALTER COLUMN \"YourPrice\" TYPE DECIMAL(7,2) USING \"YourPrice\"::NUMERIC, RENAME COLUMN \"Lead Time\" TO \"LeadTime\", ALTER COLUMN \"LeadTime\" TYPE SMALLINT USING \"LeadTime\"::NUMERIC, RENAME COLUMN \"Sub Category\" TO \"SubCategory\", ALTER COLUMN \"SubCategory\" TYPE CHAR(30), RENAME COLUMN \"image\" TO \"ImageUrl\", ALTER COLUMN \"ImageUrl\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 1\" TO \"AlternativeImage1Url\", ALTER COLUMN \"AlternativeImage1Url\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 2\" TO \"AlternativeImage2Url\", ALTER COLUMN \"AlternativeImage2Url\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 3\" TO \"AlternativeImage3Url\", ALTER COLUMN \"AlternativeImage3Url\" TYPE CHAR(102), RENAME COLUMN \"Stock Count\" TO \"StockCount\", ALTER COLUMN \"StockCount\" TYPE SMALLINT USING \"StockCount\"::NUMERIC, RENAME COLUMN \"Technical Spec\" TO \"TechnicalSpec\", ALTER COLUMN \"TechnicalSpec\" TYPE TEXT, ADD COLUMN \"TechnicalSpecLabel\" TEXT DEFAULT NULL, ALTER COLUMN \"vat\" TYPE SMALLINT USING \"vat\"::NUMERIC"
+              "value": "RENAME COLUMN \"Vendor SKU\" TO \"productcode\", ALTER COLUMN \"productcode\" TYPE CHAR(40), RENAME COLUMN \"Product Name\" TO \"productname\", ALTER COLUMN \"productname\" TYPE CHAR(235), RENAME COLUMN \"UPC/EAN\" TO \"ean\", ALTER COLUMN \"ean\" TYPE CHAR(22), RENAME COLUMN \"Unit MSRP\" TO \"rrp\", ALTER COLUMN \"rrp\" TYPE DECIMAL(7,2) USING \"rrp\"::NUMERIC, RENAME COLUMN \"Pack Qty\" TO \"packqty\", ALTER COLUMN \"packqty\" TYPE CHAR(27), RENAME COLUMN \"Variant Grouping\" TO \"variantgrouping\", ALTER COLUMN \"variantgrouping\" TYPE CHAR(30), RENAME COLUMN \"Short Description\" TO \"shortdescription\", ALTER COLUMN \"shortdescription\" TYPE CHAR(222), RENAME COLUMN \"Long Description\" TO \"longdescription\", ALTER COLUMN \"longdescription\" TYPE TEXT, RENAME COLUMN \"Unit Cost\" TO \"yourprice\", ALTER COLUMN \"yourprice\" TYPE DECIMAL(7,2) USING \"yourprice\"::NUMERIC, RENAME COLUMN \"Lead Time\" TO \"leadtime\", ALTER COLUMN \"leadtime\" TYPE SMALLINT USING \"leadtime\"::NUMERIC, RENAME COLUMN \"Sub Category\" TO \"subcategory\", ALTER COLUMN \"subcategory\" TYPE CHAR(30), RENAME COLUMN \"image\" TO \"imageurl\", ALTER COLUMN \"imageurl\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 1\" TO \"alternativeimage1url\", ALTER COLUMN \"alternativeimage1url\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 2\" TO \"alternativeimage2url\", ALTER COLUMN \"alternativeimage2url\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 3\" TO \"alternativeimage3url\", ALTER COLUMN \"alternativeimage3url\" TYPE CHAR(102), RENAME COLUMN \"Stock Count\" TO \"stockcount\", ALTER COLUMN \"stockcount\" TYPE SMALLINT USING \"stockcount\"::NUMERIC, RENAME COLUMN \"Technical Spec\" TO \"technicalspec\", ALTER COLUMN \"technicalspec\" TYPE TEXT, ADD COLUMN \"technicalspeclabel\" TEXT DEFAULT NULL, ALTER COLUMN \"vat\" TYPE SMALLINT USING \"vat\"::NUMERIC"
             },
             {
               "name": "supplier",
@@ -1215,6 +1226,27 @@
           "name": "odooData"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"Product Name\" = NULL;",
+        "options": {}
+      },
+      "id": "73721b80-8ff0-445a-827b-6de455eb37a6",
+      "name": "Postgres7",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1000,
+        1060
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1267,6 +1299,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-09T17:10:40.000Z",
-  "versionId": "9ea06577-65dd-49dd-b1ef-9aed3fa083de"
+  "updatedAt": "2024-10-10T10:35:07.000Z",
+  "versionId": "e83d4af5-2269-4909-a3b1-12c75ce56510"
 }
