@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Odoo1",
+            "node": "IF",
             "type": "main",
             "index": 0
           }
@@ -28,6 +28,24 @@
         [
           {
             "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Odoo1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Nothing to do",
             "type": "main",
             "index": 0
           }
@@ -78,6 +96,7 @@
         1040,
         420
       ],
+      "alwaysOutputData": true,
       "credentials": {
         "odooApi": {
           "id": "2ttPRWxNWqAWB6fY",
@@ -105,7 +124,7 @@
       "type": "n8n-nodes-base.odoo",
       "typeVersion": 1,
       "position": [
-        1280,
+        1500,
         420
       ],
       "credentials": {
@@ -130,11 +149,45 @@
         600
       ],
       "webhookId": "13e7fe9b-e1ba-4706-9097-f2a84afe3972"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{json.id}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "824f653a-2b42-4034-aebd-45492faec941",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        420
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e014fb14-7de1-44c1-bc59-3412adfb2b7b",
+      "name": "Nothing to do",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        720
+      ]
     }
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
   "tags": [
@@ -146,6 +199,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-08-23T13:34:51.000Z",
-  "versionId": "6783f32e-3c9f-443f-beed-b4399b3aadfd"
+  "updatedAt": "2024-10-10T08:20:01.000Z",
+  "versionId": "13337383-9a2c-4562-aec5-24a531eeb676"
 }
