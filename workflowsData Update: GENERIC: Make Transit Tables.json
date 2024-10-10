@@ -923,7 +923,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "INSERT INTO {{\"odoodata.feed_\"+$(\"Globals\").first().json.name.toLowerCase()}} \n(\"productcode\",\n\"ean\",\n\"productname\",\n\"yourprice\",\n\"rrp\",\n\"vat\",\n\"stockcount\",\n\"shortdescription\",\n\"longdescription\",\n\"imageurl\",\n\"alternativeimage1url\",\n\"alternativeimage2url\",\n\"alternativeimage3url\",\n\"size\",\n\"colour\",\n\"brand\",\n\"weight\",\n\"packqty\",\n\"leadtime\",\n\"variantgrouping\",\n\"subcategory\",\n\"keywords\",\n\"technicalspec\",\n\"technicalspeclabel\"\n)\nSELECT \nb.\"productcode\",\nb.\"ean\",\nb.\"productname\",\nb.\"yourprice\",\nb.\"rrp\",\nb.\"vat\",\nb.\"stockcount\",\nb.\"shortdescription\",\nb.\"longdescription\",\nb.\"imageurl\",\nb.\"alternativeimage1url\",\nb.\"alternativeimage2url\",\nb.\"alternativeimage3url\",\nb.\"size\",\nb.\"colour\",\nb.\"brand\",\nb.\"weight\",\nb.\"packqty\",\nb.\"leadtime\",\nb.\"variantgrouping\",\nb.\"subcategory\",\nb.\"keywords\",\nb.\"technicalspec\",\nb.\"technicalspeclabel\"\nFROM {{\"odoodata.upload_\"+$(\"Globals\").first().json.name.toLowerCase()}} b WHERE \"ean\" IS NOT NULL ON CONFLICT DO NOTHING;",
+        "query": "INSERT INTO {{\"odoodata.feed_\"+$(\"Globals\").first().json.name.toLowerCase()}} \n(productcode,\nean,\nproductname,\nyourprice,\nrrp,\nvat,\nstockcount,\nshortdescription,\nlongdescription,\nimageurl,\nalternativeimage1url,\nalternativeimage2url,\nalternativeimage3url,\n\"size\",\ncolour,\nbrand,\nweight,\npackqty,\nleadtime,\nvariantgrouping,\nsubcategory,\nkeywords,\ntechnicalspec,\ntechnicalspeclabel\n)\nSELECT \nb.productcode,\nb.ean,\nb.productname,\nb.yourprice,\nb.rrp,\nb.vat,\nb.stockcount,\nb.shortdescription,\nb.longdescription,\nb.imageurl,\nb.alternativeimage1url,\nb.alternativeimage2url,\nb.alternativeimage3url,\nb.\"size\",\nb.colour,\nb.brand,\nb.weight,\nb.packqty,\nb.leadtime,\nb.variantgrouping,\nb.subcategory,\nb.keywords,\nb.technicalspec,\nb.technicalspeclabel\nFROM {{\"odoodata.upload_\"+$(\"Globals\").first().json.name.toLowerCase()}} b WHERE \"ean\" IS NOT NULL ON CONFLICT DO NOTHING;",
         "options": {
           "queryReplacement": ""
         }
@@ -1288,6 +1288,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-10-09T18:17:50.000Z",
-  "versionId": "38df9f84-20f8-4390-9a2c-e526fdf598f5"
+  "updatedAt": "2024-10-10T08:48:08.000Z",
+  "versionId": "30e34369-5c69-4564-8d9b-029b32f5fba6"
 }
