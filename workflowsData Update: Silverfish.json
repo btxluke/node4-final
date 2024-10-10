@@ -853,7 +853,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT COUNT (productcode) FROM upload_silverfish;",
+        "query": "SELECT COUNT (productcode) FROM odoodata.upload_silverfish;",
         "options": {}
       },
       "id": "73646325-0677-4503-99c5-6cd3b552cb83",
@@ -928,7 +928,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = 'Silverfish';",
+        "query": "UPDATE odoodata.map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = 'Silverfish';",
         "options": {}
       },
       "id": "dcd3b684-d619-4afb-8548-848ce5f46444",
@@ -1096,7 +1096,16 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -1140,6 +1149,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-07-01T11:01:20.000Z",
-  "versionId": "82a7a55b-3444-4e5c-8f41-b498a1e23a26"
+  "updatedAt": "2024-10-10T09:29:51.000Z",
+  "versionId": "4654152a-86e4-44f0-bf38-5ff468590c73"
 }
