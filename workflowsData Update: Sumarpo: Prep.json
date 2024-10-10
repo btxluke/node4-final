@@ -1,0 +1,1272 @@
+{
+  "active": false,
+  "connections": {
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "SSH1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH1": {
+      "main": [
+        [
+          {
+            "node": "SSH3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH3": {
+      "main": [
+        [
+          {
+            "node": "SSH4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH4": {
+      "main": [
+        [
+          {
+            "node": "IF3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SSH1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet File": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Email": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "firstFail": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF3": {
+      "main": [
+        [
+          {
+            "node": "SSH5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH5": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Postgres15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Amend Expected Lines": {
+      "main": [
+        [
+          {
+            "node": "Postgres13",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Postgres12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres13": {
+      "main": [
+        [
+          {
+            "node": "Set2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres12": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Set3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set3": {
+      "main": [
+        [
+          {
+            "node": "Postgres14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres15": {
+      "main": [
+        [
+          {
+            "node": "globals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "globals": {
+      "main": [
+        [
+          {
+            "node": "Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres": {
+      "main": [
+        [
+          {
+            "node": "Postgres1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres1": {
+      "main": [
+        [
+          {
+            "node": "SSH6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH6": {
+      "main": [
+        [
+          {
+            "node": "SSH7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH7": {
+      "main": [
+        [
+          {
+            "node": "firstFail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Postgres3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres3": {
+      "main": [
+        [
+          {
+            "node": "Postgres4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres4": {
+      "main": [
+        [
+          {
+            "node": "Postgres5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres5": {
+      "main": [
+        [
+          {
+            "node": "Postgres6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres6": {
+      "main": [
+        [
+          {
+            "node": "Postgres16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set4": {
+      "main": [
+        [
+          {
+            "node": "Data Update: Process Alter Statements",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres16": {
+      "main": [
+        [
+          {
+            "node": "Postgres17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres17": {
+      "main": [
+        [
+          {
+            "node": "Postgres18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing1": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Update: Process Alter Statements": {
+      "main": [
+        [
+          {
+            "node": "Amend Expected Lines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres18": {
+      "main": [
+        [
+          {
+            "node": "Set4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-10-10T10:12:11.619Z",
+  "id": "5YH1BDdfEvehzrrn",
+  "name": "Data Update: Sumarpo: Prep",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.stderr }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "b942535b-4c33-4a2a-ac8a-d595573105d2",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "info@biketrax.co.uk",
+        "toEmail": "shigeyoshi.kunimaru@silverfish-uk.com",
+        "subject": "=Silverfish Feed Error - {{ ($('Code').all().length / $('globals').first().json.globals.LastCount) < 0.05 ? 100-((Math.round(($('Code').all().length / $('globals').first().json.globals.LastCount)*10000))/100) + \"% Parsed\" : \"Feed Rejected\" }}",
+        "text": "=Line(s) from the latest Silverfish data feed have failed to parse. This is usually because of a break in CSV specifications or incorrect placement of standard delimiters (,) / enclosing marks (\")  in your feed CSV.\n\nHere is an example product code with faulty data, and the error it caused:\n\nProduct Code: {{ $('Code').first().json.failed_code }}\n{{ $('Code').first().json.stderr }}\n\nA list of errors is attached as a XLS file - this represents {{ ($('Code').all().length / $('globals').first().json.globals.LastCount) < 0.05 ? Math.round(($('Code').all().length / $('globals').first().json.globals.LastCount)*10000)/100 + \"% of your feed, so the remainder has been parsed\" : \"more than 5% of your feed, so the entire feed has been rejected\" }}. If you could correct the errors for future exports, then then the item(s) can be added to our database on the next run. Our data routines run daily, but this email will be sent a maximum of once a week, if you would prefer to recieve it more frequently (or as soon as errors emerge), please email luke@biketrax.co.uk.\n\nMany thanks,\n\nBiketraxBot (Product Information Database)",
+        "options": {
+          "attachments": "data",
+          "ccEmail": "luke@biketrax.co.uk",
+          "replyTo": "luke@biketrax.co.uk"
+        }
+      },
+      "id": "8813fe74-db3c-42db-a5eb-05e793853cb1",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        1720,
+        760
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "smtp": {
+          "id": "H2cITTqls0BiVgFE",
+          "name": "info@biketrax.co.uk"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "command": "=grep -n {{ \"\\\"\"+$json.failed_code+\"\\\"\" }}  /home/luke/feeds/Upload-Silverfish{{ $runIndex == 0 ? \"\" : $runIndex }}.csv | cut -f1 -d:"
+      },
+      "id": "5d643b05-9195-4a1c-bf86-97ead3c6d490",
+      "name": "SSH1",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        560
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "AGAk5dnezH3Jdg8v",
+          "name": "Node3 (postgres)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "={{\"sed '\"+$json.stdout.split(\"\\n\")[0]+\"d'\"}} /home/luke/feeds/Upload-Silverfish{{ $runIndex == 0 ? \"\" : $runIndex }}.csv > /home/luke/feeds/Upload-Silverfish{{ $runIndex+1 }}.csv"
+      },
+      "id": "6474e187-5e65-43a6-af46-5f39254e8ddc",
+      "name": "SSH3",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        60,
+        560
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=psql -d btxPIM -c \"\\\\COPY odoodata.upload_silverfish FROM /home/luke/feeds/Upload-Silverfish{{ $runIndex+1 }}.csv DELIMITER ',' CSV HEADER;\"",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "a8a59997-bfef-4bbd-8b44-b9c0915e11e4",
+      "name": "SSH4",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        260,
+        560
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "AGAk5dnezH3Jdg8v",
+          "name": "Node3 (postgres)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.stderr }}",
+              "operation": "isEmpty"
+            }
+          ],
+          "number": [
+            {
+              "value1": "={{ $runIndex }}",
+              "operation": "largerEqual",
+              "value2": "={{ Number($('globals').first().json.globals.LastCount)*0.05 }}"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "f5828705-ba5d-487b-a311-a438a579838f",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        640,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "failed_code",
+              "value": "={{$('SSH4').item.json.stderr.split(\"\\\"\")[2] == \" of relation \" ? $('SSH4').item.json.stderr.split(\"(\")[1].split(\",\")[0] : $('SSH4').item.json.stderr.split(\"\\\"\")[2] }}"
+            },
+            {
+              "name": "stderr",
+              "value": "={{ $('SSH4').item.json.stderr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "181445a0-458a-4293-96a3-769db88cdc39",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        460,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "let results = [],\n  i = 0;\n\ndo {\n  try {\n    results = results.concat($(\"Set\").all(0, i));\n  } catch (error) {\n        results = results.concat($(\"firstFail\").all()); \n    return results;\n  }\n  i++;\n} while (true);\n"
+      },
+      "id": "2d541bf9-9659-4f35-ba32-2eb3da5d0e3e",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        760
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "options": {
+          "fileName": "parsing_errors.xls",
+          "headerRow": true
+        }
+      },
+      "id": "8826965b-8e02-4be3-85e1-c6d1c8f372f7",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        760
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $today.weekday }}",
+              "operation": "equal",
+              "value2": 1
+            }
+          ]
+        }
+      },
+      "id": "6aa01267-9a7a-4d5f-9167-2ba07d7ac418",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "failed_code",
+              "value": "={{$json.stderr.split(\"\\\"\")[2] == \" of relation \" ? $json.stderr.split(\"(\")[1].split(\",\")[0] : $json.stderr.split(\"\\\"\")[2] }}"
+            },
+            {
+              "name": "stderr",
+              "value": "={{ $json.stderr }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "556134bc-fd4e-45f6-a95a-d75871191423",
+      "name": "firstFail",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -580,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $runIndex }}",
+              "operation": "larger"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "36fc49a6-dc2c-4b26-ac50-87e156b8d088",
+      "name": "IF3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        60,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "command": "=rm /home/luke/feeds/Upload-Silverfish{{ $runIndex }}.csv",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "e572e628-6a73-40a1-8048-cbb79d9a5507",
+      "name": "SSH5",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        260,
+        780
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "silverfish-prep",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "a3a9e4af-cfa2-484f-80e7-63ca78aeddcc",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -1820,
+        680
+      ],
+      "webhookId": "52ca9c92-8d4e-4178-9380-0fb2bdef271b"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT COUNT (productcode) FROM odoodata.upload_silverfish;",
+        "options": {}
+      },
+      "id": "cff7e801-f155-4a4d-afe8-5288d5dc406f",
+      "name": "Postgres12",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -280,
+        1580
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "02f28761-c5fd-44ee-8915-b978bc7e2b8b",
+      "name": "Amend Expected Lines",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -680,
+        1480
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE Name = 'Silverfish';",
+        "options": {}
+      },
+      "id": "1ec22570-d2c5-481a-8099-75a8b61cfe37",
+      "name": "Postgres13",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -500,
+        1360
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ JSON.parse($json.globals)[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5717bc10-cdbd-4885-adeb-aae9ceeb339b",
+      "name": "Set2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -280,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "dc740327-8e47-4631-9833-c1561f8903df",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        -60,
+        1480
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals.LastCount",
+              "value": "={{ $json.count }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c108769e-b248-4043-9349-51f6e1ec66a5",
+      "name": "Set3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        160,
+        1480
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE odoodata.map_supplierinfo SET globals = {{ \"'[\" + JSON.stringify($json.globals) + \"]'\" }} WHERE \"name\" = {{ \"'\"+$json.name+\"'\" }}; ",
+        "options": {}
+      },
+      "id": "cbc0f8ae-573a-45d8-9790-e1e85732b73f",
+      "name": "Postgres14",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        380,
+        1480
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM odoodata.map_supplierinfo WHERE Name = 'Silverfish';",
+        "options": {}
+      },
+      "id": "27822da9-53ec-4841-92f1-cc3baa1148fd",
+      "name": "Postgres15",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1840,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "globals",
+              "value": "={{ JSON.parse($json.globals)[0] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d4a2cc78-33c2-43ea-9c69-efcd6908b93d",
+      "name": "globals",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -1680,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DROP TABLE IF EXISTS odoodata.upload_silverfish",
+        "options": {}
+      },
+      "id": "6a56703c-178d-44d8-a509-b0cccdba011b",
+      "name": "Postgres",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.1,
+      "position": [
+        -1480,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "CREATE TABLE odoodata.upload_silverfish (like odoodata.template_silverfish INCLUDING CONSTRAINTS);",
+        "options": {}
+      },
+      "id": "6488ee3f-fb95-4229-b621-4be5b6a2cbb4",
+      "name": "Postgres1",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.1,
+      "position": [
+        -660,
+        420
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=LANG=C sed -i 's/[\\d128-\\d255]//g' /home/luke/feeds/Upload-Silverfish.csv",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "5996f173-d69e-49ae-8a41-99e82b40e68a",
+      "name": "SSH6",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        -1480,
+        660
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "BS6BQiriQnV3fLKC",
+          "name": "node3 (luke)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "command": "=psql -d btxPIM -c \"\\\\COPY odoodata.upload_silverfish FROM /home/luke/feeds/Upload-Silverfish.csv DELIMITER ',' CSV HEADER;\"",
+        "cwd": "/home/luke/feeds/"
+      },
+      "id": "18037219-30c1-44f0-a0fe-d61fa5544ae3",
+      "name": "SSH7",
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        -1240,
+        660
+      ],
+      "credentials": {
+        "sshPassword": {
+          "id": "AGAk5dnezH3Jdg8v",
+          "name": "Node3 (postgres)"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "b8e54f1d-de7c-4a33-9d49-9172e2dbe75c",
+      "name": "No Operation, do nothing1",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -1840,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"Unit Cost\" = 'N/A';",
+        "options": {}
+      },
+      "id": "ba933268-59cb-4bd4-88ac-a3010d4baf24",
+      "name": "Postgres2",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1620,
+        1060
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE odoodata.upload_silverfish \nSET \"Stock Count\" = 1 \nWHERE\n\"Stock Count\"::NUMERIC > 0;\n  ",
+        "options": {}
+      },
+      "id": "7d60b95d-cf45-4897-9036-7ea99e6056a9",
+      "name": "Postgres3",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1400,
+        1060
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE odoodata.upload_silverfish \nSET \"Stock Count\" = 0 \nWHERE\n\"Stock Count\"::NUMERIC < 0;\n  ",
+        "options": {}
+      },
+      "id": "5cfb0f4f-59eb-4966-a6cb-e61ab554653a",
+      "name": "Postgres4",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1180,
+        1060
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"Unit Cost\" = 'N/A';",
+        "options": {}
+      },
+      "id": "7a3f6f4a-85ca-4065-9fa5-dcf653441e28",
+      "name": "Postgres5",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1620,
+        1260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"Unit MSRP\" = 'N/A';",
+        "options": {}
+      },
+      "id": "6f421c12-e449-48ab-82ae-409badfb8e00",
+      "name": "Postgres6",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1400,
+        1260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "alterStatements",
+              "value": "RENAME COLUMN \"Vendor SKU\" TO \"productcode\", ALTER COLUMN \"productcode\" TYPE CHAR(40), RENAME COLUMN \"Product Name\" TO \"productname\", ALTER COLUMN \"productname\" TYPE CHAR(235), RENAME COLUMN \"UPC/EAN\" TO \"ean\", ALTER COLUMN \"ean\" TYPE CHAR(22), RENAME COLUMN \"Unit MSRP\" TO \"rrp\", ALTER COLUMN \"rrp\" TYPE DECIMAL(7,2) USING \"rrp\"::NUMERIC, RENAME COLUMN \"Pack Qty\" TO \"packqty\", ALTER COLUMN \"packqty\" TYPE CHAR(27), RENAME COLUMN \"Variant Grouping\" TO \"variantgrouping\", ALTER COLUMN \"variantgrouping\" TYPE CHAR(30), RENAME COLUMN \"Short Description\" TO \"shortdescription\", ALTER COLUMN \"shortdescription\" TYPE CHAR(222), RENAME COLUMN \"Long Description\" TO \"longdescription\", ALTER COLUMN \"longdescription\" TYPE TEXT, RENAME COLUMN \"Unit Cost\" TO \"yourprice\", ALTER COLUMN \"yourprice\" TYPE DECIMAL(7,2) USING \"yourprice\"::NUMERIC, RENAME COLUMN \"Lead Time\" TO \"leadtime\", ALTER COLUMN \"leadtime\" TYPE SMALLINT USING \"leadtime\"::NUMERIC, RENAME COLUMN \"Sub Category\" TO \"subcategory\", ALTER COLUMN \"subcategory\" TYPE CHAR(30), RENAME COLUMN \"image\" TO \"imageurl\", ALTER COLUMN \"imageurl\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 1\" TO \"alternativeimage1url\", ALTER COLUMN \"alternativeimage1url\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 2\" TO \"alternativeimage2url\", ALTER COLUMN \"alternativeimage2url\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 3\" TO \"alternativeimage3url\", ALTER COLUMN \"alternativeimage3url\" TYPE CHAR(102), RENAME COLUMN \"Stock Count\" TO \"stockcount\", ALTER COLUMN \"stockcount\" TYPE SMALLINT USING \"stockcount\"::NUMERIC, RENAME COLUMN \"Technical Spec\" TO \"technicalspec\", ALTER COLUMN \"technicalspec\" TYPE TEXT, ADD COLUMN \"technicalspeclabel\" TEXT DEFAULT NULL, ALTER COLUMN \"vat\" TYPE SMALLINT USING \"vat\"::NUMERIC"
+            },
+            {
+              "name": "supplier",
+              "value": "Silverfish"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e0cd663b-768d-4556-ab09-a96fcb15a32b",
+      "name": "Set4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -1620,
+        1460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"Unit MSRP\" = '#N/A';",
+        "options": {}
+      },
+      "id": "2eaefb5e-7b69-4e0e-a219-03936a700256",
+      "name": "Postgres16",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1180,
+        1260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"Unit Cost\" = '#N/A';",
+        "options": {}
+      },
+      "id": "b7c5f011-55c2-4566-ad43-d4108d4882cb",
+      "name": "Postgres17",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -1000,
+        1260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": "Vc6ZgR8vArPNZu09"
+      },
+      "id": "f2cf4df2-f281-4f7f-b154-38b63005b951",
+      "name": "Data Update: Process Alter Statements",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        -1400,
+        1460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "DELETE FROM odoodata.upload_silverfish WHERE \"UPC/EAN\" IS NULL;",
+        "options": {}
+      },
+      "id": "ea43aaae-55ed-454e-8dba-f0bd34a807cd",
+      "name": "Postgres18",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.2,
+      "position": [
+        -820,
+        1260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "name": "First item",
+          "code": 1
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-08-08T15:46:20.698Z",
+      "updatedAt": "2023-08-08T15:46:20.698Z",
+      "id": "4S5wvtegUIvgvqYs",
+      "name": "PostgreSQL"
+    },
+    {
+      "createdAt": "2023-08-10T09:20:24.007Z",
+      "updatedAt": "2023-08-10T09:20:24.007Z",
+      "id": "HV0Z3uOvnzoAoe20",
+      "name": "Spreadsheet"
+    },
+    {
+      "createdAt": "2023-08-08T15:13:33.587Z",
+      "updatedAt": "2023-08-08T15:13:33.587Z",
+      "id": "bbI8zuoQ3XV0LUP0",
+      "name": "set"
+    },
+    {
+      "createdAt": "2023-08-10T09:20:30.275Z",
+      "updatedAt": "2023-08-10T09:20:30.275Z",
+      "id": "cDsMu9S1EDCMPUY2",
+      "name": "email"
+    },
+    {
+      "createdAt": "2023-08-10T09:20:13.241Z",
+      "updatedAt": "2023-08-10T09:20:13.241Z",
+      "id": "gpFnWqOy05McH1n2",
+      "name": "SSH"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-10-10T10:12:11.619Z",
+  "versionId": "d92d2e00-132c-456a-8444-1312c9146a96"
+}
