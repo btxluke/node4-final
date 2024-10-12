@@ -1170,7 +1170,7 @@
           "string": [
             {
               "name": "alterStatements",
-              "value": "RENAME COLUMN \"sku\" TO \"productcode\", RENAME COLUMN \"name\" TO \"productname\", RENAME COLUMN \"upc\" TO \"ean\", RENAME COLUMN \"srp\" TO \"rrp\", RENAME COLUMN \"boxquantity\" TO \"packqty\", RENAME COLUMN \"stylecode\" TO \"variantgrouping\",  RENAME COLUMN \"briefdescription\" TO \"shortdescription\", RENAME COLUMN \"productcategory\" TO \"subcategory\", ADD COLUMN \"AlternativeImage1Url\" VARCHAR(80) NULL DEFAULT NULL, ADD COLUMN \"AlternativeImage2Url\" TEXT NULL DEFAULT NULL , ADD COLUMN \"AlternativeImage3Url\" TEXT NULL DEFAULT NULL , ADD COLUMN \"Weight\" VARCHAR(20) DEFAULT 0.5 NOT NULL, ADD COLUMN \"Keywords\" VARCHAR(1000) NULL DEFAULT NULL, ADD COLUMN \"TechnicalSpec\" TEXT DEFAULT NULL, ADD COLUMN \"TechnicalSpecLabel\" TEXT DEFAULT NULL"
+              "value": "RENAME COLUMN \"sku\" TO \"productcode\", RENAME COLUMN \"name\" TO \"productname\", RENAME COLUMN \"upc\" TO \"ean\", RENAME COLUMN \"srp\" TO \"rrp\", RENAME COLUMN \"boxquantity\" TO \"packqty\", RENAME COLUMN \"stylecode\" TO \"variantgrouping\",  RENAME COLUMN \"briefdescription\" TO \"shortdescription\", RENAME COLUMN \"productcategory\" TO \"subcategory\", ADD COLUMN \"alternativeimage1url\" VARCHAR(80) NULL DEFAULT NULL, ADD COLUMN \"alternativeimage2url\" TEXT NULL DEFAULT NULL , ADD COLUMN \"alternativeimage3url\" TEXT NULL DEFAULT NULL , ADD COLUMN \"weight\" VARCHAR(20) DEFAULT 0.5 NOT NULL, ADD COLUMN \"keywords\" VARCHAR(1000) NULL DEFAULT NULL, ADD COLUMN \"technicalspec\" TEXT DEFAULT NULL, ADD COLUMN \"technicalspeclabel\" TEXT DEFAULT NULL"
             },
             {
               "name": "supplier",
@@ -1354,11 +1354,14 @@
     ]
   },
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-10-09T16:57:14.000Z",
-  "versionId": "97dfd868-0b8b-43cd-9f33-0ec618a91b4f"
+  "updatedAt": "2024-10-12T13:06:03.000Z",
+  "versionId": "0730bf46-d2c4-4445-93af-b41ca23d6bce"
 }
