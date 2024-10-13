@@ -449,11 +449,6 @@
         ]
       ]
     },
-    "No Operation, do nothing": {
-      "main": [
-        []
-      ]
-    },
     "Postgres6": {
       "main": [
         [
@@ -469,7 +464,7 @@
       "main": [
         [
           {
-            "node": "Postgres7",
+            "node": "Postgres8",
             "type": "main",
             "index": 0
           }
@@ -1304,18 +1299,45 @@
     },
     {
       "parameters": {
-        "operation": "executeQuery",
-        "query": "DELETE * FROM ",
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "information_schema",
+          "mode": "list",
+          "cachedResultName": "information_schema"
+        },
+        "table": {
+          "__rl": true,
+          "value": "columns",
+          "mode": "list",
+          "cachedResultName": "columns"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "table_name",
+              "value": "upload_sumarpo"
+            }
+          ]
+        },
         "options": {}
       },
-      "id": "c70caaf9-450b-4122-a884-38f6ff4faf6c",
-      "name": "Postgres7",
+      "id": "29fde26e-baf6-4101-b545-0e59e6475b90",
+      "name": "Postgres8",
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        -1400,
-        1280
-      ]
+        -1360,
+        1260
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1368,6 +1390,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-10T18:27:13.000Z",
-  "versionId": "a7306ef0-a99f-41a8-b4a8-a1f6a27c376a"
+  "updatedAt": "2024-10-13T10:24:59.000Z",
+  "versionId": "d29bc582-cae5-48ac-8245-51ccf7e0b12d"
 }
