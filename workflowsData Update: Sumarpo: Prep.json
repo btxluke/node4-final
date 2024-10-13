@@ -470,6 +470,39 @@
           }
         ]
       ]
+    },
+    "Postgres8": {
+      "main": [
+        [
+          {
+            "node": "Postgres7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres7": {
+      "main": [
+        [
+          {
+            "node": "Postgres9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres9": {
+      "main": [
+        [
+          {
+            "node": "Postgres10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-10-10T10:12:11.619Z",
@@ -785,7 +818,7 @@
       "typeVersion": 2.2,
       "position": [
         -280,
-        1580
+        1780
       ],
       "credentials": {
         "postgres": {
@@ -802,7 +835,7 @@
       "typeVersion": 1,
       "position": [
         -680,
-        1480
+        1680
       ]
     },
     {
@@ -816,8 +849,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.2,
       "position": [
-        -500,
-        1360
+        -480,
+        1540
       ],
       "credentials": {
         "postgres": {
@@ -843,8 +876,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 2,
       "position": [
-        -280,
-        1360
+        -260,
+        1540
       ]
     },
     {
@@ -859,7 +892,7 @@
       "typeVersion": 2.1,
       "position": [
         -60,
-        1480
+        1680
       ]
     },
     {
@@ -880,7 +913,7 @@
       "typeVersion": 2,
       "position": [
         160,
-        1480
+        1680
       ]
     },
     {
@@ -895,7 +928,7 @@
       "typeVersion": 2.2,
       "position": [
         380,
-        1480
+        1680
       ],
       "credentials": {
         "postgres": {
@@ -1048,7 +1081,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "DELETE FROM odoodata.upload_sumarpo WHERE \"Variant SKU\" = NULL;",
+        "query": "DELETE FROM odoodata.upload_sumarpo WHERE \"Variant SKU\" IS NULL;",
         "options": {}
       },
       "id": "ba933268-59cb-4bd4-88ac-a3010d4baf24",
@@ -1073,7 +1106,7 @@
           "string": [
             {
               "name": "alterStatements",
-              "value": "RENAME COLUMN \"Vendor SKU\" TO \"productcode\", ALTER COLUMN \"productcode\" TYPE CHAR(40), RENAME COLUMN \"Product Name\" TO \"productname\", ALTER COLUMN \"productname\" TYPE CHAR(235), RENAME COLUMN \"UPC/EAN\" TO \"ean\", ALTER COLUMN \"ean\" TYPE CHAR(22), RENAME COLUMN \"Unit MSRP\" TO \"rrp\", ALTER COLUMN \"rrp\" TYPE DECIMAL(7,2) USING \"rrp\"::NUMERIC, RENAME COLUMN \"Pack Qty\" TO \"packqty\", ALTER COLUMN \"packqty\" TYPE CHAR(27), RENAME COLUMN \"Variant Grouping\" TO \"variantgrouping\", ALTER COLUMN \"variantgrouping\" TYPE CHAR(30), RENAME COLUMN \"Short Description\" TO \"shortdescription\", ALTER COLUMN \"shortdescription\" TYPE CHAR(222), RENAME COLUMN \"Long Description\" TO \"longdescription\", ALTER COLUMN \"longdescription\" TYPE TEXT, RENAME COLUMN \"Unit Cost\" TO \"yourprice\", ALTER COLUMN \"yourprice\" TYPE DECIMAL(7,2) USING \"yourprice\"::NUMERIC, RENAME COLUMN \"Lead Time\" TO \"leadtime\", ALTER COLUMN \"leadtime\" TYPE SMALLINT USING \"leadtime\"::NUMERIC, RENAME COLUMN \"Sub Category\" TO \"subcategory\", ALTER COLUMN \"subcategory\" TYPE CHAR(30), RENAME COLUMN \"image\" TO \"imageurl\", ALTER COLUMN \"imageurl\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 1\" TO \"alternativeimage1url\", ALTER COLUMN \"alternativeimage1url\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 2\" TO \"alternativeimage2url\", ALTER COLUMN \"alternativeimage2url\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 3\" TO \"alternativeimage3url\", ALTER COLUMN \"alternativeimage3url\" TYPE CHAR(102), RENAME COLUMN \"Stock Count\" TO \"stockcount\", ALTER COLUMN \"stockcount\" TYPE SMALLINT USING \"stockcount\"::NUMERIC, RENAME COLUMN \"Technical Spec\" TO \"technicalspec\", ALTER COLUMN \"technicalspec\" TYPE TEXT, ADD COLUMN \"technicalspeclabel\" TEXT DEFAULT NULL, ALTER COLUMN \"vat\" TYPE SMALLINT USING \"vat\"::NUMERIC"
+              "value": "RENAME COLUMN \"Vendor SKU\" TO \"productcode\", ALTER COLUMN \"productcode\" TYPE CHAR(40), RENAME COLUMN \"Product Name\" TO \"productname\", ALTER COLUMN \"productname\" TYPE CHAR(235), RENAME COLUMN \"UPC/EAN\" TO \"ean\", ALTER COLUMN \"ean\" TYPE CHAR(22), RENAME COLUMN \"Unit MSRP\" TO \"rrp\", ALTER COLUMN \"rrp\" TYPE DECIMAL(7,2) USING \"rrp\"::NUMERIC, RENAME COLUMN \"Pack Qty\" TO \"packqty\", ALTER COLUMN \"packqty\" TYPE CHAR(27), RENAME COLUMN \"Variant Grouping\" TO \"variantgrouping\", ALTER COLUMN \"variantgrouping\" TYPE CHAR(30), RENAME COLUMN \"Short Description\" TO \"shortdescription\", ALTER COLUMN \"shortdescription\" TYPE CHAR(222), RENAME COLUMN \"Long Description\" TO \"longdescription\", ALTER COLUMN \"longdescription\" TYPE TEXT, RENAME COLUMN \"Unit Cost\" TO \"yourprice\", ALTER COLUMN \"yourprice\" TYPE DECIMAL(7,2) USING \"yourprice\"::NUMERIC, RENAME COLUMN \"Lead Time\" TO \"leadtime\", ALTER COLUMN \"leadtime\" TYPE SMALLINT USING \"leadtime\"::NUMERIC, RENAME COLUMN \"Sub Category\" TO \"subcategory\", ALTER COLUMN \"subcategory\" TYPE CHAR(30), RENAME COLUMN \"image\" TO \"imageurl\", ALTER COLUMN \"imageurl\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 1\" TO \"alternativeimage1url\", ALTER COLUMN \"alternativeimage1url\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 2\" TO \"alternativeimage2url\", ALTER COLUMN \"alternativeimage2url\" TYPE CHAR(102), RENAME COLUMN \"Alternative Image 3\" TO \"alternativeimageF3url\", ALTER COLUMN \"alternativeimage3url\" TYPE CHAR(102), RENAME COLUMN \"Stock Count\" TO \"stockcount\", ALTER COLUMN \"stockcount\" TYPE SMALLINT USING \"stockcount\"::NUMERIC, RENAME COLUMN \"Technical Spec\" TO \"technicalspec\", ALTER COLUMN \"technicalspec\" TYPE TEXT, ADD COLUMN \"technicalspeclabel\" TEXT DEFAULT NULL, ALTER COLUMN \"vat\" TYPE SMALLINT USING \"vat\"::NUMERIC"
             },
             {
               "name": "supplier",
@@ -1089,7 +1122,7 @@
       "typeVersion": 2,
       "position": [
         -1620,
-        1460
+        1660
       ]
     },
     {
@@ -1102,7 +1135,7 @@
       "typeVersion": 1,
       "position": [
         -1400,
-        1460
+        1660
       ]
     },
     {
@@ -1255,7 +1288,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.3,
       "position": [
-        -380,
+        -360,
         980
       ],
       "credentials": {
@@ -1338,6 +1371,69 @@
           "name": "odooData"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE odoodata.upload_sumarpo SET \"{{ $json.column_name }}\" = NULL WHERE \"{{ $json.column_name }}\" = 'undefined' OR \"{{ $json.column_name }}\" = '';",
+        "options": {}
+      },
+      "id": "402da1a0-23c1-4101-ada5-ab525f2348c8",
+      "name": "Postgres7",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        -1180,
+        1260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE odoodata.upload_sumarpo SET \"Variant Barcode\" = TRIM(LEADING '''' FROM \"Variant Barcode\")",
+        "options": {}
+      },
+      "id": "37eed4aa-0483-4343-b9d0-eaf997746587",
+      "name": "Postgres9",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        -960,
+        1260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "ALTER TABLE odoodata.upload_sumarpo ALTER COLUMN \"Variant Price\" TYPE DECIMAL(7,2) USING \"rrp\"::NUMERIC * {{ $('Item Lists').first().json.average_rate }};",
+        "options": {}
+      },
+      "id": "81b0414d-2dd1-4bf8-8cf1-b51f6f974087",
+      "name": "Postgres10",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.3,
+      "position": [
+        -740,
+        1260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "dqel3RyoT6NsGiSw",
+          "name": "odooData"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1390,6 +1486,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-13T10:24:59.000Z",
-  "versionId": "d29bc582-cae5-48ac-8245-51ccf7e0b12d"
+  "updatedAt": "2024-10-13T14:17:23.000Z",
+  "versionId": "6d6c60dc-17c4-4982-a808-b0c5c65f25f2"
 }
