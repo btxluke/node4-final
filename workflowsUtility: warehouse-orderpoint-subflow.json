@@ -169,6 +169,7 @@
         960,
         220
       ],
+      "alwaysOutputData": true,
       "credentials": {
         "postgres": {
           "id": "ayAxbLgcy5Lpqy5D",
@@ -405,6 +406,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-10-09T17:58:32.000Z",
-  "versionId": "72cc834e-dd98-411f-af3b-1f81da14d687"
+  "updatedAt": "2024-10-14T06:14:31.000Z",
+  "versionId": "f08c1b8d-6d31-4569-87c2-ae44da61f614"
 }
