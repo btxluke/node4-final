@@ -1061,9 +1061,14 @@
             {
               "value1": "={{ $json[\"categ_id\"] }}",
               "operation": "isEmpty"
+            },
+            {
+              "value1": "={{$json.productname}}",
+              "operation": "isEmpty"
             }
           ]
-        }
+        },
+        "combineOperation": "any"
       },
       "id": "8d9ac282-192e-4a10-aac1-d849c186ad15",
       "name": "IF",
@@ -2083,6 +2088,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-10-10T20:20:37.000Z",
-  "versionId": "e63e5c09-1079-48aa-b566-420098cbfa0c"
+  "updatedAt": "2024-10-21T07:51:28.000Z",
+  "versionId": "0ff32965-9481-4c3a-9a5f-7f8c5db26861"
 }
