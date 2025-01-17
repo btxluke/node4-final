@@ -1,0 +1,77 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Odoo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-16T17:16:41.182Z",
+  "id": "nznxeZaajnQiY9g3",
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "aaf944f2-d44b-426f-9517-b2bc63bfa6a3",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "custom",
+        "customResource": "product.template",
+        "operation": "getAll",
+        "options": {
+          "fieldsList": [
+            "allow_out_of_stock_order",
+            "qty_available"
+          ]
+        },
+        "filterRequest": {
+          "filter": [
+            {
+              "fieldName": "qty_available",
+              "operator": "lesserOrEqual",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      "id": "0af4db05-a9e0-424a-b7b9-7ebb99d700c5",
+      "name": "Odoo",
+      "type": "n8n-nodes-base.odoo",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        420
+      ],
+      "credentials": {
+        "odooApi": {
+          "id": "2ttPRWxNWqAWB6fY",
+          "name": "Odoo account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-16T17:16:41.182Z",
+  "versionId": "7c3bd8a8-9edc-4266-8819-94cc36b3b0c3"
+}
